@@ -1,7 +1,10 @@
 #include <debug_utils/printf.h>
 
 int printf(const char *format, ...) {
-    char *s;
+    // Using the eyeball rule: 3 bytes of output for each byte of input. 
+    // It is almost never a problem to allocate a little too much memory.
+    char buf[sizeof(int) * 3 + 2]; // 1 for the sign and 1 for the null char at the end
+    char *s = buf;
 
     va_list list;
     va_start(list, format);

@@ -1,6 +1,6 @@
 # LostOS
 
-This is an operating system written from scratch to help me better understand what's "under the hood".
+This is a 32-bit operating system written from scratch to help me better understand what's "under the hood".
 
 ## Getting Started
 
@@ -42,25 +42,18 @@ You can then follow the **Executing** part to re-build the OS.
  - Custom GDT and IDT installed
  - PIC remapped 
  - IRQs and ISRs set
+ - PIT (Channel 0)
 
 ## Todos
 
- - Currently working on a PIT implementation
+ - Just started memory managment
 
 ### Problems
-When in /src/kernel/interrupts/timer.c (function *tickHandler()*) the machine execute *printf("Tick: %d\n", tick);* the screen prints 
-```
-Tick: Exception: Page fault (err code 2)
-```
-and obviously the system halts as it is set.
 
-When it only execute printf("Tick\n"); it works printing an infinite list of "Tick:", though. 
-Also if I don't print anything, the page fault doesn't occur.
-A printf (/src/kernel/debug_utils/printf.c) error perhaps?
 
 ## Dreams
  - Good project organization (an */arch* directory, for example)
- - Semantic versioning 
+ - Semantic versioning
  - Keyboard driver
  - Paging
  - Multithreading

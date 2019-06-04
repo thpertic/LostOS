@@ -12,7 +12,7 @@
  * The PIT has an internal clock which oscillates at approximately 1.1931MHz. 
  * This clock signal is fed through a frequency divider, to modulate the final output frequency. 
  * It has 3 channels, each with it's own frequency divider:
- *     - Channel 0 is the most useful. It's output is connected to IRQ0.
+ *     - Channel 0 is the most useful. Its output is connected to IRQ0.
  *     - Channel 1 is very un-useful and on modern hardware is no longer implemented. It used to control refresh rates for DRAM.
  *     - Channel 2 controls the PC speaker.
  */
@@ -20,10 +20,11 @@
 uint32_t tick = 0;
 
 void tickHandler(regs_t *r) {
-    if (r->err_code != NULL)
-        printfSerial("");
+    if (r->int_no == 0)
+        printfSerial("%d\n", r->int_no);
+    
     tick++;
-    // printf("Tick: %d\n", tick);
+    outportb(0x20, 0x20); // End of interrupt
 }
 
 void clock_init(uint32_t frequency) {

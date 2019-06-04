@@ -29,9 +29,10 @@ IRQ 15, 47
 
 extern irq_faultHandler
 
-; This is a stub that we have created for IRQ based ISRs. 
-; This calls 'irq_faultHandler()' in our C code.
+; This is a stub that has been created for IRQ. 
+; This calls 'irq_faultHandler()' in the C code.
 irq_common_stub:
+    ; Push the registers and the segments on the stack
     pusha
 
     push ds
@@ -39,19 +40,19 @@ irq_common_stub:
     push fs
     push gs
     
+    ; Load the segments with the kernel's segments 
     mov ax, 0x10
     mov ds, ax
     mov es, ax
     mov fs, ax
     mov gs, ax
     
-    mov eax, esp
-    push eax
+    push esp
     
-    mov eax, irq_faultHandler
-    call eax
+    call irq_faultHandler
     
-    pop eax
+    ; Restore the stack
+    pop esp
     pop gs
     pop fs
     pop es

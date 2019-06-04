@@ -2,6 +2,7 @@
 #define SYSTEM_H
 
 #include <stdbool.h>
+#include <stdint.h>
 
 // Some useful macros
 #define EOF -1
@@ -13,11 +14,6 @@
 #define K 1024
 #define M (K * 1024)
 #define G (M * 1024)
-
-typedef unsigned long long uint64_t;
-typedef unsigned int uint32_t;
-typedef unsigned short uint16_t;
-typedef unsigned char uint8_t;
 
 // This defines what the stack looks like after an ISR was running
 typedef struct regs {

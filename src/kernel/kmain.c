@@ -15,8 +15,6 @@
 // https://github.com/szhou42/osdev
 // http://littleosbook.github.io/
 
-/*** TODO: Working on the clock ***/
-
 void kmain(multiboot_info_t* mbd, int n) {
     // Start all
     video_init();
@@ -26,7 +24,7 @@ void kmain(multiboot_info_t* mbd, int n) {
 
     printf("Initializing COM1...\n");
     init_serial();
-    printfSerial("INIT COM1");
+    printfSerial("INIT COM1\n");
     printf("COM1 initialized.\n\n");
 
     printf("Initializing the GDT...\n");
@@ -38,7 +36,7 @@ void kmain(multiboot_info_t* mbd, int n) {
     printf("IDT initialized.\n\n");
 
     printf("Initializing the clock...\n");
-    clock_init(50);
+    clock_init(100);
     printf("Clock initialized.\n\n");
 
     if (mbd->boot_device != NULL)

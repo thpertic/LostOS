@@ -94,6 +94,9 @@ void isr_faultHandler(regs_t *r) {
         // An exception: print error.
         set_color(RED, BLACK);
         printf("Exception: %s (err code %x)\n", exception_messages[r->int_no], r->err_code);
+        printf("DS:0x%x, CS:0x%x, ES:0x%x, GS:0x%x, FS:0x%x\n", r->ds, r->cs, r->es, r->gs, r->fs);
+        printf("EAX:0x%x, EBX:0x%x, ECX:0x%x, EDX:0x%x\n", r->eax, r->ebx, r->ecx, r->edx);
+        printf("ESP:0x%x, EBP:0x%x, EIP:0x%x, EDI:0x%x, ESI:0x%x\n", r->esp, r->ebp, r->eip, r->edi, r->esi);
         set_color(LIGHT_GREY, BLACK);
         for(;;) ;
     }
