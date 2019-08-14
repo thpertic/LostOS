@@ -3,6 +3,7 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include <stdbool.h>
 
 // Some useful macros
 #define EOF -1

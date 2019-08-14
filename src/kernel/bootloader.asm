@@ -29,6 +29,7 @@ BootPageDirectory:
     ;   - bit 0: P  The kernel page is present (in RAM).
     ; This entry must be here -- otherwise the kernel will crash immediately after paging is enabled 
     ; because it can't fetch the next instruction! It's ok to unmap this page later.
+    ; DON'T UNMAP IT as it is used in the Physical Memory Manager before setting up the real Page Directory!
     dd 0x00000083
     times(PDE_INDEX - 1) dd 0
 
@@ -63,8 +64,8 @@ setup:
 section .text
 startInHigherHalf:
     ; Unmap the first 4MB physical memory, we don't need it anymore. Flush the tlb, too
-    mov dword[BootPageDirectory], 0
-    invlpg[0]
+    ;mov dword[BootPageDirectory], 0
+    ;invlpg[0]
 
     ; Set the stack
     mov esp, start_stack

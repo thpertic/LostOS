@@ -52,7 +52,7 @@ irq_common_stub:
     call irq_faultHandler
     
     ; Restore the stack
-    pop esp
+    pop eax ; Not using esp because there's no guarantee the passed value was preserved by the call 
     pop gs
     pop fs
     pop es

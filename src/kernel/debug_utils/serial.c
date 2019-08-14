@@ -14,8 +14,6 @@ void init_serial() {
     outportb(SERIAL_LINE_COMMAND_PORT(SERIAL_COM1_BASE), 0x03);     // 8 bits, no parity, one stop bit
     outportb(SERIAL_FIFO_COMMAND_PORT(SERIAL_COM1_BASE), 0xC7);     // Enable FIFO, clear them, with 14-byte threshold
     outportb(SERIAL_MODEM_COMMAND_PORT(SERIAL_COM1_BASE), 0x0B);    // IRQs enabled, RTS/DSR set
-
-    
 }
 
 int serialReceived() {

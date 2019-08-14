@@ -15,6 +15,7 @@ TABLES_DIR=$(ROOT_DIR)/tables
 DRIVERS_DIR=$(ROOT_DIR)/drivers
 DEBUG_UTILS_DIR=$(ROOT_DIR)/debug_utils
 INTERRUPTS_DIR=$(ROOT_DIR)/interrupts
+MM_DIR=$(ROOT_DIR)/mm
 
 BOOT_DIR=/boot
 
@@ -24,6 +25,7 @@ include $(TABLES_DIR)/make.config
 include $(DRIVERS_DIR)/make.config
 include $(DEBUG_UTILS_DIR)/make.config
 include $(INTERRUPTS_DIR)/make.config
+include $(MM_DIR)/make.config
 
 SOURCES=\
 $(ROOT_DIR)/bootloader.o \
@@ -32,8 +34,8 @@ $(COMMON_OBJS) 			 \
 $(TABLES_OBJS)			 \
 $(DRIVERS_OBJS)			 \
 $(DEBUG_UTILS_OBJS)		 \
-$(INTERRUPTS_OBJS)
-
+$(INTERRUPTS_OBJS)		 \
+$(MM_OBJS)
 
 .PHONY: all clean install install-kernel
 .SUFFIXES: .o .c .asm

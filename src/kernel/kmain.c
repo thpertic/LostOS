@@ -4,9 +4,14 @@
 #include <tables/gdt.h>
 #include <tables/idt.h>
 #include <interrupts/timer.h>
+#include <mm/pmm.h>
 
 #include <debug_utils/printf.h>
 #include <debug_utils/serial.h>
+
+// TODO: Implement PMM.
+
+// 0101 0100 == 'T'
 
 // Guides I've followed
 // https://wiki.osdev.org
@@ -14,9 +19,10 @@
 // http://jamesmolloy.co.uk/tutorial_html/
 // https://github.com/szhou42/osdev
 // http://littleosbook.github.io/
+// http://www.brokenthorn.com/Resources/OSDev1.html
 
 void kmain(multiboot_info_t* mbd, int n) {
-    // Start all
+    // Start everything
     video_init();
     printf("Video initialized.\n\n");
 
@@ -39,8 +45,9 @@ void kmain(multiboot_info_t* mbd, int n) {
     clock_init(100);
     printf("Clock initialized.\n\n");
 
-    if (mbd->boot_device != NULL)
-        printf("Boot device != NULL\n\n");
+    printf("Initializing the Physical Memory Manager...\n");
+    pmm_init(mbd);
+    printf("PMM initialized.\n\n");
 
 //  int num = 5 / 0;
 //  asm("int $4");

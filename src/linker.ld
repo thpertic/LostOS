@@ -27,6 +27,8 @@ SECTIONS {
      * are going to be referenced based on this.
      */
     . += KERNEL_VIRTUAL_BASE;
+    . = ALIGN (4096);
+    start = .;
 
     /**
      * *(.section name) means: all sections named "section name" in all input object files, please put them here.
@@ -60,5 +62,6 @@ SECTIONS {
     /**
      * Put a symbol end here, it tells us where all the kernel code/data ends, it means everything after 'end' can be used for something else
      */
+    . = ALIGN(4096);
     end = .;
 }

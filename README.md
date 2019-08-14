@@ -24,7 +24,7 @@ The order is:
 ./build.sh
 ./bochs.sh  or ./qemu.sh
 ```
-The virtual machine should start, print some initialization messages to the screen and write "INIT COM1" in the com1.out file.
+The emulator should start, print some initialization messages to the screen and write "INIT COM1" in the com1.out file.
 
 ### Clear
 If you want to rebuild everything you can just execute
@@ -46,10 +46,12 @@ You can then follow the **Executing** part to re-build the OS.
 
 ## Todos
 
- - Just started memory managment
+ - Finishing Physical Memory Manager
+ - Check defragmentPMM() in src/kernel/mm/pmm.c
 
 ### Problems
-
+ 
+ - The memory fragments are not properly pushed and merged
 
 ## Dreams
  - Good project organization (an */arch* directory, for example)
