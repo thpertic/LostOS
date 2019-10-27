@@ -4,13 +4,12 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <stddef.h>
 
 // Some useful macros
 #define EOF -1
 
 #define KERNEL_VIRTUAL_BASE 0xC0000000
-
-#define NULL 0
 
 #define K 1024
 #define M (K * 1024)

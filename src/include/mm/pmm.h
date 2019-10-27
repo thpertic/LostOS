@@ -7,28 +7,30 @@
 
 #define PAGE_SIZE 4096
 
+/* First address then nContiguousPages */
 typedef struct free_mem {
     uint32_t *addr;
     uint32_t nContiguousPages;
 } free_mem_t;
 
-free_mem_t *stack;
+free_mem_t *_stack;
 
 extern char start;  // Of the kernel      | Linker
 extern char end;    // Start of the stack | Symbols
 
-uint32_t start_addr;
-uint32_t end_addr;
+uint32_t _start_addr_phys;
+uint32_t _end_addr_phys;
 
-uint32_t half_maxStack;
+uint32_t _RAM_size;
 
-void pmm_init(multiboot_info_t* mbt);
+uint32_t _half_maxStack;
 
-/* First address then nContiguousPages */
-uint32_t allocateBlock();
-bool unallocateBlock(uint32_t addr);
+void pmm_init(multiboot_info_t* mbt, uint32_t *pd);
 
-uint32_t allocateBlocks(uint32_t size);
-bool unallocateBlocks(uint32_t addr, uint32_t size);
+uint32_t pAllocPage();
+bool pFreePage(void *addr);
+
+uint32_t pAllocPages(uint32_t size);
+bool pFreePages(void *addr, uint32_t size);
 
 #endif

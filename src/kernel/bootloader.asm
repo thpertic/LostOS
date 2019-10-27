@@ -19,7 +19,7 @@ align 4
     dd FLAGS
     dd CHECKSUM
 
-align 4096
+align 0x1000
 global BootPageDirectory
 BootPageDirectory:
     ; This page directory entry identity-maps the first 4MB of the 32-bit physical address space.
@@ -27,9 +27,8 @@ BootPageDirectory:
     ;   - bit 7: PS The kernel page is 4MB.
     ;   - bit 1: RW The kernel page is read/write.
     ;   - bit 0: P  The kernel page is present (in RAM).
-    ; This entry must be here -- otherwise the kernel will crash immediately after paging is enabled 
-    ; because it can't fetch the next instruction! It's ok to unmap this page later.
-    ; DON'T UNMAP IT as it is used in the Physical Memory Manager before setting up the real Page Directory!
+    ; This entry must be here -- otherwise the kernel will crash immediately after paging is enabled because it can't fetch the next instruction! 
+    ; It's not ok to unmap this page as it is used in the Physical Memory Manager before setting up the real Page Directory!
     dd 0x00000083
     times(PDE_INDEX - 1) dd 0
 
@@ -40,6 +39,11 @@ BootPageDirectory:
 section .lowerhalf.text progbits alloc exec nowrite align=16
 global setup
 setup:
+    ; Setting the last entry as recursive
+    mov ecx, BootPageDirectory
+    or ecx, 0x3
+    mov [BootPageDirectory + 4092], ecx
+
     ; Load PDBR (CR3), it must contains the physical address of the Page Directory
     mov ecx, BootPageDirectory
     mov cr3, ecx
@@ -73,9 +77,13 @@ startInHigherHalf:
     ; Map the multiboot structure to higher half
     add ebx, KERNEL_VIRTUAL_BASE
 
-    ; Pass the Multiboot magic number and the Multiboot info structure
+    ; Remember the address of the first Page Directory
+    mov ecx, BootPageDirectory
+
+    ; Pass the Multiboot magic number and the Multiboot info structure    
     push eax
     push ebx
+    push ecx
     
     ; Call the C++ global constructor      
     ; call _init
@@ -91,6 +99,6 @@ startInHigherHalf:
 section .bss nobits
 align 4
 end_stack:
-    ; 1024 * 1024 = 104856 (1MB)
-    resb 104856
+    ; 1024 * 1024 * 4 = 104856 (4MB)
+    resb 419424
 start_stack:

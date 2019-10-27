@@ -43,19 +43,21 @@ You can then follow the **Executing** part to re-build the OS.
  - PIC remapped 
  - IRQs and ISRs set
  - PIT (Channel 0)
+ - Physical Memory Manager
+ - Virtual Memory Manager
 
 ## Todos
 
- - Finishing Physical Memory Manager
- - Check defragmentPMM() in src/kernel/mm/pmm.c
+ - Kernel Heap
 
 ### Problems
- 
- - The memory fragments are not properly pushed and merged
+
 
 ## Dreams
  - Good project organization (an */arch* directory, for example)
- - Semantic versioning
+ - ERRNO integration
+ - panic function integration
+ - Semantic versioning (as soon I get to the alpha release)
  - Keyboard driver
  - Paging
  - Multithreading
@@ -68,7 +70,7 @@ You can then follow the **Executing** part to re-build the OS.
 
 * **Thomas Perticaroli** - *Starting project* - [thpertic](https://github.com/thpertic)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/thpertic/LostOS/contributors) who participated in this project.
 
 ## License
 

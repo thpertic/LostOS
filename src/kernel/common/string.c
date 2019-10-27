@@ -1,44 +1,19 @@
 #include <common/string.h>
 
 /**
- * Copy 'count' bytes of data from 'src' to
- * 'dest', finally return 'dest' 
+ * This loops through character array 'str', returning how
+ * many characters it needs to check before it finds a 0.
+ * In simple words, it returns the length in bytes of a string 
  */
-uint8_t *memcpy(void *dest, const void *src, uint32_t count) {
-    char *d = dest;
-    const char *s = src;
-
-    while (count--)
-        *d++ = *s++;
-
-    return dest;
-}
-/**
- * Set 'count' bytes in 'dest' to 'val'.
- * Again, return 'dest' 
- */
-uint8_t *memset(void *dest, uint8_t val, uint32_t count) {
-    unsigned char *tmp = dest;
-    while (count > 0) {
-        *tmp++ = val;
-        count--;
-    }
-
-    return dest;
+size_t strlen (const char *s) {
+  size_t i = 0;
+  for (; s[i] != '\0'; ++i);
+  return i;
 }
 
-/**
- * Same as above, but this time, we're working with a 16-bit
- * 'val' and dest pointer. Your code can be an exact copy of
- * the above, provided that your local variables if any, are unsigned short 
- */
-uint16_t *memsetw(uint16_t *dest, uint16_t val, uint32_t count) {
-
-    unsigned int i;
-    for (i = 0; i < count; i++)
-        *dest++ = val;
-
-    return dest;
+int32_t strcmp (const char *s1, const char *s2) {
+  for (; *s1 && *s1 == *s2; ++s1, ++s2);
+  return *s1 - *s2;
 }
 
 void swap(char *a, char *b) {
@@ -125,16 +100,4 @@ char* utoa(uint32_t num, char *str, int base) {
     reverse(str, i); 
 
     return str; 
-}
-
-/**
- * This loops through character array 'str', returning how
- * many characters it needs to check before it finds a 0.
- * In simple words, it returns the length in bytes of a string 
- */
-int strlen(const char *str) {
-    unsigned int i = 0;
-    for(i = 0; str[i] != '\0'; i++);
-
-    return i;
 }

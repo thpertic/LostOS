@@ -1,4 +1,5 @@
 #include <drivers/vga.h>
+#include <common/utility.h>
 
 // Cursor x and y
 int x = 0, y = 0;
@@ -40,8 +41,7 @@ void try_scroll() {
  * Moves the little blinking line under the last pressed char.
  * This sends a command to indicies 14 and 15 in the CRT Control Register of the VGA controller. 
  * These are the high and low bytes of the index that show where the hardware cursor is to be 'blinking'. 
- * To learn more, you should look up some VGA specific programming documents. 
- * A great start to graphics: http://www.brackeen.com/home/vga 
+ * To learn more, you should look up some VGA specific programming documents.
  */
 void update_cursor() {
     uint32_t pos = y * WIDTH + x;

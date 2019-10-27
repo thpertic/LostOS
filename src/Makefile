@@ -1,6 +1,6 @@
 # Setup compiler name and flags
 CC=i686-elf-gcc
-CFLAGS=-Wall -Wextra -Werror -Wno-int-conversion -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdlib -ffreestanding -I./include -std=gnu99 -g -ggdb -c -fno-stack-protector -m32
+CFLAGS=-Wall -Wextra -Werror -Wno-int-conversion -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdlib -ffreestanding -I./include -std=gnu99 -g -ggdb -c -m32
 NASM=nasm
 NASMFLAGS=-f elf32 -O0
 LDFLAGS=-T linker.ld -ffreestanding -O2 -nostdlib -g -ggdb

@@ -4,6 +4,8 @@
 bool pushAllPMM(free_mem_t m, bool merge);
 free_mem_t popAllPMM();
 
+bool defrag = false;
+
 /**
  * Get and anylize the GRUB memory map to count the RAM size.
  */
@@ -29,45 +31,102 @@ unsigned int findRAMSize(multiboot_info_t* mbt) {
         }
     }
 
-    // Finds the worst case scenario for the stack (for a 4GB RAM == 8MB)
+    // Finds the worst case scenario for the _stack (for a 4GB RAM == 8MB)
     if (size > 0)    
-        half_maxStack = ((size * 1024) / PAGE_SIZE) * (sizeof(free_mem_t));
+        _half_maxStack = ((size * 1024) / PAGE_SIZE) * (sizeof(free_mem_t));
 
     return size;
+}
+
+
+bool mergePMM(free_mem_t toMerge) {
+    free_mem_t m = popAllPMM();
+
+    // Invalid
+    if (m.addr == 0x0 && m.nContiguousPages == 0x0)
+        return false;
+
+    if ((uint32_t)toMerge.addr == ((uint32_t)m.addr + (m.nContiguousPages * PAGE_SIZE))) {
+        // toMerge is after
+//        printf("newM-PUSHING-AFTER: m.addr = 0x%x; m.pages = %d\n", m.addr, m.nContiguousPages);
+        m.nContiguousPages += toMerge.nContiguousPages;
+        //merged = true;
+//        printf("newM-PUSHING-AFTER: m.addr = 0x%x; m.pages = %d\n", m.addr, m.nContiguousPages);
+        pushAllPMM(m, false);
+        return true;
+    } else if ((uint32_t)m.addr == ((uint32_t)toMerge.addr + (toMerge.nContiguousPages * PAGE_SIZE))) {
+        // toMerge is before
+//        printf("newM-PUSHING-BEFORE: m.addr = 0x%x; m.pages = %d\n", m.addr, m.nContiguousPages);
+        m.addr = toMerge.addr;
+        m.nContiguousPages += toMerge.nContiguousPages;
+//printf("newM-PUSHING-BEFORE: m.addr = 0x%x; m.pages = %d\n", m.addr, m.nContiguousPages);
+        pushAllPMM(m, false);
+        return true;
+    } else {
+//        printf("newM-REMERGE: toMerge.addr = 0x%x; toMerge.pages = %d\n", toMerge.addr, toMerge.nContiguousPages);
+        bool ret = mergePMM(toMerge);
+//        printf("newM-PUSHING: m.addr = 0x%x; m.pages = %d\n", m.addr, m.nContiguousPages);
+        pushAllPMM(m, false);
+        return ret;
+    }
 }
 
 /**
  * This function is going to check for every struct, if it is possible to merge with other.
  *
  * This algorithm has O(n^2) (I think?) so be careful when to call it.
- * For now it is called when the stack is half the dimension of the worst case scenario.
+ * For now it is called when the _stack is half the dimension of the worst case scenario.
  * Choices are:
- *      1. when you call free() (when you push to the free stack)
- *      2. when the stack size reaches its limit (4Mb sounds reasonable on a 4G machine)
+ *      1. when you call free() (when you push to the free _stack)
+ *      2. when the _stack size reaches its limit (4Mb sounds reasonable on a 4G machine)
  *      3. whenever you schedule the idle task
  */
-void defragmentPMM() {
+void defragmentPMM(bool original) {
     printf("defrag\n");
-    free_mem_t *outer_stack = stack - sizeof(free_mem_t *); // stack points to the next entry
+    /*free_mem_t *outer_stack = _stack - sizeof(free_mem_t *); // _stack points to the next entry
     free_mem_t *inner_stack = outer_stack - sizeof(free_mem_t *);    // Starts a struct after outer_stack
+    */
+    free_mem_t m;
+    do {
+        m = popAllPMM();
+        //mergePMM(m);
 
-    // Foreach element of the stack
-    while (outer_stack > (free_mem_t *)&end) {       
-        free_mem_t m = *outer_stack;
+        if (!mergePMM(m)) {
+            // Couldn't merge - Try the next entry
+            defragmentPMM(false);
+        } else if (!(m.addr == 0x0 && m.nContiguousPages == 0x0)) {
+            // Merged - Have to check all the _stack again
+            // If it is the first call - check the _stack, otherwise push
+            if (!original)
+                pushAllPMM(m, false);
+            else    
+                defragmentPMM(true);
+        }
+            
+
+    } while(m.addr == 0x0 && m.nContiguousPages == 0x0);
+    defrag = true;
+    /*free_mem_t m;
+
+    // Foreach element of the _stack
+    while ((m = popAllPMM()) == true) {//outer_stack > (free_mem_t *)&end) {       
+         = popAllPMM();
         
-        // Foreach other element of the stack 
+        if (!mergePMM(m))
+
+         Foreach other element of the _stack 
         while (inner_stack > (free_mem_t *)&end) {
             // Check if it is mergeble
             if (inner_stack->addr == (m.addr + (m.nContiguousPages * PAGE_SIZE))) {
                 inner_stack->addr = m.addr;
                 inner_stack->nContiguousPages += m.nContiguousPages;
 
-                stack -= sizeof(free_mem_t *);
+                _stack -= sizeof(free_mem_t *);
                 break;
 
             } else if (m.addr == (inner_stack->addr + (m.nContiguousPages * PAGE_SIZE))) {
                 inner_stack->nContiguousPages += m.nContiguousPages;
-                stack -= sizeof(free_mem_t *);
+                _stack -= sizeof(free_mem_t *);
                 break;
             }
 
@@ -75,7 +134,7 @@ void defragmentPMM() {
         }
 
         outer_stack -= sizeof(free_mem_t *);
-    }
+    }*/
 }
 
 /**
@@ -83,7 +142,7 @@ void defragmentPMM() {
  */
 void sortedInsertPMM(free_mem_t m) {
     // If empty or m is greater than the top address
-    if (stack == (free_mem_t *)&end || (m.addr > (stack - sizeof(free_mem_t *))->addr && (stack - sizeof(free_mem_t *)) > (free_mem_t *)&end)) {
+    if (_stack == (free_mem_t *)&end || (m.addr > (_stack - sizeof(free_mem_t *))->addr && (_stack - sizeof(free_mem_t *)) > (free_mem_t *)&end)) {
         pushAllPMM(m, false);
         return;
     }
@@ -97,10 +156,10 @@ void sortedInsertPMM(free_mem_t m) {
 }
 
 /**
- * Recursive function that sorts the stack.
+ * Recursive function that sorts the _stack.
  */
 void sortPMM() {
-    if(stack > (free_mem_t *)&end) {
+    if(_stack > (free_mem_t *)&end) {
         free_mem_t tmp = popAllPMM();
 
         sortPMM();
@@ -109,62 +168,41 @@ void sortPMM() {
 }
 
 /**
- * This function pushes a struct of address + nContiguousPages onto the stack.
- * The stack must be ordered from the bigger address (on top) to the smaller.
+ * This function pushes a struct of address + nContiguousPages onto the _stack.
+ * The _stack must be ordered from the bigger address (on top) to the smaller.
  */
 bool pushAllPMM(free_mem_t m, bool merge) {
     bool merged = false;
-    free_mem_t *fetch_stack = stack - sizeof(free_mem_t *);
 
-    if (merge) {
-        // Check if m can be merged
-        while (fetch_stack > (free_mem_t *)&end) {
-            if (fetch_stack->addr == (m.addr + (m.nContiguousPages * PAGE_SIZE))) {
-                // m is before
-                fetch_stack->addr = m.addr;
-                fetch_stack->nContiguousPages += m.nContiguousPages;
-
-                merged = true;
-                printf("merged before\n");
-                break;
-
-            } else if (m.addr == (fetch_stack->addr + (m.nContiguousPages * PAGE_SIZE))) {
-                // m is after
-                fetch_stack->nContiguousPages += m.nContiguousPages;
-                merged = true;
-                printf("merged after\n");
-                break;
-            }
-            fetch_stack -= sizeof(free_mem_t *);
-        }
-    }
+    if (merge)
+        merged = mergePMM(m);
 
     // If it wasn't merged, insert it but in order
     if (!merged) {
         // Time to push
-        *stack = m;
-        stack += sizeof(free_mem_t);
+        *_stack = m;
+        _stack += sizeof(free_mem_t);
 
-        // A temporary stack would be better :'(
+        // A temporary _stack would be better :'(
         if (merge)
             sortPMM();
     }
 
-    if (stack == (free_mem_t *)(&end + half_maxStack))
-        defragmentPMM();
+    if (_stack == (free_mem_t *)(&end + _half_maxStack))
+        defragmentPMM(true);
 
     return true;
 }
 
 /**
- * This function pops the first struct of address + nContiguousPages off the stack.
+ * This function pops the first struct of address + nContiguousPages off the _stack.
  */
 free_mem_t popAllPMM() {
-    stack -= sizeof(free_mem_t);
+    _stack -= sizeof(free_mem_t);
 
-    if (stack < (free_mem_t *)&end) {
-        // Base stack pointer
-        stack = (free_mem_t *)&end;
+    if (_stack < (free_mem_t *)&end) {
+        // Base _stack pointer
+        _stack = (free_mem_t *)&end;
 
         free_mem_t m;
         m.addr = NULL;
@@ -172,7 +210,7 @@ free_mem_t popAllPMM() {
         return m;
     } else
         // Return the value
-        return *stack;
+        return *_stack;
 }
 
 /**
@@ -180,7 +218,7 @@ free_mem_t popAllPMM() {
  * 
  * This function allocates a page (WILL BE 4K ALIGNED) and returns the address.
  */
-uint32_t allocateBlock() {
+uint32_t pAllocPage() {
     free_mem_t m = popAllPMM();
     uint32_t addr = NULL;
 
@@ -204,23 +242,23 @@ uint32_t allocateBlock() {
  * 
  * This function frees a page, returning true or false if it finished well.
  */
-bool unallocateBlock(uint32_t addr) {
+bool pFreePage(void *addr) {
     free_mem_t m;
 
-    m.addr = addr & 0xFFFFF000;
+    m.addr = (uint32_t)addr & 0xFFFFF000;
     m.nContiguousPages = 1;
 
     return pushAllPMM(m, true);
 }
 
 /**
- * Uses the First-Fit recursive technique.
+ * Uses a First-Fit recursive technique.
  */
 free_mem_t firstFit(uint32_t size) {
     free_mem_t m = popAllPMM();
 
     // The right one or Invalid
-    if ((m.nContiguousPages * PAGE_SIZE > size) || (m.addr == NULL && m.nContiguousPages == NULL))
+    if ((m.nContiguousPages * PAGE_SIZE > size) || (m.addr == NULL && m.nContiguousPages == (int)NULL))
         return m;
 
     free_mem_t b = firstFit(size);
@@ -239,6 +277,12 @@ uint32_t roundPageAligned(uint32_t n) {
     uint32_t bigger = PAGE_SIZE;
 
     while (!(n > smaller && n < bigger)) {
+        
+        if (n == bigger)
+            return bigger;
+        else if (n == smaller)
+            return smaller;
+        
         smaller += PAGE_SIZE;
         bigger += PAGE_SIZE;
     }
@@ -250,9 +294,9 @@ uint32_t roundPageAligned(uint32_t n) {
  * 
  * This function allocates a wanted size (NOT NUMBER OF PAGES - BYTES).
  * It uses the technique called "First-Fit". It's faster but causes fragmentation. 
- * While pushing in the stack there are various controls to merge and an "emergency" function when the stack is too big, so we're safe.
+ * While pushing in the _stack there are various controls to merge and an "emergency" function when the _stack is too big, so we're safe.
  */
-uint32_t allocateBlocks(uint32_t size) {
+uint32_t pAllocPages(uint32_t size) {
     if (size <= 0)
         return NULL;
 
@@ -276,7 +320,7 @@ uint32_t allocateBlocks(uint32_t size) {
  * 
  * This function frees memory from the address addr for size.
  */
-bool unallocateBlocks(uint32_t addr, uint32_t size) {
+bool pFreePages(void *addr, uint32_t size) {
     free_mem_t m;
     
     if (size == 0)
@@ -289,153 +333,134 @@ bool unallocateBlocks(uint32_t addr, uint32_t size) {
 }
 
 /**
+ * Little boundary check for the BootPageDirectory. It is just 4KB but I need to make sure.
+ */
+bool checkPD (uint32_t pd_start, uint32_t pd_end, free_mem_t m) {
+    if ((uint32_t)m.addr < pd_start && (((uint32_t)m.addr + m.nContiguousPages * PAGE_SIZE) > pd_start && ((uint32_t)m.addr + m.nContiguousPages * PAGE_SIZE) < pd_end)) {
+        // The memory sector start below the pd and finishes in between (3)
+        m.nContiguousPages = (m.nContiguousPages * PAGE_SIZE - (pd_end - (uint32_t)m.addr)) / PAGE_SIZE;
+
+    } else if (((uint32_t)m.addr > pd_start && (uint32_t)m.addr < pd_end) && ((uint32_t)m.addr + m.nContiguousPages * PAGE_SIZE) > pd_end) { 
+        // The sector starts in the middle of the pd and ends after it (4)
+        m.addr = pd_end;
+        m.nContiguousPages = (m.nContiguousPages * PAGE_SIZE - (pd_end - (uint32_t)m.addr)) / PAGE_SIZE;
+
+    } else if ((uint32_t)m.addr < pd_start && ((uint32_t)m.addr + m.nContiguousPages * PAGE_SIZE) > pd_end) {       
+        // The pd is in the middle of the memory sector (5)
+        free_mem_t tmp = m;
+
+        // Push the part below
+        m.nContiguousPages = (pd_start - (uint32_t)m.addr) / PAGE_SIZE;
+        pushAllPMM(m, true);
+
+        // Push the part above
+        m.addr = pd_end;
+        m.nContiguousPages = ((uint32_t)tmp.addr + (tmp.nContiguousPages * PAGE_SIZE) - pd_end) / PAGE_SIZE;
+    } else 
+        return false;
+
+    pushAllPMM(m, true);
+    return true;
+}
+
+/**
+ * Checks the memory map with some overlap controls. (+ = free memory; - = [used memory])
+ *
+ * 1) [GRUB] +++++++       
+ *    [PHYS] +++++++----
+ * 
+ * 2) [GRUB]     +++++++       
+ *    [PHYS] ----+++++++
+ * 
+ * 3) [GRUB] +++++++       
+ *    [PHYS] +++++----
+ * 
+ * 4) [GRUB]   +++++++       
+ *    [PHYS] ----+++++
+ * 
+ * 5) [GRUB] +++++++++++
+ *    [PHYS] +++++----++.
+ */
+void checkBoundaries(uint32_t pd_start, uint32_t pd_end,  uint32_t length, uint32_t base_addr) {
+    free_mem_t m;
+
+    // Kernel
+    if ((base_addr < _start_addr_phys && (base_addr + length) < _start_addr_phys) ||   // The sector is totally below the kernel (1)
+        (base_addr > _end_addr_phys)) {    // The sector is totally above the kernel (2)
+
+        m.addr = base_addr & 0xFFFFF000;
+        m.nContiguousPages = length / PAGE_SIZE;
+
+    } else if (base_addr < _start_addr_phys && ((base_addr + length) > _start_addr_phys && (base_addr + length) < _end_addr_phys)) {
+        // The memory sector start below the kernel and finishes in between (3)
+        m.addr = base_addr & 0xFFFFF000;
+        m.nContiguousPages = (base_addr + length -_end_addr_phys) / PAGE_SIZE;
+
+    } else if ((base_addr > _start_addr_phys && base_addr < _end_addr_phys) && (base_addr + length) > _end_addr_phys) { 
+        // The sector starts in the middle of the kernel and ends after it (4)
+        m.addr = _end_addr_phys;
+        m.nContiguousPages = (length - (_end_addr_phys - base_addr)) / PAGE_SIZE;
+
+    } else if (base_addr < _start_addr_phys && (base_addr + length) > _end_addr_phys) {       
+        // The kernel is in the middle of the memory sector (5)
+        // Push the part below
+        m.addr = base_addr & 0xFFFFF000;
+        m.nContiguousPages = (_start_addr_phys - base_addr) / PAGE_SIZE;
+        
+        if (!checkPD(pd_start, pd_end, m))
+            pushAllPMM(m, true);
+
+        // Push the part above
+        m.addr = _end_addr_phys;
+        m.nContiguousPages = (base_addr + length -_end_addr_phys) / PAGE_SIZE;
+    }
+
+    if (!checkPD(pd_start, pd_end, m))
+       pushAllPMM(m, true);
+}
+
+/**
  * To implement the physical memory manager something to hold all the free addressed is needed.
- * I'm using a run-length encoded stack: this technique constists in pushing the address and the number of pages all at once.
+ * I'm using a run-length encoded _stack: this technique constists in pushing the address and the number of pages all at once.
  * This has several advantages:
  *      1. it requires considerably less memory
- *      2. it's trivial to fill up the initial stack from E820 data as it uses the same format :-)
+ *      2. it's trivial to fill up the initial _stack from E820 data as it uses the same format :-)
  *      3. you can search for entries with more pages if you really want to allocate contiguous physical pages
  * 
  * At this moment the real page size is 4MB still, 
  * but in the initialization of the Virtual Memory Manager it's gonna switch to 4KB.
  */
-void pmm_init(multiboot_info_t* mbt) {
-    half_maxStack = 0;
-    printf("Total RAM size: %d KiB\n", findRAMSize(mbt));
+void pmm_init(multiboot_info_t* mbt, uint32_t *pd) {
+    if ((mbt->flags & 0x20) == 0) {
+        printf("No memory map from GRUB.\n");
+        return;
+    }
 
-    // Set the start of the stack
-    stack = (free_mem_t *)&end;
-    start_addr = (&start) - KERNEL_VIRTUAL_BASE;
+    _half_maxStack = 0;
+    _RAM_size = findRAMSize(mbt);
+    printf("Total RAM size: %d KiB\n", _RAM_size);
 
-// TODO: In init of the virtual memory manager
-    // Create a new Page Directory (the official one)
-    // Create a new Page Table
-    // Identity map the first MB - not this
-    // Map 0xC00000000 to 0x0 for the enitre page table
-    // Switch 4MB pages to 4KB ones
+    // Set the start of the _stack
+    _stack = (free_mem_t *)&end;
+    _start_addr_phys = (uint32_t)((&start) - KERNEL_VIRTUAL_BASE) & 0xFFFFF000;
+    _end_addr_phys = roundPageAligned((uint32_t)&end + _half_maxStack - KERNEL_VIRTUAL_BASE);
 
     // Find out what addresses are free
     memory_map_t *mmap = mbt->mmap_addr;
-    end_addr = (uint32_t)&end + half_maxStack;
 
-    // Gonna push every free block if it isn't in the kernel + stack space
+    // Gonna push every free block if it isn't in the kernel + _stack space
     while ((uint32_t)mmap < (mbt->mmap_addr + mbt->mmap_length)) {
-        // If the memory sector is not reserved
+        /**
+         * If the memory sector is not reserved or the address is below 1MB, exclude it.
+         * GRUB's mmap doesn't include some stuff that's mapped to memory below 1MB.
+         */
         if (mmap->type == 0x1) {
-            free_mem_t m;
-
-            // If it is a valid memory sector
-            if (mmap->length_low > 0) {
-                /**
-                 * Some overlap controls. (+ = free memory; - = [kernel + stack space])
-                 * 1) [GRUB] +++++++       
-                 *    [PHYS] +++++++----
-                 * 
-                 * 2) [GRUB]     +++++++       
-                 *    [PHYS] ----+++++++
-                 * 
-                 * 3) [GRUB] +++++++       
-                 *    [PHYS] +++++----
-                 * 
-                 * 4) [GRUB]   +++++++       
-                 *    [PHYS] ----+++++
-                 * 
-                 * 5) [GRUB] +++++++++++
-                 *    [PHYS] +++++----++
-                 */
-                if ((mmap->base_addr_low < start_addr && (mmap->base_addr_low + mmap->length_low) < start_addr) ||   // The sector is totally below the kernel (1)
-                    (mmap->base_addr_low > end_addr)) {    // The sector is totally above the kernel (2)
-
-                    m.addr = mmap->base_addr_low & 0xFFFFF000;
-                    m.nContiguousPages = mmap->length_low / PAGE_SIZE;
-
-                } else if (mmap->base_addr_low < start_addr && ((mmap->base_addr_low + mmap->length_low) > start_addr && (mmap->base_addr_low + mmap->length_low) < end_addr)) {   // The memory sector start below the kernel and finishes in between (3)
-                    m.addr = mmap->base_addr_low & 0xFFFFF000;
-                    m.nContiguousPages = (mmap->length_low - (end_addr - mmap->base_addr_low)) / PAGE_SIZE;
-
-                } else if ((mmap->base_addr_low > start_addr && mmap->base_addr_low < end_addr) && (mmap->base_addr_low + mmap->length_low) > end_addr) { // The sector starts in the middle of the kernel and ends after it (4)
-                    m.addr = end_addr;
-                    m.nContiguousPages = (mmap->length_low - (end_addr - mmap->base_addr_low)) / PAGE_SIZE;
-
-                } else if (mmap->base_addr_low < start_addr && (mmap->base_addr_low + mmap->length_low) > end_addr) {       // The kernel is in the middle of the memory sector (5)
-                    // Push the part below
-                    m.addr = mmap->base_addr_low & 0xFFFFF000;
-                    m.nContiguousPages = (mmap->base_addr_low - start_addr) / PAGE_SIZE;
-                    
-                    printf("GRUB: m.addr = 0x%x; pages = %d\n", m.addr, m.nContiguousPages);
-                    pushAllPMM(m, true);
-
-                    // Push the part above
-                    m.addr = end_addr;
-                    m.nContiguousPages = (((mmap->base_addr_low & 0xFFFFF000) + mmap->length_low) - mmap->length_low) / PAGE_SIZE;
-                }
-                printf("GRUB: m.addr = 0x%x; pages = %d\n", m.addr, m.nContiguousPages);
-                pushAllPMM(m, true);
-            }
-
-            // Same thing as the above but for the high part
-            if (mmap->length_high > 0) {
-                if ((mmap->base_addr_high < start_addr && (mmap->base_addr_high + mmap->length_high) < start_addr) ||   // The sector is totally below the kernel (1)
-                    (mmap->base_addr_high > end_addr)) {    // The sector is totally above the kernel (2)
-
-                    m.addr = mmap->base_addr_high & 0xFFFFF000;
-                    m.nContiguousPages = mmap->length_high / PAGE_SIZE;
-
-                } else if (mmap->base_addr_high < start_addr && ((mmap->base_addr_high + mmap->length_high) > start_addr && (mmap->base_addr_high + mmap->length_high) < end_addr)) {   // The memory sector start below the kernel and finishes in between (3)
-                    m.addr = mmap->base_addr_high & 0xFFFFF000;
-                    m.nContiguousPages = (mmap->length_high - (end_addr - mmap->base_addr_high)) / PAGE_SIZE;
-
-                } else if ((mmap->base_addr_high > start_addr && mmap->base_addr_high < end_addr) && (mmap->base_addr_high + mmap->length_high) > end_addr) { // The sector starts in the middle of the kernel and ends after it (4)
-                    m.addr = end_addr;
-                    m.nContiguousPages = (mmap->length_high - (end_addr - mmap->base_addr_high)) / PAGE_SIZE;
-
-                } else if (mmap->base_addr_high < start_addr && (mmap->base_addr_high + mmap->length_high) > end_addr) {       // The kernel is in the middle of the memory sector (5)
-                    // Push the part below
-                    m.addr = mmap->base_addr_high & 0xFFFFF000;
-                    m.nContiguousPages = (mmap->base_addr_high - start_addr) / PAGE_SIZE;
-printf("GRUB: m.addr = 0x%x; pages = %d\n", m.addr, m.nContiguousPages);
-                    pushAllPMM(m, true);
-                    
-                    // Push the part above
-                    m.addr = end_addr;
-                    m.nContiguousPages = (((mmap->base_addr_high & 0xFFFFF000) + mmap->length_high) - mmap->length_high) / PAGE_SIZE;
-                }
-                printf("GRUB: m.addr = 0x%x; pages = %d\n", m.addr, m.nContiguousPages);
-                pushAllPMM(m, true);
-            }
+            if(mmap->base_addr_low >= 0x100000)
+                checkBoundaries(pd, pd + 1024, mmap->length_low, mmap->base_addr_low);
+            if (mmap->base_addr_high >= 0x100000)
+                checkBoundaries(pd, pd + 1024, mmap->length_high, mmap->base_addr_high);
         }
+
         mmap = (memory_map_t *)((uint32_t)mmap + mmap->size + sizeof(mmap->size));
     }
-
-    uint32_t a = allocateBlock();
-    printf("a allocated at 0x%x\n", a);
-
-    uint32_t b = allocateBlocks(23);
-    printf("b allocated at 0x%x\n", b);
-
-    uint32_t c = allocateBlock();
-printf("c allocated at 0x%x\n", c);
-    uint32_t d = allocateBlocks(12654);
-    printf("d allocated at 0x%x\n", d);
-    
-    unallocateBlocks(b, 23);
-    printf("b deallocated \n");
-    unallocateBlock(c);
-    printf("c deallocated \n");
-    c = allocateBlock();
-        printf("c reallocated at 0x%x\n",c);
-   unallocateBlock(a);
-     printf("a deallocated \n");
-    unallocateBlocks(d, 12654);
-    printf("d deallocated \n");
-    unallocateBlock(c);
-    printf("c deallocated \n");
-
-    free_mem_t tmp;
-            
-    do {
-        tmp = popAllPMM();
-        printf("address: 0x%x, pages: %d \n", tmp.addr, tmp.nContiguousPages);
-
-    } while(!(tmp.addr == 0 && tmp.nContiguousPages == 0));
 }

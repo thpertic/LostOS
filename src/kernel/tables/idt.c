@@ -2,6 +2,7 @@
 #include <tables/idt.h>
 #include <interrupts/isrs.h>
 #include <interrupts/irqs.h>
+#include <common/utility.h>
 
 #include <debug_utils/printf.h>
 
