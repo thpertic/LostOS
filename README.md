@@ -47,7 +47,8 @@ You can then follow the **Executing** part to re-build the OS.
  - Virtual Memory Manager
 
 ## Todos
-
+ 
+ - Docs 
  - Kernel Heap
 
 ### Problems
@@ -59,7 +60,6 @@ You can then follow the **Executing** part to re-build the OS.
  - panic function integration
  - Semantic versioning (as soon I get to the alpha release)
  - Keyboard driver
- - Paging
  - Multithreading
  - Filesystem
  - Graphical interface
