@@ -23,14 +23,16 @@ uint32_t _end_addr_phys;
 
 uint32_t _RAM_size;
 
-uint32_t _half_maxStack;
+uint32_t _halfMaxStack;
 
-void pmm_init(multiboot_info_t* mbt, uint32_t *pd);
+void init_pmm(multiboot_info_t* mbt, uint32_t *pd);
 
 uint32_t pAllocPage();
 bool pFreePage(void *addr);
 
 uint32_t pAllocPages(uint32_t size);
 bool pFreePages(void *addr, uint32_t size);
+
+uint32_t roundPageAligned(uint32_t n);
 
 #endif

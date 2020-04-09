@@ -1,0 +1,36 @@
+\hypertarget{structidt__descriptor}{}\section{idt\+\_\+descriptor Struct Reference}
+\label{structidt__descriptor}\index{idt\+\_\+descriptor@{idt\+\_\+descriptor}}
+
+
+{\ttfamily \#include $<$idt.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \hyperlink{structidt__descriptor_a3a0538e960738d1ebe133b5d4fb50211}{limit}
+\item 
+uint32\+\_\+t \hyperlink{structidt__descriptor_a915c7ab831d163c1d42c2ca516f9d618}{base}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Limit\+: Defines the length of the I\+DT in bytes -\/ 1 (minimum value is 100h, a value of 1000h means 200h interrupts). Base\+: This 32 bits are the linear address where the I\+DT starts (I\+NT 0). 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structidt__descriptor_a915c7ab831d163c1d42c2ca516f9d618}\label{structidt__descriptor_a915c7ab831d163c1d42c2ca516f9d618}} 
+\index{idt\+\_\+descriptor@{idt\+\_\+descriptor}!base@{base}}
+\index{base@{base}!idt\+\_\+descriptor@{idt\+\_\+descriptor}}
+\subsubsection{\texorpdfstring{base}{base}}
+{\footnotesize\ttfamily uint32\+\_\+t idt\+\_\+descriptor\+::base}
+
+\mbox{\Hypertarget{structidt__descriptor_a3a0538e960738d1ebe133b5d4fb50211}\label{structidt__descriptor_a3a0538e960738d1ebe133b5d4fb50211}} 
+\index{idt\+\_\+descriptor@{idt\+\_\+descriptor}!limit@{limit}}
+\index{limit@{limit}!idt\+\_\+descriptor@{idt\+\_\+descriptor}}
+\subsubsection{\texorpdfstring{limit}{limit}}
+{\footnotesize\ttfamily uint16\+\_\+t idt\+\_\+descriptor\+::limit}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/include/tables/\hyperlink{idt_8h}{idt.\+h}\end{DoxyCompactItemize}

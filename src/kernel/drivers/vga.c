@@ -7,7 +7,7 @@ int x = 0, y = 0;
 // Background and foreground color
 uint8_t attribs;
 
-void video_init() {
+void init_video() {
     set_color(LIGHT_GREY, BLACK);
     clear();
 }

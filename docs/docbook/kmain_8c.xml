@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="kmain_8c">
+    <title>kmain.c File Reference</title>
+    <programlisting>#include &lt;multiboot.h&gt;</programlisting>
+    <programlisting>#include &lt;drivers/vga.h&gt;</programlisting>
+    <programlisting>#include &lt;tables/gdt.h&gt;</programlisting>
+    <programlisting>#include &lt;tables/idt.h&gt;</programlisting>
+    <programlisting>#include &lt;interrupts/timer.h&gt;</programlisting>
+    <programlisting>#include &lt;mm/pmm.h&gt;</programlisting>
+    <programlisting>#include &lt;mm/vmm.h&gt;</programlisting>
+    <programlisting>#include &lt;mm/kheap.h&gt;</programlisting>
+    <programlisting>#include &lt;debug_utils/printf.h&gt;</programlisting>
+    <programlisting>#include &lt;debug_utils/serial.h&gt;</programlisting>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="kmain_8c_1a5548ddb7f502db3db927cae45151537a">kmain</link> (
+uint32_t * pd, <link linkend="multiboot_8h_1abc47d72689f915831784b5bd3f4c2401">multiboot_info_t</link> * mbd, int n)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/kernel/kmain.c</para>
+    </simplesect>
+</section>

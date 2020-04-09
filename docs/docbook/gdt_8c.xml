@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="gdt_8c">
+    <title>gdt.c File Reference</title>
+    <programlisting>#include &lt;tables/gdt.h&gt;</programlisting>
+        <section>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>gdt_entry_t <link linkend="gdt_8c_1afe8eafa32241cf9a8f679b1bab48ad2d">gdt_entries</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>gdt_descriptor_t <link linkend="gdt_8c_1a914e0ea1ca01a1cd99f8cb587ad9bdbe">gdt_ptr</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="gdt_8c_1a86bb50044169930202cc403376ef40c3">init_gdt</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="gdt_8c_1a7fb93ca359948180801b0da7ab3c13c3">gdt_setEntry</link> (
+int index, uint32_t base, uint64_t limit, uint8_t access, uint8_t flags)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/kernel/tables/gdt.c</para>
+    </simplesect>
+</section>

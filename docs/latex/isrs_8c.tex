@@ -1,0 +1,41 @@
+\hypertarget{isrs_8c}{}\section{src/kernel/interrupts/isrs.c File Reference}
+\label{isrs_8c}\index{src/kernel/interrupts/isrs.\+c@{src/kernel/interrupts/isrs.\+c}}
+{\ttfamily \#include $<$debug\+\_\+utils/printf.\+h$>$}\newline
+{\ttfamily \#include $<$interrupts/isrs.\+h$>$}\newline
+{\ttfamily \#include $<$tables/idt.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{isrs_8c_aaeee4ce244e890abb201178e5589eb40}{isrs\+\_\+init} ()
+\item 
+void \hyperlink{isrs_8c_add9495f360b430b370f093d23012f32e}{isr\+\_\+fault\+Handler} (regs\+\_\+t $\ast$r)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{isrs_8c_ac591889337c5ba123161288bdeb15667}{exception\+\_\+messages} \mbox{[}32\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{isrs_8c_add9495f360b430b370f093d23012f32e}\label{isrs_8c_add9495f360b430b370f093d23012f32e}} 
+\index{isrs.\+c@{isrs.\+c}!isr\+\_\+fault\+Handler@{isr\+\_\+fault\+Handler}}
+\index{isr\+\_\+fault\+Handler@{isr\+\_\+fault\+Handler}!isrs.\+c@{isrs.\+c}}
+\subsubsection{\texorpdfstring{isr\+\_\+fault\+Handler()}{isr\_faultHandler()}}
+{\footnotesize\ttfamily void isr\+\_\+fault\+Handler (\begin{DoxyParamCaption}\item[{regs\+\_\+t $\ast$}]{r }\end{DoxyParamCaption})}
+
+All of our Exception handling Interrupt Service Routines will point to this function. This will tell us what exception has happened. Right now, we simply halt the system by hitting an endless loop. All I\+S\+Rs disable interrupts while they are being serviced as a \textquotesingle{}locking\textquotesingle{} mechanism to prevent an I\+RQ from happening and messing up kernel data structures. \mbox{\Hypertarget{isrs_8c_aaeee4ce244e890abb201178e5589eb40}\label{isrs_8c_aaeee4ce244e890abb201178e5589eb40}} 
+\index{isrs.\+c@{isrs.\+c}!isrs\+\_\+init@{isrs\+\_\+init}}
+\index{isrs\+\_\+init@{isrs\+\_\+init}!isrs.\+c@{isrs.\+c}}
+\subsubsection{\texorpdfstring{isrs\+\_\+init()}{isrs\_init()}}
+{\footnotesize\ttfamily void isrs\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+In computer systems programming, an interrupt handler, also known as an interrupt service routine or I\+SR, is a special block of code associated with a specific interrupt condition. Interrupt handlers are initiated by hardware interrupts, software interrupt instructions, or software exceptions, and are used for implementing device drivers or transitions between protected modes of operation, such as system calls. 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{isrs_8c_ac591889337c5ba123161288bdeb15667}\label{isrs_8c_ac591889337c5ba123161288bdeb15667}} 
+\index{isrs.\+c@{isrs.\+c}!exception\+\_\+messages@{exception\+\_\+messages}}
+\index{exception\+\_\+messages@{exception\+\_\+messages}!isrs.\+c@{isrs.\+c}}
+\subsubsection{\texorpdfstring{exception\+\_\+messages}{exception\_messages}}
+{\footnotesize\ttfamily char$\ast$ exception\+\_\+messages\mbox{[}32\mbox{]}}
+

@@ -1,0 +1,192 @@
+\hypertarget{pmm_8c}{}\section{src/kernel/mm/pmm.c File Reference}
+\label{pmm_8c}\index{src/kernel/mm/pmm.\+c@{src/kernel/mm/pmm.\+c}}
+{\ttfamily \#include $<$mm/pmm.\+h$>$}\newline
+{\ttfamily \#include $<$debug\+\_\+utils/printf.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{pmm_8c_a64c4a1b74b0bf32ba34832c054eb31f1}{push\+All\+P\+MM} (\hyperlink{pmm_8h_a56fc0f2bfc4430cfd99522588a0c6878}{free\+\_\+mem\+\_\+t} m, bool merge)
+\item 
+\hyperlink{pmm_8h_a56fc0f2bfc4430cfd99522588a0c6878}{free\+\_\+mem\+\_\+t} \hyperlink{pmm_8c_a3765ad9c647b697e75cd7fdd35ab8911}{pop\+All\+P\+MM} ()
+\item 
+unsigned int \hyperlink{pmm_8c_a0eca41541cd1fd854545a42d5194389c}{find\+R\+A\+M\+Size} (\hyperlink{multiboot_8h_abc47d72689f915831784b5bd3f4c2401}{multiboot\+\_\+info\+\_\+t} $\ast$mbt)
+\item 
+bool \hyperlink{pmm_8c_a374593dd3e9fd308f426974eba7afc2c}{merge\+P\+MM} (\hyperlink{pmm_8h_a56fc0f2bfc4430cfd99522588a0c6878}{free\+\_\+mem\+\_\+t} to\+Merge)
+\item 
+void \hyperlink{pmm_8c_a9cf1c37b91cd445b89356f56887167d0}{defragment\+P\+MM} (bool original)
+\item 
+void \hyperlink{pmm_8c_a880478e8fea14ae37c246594be3de679}{sorted\+Insert\+P\+MM} (\hyperlink{pmm_8h_a56fc0f2bfc4430cfd99522588a0c6878}{free\+\_\+mem\+\_\+t} m)
+\item 
+void \hyperlink{pmm_8c_a137be8a22aa0ceb14ec8175f132df6c7}{sort\+P\+MM} ()
+\item 
+uint32\+\_\+t \hyperlink{pmm_8c_ab38d3119cf7271bddb0e001d53e2129b}{p\+Alloc\+Page} ()
+\item 
+bool \hyperlink{pmm_8c_a1339a5075397c7100f01c9b0ecf3d886}{p\+Free\+Page} (void $\ast$addr)
+\item 
+\hyperlink{pmm_8h_a56fc0f2bfc4430cfd99522588a0c6878}{free\+\_\+mem\+\_\+t} \hyperlink{pmm_8c_a80e5630dfe47d73f3a54d4d47574c3da}{first\+Fit} (uint32\+\_\+t \hyperlink{gdt_8h_aaba88b24a21a6c70c895c0d55f4a69a0}{size})
+\item 
+uint32\+\_\+t \hyperlink{pmm_8c_ad3bc0be58c79c7407b56bf050276c5fd}{round\+Page\+Aligned} (uint32\+\_\+t n)
+\item 
+uint32\+\_\+t \hyperlink{pmm_8c_a0fc059dc84d1d73d5388c0ffe3a3527b}{p\+Alloc\+Pages} (uint32\+\_\+t \hyperlink{gdt_8h_aaba88b24a21a6c70c895c0d55f4a69a0}{size})
+\item 
+bool \hyperlink{pmm_8c_a9dbd902fc2b911df2deb1bf7d1683619}{p\+Free\+Pages} (void $\ast$addr, uint32\+\_\+t \hyperlink{gdt_8h_aaba88b24a21a6c70c895c0d55f4a69a0}{size})
+\item 
+bool \hyperlink{pmm_8c_a145054299fcb2ac35423dd472a39079a}{check\+PD} (uint32\+\_\+t pd\+\_\+start, uint32\+\_\+t pd\+\_\+end, \hyperlink{pmm_8h_a56fc0f2bfc4430cfd99522588a0c6878}{free\+\_\+mem\+\_\+t} m)
+\item 
+void \hyperlink{pmm_8c_a226ae979acb63b841fc6d1ace18f771a}{check\+Boundaries} (uint32\+\_\+t pd\+\_\+start, uint32\+\_\+t pd\+\_\+end, uint32\+\_\+t length, uint32\+\_\+t base\+\_\+addr)
+\item 
+void \hyperlink{pmm_8c_a864c0a7e14f8e4bd05d55cc893accda8}{init\+\_\+pmm} (\hyperlink{multiboot_8h_abc47d72689f915831784b5bd3f4c2401}{multiboot\+\_\+info\+\_\+t} $\ast$mbt, uint32\+\_\+t $\ast$pd)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{pmm_8c_a976e76d230cf67e977eda36e85e74536}{defrag} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{pmm_8c_a226ae979acb63b841fc6d1ace18f771a}\label{pmm_8c_a226ae979acb63b841fc6d1ace18f771a}} 
+\index{pmm.\+c@{pmm.\+c}!check\+Boundaries@{check\+Boundaries}}
+\index{check\+Boundaries@{check\+Boundaries}!pmm.\+c@{pmm.\+c}}
+\subsubsection{\texorpdfstring{check\+Boundaries()}{checkBoundaries()}}
+{\footnotesize\ttfamily void check\+Boundaries (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{pd\+\_\+start,  }\item[{uint32\+\_\+t}]{pd\+\_\+end,  }\item[{uint32\+\_\+t}]{length,  }\item[{uint32\+\_\+t}]{base\+\_\+addr }\end{DoxyParamCaption})}
+
+Checks the memory map with some overlap controls. (+ = free memory; -\/ = \mbox{[}used memory\mbox{]})
+
+1) \mbox{[}G\+R\+UB\mbox{]} +++++++ \mbox{[}P\+H\+YS\mbox{]} +++++++-\/---
+
+2) \mbox{[}G\+R\+UB\mbox{]} +++++++ \mbox{[}P\+H\+YS\mbox{]} -\/---+++++++
+
+3) \mbox{[}G\+R\+UB\mbox{]} +++++++ \mbox{[}P\+H\+YS\mbox{]} +++++-\/---
+
+4) \mbox{[}G\+R\+UB\mbox{]} +++++++ \mbox{[}P\+H\+YS\mbox{]} -\/---+++++
+
+5) \mbox{[}G\+R\+UB\mbox{]} +++++++++++ \mbox{[}P\+H\+YS\mbox{]} +++++-\/---++. \mbox{\Hypertarget{pmm_8c_a145054299fcb2ac35423dd472a39079a}\label{pmm_8c_a145054299fcb2ac35423dd472a39079a}} 
+\index{pmm.\+c@{pmm.\+c}!check\+PD@{check\+PD}}
+\index{check\+PD@{check\+PD}!pmm.\+c@{pmm.\+c}}
+\subsubsection{\texorpdfstring{check\+P\+D()}{checkPD()}}
+{\footnotesize\ttfamily bool check\+PD (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{pd\+\_\+start,  }\item[{uint32\+\_\+t}]{pd\+\_\+end,  }\item[{\hyperlink{pmm_8h_a56fc0f2bfc4430cfd99522588a0c6878}{free\+\_\+mem\+\_\+t}}]{m }\end{DoxyParamCaption})}
+
+Little boundary check for the Boot\+Page\+Directory. It is just 4\+KB but I need to make sure. \mbox{\Hypertarget{pmm_8c_a9cf1c37b91cd445b89356f56887167d0}\label{pmm_8c_a9cf1c37b91cd445b89356f56887167d0}} 
+\index{pmm.\+c@{pmm.\+c}!defragment\+P\+MM@{defragment\+P\+MM}}
+\index{defragment\+P\+MM@{defragment\+P\+MM}!pmm.\+c@{pmm.\+c}}
+\subsubsection{\texorpdfstring{defragment\+P\+M\+M()}{defragmentPMM()}}
+{\footnotesize\ttfamily void defragment\+P\+MM (\begin{DoxyParamCaption}\item[{bool}]{original }\end{DoxyParamCaption})}
+
+This function is going to check for every struct, if it is possible to merge with other.
+
+This algorithm has O(n$^\wedge$2) (I think?) so be careful when to call it. For now it is called when the \+\_\+stack is half the dimension of the worst case scenario. Choices are\+:
+\begin{DoxyEnumerate}
+\item when you call free() (when you push to the free \+\_\+stack)
+\item when the \+\_\+stack size reaches its limit (4\+Mb sounds reasonable on a 4G machine)
+\item whenever you schedule the idle task 
+\end{DoxyEnumerate}\mbox{\Hypertarget{pmm_8c_a0eca41541cd1fd854545a42d5194389c}\label{pmm_8c_a0eca41541cd1fd854545a42d5194389c}} 
+\index{pmm.\+c@{pmm.\+c}!find\+R\+A\+M\+Size@{find\+R\+A\+M\+Size}}
+\index{find\+R\+A\+M\+Size@{find\+R\+A\+M\+Size}!pmm.\+c@{pmm.\+c}}
+\subsubsection{\texorpdfstring{find\+R\+A\+M\+Size()}{findRAMSize()}}
+{\footnotesize\ttfamily unsigned int find\+R\+A\+M\+Size (\begin{DoxyParamCaption}\item[{\hyperlink{multiboot_8h_abc47d72689f915831784b5bd3f4c2401}{multiboot\+\_\+info\+\_\+t} $\ast$}]{mbt }\end{DoxyParamCaption})}
+
+Get and anylize the G\+R\+UB memory map to count the R\+AM size. If the bit 0 is set, it is possible to safely refer to mbd-\/$>$mem\+\_\+lower for conventional memory and mbd-\/$>$mem\+\_\+upper for high memory. Both are given in kibibytes, i.\+e. blocks of 1024 bytes each.
+
+Otherwise bit 6 in the flags uint16\+\_\+t is set, then the mmap\+\_\+$\ast$ fields are valid, and indicate the address and length of a buffer containing a memory map of the machine provided by the B\+I\+OS
+
+Finds the worst case scenario for the \+\_\+stack (for a 4\+GB R\+AM == 8\+MB).
+
+I need to find the number (so the dimension) of the possible entries on the stack. Then I divide it in half to preserve some memory. When it is reached, defrag is going to be used.\mbox{\Hypertarget{pmm_8c_a80e5630dfe47d73f3a54d4d47574c3da}\label{pmm_8c_a80e5630dfe47d73f3a54d4d47574c3da}} 
+\index{pmm.\+c@{pmm.\+c}!first\+Fit@{first\+Fit}}
+\index{first\+Fit@{first\+Fit}!pmm.\+c@{pmm.\+c}}
+\subsubsection{\texorpdfstring{first\+Fit()}{firstFit()}}
+{\footnotesize\ttfamily \hyperlink{pmm_8h_a56fc0f2bfc4430cfd99522588a0c6878}{free\+\_\+mem\+\_\+t} first\+Fit (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+Uses a First-\/\+Fit recursive technique. \mbox{\Hypertarget{pmm_8c_a864c0a7e14f8e4bd05d55cc893accda8}\label{pmm_8c_a864c0a7e14f8e4bd05d55cc893accda8}} 
+\index{pmm.\+c@{pmm.\+c}!init\+\_\+pmm@{init\+\_\+pmm}}
+\index{init\+\_\+pmm@{init\+\_\+pmm}!pmm.\+c@{pmm.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+pmm()}{init\_pmm()}}
+{\footnotesize\ttfamily void init\+\_\+pmm (\begin{DoxyParamCaption}\item[{\hyperlink{multiboot_8h_abc47d72689f915831784b5bd3f4c2401}{multiboot\+\_\+info\+\_\+t} $\ast$}]{mbt,  }\item[{uint32\+\_\+t $\ast$}]{pd }\end{DoxyParamCaption})}
+
+To implement the physical memory manager something to hold all the free addressed is needed. I\textquotesingle{}m using a run-\/length encoded \+\_\+stack\+: this technique constists in pushing the address and the number of pages all at once. This has several advantages\+:
+\begin{DoxyEnumerate}
+\item it requires considerably less memory
+\item it\textquotesingle{}s trivial to fill up the initial \+\_\+stack from E820 data as it uses the same format \+:-\/)
+\item you can search for entries with more pages if you really want to allocate contiguous physical pages
+\end{DoxyEnumerate}
+
+At this moment the real page size is 4\+MB still, but in the initialization of the Virtual Memory Manager it\textquotesingle{}s gonna switch to 4\+KB. If the memory sector is not reserved or the address is below 1\+MB, exclude it. G\+R\+UB\textquotesingle{}s mmap doesn\textquotesingle{}t include some stuff that\textquotesingle{}s mapped to memory below 1\+MB.\mbox{\Hypertarget{pmm_8c_a374593dd3e9fd308f426974eba7afc2c}\label{pmm_8c_a374593dd3e9fd308f426974eba7afc2c}} 
+\index{pmm.\+c@{pmm.\+c}!merge\+P\+MM@{merge\+P\+MM}}
+\index{merge\+P\+MM@{merge\+P\+MM}!pmm.\+c@{pmm.\+c}}
+\subsubsection{\texorpdfstring{merge\+P\+M\+M()}{mergePMM()}}
+{\footnotesize\ttfamily bool merge\+P\+MM (\begin{DoxyParamCaption}\item[{\hyperlink{pmm_8h_a56fc0f2bfc4430cfd99522588a0c6878}{free\+\_\+mem\+\_\+t}}]{to\+Merge }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pmm_8c_ab38d3119cf7271bddb0e001d53e2129b}\label{pmm_8c_ab38d3119cf7271bddb0e001d53e2129b}} 
+\index{pmm.\+c@{pmm.\+c}!p\+Alloc\+Page@{p\+Alloc\+Page}}
+\index{p\+Alloc\+Page@{p\+Alloc\+Page}!pmm.\+c@{pmm.\+c}}
+\subsubsection{\texorpdfstring{p\+Alloc\+Page()}{pAllocPage()}}
+{\footnotesize\ttfamily uint32\+\_\+t p\+Alloc\+Page (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Interface Function.
+
+This function allocates a page (W\+I\+LL BE 4K A\+L\+I\+G\+N\+ED) and returns the address. \mbox{\Hypertarget{pmm_8c_a0fc059dc84d1d73d5388c0ffe3a3527b}\label{pmm_8c_a0fc059dc84d1d73d5388c0ffe3a3527b}} 
+\index{pmm.\+c@{pmm.\+c}!p\+Alloc\+Pages@{p\+Alloc\+Pages}}
+\index{p\+Alloc\+Pages@{p\+Alloc\+Pages}!pmm.\+c@{pmm.\+c}}
+\subsubsection{\texorpdfstring{p\+Alloc\+Pages()}{pAllocPages()}}
+{\footnotesize\ttfamily uint32\+\_\+t p\+Alloc\+Pages (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+Interface Function.
+
+This function allocates a wanted size (N\+OT N\+U\+M\+B\+ER OF P\+A\+G\+ES -\/ B\+Y\+T\+ES). It uses the technique called \char`\"{}\+First-\/\+Fit\char`\"{}. It\textquotesingle{}s faster but causes fragmentation. While pushing in the \+\_\+stack there are various controls to merge and an \char`\"{}emergency\char`\"{} function when the \+\_\+stack is too big, so we\textquotesingle{}re safe. \mbox{\Hypertarget{pmm_8c_a1339a5075397c7100f01c9b0ecf3d886}\label{pmm_8c_a1339a5075397c7100f01c9b0ecf3d886}} 
+\index{pmm.\+c@{pmm.\+c}!p\+Free\+Page@{p\+Free\+Page}}
+\index{p\+Free\+Page@{p\+Free\+Page}!pmm.\+c@{pmm.\+c}}
+\subsubsection{\texorpdfstring{p\+Free\+Page()}{pFreePage()}}
+{\footnotesize\ttfamily bool p\+Free\+Page (\begin{DoxyParamCaption}\item[{void $\ast$}]{addr }\end{DoxyParamCaption})}
+
+Interface Function.
+
+This function frees a page, returning true or false if it finished well. \mbox{\Hypertarget{pmm_8c_a9dbd902fc2b911df2deb1bf7d1683619}\label{pmm_8c_a9dbd902fc2b911df2deb1bf7d1683619}} 
+\index{pmm.\+c@{pmm.\+c}!p\+Free\+Pages@{p\+Free\+Pages}}
+\index{p\+Free\+Pages@{p\+Free\+Pages}!pmm.\+c@{pmm.\+c}}
+\subsubsection{\texorpdfstring{p\+Free\+Pages()}{pFreePages()}}
+{\footnotesize\ttfamily bool p\+Free\+Pages (\begin{DoxyParamCaption}\item[{void $\ast$}]{addr,  }\item[{uint32\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+Interface Function.
+
+This function frees memory from the address addr for size. \mbox{\Hypertarget{pmm_8c_a3765ad9c647b697e75cd7fdd35ab8911}\label{pmm_8c_a3765ad9c647b697e75cd7fdd35ab8911}} 
+\index{pmm.\+c@{pmm.\+c}!pop\+All\+P\+MM@{pop\+All\+P\+MM}}
+\index{pop\+All\+P\+MM@{pop\+All\+P\+MM}!pmm.\+c@{pmm.\+c}}
+\subsubsection{\texorpdfstring{pop\+All\+P\+M\+M()}{popAllPMM()}}
+{\footnotesize\ttfamily \hyperlink{pmm_8h_a56fc0f2bfc4430cfd99522588a0c6878}{free\+\_\+mem\+\_\+t} pop\+All\+P\+MM (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function pops the first struct of address + n\+Contiguous\+Pages off the \+\_\+stack. \mbox{\Hypertarget{pmm_8c_a64c4a1b74b0bf32ba34832c054eb31f1}\label{pmm_8c_a64c4a1b74b0bf32ba34832c054eb31f1}} 
+\index{pmm.\+c@{pmm.\+c}!push\+All\+P\+MM@{push\+All\+P\+MM}}
+\index{push\+All\+P\+MM@{push\+All\+P\+MM}!pmm.\+c@{pmm.\+c}}
+\subsubsection{\texorpdfstring{push\+All\+P\+M\+M()}{pushAllPMM()}}
+{\footnotesize\ttfamily bool push\+All\+P\+MM (\begin{DoxyParamCaption}\item[{\hyperlink{pmm_8h_a56fc0f2bfc4430cfd99522588a0c6878}{free\+\_\+mem\+\_\+t}}]{m,  }\item[{bool}]{merge }\end{DoxyParamCaption})}
+
+This function pushes a struct of address + n\+Contiguous\+Pages onto the \+\_\+stack. The \+\_\+stack must be ordered from the bigger address (on top) to the smaller. \mbox{\Hypertarget{pmm_8c_ad3bc0be58c79c7407b56bf050276c5fd}\label{pmm_8c_ad3bc0be58c79c7407b56bf050276c5fd}} 
+\index{pmm.\+c@{pmm.\+c}!round\+Page\+Aligned@{round\+Page\+Aligned}}
+\index{round\+Page\+Aligned@{round\+Page\+Aligned}!pmm.\+c@{pmm.\+c}}
+\subsubsection{\texorpdfstring{round\+Page\+Aligned()}{roundPageAligned()}}
+{\footnotesize\ttfamily uint32\+\_\+t round\+Page\+Aligned (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+This function returns the bigger 4\+KB aligned size.
+
+(i. e. for 315 Byte will return 4\+KB, while for 16387 Byte will return 20K) \mbox{\Hypertarget{pmm_8c_a880478e8fea14ae37c246594be3de679}\label{pmm_8c_a880478e8fea14ae37c246594be3de679}} 
+\index{pmm.\+c@{pmm.\+c}!sorted\+Insert\+P\+MM@{sorted\+Insert\+P\+MM}}
+\index{sorted\+Insert\+P\+MM@{sorted\+Insert\+P\+MM}!pmm.\+c@{pmm.\+c}}
+\subsubsection{\texorpdfstring{sorted\+Insert\+P\+M\+M()}{sortedInsertPMM()}}
+{\footnotesize\ttfamily void sorted\+Insert\+P\+MM (\begin{DoxyParamCaption}\item[{\hyperlink{pmm_8h_a56fc0f2bfc4430cfd99522588a0c6878}{free\+\_\+mem\+\_\+t}}]{m }\end{DoxyParamCaption})}
+
+Insert in sorted order. \mbox{\Hypertarget{pmm_8c_a137be8a22aa0ceb14ec8175f132df6c7}\label{pmm_8c_a137be8a22aa0ceb14ec8175f132df6c7}} 
+\index{pmm.\+c@{pmm.\+c}!sort\+P\+MM@{sort\+P\+MM}}
+\index{sort\+P\+MM@{sort\+P\+MM}!pmm.\+c@{pmm.\+c}}
+\subsubsection{\texorpdfstring{sort\+P\+M\+M()}{sortPMM()}}
+{\footnotesize\ttfamily void sort\+P\+MM (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Recursive function that sorts the \+\_\+stack. 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{pmm_8c_a976e76d230cf67e977eda36e85e74536}\label{pmm_8c_a976e76d230cf67e977eda36e85e74536}} 
+\index{pmm.\+c@{pmm.\+c}!defrag@{defrag}}
+\index{defrag@{defrag}!pmm.\+c@{pmm.\+c}}
+\subsubsection{\texorpdfstring{defrag}{defrag}}
+{\footnotesize\ttfamily bool defrag = false}
+

@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="irqs_8c">
+    <title>irqs.c File Reference</title>
+    <programlisting>#include &lt;interrupts/irqs.h&gt;</programlisting>
+    <programlisting>#include &lt;tables/idt.h&gt;</programlisting>
+    <programlisting>#include &lt;debug_utils/printf.h&gt;</programlisting>
+        <section>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void * <link linkend="irqs_8c_1a45ca926ab6a2861be80e892495b57bf1">irq_routines</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="irqs_8c_1aadf5ae2109fe28b014720deb24f677de">irqs_init</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="irqs_8c_1ab5ebdc1b31b3357377b0257473641ced">pic_init</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="irqs_8c_1ad02536ed6e929d20694fa72d3f393461">irq_faultHandler</link> (
+regs_t * r)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="irqs_8c_1af62fec9ecb95472ec14315a9e161103a">irq_installHandler</link> (
+int irq, void(*)(regs_t *r) handler)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="irqs_8c_1a99a28bd3e9237b07826af4106d69929e">irq_uninstallHandler</link> (
+int irq)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/kernel/interrupts/irqs.c</para>
+    </simplesect>
+</section>

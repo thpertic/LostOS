@@ -1,0 +1,234 @@
+\hypertarget{vga_8h}{}\section{src/include/drivers/vga.h File Reference}
+\label{vga_8h}\index{src/include/drivers/vga.\+h@{src/include/drivers/vga.\+h}}
+{\ttfamily \#include $<$system.\+h$>$}\newline
+{\ttfamily \#include $<$common/string.\+h$>$}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{vga_8h_a7b3b25cba33b07c303f3060fe41887f6}{B\+L\+A\+CK}~0
+\item 
+\#define \hyperlink{vga_8h_a79d10e672abb49ad63eeaa8aaef57c38}{B\+L\+UE}~1
+\item 
+\#define \hyperlink{vga_8h_acfbc006ea433ad708fdee3e82996e721}{G\+R\+E\+EN}~2
+\item 
+\#define \hyperlink{vga_8h_ad243f93c16bc4c1d3e0a13b84421d760}{C\+Y\+AN}~3
+\item 
+\#define \hyperlink{vga_8h_a8d23feea868a983c8c2b661e1e16972f}{R\+ED}~4
+\item 
+\#define \hyperlink{vga_8h_a6f699060902f800f12aaae150f3a708e}{M\+A\+G\+E\+N\+TA}~5
+\item 
+\#define \hyperlink{vga_8h_ab2baea56ece91306020afd6d77fd19f9}{B\+R\+O\+WN}~6
+\item 
+\#define \hyperlink{vga_8h_acafbbc051d018cffe2fcddcbf778c304}{L\+I\+G\+H\+T\+\_\+\+G\+R\+EY}~7
+\item 
+\#define \hyperlink{vga_8h_a85998c833c5007dc61315ea69919582e}{D\+A\+R\+K\+\_\+\+G\+R\+EY}~8
+\item 
+\#define \hyperlink{vga_8h_a959d1249a76cfbd90fc6d96e2a9744e9}{L\+I\+G\+H\+T\+\_\+\+B\+L\+UE}~9
+\item 
+\#define \hyperlink{vga_8h_a5a7142ee95ebc63218ed3aac2ae06b13}{L\+I\+G\+H\+T\+\_\+\+G\+R\+E\+EN}~10
+\item 
+\#define \hyperlink{vga_8h_a15e616ad647add2891b6c7ec6a1e47f1}{L\+I\+G\+H\+T\+\_\+\+C\+Y\+AN}~11
+\item 
+\#define \hyperlink{vga_8h_a664c8f5b9d90f79a49a16960b9ccedba}{L\+I\+G\+H\+T\+\_\+\+R\+ED}~12
+\item 
+\#define \hyperlink{vga_8h_af98a47a241abb10ccec0339c7a8a8c2e}{L\+I\+G\+H\+T\+\_\+\+M\+A\+G\+E\+N\+TA}~13
+\item 
+\#define \hyperlink{vga_8h_a8ed224d3e366a4c3b718a44146075446}{L\+I\+G\+H\+T\+\_\+\+B\+R\+O\+WN}~14
+\item 
+\#define \hyperlink{vga_8h_a87b537f5fa5c109d3c05c13d6b18f382}{W\+H\+I\+TE}~15
+\item 
+\#define \hyperlink{vga_8h_a241aeeb764887ae5e3de58b98f04b16d}{W\+I\+D\+TH}~80
+\item 
+\#define \hyperlink{vga_8h_aed89bd71aee8be823e8a20ec4e093c1e}{H\+E\+I\+G\+HT}~25
+\item 
+\#define \hyperlink{vga_8h_a7de8a5ba14702b7bf2f6558903b1d3fb}{S\+C\+R\+E\+EN}~((uint16\+\_\+t $\ast$)(\hyperlink{system_8h_aa189e0352b19fd734e99b42c4ecfe26a}{K\+E\+R\+N\+E\+L\+\_\+\+V\+I\+R\+T\+U\+A\+L\+\_\+\+B\+A\+SE} + 0x\+B8000))
+\item 
+\#define \hyperlink{vga_8h_a5811227e1769a2ca3576ad8467331455}{P\+I\+X\+EL}(\hyperlink{vga_8c_a6150e0515f7202e2fb518f7206ed97dc}{x},  \hyperlink{vga_8c_a0a2f84ed7838f07779ae24c5a9086d33}{y})~\hyperlink{vga_8h_a7de8a5ba14702b7bf2f6558903b1d3fb}{S\+C\+R\+E\+EN}\mbox{[}\hyperlink{vga_8c_a0a2f84ed7838f07779ae24c5a9086d33}{y} $\ast$ \hyperlink{vga_8h_a241aeeb764887ae5e3de58b98f04b16d}{W\+I\+D\+TH} + \hyperlink{vga_8c_a6150e0515f7202e2fb518f7206ed97dc}{x}\mbox{]}
+\item 
+\#define \hyperlink{vga_8h_a1c31a89221060cbbbc4fa52cfea9dd1d}{P\+R\+I\+NT}(character,  \hyperlink{vga_8c_ae25ff5b7b6b91540d61c57220cdf720b}{attribs})~(((\hyperlink{vga_8c_ae25ff5b7b6b91540d61c57220cdf720b}{attribs} \& 0x0\+F) $<$$<$ 8) $\vert$ (character \& 0x\+F\+F))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{vga_8h_a759f71f304c11873e67bf7cc3f2d08a8}{init\+\_\+video} ()
+\item 
+int \hyperlink{vga_8h_ac4bb7070d519c1fe12628cfe4397082f}{puts} (char $\ast$string)
+\item 
+int \hyperlink{vga_8h_ad82b6e9f7fa8230d3873939069acc5f2}{putc} (const char c)
+\item 
+void \hyperlink{vga_8h_ad0040ec0fb32ac4b886bdb38a22d7045}{set\+\_\+color} (uint8\+\_\+t fore\+Color, uint8\+\_\+t back\+Color)
+\item 
+uint8\+\_\+t \hyperlink{vga_8h_a920a79e4ea4e06327e2f2f8957c4d0b3}{get\+\_\+color} ()
+\item 
+void \hyperlink{vga_8h_ac8bb3912a3ce86b15842e79d0b421204}{clear} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{vga_8h_a7b3b25cba33b07c303f3060fe41887f6}\label{vga_8h_a7b3b25cba33b07c303f3060fe41887f6}} 
+\index{vga.\+h@{vga.\+h}!B\+L\+A\+CK@{B\+L\+A\+CK}}
+\index{B\+L\+A\+CK@{B\+L\+A\+CK}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{B\+L\+A\+CK}{BLACK}}
+{\footnotesize\ttfamily \#define B\+L\+A\+CK~0}
+
+\mbox{\Hypertarget{vga_8h_a79d10e672abb49ad63eeaa8aaef57c38}\label{vga_8h_a79d10e672abb49ad63eeaa8aaef57c38}} 
+\index{vga.\+h@{vga.\+h}!B\+L\+UE@{B\+L\+UE}}
+\index{B\+L\+UE@{B\+L\+UE}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{B\+L\+UE}{BLUE}}
+{\footnotesize\ttfamily \#define B\+L\+UE~1}
+
+\mbox{\Hypertarget{vga_8h_ab2baea56ece91306020afd6d77fd19f9}\label{vga_8h_ab2baea56ece91306020afd6d77fd19f9}} 
+\index{vga.\+h@{vga.\+h}!B\+R\+O\+WN@{B\+R\+O\+WN}}
+\index{B\+R\+O\+WN@{B\+R\+O\+WN}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{B\+R\+O\+WN}{BROWN}}
+{\footnotesize\ttfamily \#define B\+R\+O\+WN~6}
+
+\mbox{\Hypertarget{vga_8h_ad243f93c16bc4c1d3e0a13b84421d760}\label{vga_8h_ad243f93c16bc4c1d3e0a13b84421d760}} 
+\index{vga.\+h@{vga.\+h}!C\+Y\+AN@{C\+Y\+AN}}
+\index{C\+Y\+AN@{C\+Y\+AN}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{C\+Y\+AN}{CYAN}}
+{\footnotesize\ttfamily \#define C\+Y\+AN~3}
+
+\mbox{\Hypertarget{vga_8h_a85998c833c5007dc61315ea69919582e}\label{vga_8h_a85998c833c5007dc61315ea69919582e}} 
+\index{vga.\+h@{vga.\+h}!D\+A\+R\+K\+\_\+\+G\+R\+EY@{D\+A\+R\+K\+\_\+\+G\+R\+EY}}
+\index{D\+A\+R\+K\+\_\+\+G\+R\+EY@{D\+A\+R\+K\+\_\+\+G\+R\+EY}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{D\+A\+R\+K\+\_\+\+G\+R\+EY}{DARK\_GREY}}
+{\footnotesize\ttfamily \#define D\+A\+R\+K\+\_\+\+G\+R\+EY~8}
+
+\mbox{\Hypertarget{vga_8h_acfbc006ea433ad708fdee3e82996e721}\label{vga_8h_acfbc006ea433ad708fdee3e82996e721}} 
+\index{vga.\+h@{vga.\+h}!G\+R\+E\+EN@{G\+R\+E\+EN}}
+\index{G\+R\+E\+EN@{G\+R\+E\+EN}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{G\+R\+E\+EN}{GREEN}}
+{\footnotesize\ttfamily \#define G\+R\+E\+EN~2}
+
+\mbox{\Hypertarget{vga_8h_aed89bd71aee8be823e8a20ec4e093c1e}\label{vga_8h_aed89bd71aee8be823e8a20ec4e093c1e}} 
+\index{vga.\+h@{vga.\+h}!H\+E\+I\+G\+HT@{H\+E\+I\+G\+HT}}
+\index{H\+E\+I\+G\+HT@{H\+E\+I\+G\+HT}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{H\+E\+I\+G\+HT}{HEIGHT}}
+{\footnotesize\ttfamily \#define H\+E\+I\+G\+HT~25}
+
+\mbox{\Hypertarget{vga_8h_a959d1249a76cfbd90fc6d96e2a9744e9}\label{vga_8h_a959d1249a76cfbd90fc6d96e2a9744e9}} 
+\index{vga.\+h@{vga.\+h}!L\+I\+G\+H\+T\+\_\+\+B\+L\+UE@{L\+I\+G\+H\+T\+\_\+\+B\+L\+UE}}
+\index{L\+I\+G\+H\+T\+\_\+\+B\+L\+UE@{L\+I\+G\+H\+T\+\_\+\+B\+L\+UE}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{L\+I\+G\+H\+T\+\_\+\+B\+L\+UE}{LIGHT\_BLUE}}
+{\footnotesize\ttfamily \#define L\+I\+G\+H\+T\+\_\+\+B\+L\+UE~9}
+
+\mbox{\Hypertarget{vga_8h_a8ed224d3e366a4c3b718a44146075446}\label{vga_8h_a8ed224d3e366a4c3b718a44146075446}} 
+\index{vga.\+h@{vga.\+h}!L\+I\+G\+H\+T\+\_\+\+B\+R\+O\+WN@{L\+I\+G\+H\+T\+\_\+\+B\+R\+O\+WN}}
+\index{L\+I\+G\+H\+T\+\_\+\+B\+R\+O\+WN@{L\+I\+G\+H\+T\+\_\+\+B\+R\+O\+WN}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{L\+I\+G\+H\+T\+\_\+\+B\+R\+O\+WN}{LIGHT\_BROWN}}
+{\footnotesize\ttfamily \#define L\+I\+G\+H\+T\+\_\+\+B\+R\+O\+WN~14}
+
+\mbox{\Hypertarget{vga_8h_a15e616ad647add2891b6c7ec6a1e47f1}\label{vga_8h_a15e616ad647add2891b6c7ec6a1e47f1}} 
+\index{vga.\+h@{vga.\+h}!L\+I\+G\+H\+T\+\_\+\+C\+Y\+AN@{L\+I\+G\+H\+T\+\_\+\+C\+Y\+AN}}
+\index{L\+I\+G\+H\+T\+\_\+\+C\+Y\+AN@{L\+I\+G\+H\+T\+\_\+\+C\+Y\+AN}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{L\+I\+G\+H\+T\+\_\+\+C\+Y\+AN}{LIGHT\_CYAN}}
+{\footnotesize\ttfamily \#define L\+I\+G\+H\+T\+\_\+\+C\+Y\+AN~11}
+
+\mbox{\Hypertarget{vga_8h_a5a7142ee95ebc63218ed3aac2ae06b13}\label{vga_8h_a5a7142ee95ebc63218ed3aac2ae06b13}} 
+\index{vga.\+h@{vga.\+h}!L\+I\+G\+H\+T\+\_\+\+G\+R\+E\+EN@{L\+I\+G\+H\+T\+\_\+\+G\+R\+E\+EN}}
+\index{L\+I\+G\+H\+T\+\_\+\+G\+R\+E\+EN@{L\+I\+G\+H\+T\+\_\+\+G\+R\+E\+EN}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{L\+I\+G\+H\+T\+\_\+\+G\+R\+E\+EN}{LIGHT\_GREEN}}
+{\footnotesize\ttfamily \#define L\+I\+G\+H\+T\+\_\+\+G\+R\+E\+EN~10}
+
+\mbox{\Hypertarget{vga_8h_acafbbc051d018cffe2fcddcbf778c304}\label{vga_8h_acafbbc051d018cffe2fcddcbf778c304}} 
+\index{vga.\+h@{vga.\+h}!L\+I\+G\+H\+T\+\_\+\+G\+R\+EY@{L\+I\+G\+H\+T\+\_\+\+G\+R\+EY}}
+\index{L\+I\+G\+H\+T\+\_\+\+G\+R\+EY@{L\+I\+G\+H\+T\+\_\+\+G\+R\+EY}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{L\+I\+G\+H\+T\+\_\+\+G\+R\+EY}{LIGHT\_GREY}}
+{\footnotesize\ttfamily \#define L\+I\+G\+H\+T\+\_\+\+G\+R\+EY~7}
+
+\mbox{\Hypertarget{vga_8h_af98a47a241abb10ccec0339c7a8a8c2e}\label{vga_8h_af98a47a241abb10ccec0339c7a8a8c2e}} 
+\index{vga.\+h@{vga.\+h}!L\+I\+G\+H\+T\+\_\+\+M\+A\+G\+E\+N\+TA@{L\+I\+G\+H\+T\+\_\+\+M\+A\+G\+E\+N\+TA}}
+\index{L\+I\+G\+H\+T\+\_\+\+M\+A\+G\+E\+N\+TA@{L\+I\+G\+H\+T\+\_\+\+M\+A\+G\+E\+N\+TA}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{L\+I\+G\+H\+T\+\_\+\+M\+A\+G\+E\+N\+TA}{LIGHT\_MAGENTA}}
+{\footnotesize\ttfamily \#define L\+I\+G\+H\+T\+\_\+\+M\+A\+G\+E\+N\+TA~13}
+
+\mbox{\Hypertarget{vga_8h_a664c8f5b9d90f79a49a16960b9ccedba}\label{vga_8h_a664c8f5b9d90f79a49a16960b9ccedba}} 
+\index{vga.\+h@{vga.\+h}!L\+I\+G\+H\+T\+\_\+\+R\+ED@{L\+I\+G\+H\+T\+\_\+\+R\+ED}}
+\index{L\+I\+G\+H\+T\+\_\+\+R\+ED@{L\+I\+G\+H\+T\+\_\+\+R\+ED}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{L\+I\+G\+H\+T\+\_\+\+R\+ED}{LIGHT\_RED}}
+{\footnotesize\ttfamily \#define L\+I\+G\+H\+T\+\_\+\+R\+ED~12}
+
+\mbox{\Hypertarget{vga_8h_a6f699060902f800f12aaae150f3a708e}\label{vga_8h_a6f699060902f800f12aaae150f3a708e}} 
+\index{vga.\+h@{vga.\+h}!M\+A\+G\+E\+N\+TA@{M\+A\+G\+E\+N\+TA}}
+\index{M\+A\+G\+E\+N\+TA@{M\+A\+G\+E\+N\+TA}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{M\+A\+G\+E\+N\+TA}{MAGENTA}}
+{\footnotesize\ttfamily \#define M\+A\+G\+E\+N\+TA~5}
+
+\mbox{\Hypertarget{vga_8h_a5811227e1769a2ca3576ad8467331455}\label{vga_8h_a5811227e1769a2ca3576ad8467331455}} 
+\index{vga.\+h@{vga.\+h}!P\+I\+X\+EL@{P\+I\+X\+EL}}
+\index{P\+I\+X\+EL@{P\+I\+X\+EL}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{P\+I\+X\+EL}{PIXEL}}
+{\footnotesize\ttfamily \#define P\+I\+X\+EL(\begin{DoxyParamCaption}\item[{}]{\hyperlink{vga_8c_a6150e0515f7202e2fb518f7206ed97dc}{x},  }\item[{}]{\hyperlink{vga_8c_a0a2f84ed7838f07779ae24c5a9086d33}{y} }\end{DoxyParamCaption})~\hyperlink{vga_8h_a7de8a5ba14702b7bf2f6558903b1d3fb}{S\+C\+R\+E\+EN}\mbox{[}\hyperlink{vga_8c_a0a2f84ed7838f07779ae24c5a9086d33}{y} $\ast$ \hyperlink{vga_8h_a241aeeb764887ae5e3de58b98f04b16d}{W\+I\+D\+TH} + \hyperlink{vga_8c_a6150e0515f7202e2fb518f7206ed97dc}{x}\mbox{]}}
+
+\mbox{\Hypertarget{vga_8h_a1c31a89221060cbbbc4fa52cfea9dd1d}\label{vga_8h_a1c31a89221060cbbbc4fa52cfea9dd1d}} 
+\index{vga.\+h@{vga.\+h}!P\+R\+I\+NT@{P\+R\+I\+NT}}
+\index{P\+R\+I\+NT@{P\+R\+I\+NT}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{P\+R\+I\+NT}{PRINT}}
+{\footnotesize\ttfamily \#define P\+R\+I\+NT(\begin{DoxyParamCaption}\item[{}]{character,  }\item[{}]{\hyperlink{vga_8c_ae25ff5b7b6b91540d61c57220cdf720b}{attribs} }\end{DoxyParamCaption})~(((\hyperlink{vga_8c_ae25ff5b7b6b91540d61c57220cdf720b}{attribs} \& 0x0\+F) $<$$<$ 8) $\vert$ (character \& 0x\+F\+F))}
+
+\mbox{\Hypertarget{vga_8h_a8d23feea868a983c8c2b661e1e16972f}\label{vga_8h_a8d23feea868a983c8c2b661e1e16972f}} 
+\index{vga.\+h@{vga.\+h}!R\+ED@{R\+ED}}
+\index{R\+ED@{R\+ED}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{R\+ED}{RED}}
+{\footnotesize\ttfamily \#define R\+ED~4}
+
+\mbox{\Hypertarget{vga_8h_a7de8a5ba14702b7bf2f6558903b1d3fb}\label{vga_8h_a7de8a5ba14702b7bf2f6558903b1d3fb}} 
+\index{vga.\+h@{vga.\+h}!S\+C\+R\+E\+EN@{S\+C\+R\+E\+EN}}
+\index{S\+C\+R\+E\+EN@{S\+C\+R\+E\+EN}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{S\+C\+R\+E\+EN}{SCREEN}}
+{\footnotesize\ttfamily \#define S\+C\+R\+E\+EN~((uint16\+\_\+t $\ast$)(\hyperlink{system_8h_aa189e0352b19fd734e99b42c4ecfe26a}{K\+E\+R\+N\+E\+L\+\_\+\+V\+I\+R\+T\+U\+A\+L\+\_\+\+B\+A\+SE} + 0x\+B8000))}
+
+\mbox{\Hypertarget{vga_8h_a87b537f5fa5c109d3c05c13d6b18f382}\label{vga_8h_a87b537f5fa5c109d3c05c13d6b18f382}} 
+\index{vga.\+h@{vga.\+h}!W\+H\+I\+TE@{W\+H\+I\+TE}}
+\index{W\+H\+I\+TE@{W\+H\+I\+TE}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{W\+H\+I\+TE}{WHITE}}
+{\footnotesize\ttfamily \#define W\+H\+I\+TE~15}
+
+\mbox{\Hypertarget{vga_8h_a241aeeb764887ae5e3de58b98f04b16d}\label{vga_8h_a241aeeb764887ae5e3de58b98f04b16d}} 
+\index{vga.\+h@{vga.\+h}!W\+I\+D\+TH@{W\+I\+D\+TH}}
+\index{W\+I\+D\+TH@{W\+I\+D\+TH}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{W\+I\+D\+TH}{WIDTH}}
+{\footnotesize\ttfamily \#define W\+I\+D\+TH~80}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{vga_8h_ac8bb3912a3ce86b15842e79d0b421204}\label{vga_8h_ac8bb3912a3ce86b15842e79d0b421204}} 
+\index{vga.\+h@{vga.\+h}!clear@{clear}}
+\index{clear@{clear}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clears the screen. Simply put spaces in the video memory. \mbox{\Hypertarget{vga_8h_a920a79e4ea4e06327e2f2f8957c4d0b3}\label{vga_8h_a920a79e4ea4e06327e2f2f8957c4d0b3}} 
+\index{vga.\+h@{vga.\+h}!get\+\_\+color@{get\+\_\+color}}
+\index{get\+\_\+color@{get\+\_\+color}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{get\+\_\+color()}{get\_color()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{vga_8h_a759f71f304c11873e67bf7cc3f2d08a8}\label{vga_8h_a759f71f304c11873e67bf7cc3f2d08a8}} 
+\index{vga.\+h@{vga.\+h}!init\+\_\+video@{init\+\_\+video}}
+\index{init\+\_\+video@{init\+\_\+video}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{init\+\_\+video()}{init\_video()}}
+{\footnotesize\ttfamily void init\+\_\+video (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{vga_8h_ad82b6e9f7fa8230d3873939069acc5f2}\label{vga_8h_ad82b6e9f7fa8230d3873939069acc5f2}} 
+\index{vga.\+h@{vga.\+h}!putc@{putc}}
+\index{putc@{putc}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{putc()}{putc()}}
+{\footnotesize\ttfamily int putc (\begin{DoxyParamCaption}\item[{const char}]{c }\end{DoxyParamCaption})}
+
+Prints a char. Arrived at W\+I\+D\+TH of width goes newline, arrived at H\+E\+I\+G\+HT of height scrolls up. Can handle ~\newline
+, , {\bfseries }. \mbox{\Hypertarget{vga_8h_ac4bb7070d519c1fe12628cfe4397082f}\label{vga_8h_ac4bb7070d519c1fe12628cfe4397082f}} 
+\index{vga.\+h@{vga.\+h}!puts@{puts}}
+\index{puts@{puts}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{puts()}{puts()}}
+{\footnotesize\ttfamily int puts (\begin{DoxyParamCaption}\item[{char $\ast$}]{string }\end{DoxyParamCaption})}
+
+Loops through all characters and print them. Should return E\+OF (\textbackslash{}0). \mbox{\Hypertarget{vga_8h_ad0040ec0fb32ac4b886bdb38a22d7045}\label{vga_8h_ad0040ec0fb32ac4b886bdb38a22d7045}} 
+\index{vga.\+h@{vga.\+h}!set\+\_\+color@{set\+\_\+color}}
+\index{set\+\_\+color@{set\+\_\+color}!vga.\+h@{vga.\+h}}
+\subsubsection{\texorpdfstring{set\+\_\+color()}{set\_color()}}
+{\footnotesize\ttfamily void set\+\_\+color (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{fore\+Color,  }\item[{uint8\+\_\+t}]{back\+Color }\end{DoxyParamCaption})}
+
+Set current foreground and background color. Top 4 bytes are the background, bottom 4 bytes are the foreground color. 

@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="port__io_8c">
+    <title>port_io.c File Reference</title>
+    <programlisting>#include &lt;system.h&gt;</programlisting>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t <link linkend="port__io_8c_1abf33a0709688bca34adc8eed977b4bfa">inportb</link> (
+uint16_t _port)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="port__io_8c_1a4dfe9a9c7ca49a3c20e69be114f36636">outportb</link> (
+uint16_t _port, uint8_t _data)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/kernel/common/port_io.c</para>
+    </simplesect>
+</section>

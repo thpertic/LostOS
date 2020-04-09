@@ -1,0 +1,68 @@
+\hypertarget{serial_8c}{}\section{src/kernel/debug\+\_\+utils/serial.c File Reference}
+\label{serial_8c}\index{src/kernel/debug\+\_\+utils/serial.\+c@{src/kernel/debug\+\_\+utils/serial.\+c}}
+{\ttfamily \#include $<$debug\+\_\+utils/serial.\+h$>$}\newline
+{\ttfamily \#include $<$common/string.\+h$>$}\newline
+{\ttfamily \#include $<$system.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{serial_8c_acfb6f6d615183fc2f71e79dfbadfe27d}{init\+\_\+serial} ()
+\item 
+int \hyperlink{serial_8c_a022821f2e1284e123a696ad71f0c8d65}{serial\+Received} ()
+\item 
+char \hyperlink{serial_8c_a5e8a3b213d7467654fdcd7d2fda68b68}{serial\+Read} ()
+\item 
+int \hyperlink{serial_8c_afa21ce67037da063b7245dec998a6571}{can\+Transmit} ()
+\item 
+void \hyperlink{serial_8c_aa1d0c8f870edae14a5ca85154b24a1e1}{serial\+Write} (char c)
+\item 
+int \hyperlink{serial_8c_a76cf9b35dda50826b55b6cc1b079b5c8}{serial\+Write\+String} (const char $\ast$string)
+\item 
+int \hyperlink{serial_8c_a3c667fb8cb71a36f04e338fc600d7b8f}{printf\+Serial} (const char $\ast$format,...)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{serial_8c_afa21ce67037da063b7245dec998a6571}\label{serial_8c_afa21ce67037da063b7245dec998a6571}} 
+\index{serial.\+c@{serial.\+c}!can\+Transmit@{can\+Transmit}}
+\index{can\+Transmit@{can\+Transmit}!serial.\+c@{serial.\+c}}
+\subsubsection{\texorpdfstring{can\+Transmit()}{canTransmit()}}
+{\footnotesize\ttfamily int can\+Transmit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{serial_8c_acfb6f6d615183fc2f71e79dfbadfe27d}\label{serial_8c_acfb6f6d615183fc2f71e79dfbadfe27d}} 
+\index{serial.\+c@{serial.\+c}!init\+\_\+serial@{init\+\_\+serial}}
+\index{init\+\_\+serial@{init\+\_\+serial}!serial.\+c@{serial.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+serial()}{init\_serial()}}
+{\footnotesize\ttfamily void init\+\_\+serial (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Initialize the serial port C\+O\+M1. \mbox{\Hypertarget{serial_8c_a3c667fb8cb71a36f04e338fc600d7b8f}\label{serial_8c_a3c667fb8cb71a36f04e338fc600d7b8f}} 
+\index{serial.\+c@{serial.\+c}!printf\+Serial@{printf\+Serial}}
+\index{printf\+Serial@{printf\+Serial}!serial.\+c@{serial.\+c}}
+\subsubsection{\texorpdfstring{printf\+Serial()}{printfSerial()}}
+{\footnotesize\ttfamily int printf\+Serial (\begin{DoxyParamCaption}\item[{const char $\ast$}]{format,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{serial_8c_a5e8a3b213d7467654fdcd7d2fda68b68}\label{serial_8c_a5e8a3b213d7467654fdcd7d2fda68b68}} 
+\index{serial.\+c@{serial.\+c}!serial\+Read@{serial\+Read}}
+\index{serial\+Read@{serial\+Read}!serial.\+c@{serial.\+c}}
+\subsubsection{\texorpdfstring{serial\+Read()}{serialRead()}}
+{\footnotesize\ttfamily char serial\+Read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Read from the serial port C\+O\+M1. \mbox{\Hypertarget{serial_8c_a022821f2e1284e123a696ad71f0c8d65}\label{serial_8c_a022821f2e1284e123a696ad71f0c8d65}} 
+\index{serial.\+c@{serial.\+c}!serial\+Received@{serial\+Received}}
+\index{serial\+Received@{serial\+Received}!serial.\+c@{serial.\+c}}
+\subsubsection{\texorpdfstring{serial\+Received()}{serialReceived()}}
+{\footnotesize\ttfamily int serial\+Received (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{serial_8c_aa1d0c8f870edae14a5ca85154b24a1e1}\label{serial_8c_aa1d0c8f870edae14a5ca85154b24a1e1}} 
+\index{serial.\+c@{serial.\+c}!serial\+Write@{serial\+Write}}
+\index{serial\+Write@{serial\+Write}!serial.\+c@{serial.\+c}}
+\subsubsection{\texorpdfstring{serial\+Write()}{serialWrite()}}
+{\footnotesize\ttfamily void serial\+Write (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+Write to the serial port C\+O\+M1. \mbox{\Hypertarget{serial_8c_a76cf9b35dda50826b55b6cc1b079b5c8}\label{serial_8c_a76cf9b35dda50826b55b6cc1b079b5c8}} 
+\index{serial.\+c@{serial.\+c}!serial\+Write\+String@{serial\+Write\+String}}
+\index{serial\+Write\+String@{serial\+Write\+String}!serial.\+c@{serial.\+c}}
+\subsubsection{\texorpdfstring{serial\+Write\+String()}{serialWriteString()}}
+{\footnotesize\ttfamily int serial\+Write\+String (\begin{DoxyParamCaption}\item[{const char $\ast$}]{string }\end{DoxyParamCaption})}
+
+Write a string to the serial port. 

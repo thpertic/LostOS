@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="interrupt_8h">
+    <title>interrupt.h File Reference</title>
+    <programlisting>#include &lt;system.h&gt;</programlisting>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="interrupt_8h_1a154b837080a092ecbab0735a0254c4b4">enable_interrupts</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="interrupt_8h_1a52651bf1923b2c97e8b4da0ac6b99fdb">disable_interrupts</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint32_t <link linkend="interrupt_8h_1ae55a9a5f0056e3a716e92fd5b8e2347b">interrupt_save_disable</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="interrupt_8h_1a053785f85e40c1878e0c909e3ed6aa0f">interrupt_restore</link> (
+uint32_t eflags)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/include/interrupts/interrupt.h</para>
+    </simplesect>
+</section>

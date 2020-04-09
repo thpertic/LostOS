@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="serial_8c">
+    <title>serial.c File Reference</title>
+    <programlisting>#include &lt;debug_utils/serial.h&gt;</programlisting>
+    <programlisting>#include &lt;common/string.h&gt;</programlisting>
+    <programlisting>#include &lt;system.h&gt;</programlisting>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="serial_8c_1acfb6f6d615183fc2f71e79dfbadfe27d">init_serial</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="serial_8c_1a022821f2e1284e123a696ad71f0c8d65">serialReceived</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>char <link linkend="serial_8c_1a5e8a3b213d7467654fdcd7d2fda68b68">serialRead</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="serial_8c_1afa21ce67037da063b7245dec998a6571">canTransmit</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="serial_8c_1aa1d0c8f870edae14a5ca85154b24a1e1">serialWrite</link> (
+char c)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="serial_8c_1a76cf9b35dda50826b55b6cc1b079b5c8">serialWriteString</link> (
+const char * string)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="serial_8c_1a3c667fb8cb71a36f04e338fc600d7b8f">printfSerial</link> (
+const char * format, ... )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/kernel/debug_utils/serial.c</para>
+    </simplesect>
+</section>

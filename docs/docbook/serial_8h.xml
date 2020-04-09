@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="serial_8h">
+    <title>serial.h File Reference</title>
+    <programlisting>#include &lt;stdarg.h&gt;</programlisting>
+        <section>
+            <title>Macros</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="serial_8h_1a34365e17c472073dfba3681bb38054f3">SERIAL_COM1_BASE</link> 0x3F8      /* COM1 base port */</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="serial_8h_1a2e80ea077599792f6f6f8af2c4e1776d">SERIAL_DATA_PORT</link> (<link linkend="idt_8h_1a0523cedff47e2441fc198b7770ec5d3f">base</link>)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="serial_8h_1a9249a8c8634d8b93b0f10251090823b1">SERIAL_FIFO_COMMAND_PORT</link> (<link linkend="idt_8h_1a0523cedff47e2441fc198b7770ec5d3f">base</link> + 2)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="serial_8h_1a0b0547b49cc9b2d31da713acc2c68dd3">SERIAL_LINE_COMMAND_PORT</link> (<link linkend="idt_8h_1a0523cedff47e2441fc198b7770ec5d3f">base</link> + 3)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="serial_8h_1a5b3c6a41cf17fa4278adb9805560f993">SERIAL_MODEM_COMMAND_PORT</link> (<link linkend="idt_8h_1a0523cedff47e2441fc198b7770ec5d3f">base</link> + 4)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="serial_8h_1ab227688d8ebe07f4c8565d4f822bdea4">SERIAL_LINE_STATUS_PORT</link> (<link linkend="idt_8h_1a0523cedff47e2441fc198b7770ec5d3f">base</link> + 5)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="serial_8h_1a86dbcd1e612dc4ca6f5270d81def6ccd">SERIAL_LINE_ENABLE_DLAB</link> 0x80</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="serial_8h_1acfb6f6d615183fc2f71e79dfbadfe27d">init_serial</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>char <link linkend="serial_8h_1a5e8a3b213d7467654fdcd7d2fda68b68">serialRead</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="serial_8h_1aa1d0c8f870edae14a5ca85154b24a1e1">serialWrite</link> (
+char c)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="serial_8h_1a3c667fb8cb71a36f04e338fc600d7b8f">printfSerial</link> (
+const char * format, ... )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/include/debug_utils/serial.h</para>
+    </simplesect>
+</section>

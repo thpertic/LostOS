@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="printf_8h">
+    <title>printf.h File Reference</title>
+    <programlisting>#include &lt;stdarg.h&gt;</programlisting>
+    <programlisting>#include &lt;drivers/vga.h&gt;</programlisting>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="printf_8h_1a98631211a4a8aee62f572375d5b637be">printf</link> (
+const char * format, ... )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/include/debug_utils/printf.h</para>
+    </simplesect>
+</section>

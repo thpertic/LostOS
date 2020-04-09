@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="structidt__gate">
+<title>idt_gate struct Reference</title>
+<para>
+    <programlisting>#include <link linkend="idt_8h">&lt;idt.h&gt;</link></programlisting>
+</para>
+        <section>
+            <title>Data Fields</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint16_t offset_low</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint16_t selector</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t zero</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t type_attr</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint16_t offset_high</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para>The offset is a 32 bit value, split in two parts. It represents the address of the entry point of the ISR. The selector is a 16 bit value and must point to a valid CS descriptor in your GDT. The type_attr is specified here: 7 0 +&#8212;+&#8212;+&#8212;+&#8212;+&#8212;+&#8212;+&#8212;+&#8212;+ | P | DPL | S | GateType | +&#8212;+&#8212;+&#8212;+&#8212;+&#8212;+&#8212;+&#8212;+&#8212;+ </para>
+                <para>Definition at line 26 of file idt.h</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>idt.h</para></listitem></itemizedlist></para>
+        </simplesect>
+        <section>
+            <title>Field Documentation</title>
+        </section>
+</section>

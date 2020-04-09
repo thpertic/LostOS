@@ -1,0 +1,117 @@
+\hypertarget{multiboot_8h}{}\section{src/include/multiboot.h File Reference}
+\label{multiboot_8h}\index{src/include/multiboot.\+h@{src/include/multiboot.\+h}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmultiboot__header}{multiboot\+\_\+header}
+\item 
+struct \hyperlink{structaout__symbol__table}{aout\+\_\+symbol\+\_\+table}
+\item 
+struct \hyperlink{structelf__section__header__table}{elf\+\_\+section\+\_\+header\+\_\+table}
+\item 
+struct \hyperlink{structmultiboot__info}{multiboot\+\_\+info}
+\item 
+struct \hyperlink{structmodule}{module}
+\item 
+struct \hyperlink{structmemory__map}{memory\+\_\+map}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{multiboot_8h_ab36ad4b4a42c58aac4ad1f2ba13054e9}{M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+M\+A\+G\+IC}~0x1\+B\+A\+D\+B002
+\item 
+\#define \hyperlink{multiboot_8h_a5447ae8b3b45c8ed17ad61c267250992}{M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+F\+L\+A\+GS}~0x00010003
+\item 
+\#define \hyperlink{multiboot_8h_aacd617f4e3daafd6eab95fb6215ccae4}{M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+B\+O\+O\+T\+L\+O\+A\+D\+E\+R\+\_\+\+M\+A\+G\+IC}~0x2\+B\+A\+D\+B002
+\item 
+\#define \hyperlink{multiboot_8h_a6423a880df59733d2d9b509c7718d3a9}{S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}~0x4000
+\item 
+\#define \hyperlink{multiboot_8h_a0e7cb3fa3ec28d9888e5999d00fd910e}{E\+X\+T\+\_\+C}(sym)~sym
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structmultiboot__header}{multiboot\+\_\+header} \hyperlink{multiboot_8h_aec32326a347bd15dcd235e4af37c2916}{multiboot\+\_\+header\+\_\+t}
+\item 
+typedef struct \hyperlink{structaout__symbol__table}{aout\+\_\+symbol\+\_\+table} \hyperlink{multiboot_8h_a0f63f69abdd0ba14d60b38b0f9bb8161}{aout\+\_\+symbol\+\_\+table\+\_\+t}
+\item 
+typedef struct \hyperlink{structelf__section__header__table}{elf\+\_\+section\+\_\+header\+\_\+table} \hyperlink{multiboot_8h_aa22102583b09d2fdc22f21f9201a74ee}{elf\+\_\+section\+\_\+header\+\_\+table\+\_\+t}
+\item 
+typedef struct \hyperlink{structmultiboot__info}{multiboot\+\_\+info} \hyperlink{multiboot_8h_abc47d72689f915831784b5bd3f4c2401}{multiboot\+\_\+info\+\_\+t}
+\item 
+typedef struct \hyperlink{structmodule}{module} \hyperlink{multiboot_8h_a20dd624e6d6bf2c4922fcb2de2fdd451}{module\+\_\+t}
+\item 
+typedef struct \hyperlink{structmemory__map}{memory\+\_\+map} \hyperlink{multiboot_8h_af3974a9768d03ac2926e8956ec106a01}{memory\+\_\+map\+\_\+t}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{multiboot_8h_a0e7cb3fa3ec28d9888e5999d00fd910e}\label{multiboot_8h_a0e7cb3fa3ec28d9888e5999d00fd910e}} 
+\index{multiboot.\+h@{multiboot.\+h}!E\+X\+T\+\_\+C@{E\+X\+T\+\_\+C}}
+\index{E\+X\+T\+\_\+C@{E\+X\+T\+\_\+C}!multiboot.\+h@{multiboot.\+h}}
+\subsubsection{\texorpdfstring{E\+X\+T\+\_\+C}{EXT\_C}}
+{\footnotesize\ttfamily \#define E\+X\+T\+\_\+C(\begin{DoxyParamCaption}\item[{}]{sym }\end{DoxyParamCaption})~sym}
+
+\mbox{\Hypertarget{multiboot_8h_aacd617f4e3daafd6eab95fb6215ccae4}\label{multiboot_8h_aacd617f4e3daafd6eab95fb6215ccae4}} 
+\index{multiboot.\+h@{multiboot.\+h}!M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+B\+O\+O\+T\+L\+O\+A\+D\+E\+R\+\_\+\+M\+A\+G\+IC@{M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+B\+O\+O\+T\+L\+O\+A\+D\+E\+R\+\_\+\+M\+A\+G\+IC}}
+\index{M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+B\+O\+O\+T\+L\+O\+A\+D\+E\+R\+\_\+\+M\+A\+G\+IC@{M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+B\+O\+O\+T\+L\+O\+A\+D\+E\+R\+\_\+\+M\+A\+G\+IC}!multiboot.\+h@{multiboot.\+h}}
+\subsubsection{\texorpdfstring{M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+B\+O\+O\+T\+L\+O\+A\+D\+E\+R\+\_\+\+M\+A\+G\+IC}{MULTIBOOT\_BOOTLOADER\_MAGIC}}
+{\footnotesize\ttfamily \#define M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+B\+O\+O\+T\+L\+O\+A\+D\+E\+R\+\_\+\+M\+A\+G\+IC~0x2\+B\+A\+D\+B002}
+
+\mbox{\Hypertarget{multiboot_8h_a5447ae8b3b45c8ed17ad61c267250992}\label{multiboot_8h_a5447ae8b3b45c8ed17ad61c267250992}} 
+\index{multiboot.\+h@{multiboot.\+h}!M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+F\+L\+A\+GS@{M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+F\+L\+A\+GS}}
+\index{M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+F\+L\+A\+GS@{M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+F\+L\+A\+GS}!multiboot.\+h@{multiboot.\+h}}
+\subsubsection{\texorpdfstring{M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+F\+L\+A\+GS}{MULTIBOOT\_HEADER\_FLAGS}}
+{\footnotesize\ttfamily \#define M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+F\+L\+A\+GS~0x00010003}
+
+\mbox{\Hypertarget{multiboot_8h_ab36ad4b4a42c58aac4ad1f2ba13054e9}\label{multiboot_8h_ab36ad4b4a42c58aac4ad1f2ba13054e9}} 
+\index{multiboot.\+h@{multiboot.\+h}!M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+M\+A\+G\+IC@{M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+M\+A\+G\+IC}}
+\index{M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+M\+A\+G\+IC@{M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+M\+A\+G\+IC}!multiboot.\+h@{multiboot.\+h}}
+\subsubsection{\texorpdfstring{M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+M\+A\+G\+IC}{MULTIBOOT\_HEADER\_MAGIC}}
+{\footnotesize\ttfamily \#define M\+U\+L\+T\+I\+B\+O\+O\+T\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+M\+A\+G\+IC~0x1\+B\+A\+D\+B002}
+
+\mbox{\Hypertarget{multiboot_8h_a6423a880df59733d2d9b509c7718d3a9}\label{multiboot_8h_a6423a880df59733d2d9b509c7718d3a9}} 
+\index{multiboot.\+h@{multiboot.\+h}!S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE@{S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}}
+\index{S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE@{S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}!multiboot.\+h@{multiboot.\+h}}
+\subsubsection{\texorpdfstring{S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE}{STACK\_SIZE}}
+{\footnotesize\ttfamily \#define S\+T\+A\+C\+K\+\_\+\+S\+I\+ZE~0x4000}
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{multiboot_8h_a0f63f69abdd0ba14d60b38b0f9bb8161}\label{multiboot_8h_a0f63f69abdd0ba14d60b38b0f9bb8161}} 
+\index{multiboot.\+h@{multiboot.\+h}!aout\+\_\+symbol\+\_\+table\+\_\+t@{aout\+\_\+symbol\+\_\+table\+\_\+t}}
+\index{aout\+\_\+symbol\+\_\+table\+\_\+t@{aout\+\_\+symbol\+\_\+table\+\_\+t}!multiboot.\+h@{multiboot.\+h}}
+\subsubsection{\texorpdfstring{aout\+\_\+symbol\+\_\+table\+\_\+t}{aout\_symbol\_table\_t}}
+{\footnotesize\ttfamily typedef struct \hyperlink{structaout__symbol__table}{aout\+\_\+symbol\+\_\+table}  \hyperlink{multiboot_8h_a0f63f69abdd0ba14d60b38b0f9bb8161}{aout\+\_\+symbol\+\_\+table\+\_\+t}}
+
+\mbox{\Hypertarget{multiboot_8h_aa22102583b09d2fdc22f21f9201a74ee}\label{multiboot_8h_aa22102583b09d2fdc22f21f9201a74ee}} 
+\index{multiboot.\+h@{multiboot.\+h}!elf\+\_\+section\+\_\+header\+\_\+table\+\_\+t@{elf\+\_\+section\+\_\+header\+\_\+table\+\_\+t}}
+\index{elf\+\_\+section\+\_\+header\+\_\+table\+\_\+t@{elf\+\_\+section\+\_\+header\+\_\+table\+\_\+t}!multiboot.\+h@{multiboot.\+h}}
+\subsubsection{\texorpdfstring{elf\+\_\+section\+\_\+header\+\_\+table\+\_\+t}{elf\_section\_header\_table\_t}}
+{\footnotesize\ttfamily typedef struct \hyperlink{structelf__section__header__table}{elf\+\_\+section\+\_\+header\+\_\+table}  \hyperlink{multiboot_8h_aa22102583b09d2fdc22f21f9201a74ee}{elf\+\_\+section\+\_\+header\+\_\+table\+\_\+t}}
+
+\mbox{\Hypertarget{multiboot_8h_af3974a9768d03ac2926e8956ec106a01}\label{multiboot_8h_af3974a9768d03ac2926e8956ec106a01}} 
+\index{multiboot.\+h@{multiboot.\+h}!memory\+\_\+map\+\_\+t@{memory\+\_\+map\+\_\+t}}
+\index{memory\+\_\+map\+\_\+t@{memory\+\_\+map\+\_\+t}!multiboot.\+h@{multiboot.\+h}}
+\subsubsection{\texorpdfstring{memory\+\_\+map\+\_\+t}{memory\_map\_t}}
+{\footnotesize\ttfamily typedef struct \hyperlink{structmemory__map}{memory\+\_\+map}  \hyperlink{multiboot_8h_af3974a9768d03ac2926e8956ec106a01}{memory\+\_\+map\+\_\+t}}
+
+\mbox{\Hypertarget{multiboot_8h_a20dd624e6d6bf2c4922fcb2de2fdd451}\label{multiboot_8h_a20dd624e6d6bf2c4922fcb2de2fdd451}} 
+\index{multiboot.\+h@{multiboot.\+h}!module\+\_\+t@{module\+\_\+t}}
+\index{module\+\_\+t@{module\+\_\+t}!multiboot.\+h@{multiboot.\+h}}
+\subsubsection{\texorpdfstring{module\+\_\+t}{module\_t}}
+{\footnotesize\ttfamily typedef struct \hyperlink{structmodule}{module}  \hyperlink{multiboot_8h_a20dd624e6d6bf2c4922fcb2de2fdd451}{module\+\_\+t}}
+
+\mbox{\Hypertarget{multiboot_8h_aec32326a347bd15dcd235e4af37c2916}\label{multiboot_8h_aec32326a347bd15dcd235e4af37c2916}} 
+\index{multiboot.\+h@{multiboot.\+h}!multiboot\+\_\+header\+\_\+t@{multiboot\+\_\+header\+\_\+t}}
+\index{multiboot\+\_\+header\+\_\+t@{multiboot\+\_\+header\+\_\+t}!multiboot.\+h@{multiboot.\+h}}
+\subsubsection{\texorpdfstring{multiboot\+\_\+header\+\_\+t}{multiboot\_header\_t}}
+{\footnotesize\ttfamily typedef struct \hyperlink{structmultiboot__header}{multiboot\+\_\+header}  \hyperlink{multiboot_8h_aec32326a347bd15dcd235e4af37c2916}{multiboot\+\_\+header\+\_\+t}}
+
+\mbox{\Hypertarget{multiboot_8h_abc47d72689f915831784b5bd3f4c2401}\label{multiboot_8h_abc47d72689f915831784b5bd3f4c2401}} 
+\index{multiboot.\+h@{multiboot.\+h}!multiboot\+\_\+info\+\_\+t@{multiboot\+\_\+info\+\_\+t}}
+\index{multiboot\+\_\+info\+\_\+t@{multiboot\+\_\+info\+\_\+t}!multiboot.\+h@{multiboot.\+h}}
+\subsubsection{\texorpdfstring{multiboot\+\_\+info\+\_\+t}{multiboot\_info\_t}}
+{\footnotesize\ttfamily typedef struct \hyperlink{structmultiboot__info}{multiboot\+\_\+info}  \hyperlink{multiboot_8h_abc47d72689f915831784b5bd3f4c2401}{multiboot\+\_\+info\+\_\+t}}
+

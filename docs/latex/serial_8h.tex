@@ -1,0 +1,104 @@
+\hypertarget{serial_8h}{}\section{src/include/debug\+\_\+utils/serial.h File Reference}
+\label{serial_8h}\index{src/include/debug\+\_\+utils/serial.\+h@{src/include/debug\+\_\+utils/serial.\+h}}
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{serial_8h_a34365e17c472073dfba3681bb38054f3}{S\+E\+R\+I\+A\+L\+\_\+\+C\+O\+M1\+\_\+\+B\+A\+SE}~0x3\+F8      /$\ast$ C\+O\+M1 base port $\ast$/
+\item 
+\#define \hyperlink{serial_8h_a2e80ea077599792f6f6f8af2c4e1776d}{S\+E\+R\+I\+A\+L\+\_\+\+D\+A\+T\+A\+\_\+\+P\+O\+RT}(\hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base})~(\hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base})
+\item 
+\#define \hyperlink{serial_8h_a9249a8c8634d8b93b0f10251090823b1}{S\+E\+R\+I\+A\+L\+\_\+\+F\+I\+F\+O\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT}(\hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base})~(\hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base} + 2)
+\item 
+\#define \hyperlink{serial_8h_a0b0547b49cc9b2d31da713acc2c68dd3}{S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT}(\hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base})~(\hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base} + 3)
+\item 
+\#define \hyperlink{serial_8h_a5b3c6a41cf17fa4278adb9805560f993}{S\+E\+R\+I\+A\+L\+\_\+\+M\+O\+D\+E\+M\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT}(\hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base})~(\hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base} + 4)
+\item 
+\#define \hyperlink{serial_8h_ab227688d8ebe07f4c8565d4f822bdea4}{S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+O\+RT}(\hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base})~(\hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base} + 5)
+\item 
+\#define \hyperlink{serial_8h_a86dbcd1e612dc4ca6f5270d81def6ccd}{S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+D\+L\+AB}~0x80
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{serial_8h_acfb6f6d615183fc2f71e79dfbadfe27d}{init\+\_\+serial} ()
+\item 
+char \hyperlink{serial_8h_a5e8a3b213d7467654fdcd7d2fda68b68}{serial\+Read} ()
+\item 
+void \hyperlink{serial_8h_aa1d0c8f870edae14a5ca85154b24a1e1}{serial\+Write} (char c)
+\item 
+int \hyperlink{serial_8h_a3c667fb8cb71a36f04e338fc600d7b8f}{printf\+Serial} (const char $\ast$format,...)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{serial_8h_a34365e17c472073dfba3681bb38054f3}\label{serial_8h_a34365e17c472073dfba3681bb38054f3}} 
+\index{serial.\+h@{serial.\+h}!S\+E\+R\+I\+A\+L\+\_\+\+C\+O\+M1\+\_\+\+B\+A\+SE@{S\+E\+R\+I\+A\+L\+\_\+\+C\+O\+M1\+\_\+\+B\+A\+SE}}
+\index{S\+E\+R\+I\+A\+L\+\_\+\+C\+O\+M1\+\_\+\+B\+A\+SE@{S\+E\+R\+I\+A\+L\+\_\+\+C\+O\+M1\+\_\+\+B\+A\+SE}!serial.\+h@{serial.\+h}}
+\subsubsection{\texorpdfstring{S\+E\+R\+I\+A\+L\+\_\+\+C\+O\+M1\+\_\+\+B\+A\+SE}{SERIAL\_COM1\_BASE}}
+{\footnotesize\ttfamily \#define S\+E\+R\+I\+A\+L\+\_\+\+C\+O\+M1\+\_\+\+B\+A\+SE~0x3\+F8      /$\ast$ C\+O\+M1 base port $\ast$/}
+
+All the I/O ports are calculated relative to the data port. This is because all serial ports (C\+O\+M1, C\+O\+M2, C\+O\+M3, C\+O\+M4) have their ports in the same order, but they start at different values. \mbox{\Hypertarget{serial_8h_a2e80ea077599792f6f6f8af2c4e1776d}\label{serial_8h_a2e80ea077599792f6f6f8af2c4e1776d}} 
+\index{serial.\+h@{serial.\+h}!S\+E\+R\+I\+A\+L\+\_\+\+D\+A\+T\+A\+\_\+\+P\+O\+RT@{S\+E\+R\+I\+A\+L\+\_\+\+D\+A\+T\+A\+\_\+\+P\+O\+RT}}
+\index{S\+E\+R\+I\+A\+L\+\_\+\+D\+A\+T\+A\+\_\+\+P\+O\+RT@{S\+E\+R\+I\+A\+L\+\_\+\+D\+A\+T\+A\+\_\+\+P\+O\+RT}!serial.\+h@{serial.\+h}}
+\subsubsection{\texorpdfstring{S\+E\+R\+I\+A\+L\+\_\+\+D\+A\+T\+A\+\_\+\+P\+O\+RT}{SERIAL\_DATA\_PORT}}
+{\footnotesize\ttfamily \#define S\+E\+R\+I\+A\+L\+\_\+\+D\+A\+T\+A\+\_\+\+P\+O\+RT(\begin{DoxyParamCaption}\item[{}]{\hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base} }\end{DoxyParamCaption})~(\hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base})}
+
+\mbox{\Hypertarget{serial_8h_a9249a8c8634d8b93b0f10251090823b1}\label{serial_8h_a9249a8c8634d8b93b0f10251090823b1}} 
+\index{serial.\+h@{serial.\+h}!S\+E\+R\+I\+A\+L\+\_\+\+F\+I\+F\+O\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT@{S\+E\+R\+I\+A\+L\+\_\+\+F\+I\+F\+O\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT}}
+\index{S\+E\+R\+I\+A\+L\+\_\+\+F\+I\+F\+O\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT@{S\+E\+R\+I\+A\+L\+\_\+\+F\+I\+F\+O\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT}!serial.\+h@{serial.\+h}}
+\subsubsection{\texorpdfstring{S\+E\+R\+I\+A\+L\+\_\+\+F\+I\+F\+O\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT}{SERIAL\_FIFO\_COMMAND\_PORT}}
+{\footnotesize\ttfamily \#define S\+E\+R\+I\+A\+L\+\_\+\+F\+I\+F\+O\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT(\begin{DoxyParamCaption}\item[{}]{\hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base} }\end{DoxyParamCaption})~(\hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base} + 2)}
+
+\mbox{\Hypertarget{serial_8h_a0b0547b49cc9b2d31da713acc2c68dd3}\label{serial_8h_a0b0547b49cc9b2d31da713acc2c68dd3}} 
+\index{serial.\+h@{serial.\+h}!S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT@{S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT}}
+\index{S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT@{S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT}!serial.\+h@{serial.\+h}}
+\subsubsection{\texorpdfstring{S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT}{SERIAL\_LINE\_COMMAND\_PORT}}
+{\footnotesize\ttfamily \#define S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT(\begin{DoxyParamCaption}\item[{}]{\hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base} }\end{DoxyParamCaption})~(\hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base} + 3)}
+
+\mbox{\Hypertarget{serial_8h_a86dbcd1e612dc4ca6f5270d81def6ccd}\label{serial_8h_a86dbcd1e612dc4ca6f5270d81def6ccd}} 
+\index{serial.\+h@{serial.\+h}!S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+D\+L\+AB@{S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+D\+L\+AB}}
+\index{S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+D\+L\+AB@{S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+D\+L\+AB}!serial.\+h@{serial.\+h}}
+\subsubsection{\texorpdfstring{S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+D\+L\+AB}{SERIAL\_LINE\_ENABLE\_DLAB}}
+{\footnotesize\ttfamily \#define S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+E\+N\+A\+B\+L\+E\+\_\+\+D\+L\+AB~0x80}
+
+\mbox{\Hypertarget{serial_8h_ab227688d8ebe07f4c8565d4f822bdea4}\label{serial_8h_ab227688d8ebe07f4c8565d4f822bdea4}} 
+\index{serial.\+h@{serial.\+h}!S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+O\+RT@{S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+O\+RT}}
+\index{S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+O\+RT@{S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+O\+RT}!serial.\+h@{serial.\+h}}
+\subsubsection{\texorpdfstring{S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+O\+RT}{SERIAL\_LINE\_STATUS\_PORT}}
+{\footnotesize\ttfamily \#define S\+E\+R\+I\+A\+L\+\_\+\+L\+I\+N\+E\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+P\+O\+RT(\begin{DoxyParamCaption}\item[{}]{\hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base} }\end{DoxyParamCaption})~(\hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base} + 5)}
+
+\mbox{\Hypertarget{serial_8h_a5b3c6a41cf17fa4278adb9805560f993}\label{serial_8h_a5b3c6a41cf17fa4278adb9805560f993}} 
+\index{serial.\+h@{serial.\+h}!S\+E\+R\+I\+A\+L\+\_\+\+M\+O\+D\+E\+M\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT@{S\+E\+R\+I\+A\+L\+\_\+\+M\+O\+D\+E\+M\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT}}
+\index{S\+E\+R\+I\+A\+L\+\_\+\+M\+O\+D\+E\+M\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT@{S\+E\+R\+I\+A\+L\+\_\+\+M\+O\+D\+E\+M\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT}!serial.\+h@{serial.\+h}}
+\subsubsection{\texorpdfstring{S\+E\+R\+I\+A\+L\+\_\+\+M\+O\+D\+E\+M\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT}{SERIAL\_MODEM\_COMMAND\_PORT}}
+{\footnotesize\ttfamily \#define S\+E\+R\+I\+A\+L\+\_\+\+M\+O\+D\+E\+M\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+P\+O\+RT(\begin{DoxyParamCaption}\item[{}]{\hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base} }\end{DoxyParamCaption})~(\hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base} + 4)}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{serial_8h_acfb6f6d615183fc2f71e79dfbadfe27d}\label{serial_8h_acfb6f6d615183fc2f71e79dfbadfe27d}} 
+\index{serial.\+h@{serial.\+h}!init\+\_\+serial@{init\+\_\+serial}}
+\index{init\+\_\+serial@{init\+\_\+serial}!serial.\+h@{serial.\+h}}
+\subsubsection{\texorpdfstring{init\+\_\+serial()}{init\_serial()}}
+{\footnotesize\ttfamily void init\+\_\+serial (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Initialize the serial port C\+O\+M1. \mbox{\Hypertarget{serial_8h_a3c667fb8cb71a36f04e338fc600d7b8f}\label{serial_8h_a3c667fb8cb71a36f04e338fc600d7b8f}} 
+\index{serial.\+h@{serial.\+h}!printf\+Serial@{printf\+Serial}}
+\index{printf\+Serial@{printf\+Serial}!serial.\+h@{serial.\+h}}
+\subsubsection{\texorpdfstring{printf\+Serial()}{printfSerial()}}
+{\footnotesize\ttfamily int printf\+Serial (\begin{DoxyParamCaption}\item[{const char $\ast$}]{format,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{serial_8h_a5e8a3b213d7467654fdcd7d2fda68b68}\label{serial_8h_a5e8a3b213d7467654fdcd7d2fda68b68}} 
+\index{serial.\+h@{serial.\+h}!serial\+Read@{serial\+Read}}
+\index{serial\+Read@{serial\+Read}!serial.\+h@{serial.\+h}}
+\subsubsection{\texorpdfstring{serial\+Read()}{serialRead()}}
+{\footnotesize\ttfamily char serial\+Read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Read from the serial port C\+O\+M1. \mbox{\Hypertarget{serial_8h_aa1d0c8f870edae14a5ca85154b24a1e1}\label{serial_8h_aa1d0c8f870edae14a5ca85154b24a1e1}} 
+\index{serial.\+h@{serial.\+h}!serial\+Write@{serial\+Write}}
+\index{serial\+Write@{serial\+Write}!serial.\+h@{serial.\+h}}
+\subsubsection{\texorpdfstring{serial\+Write()}{serialWrite()}}
+{\footnotesize\ttfamily void serial\+Write (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+Write to the serial port C\+O\+M1. 

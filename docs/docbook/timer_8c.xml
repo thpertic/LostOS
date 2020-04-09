@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="timer_8c">
+    <title>timer.c File Reference</title>
+    <programlisting>#include &lt;interrupts/timer.h&gt;</programlisting>
+    <programlisting>#include &lt;interrupts/irqs.h&gt;</programlisting>
+    <programlisting>#include &lt;debug_utils/printf.h&gt;</programlisting>
+    <programlisting>#include &lt;debug_utils/serial.h&gt;</programlisting>
+        <section>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint32_t <link linkend="timer_8c_1a260e06ce96c2e4deebccaedeb059dc0b">tick</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="timer_8c_1aa7a05b8b41f51635ca6778b9dbe5e8f3">tickHandler</link> (
+regs_t * r)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="timer_8c_1a52c33084576afc93fb93057a924ea224">init_clock</link> (
+uint32_t frequency)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/kernel/interrupts/timer.c</para>
+    </simplesect>
+</section>

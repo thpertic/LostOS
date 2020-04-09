@@ -27,7 +27,7 @@ void tickHandler(regs_t *r) {
     outportb(0x20, 0x20); // End of interrupt
 }
 
-void clock_init(uint32_t frequency) {
+void init_clock(uint32_t frequency) {
     // Set the timer as the first IRQ
     irq_installHandler(IRQ0, &tickHandler);
 

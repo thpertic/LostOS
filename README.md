@@ -7,7 +7,12 @@ This is a 32-bit operating system written from scratch to help me better underst
 ### Prerequisites
 
 You will need a cross-compiler and Bochs/Qemu. I advice to stay on Linux.
+
 I'm using the GCC cross-compiler built from source following the guide on https://wiki.osdev.org/GCC_Cross-Compiler.
+Then install `nasm`, `xorriso` and `bochs` with this command (if you are on a Debian-like distro like me):
+```
+apt-get install nasm xorriso bochs
+```
 
 ### Executing
 
@@ -18,7 +23,7 @@ Once you download the project, execute
 It should be enough if everything is right.
 
 I recommend execute the scripts singularly, though, as you can see if one of them crashes.
-The order is:
+The order is (I didn't try the `./qemu` script):
 ```
 ./compile.sh
 ./build.sh
@@ -34,8 +39,20 @@ If you want to rebuild everything you can just execute
 which will remove every .o file and the .iso image. 
 You can then follow the **Executing** part to re-build the OS.
 
+### Documentation
+To document the code I'm using Doxygen.
+Install it with:
+```
+apt-get install doxygen 
+```
+And then to generate code run:
+```
+doxygen doxyfile
+```
+
 # Features
 
+ - Little documentation
  - GRUB
  - Video support (printf-like function)
  - Serial port (COM1) support
@@ -48,8 +65,8 @@ You can then follow the **Executing** part to re-build the OS.
 
 ## Todos
  
- - Docs 
  - Kernel Heap
+ - Merge printf(): Print to a generic output that can be redirected
 
 ### Problems
 
@@ -66,11 +83,9 @@ You can then follow the **Executing** part to re-build the OS.
  - Network
  - System calls
 
-## Authors
+## Author
 
-* **Thomas Perticaroli** - *Starting project* - [thpertic](https://github.com/thpertic)
-
-See also the list of [contributors](https://github.com/thpertic/LostOS/contributors) who participated in this project.
+**Thomas Perticaroli** - [thpertic](https://github.com/thpertic)
 
 ## License
 

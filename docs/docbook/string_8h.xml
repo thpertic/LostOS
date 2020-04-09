@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="string_8h">
+    <title>string.h File Reference</title>
+    <programlisting>#include &lt;system.h&gt;</programlisting>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>char * <link linkend="string_8h_1a3037449d060c1f946ac5e8a84469f6bd">itoa</link> (
+long int num, char * str, int base)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>char * <link linkend="string_8h_1ab0f4f1cb989170877f5c613d81785628">utoa</link> (
+uint32_t num, char * str, int base)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>size_t <link linkend="string_8h_1aa383452fe445bfae989358c9d7d96f4f">strlen</link> (
+const char * s)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int32_t <link linkend="string_8h_1a90626f44fb128936392b79bc8c06d03f">strcmp</link> (
+const char * s1, const char * s2)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/include/common/string.h</para>
+    </simplesect>
+</section>

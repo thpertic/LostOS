@@ -1,0 +1,82 @@
+\hypertarget{vmm_8c}{}\section{src/kernel/mm/vmm.c File Reference}
+\label{vmm_8c}\index{src/kernel/mm/vmm.\+c@{src/kernel/mm/vmm.\+c}}
+{\ttfamily \#include $<$mm/vmm.\+h$>$}\newline
+{\ttfamily \#include $<$mm/pmm.\+h$>$}\newline
+{\ttfamily \#include $<$common/utility.\+h$>$}\newline
+{\ttfamily \#include $<$interrupts/interrupt.\+h$>$}\newline
+{\ttfamily \#include $<$debug\+\_\+utils/printf.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{vmm_8c_acb06b7c4006a14240ac29a3ede114daf}{v\+Map\+Page} (void $\ast$phys, void $\ast$virt, uint32\+\_\+t flags)
+\item 
+void \hyperlink{vmm_8c_a409b57cb773a4d7a57f99db96b204788}{v\+Unmap\+Page} (void $\ast$virt)
+\item 
+void \hyperlink{vmm_8c_acd34cb4c1016f8b955c09153679bc1ec}{init\+\_\+vmm} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{vmm_8c_acd34cb4c1016f8b955c09153679bc1ec}\label{vmm_8c_acd34cb4c1016f8b955c09153679bc1ec}} 
+\index{vmm.\+c@{vmm.\+c}!init\+\_\+vmm@{init\+\_\+vmm}}
+\index{init\+\_\+vmm@{init\+\_\+vmm}!vmm.\+c@{vmm.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+vmm()}{init\_vmm()}}
+{\footnotesize\ttfamily void init\+\_\+vmm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+The Virtual Memory Manager is going to start and handle paging in the system.
+
+Paging is a system which allows each process to see a full virtual address space, without actually requiring the full amount of physical memory to be available or present. Maximum address space for 32 bit systems like this is 4\+GB.
+
+The topmost paging structure is the P\+A\+GE D\+I\+R\+E\+C\+T\+O\+RY. It is essentially an array of page directory entries that take the following form\+:
+\begin{DoxyItemize}
+\item 31\+\_\+12 Page Table 4\+KB aligned address
+\item 11\+\_\+8 Available
+\item 7\+\_\+0 Flags
+\begin{DoxyItemize}
+\item 7 G\+\_\+\+Ignored
+\item 6 S\+\_\+\+Page\+\_\+\+Size
+\item 5 A\+\_\+\+Accessed
+\item 4 D\+\_\+\+Cache\+\_\+\+Disable
+\item 3 W\+\_\+\+Write\+\_\+\+Through
+\item 2 U\+\_\+\+User
+\item 1 R\+\_\+\+Read
+\item 0 P\+\_\+\+Present
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+In each P\+A\+GE T\+A\+B\+LE, as it is, there are also 1024 entries. These are called page table entries, and are very similar to page directory entries\+:
+\begin{DoxyItemize}
+\item 31\+\_\+12 Physical Page 4\+KB aligned address
+\item 11\+\_\+9 Available
+\item 7\+\_\+0 Flags
+\begin{DoxyItemize}
+\item 7 G\+\_\+\+Global
+\item 6 D\+\_\+\+Dirty
+\item 5 A\+\_\+\+Accessed
+\item 4 D\+\_\+\+Cache\+\_\+\+Disable
+\item 3 W\+\_\+\+Write\+\_\+\+Through
+\item 2 U\+\_\+\+User
+\item 1 R\+\_\+\+Read
+\item 0 P\+\_\+\+Present
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+This is the format of a 32 bit x86 virtual address\+: A\+A\+A\+A\+A\+A\+A\+A\+AA B\+B\+B\+B\+B\+B\+B\+B\+BB C\+C\+C\+C\+C\+C\+C\+C\+C\+C\+CC directory index page table index offset into page Using the \textquotesingle{}recursive mapping\textquotesingle{} technique. It consists in mapping the last entry in the page directory to the page directory iteself. The physical address of the page directory is in the registry \textquotesingle{}cr3\textquotesingle{} and it\textquotesingle{}s more helpful having it at the virtual address 0x\+F\+F\+F\+F\+F000.
+
+This becomes more important when each process gets its own page directory, which can be anywhere in memory.\mbox{\Hypertarget{vmm_8c_acb06b7c4006a14240ac29a3ede114daf}\label{vmm_8c_acb06b7c4006a14240ac29a3ede114daf}} 
+\index{vmm.\+c@{vmm.\+c}!v\+Map\+Page@{v\+Map\+Page}}
+\index{v\+Map\+Page@{v\+Map\+Page}!vmm.\+c@{vmm.\+c}}
+\subsubsection{\texorpdfstring{v\+Map\+Page()}{vMapPage()}}
+{\footnotesize\ttfamily bool v\+Map\+Page (\begin{DoxyParamCaption}\item[{void $\ast$}]{phys,  }\item[{void $\ast$}]{virt,  }\item[{uint32\+\_\+t}]{flags }\end{DoxyParamCaption})}
+
+The C\+PU pushes an error code on the stack before firing a page fault exception. The error code must be analyzed by the exception handler to determine how to handle the exception. The bottom 3 bits of the exception code are the only ones used, bits 3-\/31 are reserved.
+
+The combination of these flags specify the details of the Page Fault and indicate what action to take\+:
+
+US RW P -\/ Description 0 0 0 -\/ Supervisory process tried to read a non-\/present page entry 0 0 1 -\/ Supervisory process tried to read a page and caused a protection fault 0 1 0 -\/ Supervisory process tried to write to a non-\/present page entry 0 1 1 -\/ Supervisory process tried to write a page and caused a protection fault 1 0 0 -\/ User process tried to read a non-\/present page entry 1 0 1 -\/ User process tried to read a page and caused a protection fault 1 1 0 -\/ User process tried to write to a non-\/present page entry 1 1 1 -\/ User process tried to write a page and caused a protection fault Mapping a virtual address to a physical one. \mbox{\Hypertarget{vmm_8c_a409b57cb773a4d7a57f99db96b204788}\label{vmm_8c_a409b57cb773a4d7a57f99db96b204788}} 
+\index{vmm.\+c@{vmm.\+c}!v\+Unmap\+Page@{v\+Unmap\+Page}}
+\index{v\+Unmap\+Page@{v\+Unmap\+Page}!vmm.\+c@{vmm.\+c}}
+\subsubsection{\texorpdfstring{v\+Unmap\+Page()}{vUnmapPage()}}
+{\footnotesize\ttfamily void v\+Unmap\+Page (\begin{DoxyParamCaption}\item[{void $\ast$}]{virt }\end{DoxyParamCaption})}
+
+Unmapping the virtual address from the current page directory. 

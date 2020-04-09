@@ -1,0 +1,246 @@
+\hypertarget{system_8h}{}\section{src/include/system.h File Reference}
+\label{system_8h}\index{src/include/system.\+h@{src/include/system.\+h}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structregs}{regs}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{system_8h_a59adc4c82490d23754cd39c2fb99b0da}{E\+OF}~-\/1
+\item 
+\#define \hyperlink{system_8h_aa189e0352b19fd734e99b42c4ecfe26a}{K\+E\+R\+N\+E\+L\+\_\+\+V\+I\+R\+T\+U\+A\+L\+\_\+\+B\+A\+SE}~0x\+C0000000
+\item 
+\#define \hyperlink{system_8h_a97d832ae23af4f215e801e37e4f94254}{K}~1024
+\item 
+\#define \hyperlink{system_8h_a52037c938e3c1b126c6277da5ca689d0}{M}~(\hyperlink{system_8h_a97d832ae23af4f215e801e37e4f94254}{K} $\ast$ 1024)
+\item 
+\#define \hyperlink{system_8h_aed9ea78689ecce0b7264c02c7f8a9a54}{G}~(\hyperlink{system_8h_a52037c938e3c1b126c6277da5ca689d0}{M} $\ast$ 1024)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structregs}{regs} \hyperlink{system_8h_ad448f168c72c34120bb276481c92af99}{\+\_\+\+\_\+attribute\+\_\+\+\_\+} ((packed)) regs\+\_\+t
+\item 
+uint8\+\_\+t \hyperlink{system_8h_abf33a0709688bca34adc8eed977b4bfa}{inportb} (uint16\+\_\+t \+\_\+port)
+\item 
+void \hyperlink{system_8h_a4dfe9a9c7ca49a3c20e69be114f36636}{outportb} (uint16\+\_\+t \+\_\+port, uint8\+\_\+t \+\_\+data)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \hyperlink{system_8h_a8fbe564b6eaa9affe24c8fbed1a4c7ea}{gs}
+\item 
+unsigned int \hyperlink{system_8h_a88d3d1b872b301364b825176981daf14}{fs}
+\item 
+unsigned int \hyperlink{system_8h_a4305a24abee1f4912083d877c499fcad}{es}
+\item 
+unsigned int \hyperlink{system_8h_a41d22b14f5b54c8488f5969c012000d7}{ds}
+\item 
+unsigned int \hyperlink{system_8h_a21967b2580b9725a17075b898ff3abc3}{edi}
+\item 
+unsigned int \hyperlink{system_8h_ae508f942b3572ab3ab749fdc35a763da}{esi}
+\item 
+unsigned int \hyperlink{system_8h_a680481bf6e093a04d619216bef02a2b2}{ebp}
+\item 
+unsigned int \hyperlink{system_8h_af1425d6c20cbfa78828ab126434a1921}{esp}
+\item 
+unsigned int \hyperlink{system_8h_a8996da18df84dface49e6d219a6fbde0}{ebx}
+\item 
+unsigned int \hyperlink{system_8h_a033ca834eb49bc602eb0e0b358a9a4f1}{edx}
+\item 
+unsigned int \hyperlink{system_8h_a0ea7fea7f82c9647381548939843feaf}{ecx}
+\item 
+unsigned int \hyperlink{system_8h_aa35a8540d25648fda11e3cccd6e4e10c}{eax}
+\item 
+unsigned int \hyperlink{system_8h_ac38ccce5c52c2ed5882fe54495b53b56}{int\+\_\+no}
+\item 
+unsigned int \hyperlink{system_8h_aa49bd5fbbbf89d957dd3ac1ce217f738}{err\+\_\+code}
+\item 
+unsigned int \hyperlink{system_8h_a39deae339e1220f3a094c493fbf468e7}{eip}
+\item 
+unsigned int \hyperlink{system_8h_a62ed1336fc8e1441c0b7604555ef2a6b}{cs}
+\item 
+unsigned int \hyperlink{system_8h_a3a999c5a8c36bfad83716f3cb5560912}{eflags}
+\item 
+unsigned int \hyperlink{system_8h_aa577c00dec0db22f08d7a9b8a3dfc679}{useresp}
+\item 
+unsigned int \hyperlink{system_8h_a0ed2c935d809c29ae771d1a8350a272f}{ss}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{system_8h_a59adc4c82490d23754cd39c2fb99b0da}\label{system_8h_a59adc4c82490d23754cd39c2fb99b0da}} 
+\index{system.\+h@{system.\+h}!E\+OF@{E\+OF}}
+\index{E\+OF@{E\+OF}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{E\+OF}{EOF}}
+{\footnotesize\ttfamily \#define E\+OF~-\/1}
+
+\mbox{\Hypertarget{system_8h_aed9ea78689ecce0b7264c02c7f8a9a54}\label{system_8h_aed9ea78689ecce0b7264c02c7f8a9a54}} 
+\index{system.\+h@{system.\+h}!G@{G}}
+\index{G@{G}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{G}{G}}
+{\footnotesize\ttfamily \#define G~(\hyperlink{system_8h_a52037c938e3c1b126c6277da5ca689d0}{M} $\ast$ 1024)}
+
+\mbox{\Hypertarget{system_8h_a97d832ae23af4f215e801e37e4f94254}\label{system_8h_a97d832ae23af4f215e801e37e4f94254}} 
+\index{system.\+h@{system.\+h}!K@{K}}
+\index{K@{K}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{K}{K}}
+{\footnotesize\ttfamily \#define K~1024}
+
+\mbox{\Hypertarget{system_8h_aa189e0352b19fd734e99b42c4ecfe26a}\label{system_8h_aa189e0352b19fd734e99b42c4ecfe26a}} 
+\index{system.\+h@{system.\+h}!K\+E\+R\+N\+E\+L\+\_\+\+V\+I\+R\+T\+U\+A\+L\+\_\+\+B\+A\+SE@{K\+E\+R\+N\+E\+L\+\_\+\+V\+I\+R\+T\+U\+A\+L\+\_\+\+B\+A\+SE}}
+\index{K\+E\+R\+N\+E\+L\+\_\+\+V\+I\+R\+T\+U\+A\+L\+\_\+\+B\+A\+SE@{K\+E\+R\+N\+E\+L\+\_\+\+V\+I\+R\+T\+U\+A\+L\+\_\+\+B\+A\+SE}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{K\+E\+R\+N\+E\+L\+\_\+\+V\+I\+R\+T\+U\+A\+L\+\_\+\+B\+A\+SE}{KERNEL\_VIRTUAL\_BASE}}
+{\footnotesize\ttfamily \#define K\+E\+R\+N\+E\+L\+\_\+\+V\+I\+R\+T\+U\+A\+L\+\_\+\+B\+A\+SE~0x\+C0000000}
+
+\mbox{\Hypertarget{system_8h_a52037c938e3c1b126c6277da5ca689d0}\label{system_8h_a52037c938e3c1b126c6277da5ca689d0}} 
+\index{system.\+h@{system.\+h}!M@{M}}
+\index{M@{M}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{M}{M}}
+{\footnotesize\ttfamily \#define M~(\hyperlink{system_8h_a97d832ae23af4f215e801e37e4f94254}{K} $\ast$ 1024)}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{system_8h_ad448f168c72c34120bb276481c92af99}\label{system_8h_ad448f168c72c34120bb276481c92af99}} 
+\index{system.\+h@{system.\+h}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}{\_\_attribute\_\_()}}
+{\footnotesize\ttfamily struct \hyperlink{structidt__gate}{idt\+\_\+gate} \+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(packed)}]{ }\end{DoxyParamCaption})}
+
+The size is the size of the table subtracted by 1. The offset is the linear address of the table itself.
+
+The offset is a 32 bit value, split in two parts. It represents the address of the entry point of the I\+SR. The selector is a 16 bit value and must point to a valid CS descriptor in your G\+DT. The type\+\_\+attr is specified here\+: 7 0 +---+---+---+---+---+---+---+---+ $\vert$ P $\vert$ D\+PL $\vert$ S $\vert$ Gate\+Type $\vert$ +---+---+---+---+---+---+---+---+ \mbox{\Hypertarget{system_8h_abf33a0709688bca34adc8eed977b4bfa}\label{system_8h_abf33a0709688bca34adc8eed977b4bfa}} 
+\index{system.\+h@{system.\+h}!inportb@{inportb}}
+\index{inportb@{inportb}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{inportb()}{inportb()}}
+{\footnotesize\ttfamily uint8\+\_\+t inportb (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{\+\_\+port }\end{DoxyParamCaption})}
+
+We will use this later on for reading from the I/O ports to get data from devices such as the keyboard. We are using what is called \textquotesingle{}inline assembly\textquotesingle{} in these routines to actually do the work \mbox{\Hypertarget{system_8h_a4dfe9a9c7ca49a3c20e69be114f36636}\label{system_8h_a4dfe9a9c7ca49a3c20e69be114f36636}} 
+\index{system.\+h@{system.\+h}!outportb@{outportb}}
+\index{outportb@{outportb}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{outportb()}{outportb()}}
+{\footnotesize\ttfamily void outportb (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{\+\_\+port,  }\item[{uint8\+\_\+t}]{\+\_\+data }\end{DoxyParamCaption})}
+
+We will use this to write to I/O ports to send bytes to devices. This will be used for changing the textmode cursor position. Again, we use some inline assembly for the stuff that simply cannot be done in C 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{system_8h_a62ed1336fc8e1441c0b7604555ef2a6b}\label{system_8h_a62ed1336fc8e1441c0b7604555ef2a6b}} 
+\index{system.\+h@{system.\+h}!cs@{cs}}
+\index{cs@{cs}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{cs}{cs}}
+{\footnotesize\ttfamily unsigned int cs}
+
+\mbox{\Hypertarget{system_8h_a41d22b14f5b54c8488f5969c012000d7}\label{system_8h_a41d22b14f5b54c8488f5969c012000d7}} 
+\index{system.\+h@{system.\+h}!ds@{ds}}
+\index{ds@{ds}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{ds}{ds}}
+{\footnotesize\ttfamily unsigned int ds}
+
+\mbox{\Hypertarget{system_8h_aa35a8540d25648fda11e3cccd6e4e10c}\label{system_8h_aa35a8540d25648fda11e3cccd6e4e10c}} 
+\index{system.\+h@{system.\+h}!eax@{eax}}
+\index{eax@{eax}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{eax}{eax}}
+{\footnotesize\ttfamily unsigned int eax}
+
+\mbox{\Hypertarget{system_8h_a680481bf6e093a04d619216bef02a2b2}\label{system_8h_a680481bf6e093a04d619216bef02a2b2}} 
+\index{system.\+h@{system.\+h}!ebp@{ebp}}
+\index{ebp@{ebp}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{ebp}{ebp}}
+{\footnotesize\ttfamily unsigned int ebp}
+
+\mbox{\Hypertarget{system_8h_a8996da18df84dface49e6d219a6fbde0}\label{system_8h_a8996da18df84dface49e6d219a6fbde0}} 
+\index{system.\+h@{system.\+h}!ebx@{ebx}}
+\index{ebx@{ebx}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{ebx}{ebx}}
+{\footnotesize\ttfamily unsigned int ebx}
+
+\mbox{\Hypertarget{system_8h_a0ea7fea7f82c9647381548939843feaf}\label{system_8h_a0ea7fea7f82c9647381548939843feaf}} 
+\index{system.\+h@{system.\+h}!ecx@{ecx}}
+\index{ecx@{ecx}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{ecx}{ecx}}
+{\footnotesize\ttfamily unsigned int ecx}
+
+\mbox{\Hypertarget{system_8h_a21967b2580b9725a17075b898ff3abc3}\label{system_8h_a21967b2580b9725a17075b898ff3abc3}} 
+\index{system.\+h@{system.\+h}!edi@{edi}}
+\index{edi@{edi}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{edi}{edi}}
+{\footnotesize\ttfamily unsigned int edi}
+
+\mbox{\Hypertarget{system_8h_a033ca834eb49bc602eb0e0b358a9a4f1}\label{system_8h_a033ca834eb49bc602eb0e0b358a9a4f1}} 
+\index{system.\+h@{system.\+h}!edx@{edx}}
+\index{edx@{edx}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{edx}{edx}}
+{\footnotesize\ttfamily unsigned int edx}
+
+\mbox{\Hypertarget{system_8h_a3a999c5a8c36bfad83716f3cb5560912}\label{system_8h_a3a999c5a8c36bfad83716f3cb5560912}} 
+\index{system.\+h@{system.\+h}!eflags@{eflags}}
+\index{eflags@{eflags}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{eflags}{eflags}}
+{\footnotesize\ttfamily unsigned int eflags}
+
+\mbox{\Hypertarget{system_8h_a39deae339e1220f3a094c493fbf468e7}\label{system_8h_a39deae339e1220f3a094c493fbf468e7}} 
+\index{system.\+h@{system.\+h}!eip@{eip}}
+\index{eip@{eip}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{eip}{eip}}
+{\footnotesize\ttfamily unsigned int eip}
+
+\mbox{\Hypertarget{system_8h_aa49bd5fbbbf89d957dd3ac1ce217f738}\label{system_8h_aa49bd5fbbbf89d957dd3ac1ce217f738}} 
+\index{system.\+h@{system.\+h}!err\+\_\+code@{err\+\_\+code}}
+\index{err\+\_\+code@{err\+\_\+code}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{err\+\_\+code}{err\_code}}
+{\footnotesize\ttfamily unsigned int err\+\_\+code}
+
+\mbox{\Hypertarget{system_8h_a4305a24abee1f4912083d877c499fcad}\label{system_8h_a4305a24abee1f4912083d877c499fcad}} 
+\index{system.\+h@{system.\+h}!es@{es}}
+\index{es@{es}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{es}{es}}
+{\footnotesize\ttfamily unsigned int es}
+
+\mbox{\Hypertarget{system_8h_ae508f942b3572ab3ab749fdc35a763da}\label{system_8h_ae508f942b3572ab3ab749fdc35a763da}} 
+\index{system.\+h@{system.\+h}!esi@{esi}}
+\index{esi@{esi}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{esi}{esi}}
+{\footnotesize\ttfamily unsigned int esi}
+
+\mbox{\Hypertarget{system_8h_af1425d6c20cbfa78828ab126434a1921}\label{system_8h_af1425d6c20cbfa78828ab126434a1921}} 
+\index{system.\+h@{system.\+h}!esp@{esp}}
+\index{esp@{esp}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{esp}{esp}}
+{\footnotesize\ttfamily unsigned int esp}
+
+\mbox{\Hypertarget{system_8h_a88d3d1b872b301364b825176981daf14}\label{system_8h_a88d3d1b872b301364b825176981daf14}} 
+\index{system.\+h@{system.\+h}!fs@{fs}}
+\index{fs@{fs}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{fs}{fs}}
+{\footnotesize\ttfamily unsigned int fs}
+
+\mbox{\Hypertarget{system_8h_a8fbe564b6eaa9affe24c8fbed1a4c7ea}\label{system_8h_a8fbe564b6eaa9affe24c8fbed1a4c7ea}} 
+\index{system.\+h@{system.\+h}!gs@{gs}}
+\index{gs@{gs}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{gs}{gs}}
+{\footnotesize\ttfamily unsigned int gs}
+
+\mbox{\Hypertarget{system_8h_ac38ccce5c52c2ed5882fe54495b53b56}\label{system_8h_ac38ccce5c52c2ed5882fe54495b53b56}} 
+\index{system.\+h@{system.\+h}!int\+\_\+no@{int\+\_\+no}}
+\index{int\+\_\+no@{int\+\_\+no}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{int\+\_\+no}{int\_no}}
+{\footnotesize\ttfamily unsigned int int\+\_\+no}
+
+\mbox{\Hypertarget{system_8h_a0ed2c935d809c29ae771d1a8350a272f}\label{system_8h_a0ed2c935d809c29ae771d1a8350a272f}} 
+\index{system.\+h@{system.\+h}!ss@{ss}}
+\index{ss@{ss}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{ss}{ss}}
+{\footnotesize\ttfamily unsigned int ss}
+
+\mbox{\Hypertarget{system_8h_aa577c00dec0db22f08d7a9b8a3dfc679}\label{system_8h_aa577c00dec0db22f08d7a9b8a3dfc679}} 
+\index{system.\+h@{system.\+h}!useresp@{useresp}}
+\index{useresp@{useresp}!system.\+h@{system.\+h}}
+\subsubsection{\texorpdfstring{useresp}{useresp}}
+{\footnotesize\ttfamily unsigned int useresp}
+

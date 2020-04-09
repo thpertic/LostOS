@@ -1,0 +1,105 @@
+\hypertarget{vga_8c}{}\section{src/kernel/drivers/vga.c File Reference}
+\label{vga_8c}\index{src/kernel/drivers/vga.\+c@{src/kernel/drivers/vga.\+c}}
+{\ttfamily \#include $<$drivers/vga.\+h$>$}\newline
+{\ttfamily \#include $<$common/utility.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{vga_8c_a759f71f304c11873e67bf7cc3f2d08a8}{init\+\_\+video} ()
+\item 
+void \hyperlink{vga_8c_ac8bb3912a3ce86b15842e79d0b421204}{clear} ()
+\item 
+void \hyperlink{vga_8c_ab3ea24f215149bc549e5d959a3ae84ca}{try\+\_\+scroll} ()
+\item 
+void \hyperlink{vga_8c_adcaf3dad272a0c5e8d9ffa89823ede2a}{update\+\_\+cursor} ()
+\item 
+int \hyperlink{vga_8c_ad82b6e9f7fa8230d3873939069acc5f2}{putc} (const char c)
+\item 
+int \hyperlink{vga_8c_ac4bb7070d519c1fe12628cfe4397082f}{puts} (char $\ast$string)
+\item 
+void \hyperlink{vga_8c_ad0040ec0fb32ac4b886bdb38a22d7045}{set\+\_\+color} (uint8\+\_\+t fore\+Color, uint8\+\_\+t back\+Color)
+\item 
+uint8\+\_\+t \hyperlink{vga_8c_a920a79e4ea4e06327e2f2f8957c4d0b3}{get\+\_\+color} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{vga_8c_a6150e0515f7202e2fb518f7206ed97dc}{x} = 0
+\item 
+int \hyperlink{vga_8c_a0a2f84ed7838f07779ae24c5a9086d33}{y} = 0
+\item 
+uint8\+\_\+t \hyperlink{vga_8c_ae25ff5b7b6b91540d61c57220cdf720b}{attribs}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{vga_8c_ac8bb3912a3ce86b15842e79d0b421204}\label{vga_8c_ac8bb3912a3ce86b15842e79d0b421204}} 
+\index{vga.\+c@{vga.\+c}!clear@{clear}}
+\index{clear@{clear}!vga.\+c@{vga.\+c}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clears the screen. Simply put spaces in the video memory. \mbox{\Hypertarget{vga_8c_a920a79e4ea4e06327e2f2f8957c4d0b3}\label{vga_8c_a920a79e4ea4e06327e2f2f8957c4d0b3}} 
+\index{vga.\+c@{vga.\+c}!get\+\_\+color@{get\+\_\+color}}
+\index{get\+\_\+color@{get\+\_\+color}!vga.\+c@{vga.\+c}}
+\subsubsection{\texorpdfstring{get\+\_\+color()}{get\_color()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{vga_8c_a759f71f304c11873e67bf7cc3f2d08a8}\label{vga_8c_a759f71f304c11873e67bf7cc3f2d08a8}} 
+\index{vga.\+c@{vga.\+c}!init\+\_\+video@{init\+\_\+video}}
+\index{init\+\_\+video@{init\+\_\+video}!vga.\+c@{vga.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+video()}{init\_video()}}
+{\footnotesize\ttfamily void init\+\_\+video (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{vga_8c_ad82b6e9f7fa8230d3873939069acc5f2}\label{vga_8c_ad82b6e9f7fa8230d3873939069acc5f2}} 
+\index{vga.\+c@{vga.\+c}!putc@{putc}}
+\index{putc@{putc}!vga.\+c@{vga.\+c}}
+\subsubsection{\texorpdfstring{putc()}{putc()}}
+{\footnotesize\ttfamily int putc (\begin{DoxyParamCaption}\item[{const char}]{c }\end{DoxyParamCaption})}
+
+Prints a char. Arrived at W\+I\+D\+TH of width goes newline, arrived at H\+E\+I\+G\+HT of height scrolls up. Can handle ~\newline
+, , {\bfseries }. \mbox{\Hypertarget{vga_8c_ac4bb7070d519c1fe12628cfe4397082f}\label{vga_8c_ac4bb7070d519c1fe12628cfe4397082f}} 
+\index{vga.\+c@{vga.\+c}!puts@{puts}}
+\index{puts@{puts}!vga.\+c@{vga.\+c}}
+\subsubsection{\texorpdfstring{puts()}{puts()}}
+{\footnotesize\ttfamily int puts (\begin{DoxyParamCaption}\item[{char $\ast$}]{string }\end{DoxyParamCaption})}
+
+Loops through all characters and print them. Should return E\+OF (\textbackslash{}0). \mbox{\Hypertarget{vga_8c_ad0040ec0fb32ac4b886bdb38a22d7045}\label{vga_8c_ad0040ec0fb32ac4b886bdb38a22d7045}} 
+\index{vga.\+c@{vga.\+c}!set\+\_\+color@{set\+\_\+color}}
+\index{set\+\_\+color@{set\+\_\+color}!vga.\+c@{vga.\+c}}
+\subsubsection{\texorpdfstring{set\+\_\+color()}{set\_color()}}
+{\footnotesize\ttfamily void set\+\_\+color (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{fore\+Color,  }\item[{uint8\+\_\+t}]{back\+Color }\end{DoxyParamCaption})}
+
+Set current foreground and background color. Top 4 bytes are the background, bottom 4 bytes are the foreground color. \mbox{\Hypertarget{vga_8c_ab3ea24f215149bc549e5d959a3ae84ca}\label{vga_8c_ab3ea24f215149bc549e5d959a3ae84ca}} 
+\index{vga.\+c@{vga.\+c}!try\+\_\+scroll@{try\+\_\+scroll}}
+\index{try\+\_\+scroll@{try\+\_\+scroll}!vga.\+c@{vga.\+c}}
+\subsubsection{\texorpdfstring{try\+\_\+scroll()}{try\_scroll()}}
+{\footnotesize\ttfamily void try\+\_\+scroll (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{vga_8c_adcaf3dad272a0c5e8d9ffa89823ede2a}\label{vga_8c_adcaf3dad272a0c5e8d9ffa89823ede2a}} 
+\index{vga.\+c@{vga.\+c}!update\+\_\+cursor@{update\+\_\+cursor}}
+\index{update\+\_\+cursor@{update\+\_\+cursor}!vga.\+c@{vga.\+c}}
+\subsubsection{\texorpdfstring{update\+\_\+cursor()}{update\_cursor()}}
+{\footnotesize\ttfamily void update\+\_\+cursor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Moves the little blinking line under the last pressed char. This sends a command to indicies 14 and 15 in the C\+RT Control Register of the V\+GA controller. These are the high and low bytes of the index that show where the hardware cursor is to be \textquotesingle{}blinking\textquotesingle{}. To learn more, you should look up some V\+GA specific programming documents. 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{vga_8c_ae25ff5b7b6b91540d61c57220cdf720b}\label{vga_8c_ae25ff5b7b6b91540d61c57220cdf720b}} 
+\index{vga.\+c@{vga.\+c}!attribs@{attribs}}
+\index{attribs@{attribs}!vga.\+c@{vga.\+c}}
+\subsubsection{\texorpdfstring{attribs}{attribs}}
+{\footnotesize\ttfamily uint8\+\_\+t attribs}
+
+\mbox{\Hypertarget{vga_8c_a6150e0515f7202e2fb518f7206ed97dc}\label{vga_8c_a6150e0515f7202e2fb518f7206ed97dc}} 
+\index{vga.\+c@{vga.\+c}!x@{x}}
+\index{x@{x}!vga.\+c@{vga.\+c}}
+\subsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily int x = 0}
+
+\mbox{\Hypertarget{vga_8c_a0a2f84ed7838f07779ae24c5a9086d33}\label{vga_8c_a0a2f84ed7838f07779ae24c5a9086d33}} 
+\index{vga.\+c@{vga.\+c}!y@{y}}
+\index{y@{y}!vga.\+c@{vga.\+c}}
+\subsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily int y = 0}
+

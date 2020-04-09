@@ -11,7 +11,7 @@
 gdt_entry_t gdt_entries[DESCRIPTORS];
 gdt_descriptor_t gdt_ptr;
 
-void gdt_init() {
+void init_gdt() {
     gdt_ptr.size = sizeof(gdt_entries) - 1;
     gdt_ptr.offset = (uint32_t)gdt_entries;
 

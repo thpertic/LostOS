@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="vga_8h">
+    <title>vga.h File Reference</title>
+    <programlisting>#include &lt;system.h&gt;</programlisting>
+    <programlisting>#include &lt;common/string.h&gt;</programlisting>
+        <section>
+            <title>Macros</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1a7b3b25cba33b07c303f3060fe41887f6">BLACK</link> 0</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1a79d10e672abb49ad63eeaa8aaef57c38">BLUE</link> 1</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1acfbc006ea433ad708fdee3e82996e721">GREEN</link> 2</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1ad243f93c16bc4c1d3e0a13b84421d760">CYAN</link> 3</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1a8d23feea868a983c8c2b661e1e16972f">RED</link> 4</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1a6f699060902f800f12aaae150f3a708e">MAGENTA</link> 5</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1ab2baea56ece91306020afd6d77fd19f9">BROWN</link> 6</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1acafbbc051d018cffe2fcddcbf778c304">LIGHT_GREY</link> 7</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1a85998c833c5007dc61315ea69919582e">DARK_GREY</link> 8</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1a959d1249a76cfbd90fc6d96e2a9744e9">LIGHT_BLUE</link> 9</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1a5a7142ee95ebc63218ed3aac2ae06b13">LIGHT_GREEN</link> 10</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1a15e616ad647add2891b6c7ec6a1e47f1">LIGHT_CYAN</link> 11</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1a664c8f5b9d90f79a49a16960b9ccedba">LIGHT_RED</link> 12</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1af98a47a241abb10ccec0339c7a8a8c2e">LIGHT_MAGENTA</link> 13</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1a8ed224d3e366a4c3b718a44146075446">LIGHT_BROWN</link> 14</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1a87b537f5fa5c109d3c05c13d6b18f382">WHITE</link> 15</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1a241aeeb764887ae5e3de58b98f04b16d">WIDTH</link> 80</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1aed89bd71aee8be823e8a20ec4e093c1e">HEIGHT</link> 25</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1a7de8a5ba14702b7bf2f6558903b1d3fb">SCREEN</link> ((uint16_t *)(<link linkend="system_8h_1aa189e0352b19fd734e99b42c4ecfe26a">KERNEL_VIRTUAL_BASE</link> + 0xB8000))</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1a5811227e1769a2ca3576ad8467331455">PIXEL</link> <link linkend="vga_8h_1a7de8a5ba14702b7bf2f6558903b1d3fb">SCREEN</link>[<link linkend="vga_8c_1a0a2f84ed7838f07779ae24c5a9086d33">y</link> * <link linkend="vga_8h_1a241aeeb764887ae5e3de58b98f04b16d">WIDTH</link> + <link linkend="vga_8c_1a6150e0515f7202e2fb518f7206ed97dc">x</link>]</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vga_8h_1a1c31a89221060cbbbc4fa52cfea9dd1d">PRINT</link> (((<link linkend="vga_8c_1ae25ff5b7b6b91540d61c57220cdf720b">attribs</link> &amp; 0x0F) &lt;&lt; 8) | (character &amp; 0xFF))</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="vga_8h_1a759f71f304c11873e67bf7cc3f2d08a8">init_video</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="vga_8h_1ac4bb7070d519c1fe12628cfe4397082f">puts</link> (
+char * string)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="vga_8h_1ad82b6e9f7fa8230d3873939069acc5f2">putc</link> (
+const char c)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="vga_8h_1ad0040ec0fb32ac4b886bdb38a22d7045">set_color</link> (
+uint8_t foreColor, uint8_t backColor)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t <link linkend="vga_8h_1a920a79e4ea4e06327e2f2f8957c4d0b3">get_color</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="vga_8h_1ac8bb3912a3ce86b15842e79d0b421204">clear</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/include/drivers/vga.h</para>
+    </simplesect>
+</section>

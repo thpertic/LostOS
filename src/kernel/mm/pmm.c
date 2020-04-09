@@ -31,9 +31,14 @@ unsigned int findRAMSize(multiboot_info_t* mbt) {
         }
     }
 
-    // Finds the worst case scenario for the _stack (for a 4GB RAM == 8MB)
-    if (size > 0)    
-        _half_maxStack = ((size * 1024) / PAGE_SIZE) * (sizeof(free_mem_t));
+    /**
+     * Finds the worst case scenario for the _stack (for a 4GB RAM == 8MB).
+     * 
+     * I need to find the number (so the dimension) of the possible entries on the stack.
+     * Then I divide it in half to preserve some memory. When it is reached, defrag is going to be used.
+     */
+    if (size > 0)
+        _halfMaxStack = roundPageAligned(((size * 1024) / PAGE_SIZE) * (sizeof(free_mem_t)) / 2);   
 
     return size;
 }
@@ -188,7 +193,7 @@ bool pushAllPMM(free_mem_t m, bool merge) {
             sortPMM();
     }
 
-    if (_stack == (free_mem_t *)(&end + _half_maxStack))
+    if (_stack == (free_mem_t *)(&end + _halfMaxStack))
         defragmentPMM(true);
 
     return true;
@@ -430,20 +435,20 @@ void checkBoundaries(uint32_t pd_start, uint32_t pd_end,  uint32_t length, uint3
  * At this moment the real page size is 4MB still, 
  * but in the initialization of the Virtual Memory Manager it's gonna switch to 4KB.
  */
-void pmm_init(multiboot_info_t* mbt, uint32_t *pd) {
+void init_pmm(multiboot_info_t* mbt, uint32_t *pd) {
     if ((mbt->flags & 0x20) == 0) {
         printf("No memory map from GRUB.\n");
         return;
     }
 
-    _half_maxStack = 0;
+    _halfMaxStack = 0;
     _RAM_size = findRAMSize(mbt);
     printf("Total RAM size: %d KiB\n", _RAM_size);
 
     // Set the start of the _stack
-    _stack = (free_mem_t *)&end;
+    _stack = roundPageAligned((free_mem_t *)&end);
     _start_addr_phys = (uint32_t)((&start) - KERNEL_VIRTUAL_BASE) & 0xFFFFF000;
-    _end_addr_phys = roundPageAligned((uint32_t)&end + _half_maxStack - KERNEL_VIRTUAL_BASE);
+    _end_addr_phys = roundPageAligned((uint32_t)&end + _halfMaxStack - KERNEL_VIRTUAL_BASE);
 
     // Find out what addresses are free
     memory_map_t *mmap = mbt->mmap_addr;

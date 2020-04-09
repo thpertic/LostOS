@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['x_562',['x',['../vga_8c.html#a6150e0515f7202e2fb518f7206ed97dc',1,'vga.c']]]
+  ['x',['x',['../vga_8c.html#a6150e0515f7202e2fb518f7206ed97dc',1,'vga.c']]]
 ];

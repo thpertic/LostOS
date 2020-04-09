@@ -1,0 +1,60 @@
+\hypertarget{structidt__gate}{}\section{idt\+\_\+gate Struct Reference}
+\label{structidt__gate}\index{idt\+\_\+gate@{idt\+\_\+gate}}
+
+
+{\ttfamily \#include $<$idt.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \hyperlink{structidt__gate_a2f2fbb6c1ec5f96c04b4e16f2f1fc5d1}{offset\+\_\+low}
+\item 
+uint16\+\_\+t \hyperlink{structidt__gate_a839f4d5be34a2cf1c58190f8e7fe2b82}{selector}
+\item 
+uint8\+\_\+t \hyperlink{structidt__gate_af35a1b7ef8d77d21e5fe3346c87bda51}{zero}
+\item 
+uint8\+\_\+t \hyperlink{structidt__gate_a7e5a1fc61958deac39a65f975c2383aa}{type\+\_\+attr}
+\item 
+uint16\+\_\+t \hyperlink{structidt__gate_aa212ae9f5054c881745be383526c2dc0}{offset\+\_\+high}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The offset is a 32 bit value, split in two parts. It represents the address of the entry point of the I\+SR. The selector is a 16 bit value and must point to a valid CS descriptor in your G\+DT. The type\+\_\+attr is specified here\+: 7 0 +---+---+---+---+---+---+---+---+ $\vert$ P $\vert$ D\+PL $\vert$ S $\vert$ Gate\+Type $\vert$ +---+---+---+---+---+---+---+---+ 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structidt__gate_aa212ae9f5054c881745be383526c2dc0}\label{structidt__gate_aa212ae9f5054c881745be383526c2dc0}} 
+\index{idt\+\_\+gate@{idt\+\_\+gate}!offset\+\_\+high@{offset\+\_\+high}}
+\index{offset\+\_\+high@{offset\+\_\+high}!idt\+\_\+gate@{idt\+\_\+gate}}
+\subsubsection{\texorpdfstring{offset\+\_\+high}{offset\_high}}
+{\footnotesize\ttfamily uint16\+\_\+t idt\+\_\+gate\+::offset\+\_\+high}
+
+\mbox{\Hypertarget{structidt__gate_a2f2fbb6c1ec5f96c04b4e16f2f1fc5d1}\label{structidt__gate_a2f2fbb6c1ec5f96c04b4e16f2f1fc5d1}} 
+\index{idt\+\_\+gate@{idt\+\_\+gate}!offset\+\_\+low@{offset\+\_\+low}}
+\index{offset\+\_\+low@{offset\+\_\+low}!idt\+\_\+gate@{idt\+\_\+gate}}
+\subsubsection{\texorpdfstring{offset\+\_\+low}{offset\_low}}
+{\footnotesize\ttfamily uint16\+\_\+t idt\+\_\+gate\+::offset\+\_\+low}
+
+\mbox{\Hypertarget{structidt__gate_a839f4d5be34a2cf1c58190f8e7fe2b82}\label{structidt__gate_a839f4d5be34a2cf1c58190f8e7fe2b82}} 
+\index{idt\+\_\+gate@{idt\+\_\+gate}!selector@{selector}}
+\index{selector@{selector}!idt\+\_\+gate@{idt\+\_\+gate}}
+\subsubsection{\texorpdfstring{selector}{selector}}
+{\footnotesize\ttfamily uint16\+\_\+t idt\+\_\+gate\+::selector}
+
+\mbox{\Hypertarget{structidt__gate_a7e5a1fc61958deac39a65f975c2383aa}\label{structidt__gate_a7e5a1fc61958deac39a65f975c2383aa}} 
+\index{idt\+\_\+gate@{idt\+\_\+gate}!type\+\_\+attr@{type\+\_\+attr}}
+\index{type\+\_\+attr@{type\+\_\+attr}!idt\+\_\+gate@{idt\+\_\+gate}}
+\subsubsection{\texorpdfstring{type\+\_\+attr}{type\_attr}}
+{\footnotesize\ttfamily uint8\+\_\+t idt\+\_\+gate\+::type\+\_\+attr}
+
+\mbox{\Hypertarget{structidt__gate_af35a1b7ef8d77d21e5fe3346c87bda51}\label{structidt__gate_af35a1b7ef8d77d21e5fe3346c87bda51}} 
+\index{idt\+\_\+gate@{idt\+\_\+gate}!zero@{zero}}
+\index{zero@{zero}!idt\+\_\+gate@{idt\+\_\+gate}}
+\subsubsection{\texorpdfstring{zero}{zero}}
+{\footnotesize\ttfamily uint8\+\_\+t idt\+\_\+gate\+::zero}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/include/tables/\hyperlink{idt_8h}{idt.\+h}\end{DoxyCompactItemize}

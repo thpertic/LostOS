@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="kheap_8c">
+    <title>kheap.c File Reference</title>
+    <programlisting>#include &lt;mm/kheap.h&gt;</programlisting>
+    <programlisting>#include &lt;mm/pmm.h&gt;</programlisting>
+    <programlisting>#include &lt;debug_utils/printf.h&gt;</programlisting>
+        <section>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint32_t * <link linkend="kheap_8c_1a5591fb6d1147de72cd95d7da15079fbe">_kheapStart</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint32_t <link linkend="kheap_8c_1ab5ab5f5727a2baf1772af3b84b8f3f45">_kheapEnd</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="kheap_8c_1a755a69ff831b6e23a808dcf4b9944854">init_kheap</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/kernel/mm/kheap.c</para>
+    </simplesect>
+</section>

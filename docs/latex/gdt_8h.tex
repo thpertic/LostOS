@@ -1,0 +1,156 @@
+\hypertarget{gdt_8h}{}\section{src/include/tables/gdt.h File Reference}
+\label{gdt_8h}\index{src/include/tables/gdt.\+h@{src/include/tables/gdt.\+h}}
+{\ttfamily \#include $<$system.\+h$>$}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structgdt__entry}{gdt\+\_\+entry}
+\item 
+struct \hyperlink{structgdt__descriptor}{gdt\+\_\+descriptor}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{gdt_8h_a671a8a7334ea602460efad38570c5e6a}{D\+E\+S\+C\+R\+I\+P\+T\+O\+RS}~5
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structgdt__entry}{gdt\+\_\+entry} \hyperlink{gdt_8h_a9c3b87fc42c79f8321b9949eafd55ca5}{\+\_\+\+\_\+attribute\+\_\+\+\_\+} ((packed)) gdt\+\_\+entry\+\_\+t
+\item 
+void \hyperlink{gdt_8h_a86bb50044169930202cc403376ef40c3}{init\+\_\+gdt} ()
+\item 
+void \hyperlink{gdt_8h_a7fb93ca359948180801b0da7ab3c13c3}{gdt\+\_\+set\+Entry} (int index, uint32\+\_\+t \hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base}, uint64\+\_\+t \hyperlink{idt_8h_ab28e82ae69032cb4ad3ec3a0be3d7129}{limit}, uint8\+\_\+t \hyperlink{gdt_8h_a8b0d6200bc639dd37ff68847a0adde5f}{access}, uint8\+\_\+t flags)
+\item 
+void \hyperlink{gdt_8h_a7416cddd08555a9fdbccc577378b40a8}{gdt\+\_\+load} (uint32\+\_\+t \hyperlink{gdt_8c_a914e0ea1ca01a1cd99f8cb587ad9bdbe}{gdt\+\_\+ptr})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \hyperlink{gdt_8h_aa7ae5b5a918e00776ff07fb1c58a348d}{limit\+\_\+low}
+\item 
+uint16\+\_\+t \hyperlink{gdt_8h_a71e21ea67de59991e9a27666a1752a8f}{base\+\_\+low}
+\item 
+uint8\+\_\+t \hyperlink{gdt_8h_a6b67e86f6de9204d76adab79069aec29}{base\+\_\+middle}
+\item 
+uint8\+\_\+t \hyperlink{gdt_8h_a8b0d6200bc639dd37ff68847a0adde5f}{access}
+\item 
+uint8\+\_\+t \hyperlink{gdt_8h_acfea365f69e71368a2db03333d4afd6f}{granularity}
+\item 
+uint8\+\_\+t \hyperlink{gdt_8h_a1a173457c7aa39c59c008fcc3332d2b3}{base\+\_\+high}
+\item 
+uint16\+\_\+t \hyperlink{gdt_8h_aaba88b24a21a6c70c895c0d55f4a69a0}{size}
+\item 
+uint32\+\_\+t \hyperlink{gdt_8h_a894bdfa2d603d8343f8ef01dda6fcd23}{offset}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{gdt_8h_a671a8a7334ea602460efad38570c5e6a}\label{gdt_8h_a671a8a7334ea602460efad38570c5e6a}} 
+\index{gdt.\+h@{gdt.\+h}!D\+E\+S\+C\+R\+I\+P\+T\+O\+RS@{D\+E\+S\+C\+R\+I\+P\+T\+O\+RS}}
+\index{D\+E\+S\+C\+R\+I\+P\+T\+O\+RS@{D\+E\+S\+C\+R\+I\+P\+T\+O\+RS}!gdt.\+h@{gdt.\+h}}
+\subsubsection{\texorpdfstring{D\+E\+S\+C\+R\+I\+P\+T\+O\+RS}{DESCRIPTORS}}
+{\footnotesize\ttfamily \#define D\+E\+S\+C\+R\+I\+P\+T\+O\+RS~5}
+
+2 segments descriptors for kernel mode; 2 segments descriptors for user mode.
+\begin{DoxyItemize}
+\item 1 N\+U\+LL 
+\end{DoxyItemize}
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{gdt_8h_a9c3b87fc42c79f8321b9949eafd55ca5}\label{gdt_8h_a9c3b87fc42c79f8321b9949eafd55ca5}} 
+\index{gdt.\+h@{gdt.\+h}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!gdt.\+h@{gdt.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}{\_\_attribute\_\_()}}
+{\footnotesize\ttfamily struct \hyperlink{structgdt__entry}{gdt\+\_\+entry} \+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(packed)}]{ }\end{DoxyParamCaption})}
+
+The size is the size of the table subtracted by 1. The offset is the linear address of the table itself. \mbox{\Hypertarget{gdt_8h_a7416cddd08555a9fdbccc577378b40a8}\label{gdt_8h_a7416cddd08555a9fdbccc577378b40a8}} 
+\index{gdt.\+h@{gdt.\+h}!gdt\+\_\+load@{gdt\+\_\+load}}
+\index{gdt\+\_\+load@{gdt\+\_\+load}!gdt.\+h@{gdt.\+h}}
+\subsubsection{\texorpdfstring{gdt\+\_\+load()}{gdt\_load()}}
+{\footnotesize\ttfamily void gdt\+\_\+load (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{gdt\+\_\+ptr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gdt_8h_a7fb93ca359948180801b0da7ab3c13c3}\label{gdt_8h_a7fb93ca359948180801b0da7ab3c13c3}} 
+\index{gdt.\+h@{gdt.\+h}!gdt\+\_\+set\+Entry@{gdt\+\_\+set\+Entry}}
+\index{gdt\+\_\+set\+Entry@{gdt\+\_\+set\+Entry}!gdt.\+h@{gdt.\+h}}
+\subsubsection{\texorpdfstring{gdt\+\_\+set\+Entry()}{gdt\_setEntry()}}
+{\footnotesize\ttfamily void gdt\+\_\+set\+Entry (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{uint32\+\_\+t}]{base,  }\item[{uint64\+\_\+t}]{limit,  }\item[{uint8\+\_\+t}]{access,  }\item[{uint8\+\_\+t}]{flags }\end{DoxyParamCaption})}
+
+This function sets the bits of a gdt entry. \mbox{\Hypertarget{gdt_8h_a86bb50044169930202cc403376ef40c3}\label{gdt_8h_a86bb50044169930202cc403376ef40c3}} 
+\index{gdt.\+h@{gdt.\+h}!init\+\_\+gdt@{init\+\_\+gdt}}
+\index{init\+\_\+gdt@{init\+\_\+gdt}!gdt.\+h@{gdt.\+h}}
+\subsubsection{\texorpdfstring{init\+\_\+gdt()}{init\_gdt()}}
+{\footnotesize\ttfamily void init\+\_\+gdt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Kernel CS (from 0 to 4\+GB). Access = 0x9A\+:
+\begin{DoxyItemize}
+\item 1 present
+\item 00 ring 0
+\item 1 always 1
+\item 1 code segment
+\item 0 can be executed by ring lower or equal to D\+PL,
+\item 1 code segment is readable
+\item 0 access bit, always 0, cpu set this to 1 when accessing this sector Flags 0x\+CF\+:
+\item 1 If 0 the limit is in 1 B blocks (byte granularity), if 1 the limit is in 4 KiB blocks (page granularity).
+\item 1 If 0 the selector defines 16 bit protected mode. If 1 it defines 32 bit protected mode. You can have both 16 bit and 32 bit selectors at once.
+\item 0 0
+\item 0 0
+\item 1 1 1 1 -- ignored
+\end{DoxyItemize}
+
+Kernel DS (from 0 to 4\+GB). Access = 0x92\+:
+\begin{DoxyItemize}
+\item Only differ at the fifth bit(counting from least insignificant bit), 0 means it\textquotesingle{}s a data segment.
+\end{DoxyItemize}
+
+User CS and DS. Only differ in ring number (ring 3)
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{gdt_8h_a8b0d6200bc639dd37ff68847a0adde5f}\label{gdt_8h_a8b0d6200bc639dd37ff68847a0adde5f}} 
+\index{gdt.\+h@{gdt.\+h}!access@{access}}
+\index{access@{access}!gdt.\+h@{gdt.\+h}}
+\subsubsection{\texorpdfstring{access}{access}}
+{\footnotesize\ttfamily uint8\+\_\+t access}
+
+\mbox{\Hypertarget{gdt_8h_a1a173457c7aa39c59c008fcc3332d2b3}\label{gdt_8h_a1a173457c7aa39c59c008fcc3332d2b3}} 
+\index{gdt.\+h@{gdt.\+h}!base\+\_\+high@{base\+\_\+high}}
+\index{base\+\_\+high@{base\+\_\+high}!gdt.\+h@{gdt.\+h}}
+\subsubsection{\texorpdfstring{base\+\_\+high}{base\_high}}
+{\footnotesize\ttfamily uint8\+\_\+t base\+\_\+high}
+
+\mbox{\Hypertarget{gdt_8h_a71e21ea67de59991e9a27666a1752a8f}\label{gdt_8h_a71e21ea67de59991e9a27666a1752a8f}} 
+\index{gdt.\+h@{gdt.\+h}!base\+\_\+low@{base\+\_\+low}}
+\index{base\+\_\+low@{base\+\_\+low}!gdt.\+h@{gdt.\+h}}
+\subsubsection{\texorpdfstring{base\+\_\+low}{base\_low}}
+{\footnotesize\ttfamily uint16\+\_\+t base\+\_\+low}
+
+\mbox{\Hypertarget{gdt_8h_a6b67e86f6de9204d76adab79069aec29}\label{gdt_8h_a6b67e86f6de9204d76adab79069aec29}} 
+\index{gdt.\+h@{gdt.\+h}!base\+\_\+middle@{base\+\_\+middle}}
+\index{base\+\_\+middle@{base\+\_\+middle}!gdt.\+h@{gdt.\+h}}
+\subsubsection{\texorpdfstring{base\+\_\+middle}{base\_middle}}
+{\footnotesize\ttfamily uint8\+\_\+t base\+\_\+middle}
+
+\mbox{\Hypertarget{gdt_8h_acfea365f69e71368a2db03333d4afd6f}\label{gdt_8h_acfea365f69e71368a2db03333d4afd6f}} 
+\index{gdt.\+h@{gdt.\+h}!granularity@{granularity}}
+\index{granularity@{granularity}!gdt.\+h@{gdt.\+h}}
+\subsubsection{\texorpdfstring{granularity}{granularity}}
+{\footnotesize\ttfamily uint8\+\_\+t granularity}
+
+\mbox{\Hypertarget{gdt_8h_aa7ae5b5a918e00776ff07fb1c58a348d}\label{gdt_8h_aa7ae5b5a918e00776ff07fb1c58a348d}} 
+\index{gdt.\+h@{gdt.\+h}!limit\+\_\+low@{limit\+\_\+low}}
+\index{limit\+\_\+low@{limit\+\_\+low}!gdt.\+h@{gdt.\+h}}
+\subsubsection{\texorpdfstring{limit\+\_\+low}{limit\_low}}
+{\footnotesize\ttfamily uint16\+\_\+t limit\+\_\+low}
+
+\mbox{\Hypertarget{gdt_8h_a894bdfa2d603d8343f8ef01dda6fcd23}\label{gdt_8h_a894bdfa2d603d8343f8ef01dda6fcd23}} 
+\index{gdt.\+h@{gdt.\+h}!offset@{offset}}
+\index{offset@{offset}!gdt.\+h@{gdt.\+h}}
+\subsubsection{\texorpdfstring{offset}{offset}}
+{\footnotesize\ttfamily uint32\+\_\+t offset}
+
+\mbox{\Hypertarget{gdt_8h_aaba88b24a21a6c70c895c0d55f4a69a0}\label{gdt_8h_aaba88b24a21a6c70c895c0d55f4a69a0}} 
+\index{gdt.\+h@{gdt.\+h}!size@{size}}
+\index{size@{size}!gdt.\+h@{gdt.\+h}}
+\subsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily uint16\+\_\+t size}
+

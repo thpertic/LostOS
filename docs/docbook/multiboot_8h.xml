@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="multiboot_8h">
+    <title>multiboot.h File Reference</title>
+        <section>
+            <title> Data Structures </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structmultiboot__header">multiboot_header</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structaout__symbol__table">aout_symbol_table</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structelf__section__header__table">elf_section_header_table</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structmultiboot__info">multiboot_info</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structmodule">module</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structmemory__map">memory_map</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Macros</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="multiboot_8h_1ab36ad4b4a42c58aac4ad1f2ba13054e9">MULTIBOOT_HEADER_MAGIC</link> 0x1BADB002</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="multiboot_8h_1a5447ae8b3b45c8ed17ad61c267250992">MULTIBOOT_HEADER_FLAGS</link> 0x00010003</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="multiboot_8h_1aacd617f4e3daafd6eab95fb6215ccae4">MULTIBOOT_BOOTLOADER_MAGIC</link> 0x2BADB002</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="multiboot_8h_1a6423a880df59733d2d9b509c7718d3a9">STACK_SIZE</link> 0x4000</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="multiboot_8h_1a0e7cb3fa3ec28d9888e5999d00fd910e">EXT_C</link> sym</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Typedefs</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef struct <link linkend="structmultiboot__header">multiboot_header</link>  <link linkend="multiboot_8h_1aec32326a347bd15dcd235e4af37c2916">multiboot_header_t</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef struct <link linkend="structaout__symbol__table">aout_symbol_table</link>  <link linkend="multiboot_8h_1a0f63f69abdd0ba14d60b38b0f9bb8161">aout_symbol_table_t</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef struct <link linkend="structelf__section__header__table">elf_section_header_table</link>  <link linkend="multiboot_8h_1aa22102583b09d2fdc22f21f9201a74ee">elf_section_header_table_t</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef struct <link linkend="structmultiboot__info">multiboot_info</link>  <link linkend="multiboot_8h_1abc47d72689f915831784b5bd3f4c2401">multiboot_info_t</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef struct <link linkend="structmodule">module</link>  <link linkend="multiboot_8h_1a20dd624e6d6bf2c4922fcb2de2fdd451">module_t</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef struct <link linkend="structmemory__map">memory_map</link>  <link linkend="multiboot_8h_1af3974a9768d03ac2926e8956ec106a01">memory_map_t</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/include/multiboot.h</para>
+    </simplesect>
+</section>

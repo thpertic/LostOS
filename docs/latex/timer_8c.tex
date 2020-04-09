@@ -1,0 +1,50 @@
+\hypertarget{timer_8c}{}\section{src/kernel/interrupts/timer.c File Reference}
+\label{timer_8c}\index{src/kernel/interrupts/timer.\+c@{src/kernel/interrupts/timer.\+c}}
+{\ttfamily \#include $<$interrupts/timer.\+h$>$}\newline
+{\ttfamily \#include $<$interrupts/irqs.\+h$>$}\newline
+{\ttfamily \#include $<$debug\+\_\+utils/printf.\+h$>$}\newline
+{\ttfamily \#include $<$debug\+\_\+utils/serial.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{timer_8c_aa7a05b8b41f51635ca6778b9dbe5e8f3}{tick\+Handler} (regs\+\_\+t $\ast$r)
+\item 
+void \hyperlink{timer_8c_a52c33084576afc93fb93057a924ea224}{init\+\_\+clock} (uint32\+\_\+t frequency)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \hyperlink{timer_8c_a260e06ce96c2e4deebccaedeb059dc0b}{tick} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{timer_8c_a52c33084576afc93fb93057a924ea224}\label{timer_8c_a52c33084576afc93fb93057a924ea224}} 
+\index{timer.\+c@{timer.\+c}!init\+\_\+clock@{init\+\_\+clock}}
+\index{init\+\_\+clock@{init\+\_\+clock}!timer.\+c@{timer.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+clock()}{init\_clock()}}
+{\footnotesize\ttfamily void init\+\_\+clock (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{frequency }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{timer_8c_aa7a05b8b41f51635ca6778b9dbe5e8f3}\label{timer_8c_aa7a05b8b41f51635ca6778b9dbe5e8f3}} 
+\index{timer.\+c@{timer.\+c}!tick\+Handler@{tick\+Handler}}
+\index{tick\+Handler@{tick\+Handler}!timer.\+c@{timer.\+c}}
+\subsubsection{\texorpdfstring{tick\+Handler()}{tickHandler()}}
+{\footnotesize\ttfamily void tick\+Handler (\begin{DoxyParamCaption}\item[{regs\+\_\+t $\ast$}]{r }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{timer_8c_a260e06ce96c2e4deebccaedeb059dc0b}\label{timer_8c_a260e06ce96c2e4deebccaedeb059dc0b}} 
+\index{timer.\+c@{timer.\+c}!tick@{tick}}
+\index{tick@{tick}!timer.\+c@{timer.\+c}}
+\subsubsection{\texorpdfstring{tick}{tick}}
+{\footnotesize\ttfamily uint32\+\_\+t tick = 0}
+
+The Programmable Interval Timer is a chip connected to I\+R\+Q0. It can interrupt the C\+PU at a user-\/defined rate (between 18.\+2\+Hz and 1.\+1931 M\+Hz). The P\+IT is the primary method used for implementing a system clock and the only method available for implementing multitasking (switch processes on interrupt).
+
+The P\+IT has an internal clock which oscillates at approximately 1.\+1931\+M\+Hz. This clock signal is fed through a frequency divider, to modulate the final output frequency. It has 3 channels, each with it\textquotesingle{}s own frequency divider\+:
+\begin{DoxyItemize}
+\item Channel 0 is the most useful. Its output is connected to I\+R\+Q0.
+\item Channel 1 is very un-\/useful and on modern hardware is no longer implemented. It used to control refresh rates for D\+R\+AM.
+\item Channel 2 controls the PC speaker. 
+\end{DoxyItemize}

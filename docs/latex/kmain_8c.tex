@@ -1,0 +1,27 @@
+\hypertarget{kmain_8c}{}\section{src/kernel/kmain.c File Reference}
+\label{kmain_8c}\index{src/kernel/kmain.\+c@{src/kernel/kmain.\+c}}
+{\ttfamily \#include $<$multiboot.\+h$>$}\newline
+{\ttfamily \#include $<$drivers/vga.\+h$>$}\newline
+{\ttfamily \#include $<$tables/gdt.\+h$>$}\newline
+{\ttfamily \#include $<$tables/idt.\+h$>$}\newline
+{\ttfamily \#include $<$interrupts/timer.\+h$>$}\newline
+{\ttfamily \#include $<$mm/pmm.\+h$>$}\newline
+{\ttfamily \#include $<$mm/vmm.\+h$>$}\newline
+{\ttfamily \#include $<$mm/kheap.\+h$>$}\newline
+{\ttfamily \#include $<$debug\+\_\+utils/printf.\+h$>$}\newline
+{\ttfamily \#include $<$debug\+\_\+utils/serial.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{kmain_8c_a5548ddb7f502db3db927cae45151537a}{kmain} (uint32\+\_\+t $\ast$pd, \hyperlink{multiboot_8h_abc47d72689f915831784b5bd3f4c2401}{multiboot\+\_\+info\+\_\+t} $\ast$mbd, int n)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{kmain_8c_a5548ddb7f502db3db927cae45151537a}\label{kmain_8c_a5548ddb7f502db3db927cae45151537a}} 
+\index{kmain.\+c@{kmain.\+c}!kmain@{kmain}}
+\index{kmain@{kmain}!kmain.\+c@{kmain.\+c}}
+\subsubsection{\texorpdfstring{kmain()}{kmain()}}
+{\footnotesize\ttfamily void kmain (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$}]{pd,  }\item[{\hyperlink{multiboot_8h_abc47d72689f915831784b5bd3f4c2401}{multiboot\+\_\+info\+\_\+t} $\ast$}]{mbd,  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+This is the starting point of the OS. Starts everything. 

@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="pmm_8h">
+    <title>pmm.h File Reference</title>
+    <programlisting>#include &lt;multiboot.h&gt;</programlisting>
+    <programlisting>#include &lt;stdint.h&gt;</programlisting>
+    <programlisting>#include &lt;system.h&gt;</programlisting>
+        <section>
+            <title> Data Structures </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structfree__mem">free_mem</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Macros</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="pmm_8h_1a7d467c1d283fdfa1f2081ba1e0d01b6e">PAGE_SIZE</link> 4096</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Typedefs</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef struct <link linkend="structfree__mem">free_mem</link>  <link linkend="pmm_8h_1a56fc0f2bfc4430cfd99522588a0c6878">free_mem_t</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="pmm_8h_1a56fc0f2bfc4430cfd99522588a0c6878">free_mem_t</link> * <link linkend="pmm_8h_1a427feb8c8cbda0b56681cc4bd73f13dc">_stack</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>char <link linkend="pmm_8h_1ad56f39f054765ea9dd480006512069cf">start</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>char <link linkend="pmm_8h_1a9e4682258f8f23dadc2b3d013395b49b">end</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint32_t <link linkend="pmm_8h_1a89d47a94a95030cbf6e04f3253daab85">_start_addr_phys</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint32_t <link linkend="pmm_8h_1a11ad00e7b113249743d3a677325f707a">_end_addr_phys</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint32_t <link linkend="pmm_8h_1aa749bf4110b5f65aa0fee32fe3c0cf2c">_RAM_size</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint32_t <link linkend="pmm_8h_1a5bb7ef536de4b277224aa268478319e4">_halfMaxStack</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="pmm_8h_1a864c0a7e14f8e4bd05d55cc893accda8">init_pmm</link> (
+<link linkend="multiboot_8h_1abc47d72689f915831784b5bd3f4c2401">multiboot_info_t</link> * mbt, uint32_t * pd)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint32_t <link linkend="pmm_8h_1ab38d3119cf7271bddb0e001d53e2129b">pAllocPage</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="pmm_8h_1a1339a5075397c7100f01c9b0ecf3d886">pFreePage</link> (
+void * addr)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint32_t <link linkend="pmm_8h_1a0fc059dc84d1d73d5388c0ffe3a3527b">pAllocPages</link> (
+uint32_t size)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="pmm_8h_1a9dbd902fc2b911df2deb1bf7d1683619">pFreePages</link> (
+void * addr, uint32_t size)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint32_t <link linkend="pmm_8h_1ad3bc0be58c79c7407b56bf050276c5fd">roundPageAligned</link> (
+uint32_t n)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/include/mm/pmm.h</para>
+    </simplesect>
+</section>

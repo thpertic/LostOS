@@ -1,0 +1,43 @@
+\hypertarget{kheap_8c}{}\section{src/kernel/mm/kheap.c File Reference}
+\label{kheap_8c}\index{src/kernel/mm/kheap.\+c@{src/kernel/mm/kheap.\+c}}
+{\ttfamily \#include $<$mm/kheap.\+h$>$}\newline
+{\ttfamily \#include $<$mm/pmm.\+h$>$}\newline
+{\ttfamily \#include $<$debug\+\_\+utils/printf.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{kheap_8c_a755a69ff831b6e23a808dcf4b9944854}{init\+\_\+kheap} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t $\ast$ \hyperlink{kheap_8c_a5591fb6d1147de72cd95d7da15079fbe}{\+\_\+kheap\+Start}
+\item 
+uint32\+\_\+t \hyperlink{kheap_8c_ab5ab5f5727a2baf1772af3b84b8f3f45}{\+\_\+kheap\+End}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{kheap_8c_a755a69ff831b6e23a808dcf4b9944854}\label{kheap_8c_a755a69ff831b6e23a808dcf4b9944854}} 
+\index{kheap.\+c@{kheap.\+c}!init\+\_\+kheap@{init\+\_\+kheap}}
+\index{init\+\_\+kheap@{init\+\_\+kheap}!kheap.\+c@{kheap.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+kheap()}{init\_kheap()}}
+{\footnotesize\ttfamily void init\+\_\+kheap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Initialize kernel heap.
+
+This is done with a linked list. The starting address will be after the P\+MM stack. 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{kheap_8c_ab5ab5f5727a2baf1772af3b84b8f3f45}\label{kheap_8c_ab5ab5f5727a2baf1772af3b84b8f3f45}} 
+\index{kheap.\+c@{kheap.\+c}!\+\_\+kheap\+End@{\+\_\+kheap\+End}}
+\index{\+\_\+kheap\+End@{\+\_\+kheap\+End}!kheap.\+c@{kheap.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+kheap\+End}{\_kheapEnd}}
+{\footnotesize\ttfamily uint32\+\_\+t \+\_\+kheap\+End}
+
+\mbox{\Hypertarget{kheap_8c_a5591fb6d1147de72cd95d7da15079fbe}\label{kheap_8c_a5591fb6d1147de72cd95d7da15079fbe}} 
+\index{kheap.\+c@{kheap.\+c}!\+\_\+kheap\+Start@{\+\_\+kheap\+Start}}
+\index{\+\_\+kheap\+Start@{\+\_\+kheap\+Start}!kheap.\+c@{kheap.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+kheap\+Start}{\_kheapStart}}
+{\footnotesize\ttfamily uint32\+\_\+t$\ast$ \+\_\+kheap\+Start}
+

@@ -23,7 +23,7 @@
  *  1  0  1 - User process tried to read a page and caused a protection fault
  *  1  1  0 - User process tried to write to a non-present page entry
  *  1  1  1 - User process tried to write a page and caused a protection fault
- **/
+ */
 
 /**
  * Mapping a virtual address to a physical one.
@@ -113,7 +113,7 @@ void vUnmapPage(void *virt) {
  *      AAAAAAAAAA         BBBBBBBBBB        CCCCCCCCCCCC
  *      directory index    page table index  offset into page
  */
-void vmm_init() {
+void init_vmm() {
     uint32_t eflags = interrupt_save_disable();	
 
 	uint32_t *pd_p __attribute__((aligned(4096))) = pAllocPage();

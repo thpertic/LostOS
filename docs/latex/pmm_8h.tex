@@ -1,0 +1,171 @@
+\hypertarget{pmm_8h}{}\section{src/include/mm/pmm.h File Reference}
+\label{pmm_8h}\index{src/include/mm/pmm.\+h@{src/include/mm/pmm.\+h}}
+{\ttfamily \#include $<$multiboot.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$system.\+h$>$}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structfree__mem}{free\+\_\+mem}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{pmm_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}{P\+A\+G\+E\+\_\+\+S\+I\+ZE}~4096
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structfree__mem}{free\+\_\+mem} \hyperlink{pmm_8h_a56fc0f2bfc4430cfd99522588a0c6878}{free\+\_\+mem\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{pmm_8h_a864c0a7e14f8e4bd05d55cc893accda8}{init\+\_\+pmm} (\hyperlink{multiboot_8h_abc47d72689f915831784b5bd3f4c2401}{multiboot\+\_\+info\+\_\+t} $\ast$mbt, uint32\+\_\+t $\ast$pd)
+\item 
+uint32\+\_\+t \hyperlink{pmm_8h_ab38d3119cf7271bddb0e001d53e2129b}{p\+Alloc\+Page} ()
+\item 
+bool \hyperlink{pmm_8h_a1339a5075397c7100f01c9b0ecf3d886}{p\+Free\+Page} (void $\ast$addr)
+\item 
+uint32\+\_\+t \hyperlink{pmm_8h_a0fc059dc84d1d73d5388c0ffe3a3527b}{p\+Alloc\+Pages} (uint32\+\_\+t \hyperlink{gdt_8h_aaba88b24a21a6c70c895c0d55f4a69a0}{size})
+\item 
+bool \hyperlink{pmm_8h_a9dbd902fc2b911df2deb1bf7d1683619}{p\+Free\+Pages} (void $\ast$addr, uint32\+\_\+t \hyperlink{gdt_8h_aaba88b24a21a6c70c895c0d55f4a69a0}{size})
+\item 
+uint32\+\_\+t \hyperlink{pmm_8h_ad3bc0be58c79c7407b56bf050276c5fd}{round\+Page\+Aligned} (uint32\+\_\+t n)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{pmm_8h_a56fc0f2bfc4430cfd99522588a0c6878}{free\+\_\+mem\+\_\+t} $\ast$ \hyperlink{pmm_8h_a427feb8c8cbda0b56681cc4bd73f13dc}{\+\_\+stack}
+\item 
+char \hyperlink{pmm_8h_ad56f39f054765ea9dd480006512069cf}{start}
+\item 
+char \hyperlink{pmm_8h_a9e4682258f8f23dadc2b3d013395b49b}{end}
+\item 
+uint32\+\_\+t \hyperlink{pmm_8h_a89d47a94a95030cbf6e04f3253daab85}{\+\_\+start\+\_\+addr\+\_\+phys}
+\item 
+uint32\+\_\+t \hyperlink{pmm_8h_a11ad00e7b113249743d3a677325f707a}{\+\_\+end\+\_\+addr\+\_\+phys}
+\item 
+uint32\+\_\+t \hyperlink{pmm_8h_aa749bf4110b5f65aa0fee32fe3c0cf2c}{\+\_\+\+R\+A\+M\+\_\+size}
+\item 
+uint32\+\_\+t \hyperlink{pmm_8h_a5bb7ef536de4b277224aa268478319e4}{\+\_\+half\+Max\+Stack}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{pmm_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}\label{pmm_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}} 
+\index{pmm.\+h@{pmm.\+h}!P\+A\+G\+E\+\_\+\+S\+I\+ZE@{P\+A\+G\+E\+\_\+\+S\+I\+ZE}}
+\index{P\+A\+G\+E\+\_\+\+S\+I\+ZE@{P\+A\+G\+E\+\_\+\+S\+I\+ZE}!pmm.\+h@{pmm.\+h}}
+\subsubsection{\texorpdfstring{P\+A\+G\+E\+\_\+\+S\+I\+ZE}{PAGE\_SIZE}}
+{\footnotesize\ttfamily \#define P\+A\+G\+E\+\_\+\+S\+I\+ZE~4096}
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{pmm_8h_a56fc0f2bfc4430cfd99522588a0c6878}\label{pmm_8h_a56fc0f2bfc4430cfd99522588a0c6878}} 
+\index{pmm.\+h@{pmm.\+h}!free\+\_\+mem\+\_\+t@{free\+\_\+mem\+\_\+t}}
+\index{free\+\_\+mem\+\_\+t@{free\+\_\+mem\+\_\+t}!pmm.\+h@{pmm.\+h}}
+\subsubsection{\texorpdfstring{free\+\_\+mem\+\_\+t}{free\_mem\_t}}
+{\footnotesize\ttfamily typedef struct \hyperlink{structfree__mem}{free\+\_\+mem}  \hyperlink{pmm_8h_a56fc0f2bfc4430cfd99522588a0c6878}{free\+\_\+mem\+\_\+t}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{pmm_8h_a864c0a7e14f8e4bd05d55cc893accda8}\label{pmm_8h_a864c0a7e14f8e4bd05d55cc893accda8}} 
+\index{pmm.\+h@{pmm.\+h}!init\+\_\+pmm@{init\+\_\+pmm}}
+\index{init\+\_\+pmm@{init\+\_\+pmm}!pmm.\+h@{pmm.\+h}}
+\subsubsection{\texorpdfstring{init\+\_\+pmm()}{init\_pmm()}}
+{\footnotesize\ttfamily void init\+\_\+pmm (\begin{DoxyParamCaption}\item[{\hyperlink{multiboot_8h_abc47d72689f915831784b5bd3f4c2401}{multiboot\+\_\+info\+\_\+t} $\ast$}]{mbt,  }\item[{uint32\+\_\+t $\ast$}]{pd }\end{DoxyParamCaption})}
+
+To implement the physical memory manager something to hold all the free addressed is needed. I\textquotesingle{}m using a run-\/length encoded \+\_\+stack\+: this technique constists in pushing the address and the number of pages all at once. This has several advantages\+:
+\begin{DoxyEnumerate}
+\item it requires considerably less memory
+\item it\textquotesingle{}s trivial to fill up the initial \+\_\+stack from E820 data as it uses the same format \+:-\/)
+\item you can search for entries with more pages if you really want to allocate contiguous physical pages
+\end{DoxyEnumerate}
+
+At this moment the real page size is 4\+MB still, but in the initialization of the Virtual Memory Manager it\textquotesingle{}s gonna switch to 4\+KB. If the memory sector is not reserved or the address is below 1\+MB, exclude it. G\+R\+UB\textquotesingle{}s mmap doesn\textquotesingle{}t include some stuff that\textquotesingle{}s mapped to memory below 1\+MB.\mbox{\Hypertarget{pmm_8h_ab38d3119cf7271bddb0e001d53e2129b}\label{pmm_8h_ab38d3119cf7271bddb0e001d53e2129b}} 
+\index{pmm.\+h@{pmm.\+h}!p\+Alloc\+Page@{p\+Alloc\+Page}}
+\index{p\+Alloc\+Page@{p\+Alloc\+Page}!pmm.\+h@{pmm.\+h}}
+\subsubsection{\texorpdfstring{p\+Alloc\+Page()}{pAllocPage()}}
+{\footnotesize\ttfamily uint32\+\_\+t p\+Alloc\+Page (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Interface Function.
+
+This function allocates a page (W\+I\+LL BE 4K A\+L\+I\+G\+N\+ED) and returns the address. \mbox{\Hypertarget{pmm_8h_a0fc059dc84d1d73d5388c0ffe3a3527b}\label{pmm_8h_a0fc059dc84d1d73d5388c0ffe3a3527b}} 
+\index{pmm.\+h@{pmm.\+h}!p\+Alloc\+Pages@{p\+Alloc\+Pages}}
+\index{p\+Alloc\+Pages@{p\+Alloc\+Pages}!pmm.\+h@{pmm.\+h}}
+\subsubsection{\texorpdfstring{p\+Alloc\+Pages()}{pAllocPages()}}
+{\footnotesize\ttfamily uint32\+\_\+t p\+Alloc\+Pages (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+Interface Function.
+
+This function allocates a wanted size (N\+OT N\+U\+M\+B\+ER OF P\+A\+G\+ES -\/ B\+Y\+T\+ES). It uses the technique called \char`\"{}\+First-\/\+Fit\char`\"{}. It\textquotesingle{}s faster but causes fragmentation. While pushing in the \+\_\+stack there are various controls to merge and an \char`\"{}emergency\char`\"{} function when the \+\_\+stack is too big, so we\textquotesingle{}re safe. \mbox{\Hypertarget{pmm_8h_a1339a5075397c7100f01c9b0ecf3d886}\label{pmm_8h_a1339a5075397c7100f01c9b0ecf3d886}} 
+\index{pmm.\+h@{pmm.\+h}!p\+Free\+Page@{p\+Free\+Page}}
+\index{p\+Free\+Page@{p\+Free\+Page}!pmm.\+h@{pmm.\+h}}
+\subsubsection{\texorpdfstring{p\+Free\+Page()}{pFreePage()}}
+{\footnotesize\ttfamily bool p\+Free\+Page (\begin{DoxyParamCaption}\item[{void $\ast$}]{addr }\end{DoxyParamCaption})}
+
+Interface Function.
+
+This function frees a page, returning true or false if it finished well. \mbox{\Hypertarget{pmm_8h_a9dbd902fc2b911df2deb1bf7d1683619}\label{pmm_8h_a9dbd902fc2b911df2deb1bf7d1683619}} 
+\index{pmm.\+h@{pmm.\+h}!p\+Free\+Pages@{p\+Free\+Pages}}
+\index{p\+Free\+Pages@{p\+Free\+Pages}!pmm.\+h@{pmm.\+h}}
+\subsubsection{\texorpdfstring{p\+Free\+Pages()}{pFreePages()}}
+{\footnotesize\ttfamily bool p\+Free\+Pages (\begin{DoxyParamCaption}\item[{void $\ast$}]{addr,  }\item[{uint32\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+Interface Function.
+
+This function frees memory from the address addr for size. \mbox{\Hypertarget{pmm_8h_ad3bc0be58c79c7407b56bf050276c5fd}\label{pmm_8h_ad3bc0be58c79c7407b56bf050276c5fd}} 
+\index{pmm.\+h@{pmm.\+h}!round\+Page\+Aligned@{round\+Page\+Aligned}}
+\index{round\+Page\+Aligned@{round\+Page\+Aligned}!pmm.\+h@{pmm.\+h}}
+\subsubsection{\texorpdfstring{round\+Page\+Aligned()}{roundPageAligned()}}
+{\footnotesize\ttfamily uint32\+\_\+t round\+Page\+Aligned (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+This function returns the bigger 4\+KB aligned size.
+
+(i. e. for 315 Byte will return 4\+KB, while for 16387 Byte will return 20K) 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{pmm_8h_a11ad00e7b113249743d3a677325f707a}\label{pmm_8h_a11ad00e7b113249743d3a677325f707a}} 
+\index{pmm.\+h@{pmm.\+h}!\+\_\+end\+\_\+addr\+\_\+phys@{\+\_\+end\+\_\+addr\+\_\+phys}}
+\index{\+\_\+end\+\_\+addr\+\_\+phys@{\+\_\+end\+\_\+addr\+\_\+phys}!pmm.\+h@{pmm.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+end\+\_\+addr\+\_\+phys}{\_end\_addr\_phys}}
+{\footnotesize\ttfamily uint32\+\_\+t \+\_\+end\+\_\+addr\+\_\+phys}
+
+\mbox{\Hypertarget{pmm_8h_a5bb7ef536de4b277224aa268478319e4}\label{pmm_8h_a5bb7ef536de4b277224aa268478319e4}} 
+\index{pmm.\+h@{pmm.\+h}!\+\_\+half\+Max\+Stack@{\+\_\+half\+Max\+Stack}}
+\index{\+\_\+half\+Max\+Stack@{\+\_\+half\+Max\+Stack}!pmm.\+h@{pmm.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+half\+Max\+Stack}{\_halfMaxStack}}
+{\footnotesize\ttfamily uint32\+\_\+t \+\_\+half\+Max\+Stack}
+
+\mbox{\Hypertarget{pmm_8h_aa749bf4110b5f65aa0fee32fe3c0cf2c}\label{pmm_8h_aa749bf4110b5f65aa0fee32fe3c0cf2c}} 
+\index{pmm.\+h@{pmm.\+h}!\+\_\+\+R\+A\+M\+\_\+size@{\+\_\+\+R\+A\+M\+\_\+size}}
+\index{\+\_\+\+R\+A\+M\+\_\+size@{\+\_\+\+R\+A\+M\+\_\+size}!pmm.\+h@{pmm.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+R\+A\+M\+\_\+size}{\_RAM\_size}}
+{\footnotesize\ttfamily uint32\+\_\+t \+\_\+\+R\+A\+M\+\_\+size}
+
+\mbox{\Hypertarget{pmm_8h_a427feb8c8cbda0b56681cc4bd73f13dc}\label{pmm_8h_a427feb8c8cbda0b56681cc4bd73f13dc}} 
+\index{pmm.\+h@{pmm.\+h}!\+\_\+stack@{\+\_\+stack}}
+\index{\+\_\+stack@{\+\_\+stack}!pmm.\+h@{pmm.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+stack}{\_stack}}
+{\footnotesize\ttfamily \hyperlink{pmm_8h_a56fc0f2bfc4430cfd99522588a0c6878}{free\+\_\+mem\+\_\+t}$\ast$ \+\_\+stack}
+
+\mbox{\Hypertarget{pmm_8h_a89d47a94a95030cbf6e04f3253daab85}\label{pmm_8h_a89d47a94a95030cbf6e04f3253daab85}} 
+\index{pmm.\+h@{pmm.\+h}!\+\_\+start\+\_\+addr\+\_\+phys@{\+\_\+start\+\_\+addr\+\_\+phys}}
+\index{\+\_\+start\+\_\+addr\+\_\+phys@{\+\_\+start\+\_\+addr\+\_\+phys}!pmm.\+h@{pmm.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+start\+\_\+addr\+\_\+phys}{\_start\_addr\_phys}}
+{\footnotesize\ttfamily uint32\+\_\+t \+\_\+start\+\_\+addr\+\_\+phys}
+
+\mbox{\Hypertarget{pmm_8h_a9e4682258f8f23dadc2b3d013395b49b}\label{pmm_8h_a9e4682258f8f23dadc2b3d013395b49b}} 
+\index{pmm.\+h@{pmm.\+h}!end@{end}}
+\index{end@{end}!pmm.\+h@{pmm.\+h}}
+\subsubsection{\texorpdfstring{end}{end}}
+{\footnotesize\ttfamily char end}
+
+\mbox{\Hypertarget{pmm_8h_ad56f39f054765ea9dd480006512069cf}\label{pmm_8h_ad56f39f054765ea9dd480006512069cf}} 
+\index{pmm.\+h@{pmm.\+h}!start@{start}}
+\index{start@{start}!pmm.\+h@{pmm.\+h}}
+\subsubsection{\texorpdfstring{start}{start}}
+{\footnotesize\ttfamily char start}
+
