@@ -125,8 +125,12 @@
  */
 
 /**
- * This is the starting point of the OS.
- * Starts everything.
+ * Main function of the kernel.
+ * This initialize every part of the os.
+ * 
+ * @param pd The physical address of the first Page Directory.
+ * @param mbd The pyhsical address of GRUB's multiboot structure.
+ * @param n GRUB's number to verify that everything works correctly.
  */
 void kmain(uint32_t *pd, multiboot_info_t* mbd, int n) {
     init_video();

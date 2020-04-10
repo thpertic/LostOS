@@ -34,7 +34,7 @@
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>unsigned int <link linkend="pmm_8c_1a0eca41541cd1fd854545a42d5194389c">findRAMSize</link> (
+                        <para>uint32_t <link linkend="pmm_8c_1a297ec15b59fa9bf85621b93e36f9de92">findRAMSize</link> (
 <link linkend="multiboot_8h_1abc47d72689f915831784b5bd3f4c2401">multiboot_info_t</link> * mbt)</para>
                     </listitem>
                 </itemizedlist>
@@ -51,7 +51,8 @@
                 <itemizedlist>
                     <listitem>
                         <para>void <link linkend="pmm_8c_1a9cf1c37b91cd445b89356f56887167d0">defragmentPMM</link> (
-bool original)</para>
+bool original)<para><emphasis>This function is going to check for every struct, if it is possible to merge with other.</emphasis></para>
+</para>
                     </listitem>
                 </itemizedlist>
             </para>
@@ -131,7 +132,8 @@ uint32_t pd_start, uint32_t pd_end, <link linkend="pmm_8h_1a56fc0f2bfc4430cfd995
                 <itemizedlist>
                     <listitem>
                         <para>void <link linkend="pmm_8c_1a226ae979acb63b841fc6d1ace18f771a">checkBoundaries</link> (
-uint32_t pd_start, uint32_t pd_end, uint32_t length, uint32_t base_addr)</para>
+uint32_t pd_start, uint32_t pd_end, uint32_t length, uint32_t base_addr)<para><emphasis>Checks the memory map with some overlap controls. (+ = free memory; - = [used memory])</emphasis></para>
+</para>
                     </listitem>
                 </itemizedlist>
             </para>
@@ -139,7 +141,8 @@ uint32_t pd_start, uint32_t pd_end, uint32_t length, uint32_t base_addr)</para>
                 <itemizedlist>
                     <listitem>
                         <para>void <link linkend="pmm_8c_1a864c0a7e14f8e4bd05d55cc893accda8">init_pmm</link> (
-<link linkend="multiboot_8h_1abc47d72689f915831784b5bd3f4c2401">multiboot_info_t</link> * mbt, uint32_t * pd)</para>
+<link linkend="multiboot_8h_1abc47d72689f915831784b5bd3f4c2401">multiboot_info_t</link> * mbt, uint32_t * pd)<para><emphasis>Creates a stack (run-length encoded) of free pages.</emphasis></para>
+</para>
                     </listitem>
                 </itemizedlist>
             </para>

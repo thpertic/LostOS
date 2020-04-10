@@ -71,19 +71,25 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="kheap_8h_source.html">mm/kheap.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="pmm_8h_source.html">mm/pmm.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="vmm_8h_source.html">mm/vmm.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="printf_8h_source.html">debug_utils/printf.h</a>&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a755a69ff831b6e23a808dcf4b9944854"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kheap_8c.html#a755a69ff831b6e23a808dcf4b9944854">init_kheap</a> ()</td></tr>
 <tr class="separator:a755a69ff831b6e23a808dcf4b9944854"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afec98775e8113dc6d98f75a582c3646f"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kheap_8c.html#afec98775e8113dc6d98f75a582c3646f">kmalloc</a> (uint32_t <a class="el" href="gdt_8h.html#aaba88b24a21a6c70c895c0d55f4a69a0">size</a>)</td></tr>
+<tr class="memdesc:afec98775e8113dc6d98f75a582c3646f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to allocate the heap for the kernel.  <a href="#afec98775e8113dc6d98f75a582c3646f">More...</a><br /></td></tr>
+<tr class="separator:afec98775e8113dc6d98f75a582c3646f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a5591fb6d1147de72cd95d7da15079fbe"><td class="memItemLeft" align="right" valign="top">uint32_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kheap_8c.html#a5591fb6d1147de72cd95d7da15079fbe">_kheapStart</a></td></tr>
+<tr class="memdesc:a5591fb6d1147de72cd95d7da15079fbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual address of where the heap starts.  <a href="#a5591fb6d1147de72cd95d7da15079fbe">More...</a><br /></td></tr>
 <tr class="separator:a5591fb6d1147de72cd95d7da15079fbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5ab5f5727a2baf1772af3b84b8f3f45"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kheap_8c.html#ab5ab5f5727a2baf1772af3b84b8f3f45">_kheapEnd</a></td></tr>
-<tr class="separator:ab5ab5f5727a2baf1772af3b84b8f3f45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bfbfbf3c5486cfda8bd93e9ef0d9a45"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kheap_8h.html#aecdf894eef66106f9a4ff67c70d1d3c6">kheapHeader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kheap_8c.html#a8bfbfbf3c5486cfda8bd93e9ef0d9a45">_kheapFirst</a></td></tr>
+<tr class="memdesc:a8bfbfbf3c5486cfda8bd93e9ef0d9a45"><td class="mdescLeft">&#160;</td><td class="mdescRight">The first block of the heap linked list.  <a href="#a8bfbfbf3c5486cfda8bd93e9ef0d9a45">More...</a><br /></td></tr>
+<tr class="separator:a8bfbfbf3c5486cfda8bd93e9ef0d9a45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a755a69ff831b6e23a808dcf4b9944854"></a>
@@ -105,18 +111,49 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="ab5ab5f5727a2baf1772af3b84b8f3f45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5ab5f5727a2baf1772af3b84b8f3f45">&#9670;&nbsp;</a></span>_kheapEnd</h2>
+<a id="afec98775e8113dc6d98f75a582c3646f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afec98775e8113dc6d98f75a582c3646f">&#9670;&nbsp;</a></span>kmalloc()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t _kheapEnd</td>
+          <td class="memname">void* kmalloc </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>size</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Function to allocate the heap for the kernel. </p>
+<p>A heap is a vital component of both application programs and the kernel. It is also generally superseded by a higher level of memory management that deals with larger chunks of memory. For most operating systems memory will be allocated based on pages or other large chunks.</p>
+<p>This is used to dynamically allocate a single large block of memory with the specified size. It returns a pointer of type void which can be cast into a pointer of any form.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>Size (in bytes) to be allocated.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Allocated pointer </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a8bfbfbf3c5486cfda8bd93e9ef0d9a45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bfbfbf3c5486cfda8bd93e9ef0d9a45">&#9670;&nbsp;</a></span>_kheapFirst</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="kheap_8h.html#aecdf894eef66106f9a4ff67c70d1d3c6">kheapHeader</a>* _kheapFirst</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The first block of the heap linked list. </p>
 
 </div>
 </div>
@@ -131,6 +168,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Virtual address of where the heap starts. </p>
 
 </div>
 </div>

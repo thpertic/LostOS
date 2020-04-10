@@ -17,6 +17,7 @@ var searchData=
   ['pmm_2eh',['pmm.h',['../pmm_8h.html',1,'']]],
   ['popallpmm',['popAllPMM',['../pmm_8c.html#a3765ad9c647b697e75cd7fdd35ab8911',1,'pmm.c']]],
   ['port_5fio_2ec',['port_io.c',['../port__io_8c.html',1,'']]],
+  ['prev',['prev',['../struct__kheapHeader.html#a6755f9f330cfee6083f4f330af129608',1,'_kheapHeader']]],
   ['print',['PRINT',['../vga_8h.html#a1c31a89221060cbbbc4fa52cfea9dd1d',1,'vga.h']]],
   ['printf',['printf',['../printf_8h.html#a98631211a4a8aee62f572375d5b637be',1,'printf(const char *format,...):&#160;printf.c'],['../printf_8c.html#a98631211a4a8aee62f572375d5b637be',1,'printf(const char *format,...):&#160;printf.c']]],
   ['printf_2ec',['printf.c',['../printf_8c.html',1,'']]],

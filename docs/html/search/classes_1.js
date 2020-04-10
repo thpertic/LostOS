@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['elf_5fsection_5fheader_5ftable',['elf_section_header_table',['../structelf__section__header__table.html',1,'']]]
+  ['aout_5fsymbol_5ftable',['aout_symbol_table',['../structaout__symbol__table.html',1,'']]]
 ];

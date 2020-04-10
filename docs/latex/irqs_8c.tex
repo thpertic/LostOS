@@ -40,13 +40,23 @@ Each of the I\+RQ I\+S\+Rs point to this function, rather than the \textquotesin
 \subsubsection{\texorpdfstring{irq\+\_\+install\+Handler()}{irq\_installHandler()}}
 {\footnotesize\ttfamily void irq\+\_\+install\+Handler (\begin{DoxyParamCaption}\item[{int}]{irq,  }\item[{void($\ast$)(regs\+\_\+t $\ast$r)}]{handler }\end{DoxyParamCaption})}
 
-This installs a custom I\+RQ handler for the given I\+RQ \mbox{\Hypertarget{irqs_8c_a99a28bd3e9237b07826af4106d69929e}\label{irqs_8c_a99a28bd3e9237b07826af4106d69929e}} 
+This installs a custom I\+RQ handler for the given I\+RQ
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{irqs_8c_a99a28bd3e9237b07826af4106d69929e}{irq\+\_\+uninstall\+Handler()} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{irqs_8c_a99a28bd3e9237b07826af4106d69929e}\label{irqs_8c_a99a28bd3e9237b07826af4106d69929e}} 
 \index{irqs.\+c@{irqs.\+c}!irq\+\_\+uninstall\+Handler@{irq\+\_\+uninstall\+Handler}}
 \index{irq\+\_\+uninstall\+Handler@{irq\+\_\+uninstall\+Handler}!irqs.\+c@{irqs.\+c}}
 \subsubsection{\texorpdfstring{irq\+\_\+uninstall\+Handler()}{irq\_uninstallHandler()}}
 {\footnotesize\ttfamily void irq\+\_\+uninstall\+Handler (\begin{DoxyParamCaption}\item[{int}]{irq }\end{DoxyParamCaption})}
 
-This clears the handler for a given I\+RQ \mbox{\Hypertarget{irqs_8c_aadf5ae2109fe28b014720deb24f677de}\label{irqs_8c_aadf5ae2109fe28b014720deb24f677de}} 
+This clears the handler for a given I\+RQ
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{irqs_8c_af62fec9ecb95472ec14315a9e161103a}{irq\+\_\+install\+Handler()} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{irqs_8c_aadf5ae2109fe28b014720deb24f677de}\label{irqs_8c_aadf5ae2109fe28b014720deb24f677de}} 
 \index{irqs.\+c@{irqs.\+c}!irqs\+\_\+init@{irqs\+\_\+init}}
 \index{irqs\+\_\+init@{irqs\+\_\+init}!irqs.\+c@{irqs.\+c}}
 \subsubsection{\texorpdfstring{irqs\+\_\+init()}{irqs\_init()}}

@@ -1,5 +1,13 @@
 #include <debug_utils/printf.h>
 
+/**
+ * Prints to the screen.
+ * 
+ * @param format String to format.
+ * @param ... List of arguments.
+ * 
+ * @return If everything went OK.
+ */
 int printf(const char *format, ...) {
     // Using the eyeball rule: 3 bytes of output for each byte of input. 
     // It is almost never a problem to allocate a little too much memory.

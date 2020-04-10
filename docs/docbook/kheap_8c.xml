@@ -3,20 +3,23 @@
     <title>kheap.c File Reference</title>
     <programlisting>#include &lt;mm/kheap.h&gt;</programlisting>
     <programlisting>#include &lt;mm/pmm.h&gt;</programlisting>
+    <programlisting>#include &lt;mm/vmm.h&gt;</programlisting>
     <programlisting>#include &lt;debug_utils/printf.h&gt;</programlisting>
         <section>
             <title>Variables</title>
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>uint32_t * <link linkend="kheap_8c_1a5591fb6d1147de72cd95d7da15079fbe">_kheapStart</link></para>
+                        <para>uint32_t * <link linkend="kheap_8c_1a5591fb6d1147de72cd95d7da15079fbe">_kheapStart</link><para><emphasis>Virtual address of where the heap starts.</emphasis></para>
+</para>
                     </listitem>
                 </itemizedlist>
             </para>
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>uint32_t <link linkend="kheap_8c_1ab5ab5f5727a2baf1772af3b84b8f3f45">_kheapEnd</link></para>
+                        <para><link linkend="kheap_8h_1aecdf894eef66106f9a4ff67c70d1d3c6">kheapHeader</link> * <link linkend="kheap_8c_1a8bfbfbf3c5486cfda8bd93e9ef0d9a45">_kheapFirst</link><para><emphasis>The first block of the heap linked list.</emphasis></para>
+</para>
                     </listitem>
                 </itemizedlist>
             </para>
@@ -28,6 +31,15 @@
                     <listitem>
                         <para>void <link linkend="kheap_8c_1a755a69ff831b6e23a808dcf4b9944854">init_kheap</link> (
 )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void * <link linkend="kheap_8c_1afec98775e8113dc6d98f75a582c3646f">kmalloc</link> (
+uint32_t size)<para><emphasis>Function to allocate the heap for the kernel.</emphasis></para>
+</para>
                     </listitem>
                 </itemizedlist>
             </para>

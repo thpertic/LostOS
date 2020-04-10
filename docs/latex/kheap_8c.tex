@@ -2,19 +2,22 @@
 \label{kheap_8c}\index{src/kernel/mm/kheap.\+c@{src/kernel/mm/kheap.\+c}}
 {\ttfamily \#include $<$mm/kheap.\+h$>$}\newline
 {\ttfamily \#include $<$mm/pmm.\+h$>$}\newline
+{\ttfamily \#include $<$mm/vmm.\+h$>$}\newline
 {\ttfamily \#include $<$debug\+\_\+utils/printf.\+h$>$}\newline
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{kheap_8c_a755a69ff831b6e23a808dcf4b9944854}{init\+\_\+kheap} ()
-\end{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{kheap_8c_afec98775e8113dc6d98f75a582c3646f}{kmalloc} (uint32\+\_\+t \hyperlink{gdt_8h_aaba88b24a21a6c70c895c0d55f4a69a0}{size})
+\begin{DoxyCompactList}\small\item\em Function to allocate the heap for the kernel. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 uint32\+\_\+t $\ast$ \hyperlink{kheap_8c_a5591fb6d1147de72cd95d7da15079fbe}{\+\_\+kheap\+Start}
-\item 
-uint32\+\_\+t \hyperlink{kheap_8c_ab5ab5f5727a2baf1772af3b84b8f3f45}{\+\_\+kheap\+End}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Virtual address of where the heap starts. \end{DoxyCompactList}\item 
+\hyperlink{kheap_8h_aecdf894eef66106f9a4ff67c70d1d3c6}{kheap\+Header} $\ast$ \hyperlink{kheap_8c_a8bfbfbf3c5486cfda8bd93e9ef0d9a45}{\+\_\+kheap\+First}
+\begin{DoxyCompactList}\small\item\em The first block of the heap linked list. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
@@ -26,18 +29,48 @@ uint32\+\_\+t \hyperlink{kheap_8c_ab5ab5f5727a2baf1772af3b84b8f3f45}{\+\_\+kheap
 
 Initialize kernel heap.
 
-This is done with a linked list. The starting address will be after the P\+MM stack. 
+This is done with a linked list. The starting address will be after the P\+MM stack. \mbox{\Hypertarget{kheap_8c_afec98775e8113dc6d98f75a582c3646f}\label{kheap_8c_afec98775e8113dc6d98f75a582c3646f}} 
+\index{kheap.\+c@{kheap.\+c}!kmalloc@{kmalloc}}
+\index{kmalloc@{kmalloc}!kheap.\+c@{kheap.\+c}}
+\subsubsection{\texorpdfstring{kmalloc()}{kmalloc()}}
+{\footnotesize\ttfamily void$\ast$ kmalloc (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+Function to allocate the heap for the kernel. 
+
+A heap is a vital component of both application programs and the kernel. It is also generally superseded by a higher level of memory management that deals with larger chunks of memory. For most operating systems memory will be allocated based on pages or other large chunks.
+
+This is used to dynamically allocate a single large block of memory with the specified size. It returns a pointer of type void which can be cast into a pointer of any form.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Size (in bytes) to be allocated.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated pointer 
+\end{DoxyReturn}
+
 
 \subsection{Variable Documentation}
-\mbox{\Hypertarget{kheap_8c_ab5ab5f5727a2baf1772af3b84b8f3f45}\label{kheap_8c_ab5ab5f5727a2baf1772af3b84b8f3f45}} 
-\index{kheap.\+c@{kheap.\+c}!\+\_\+kheap\+End@{\+\_\+kheap\+End}}
-\index{\+\_\+kheap\+End@{\+\_\+kheap\+End}!kheap.\+c@{kheap.\+c}}
-\subsubsection{\texorpdfstring{\+\_\+kheap\+End}{\_kheapEnd}}
-{\footnotesize\ttfamily uint32\+\_\+t \+\_\+kheap\+End}
+\mbox{\Hypertarget{kheap_8c_a8bfbfbf3c5486cfda8bd93e9ef0d9a45}\label{kheap_8c_a8bfbfbf3c5486cfda8bd93e9ef0d9a45}} 
+\index{kheap.\+c@{kheap.\+c}!\+\_\+kheap\+First@{\+\_\+kheap\+First}}
+\index{\+\_\+kheap\+First@{\+\_\+kheap\+First}!kheap.\+c@{kheap.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+kheap\+First}{\_kheapFirst}}
+{\footnotesize\ttfamily \hyperlink{kheap_8h_aecdf894eef66106f9a4ff67c70d1d3c6}{kheap\+Header}$\ast$ \+\_\+kheap\+First}
+
+
+
+The first block of the heap linked list. 
 
 \mbox{\Hypertarget{kheap_8c_a5591fb6d1147de72cd95d7da15079fbe}\label{kheap_8c_a5591fb6d1147de72cd95d7da15079fbe}} 
 \index{kheap.\+c@{kheap.\+c}!\+\_\+kheap\+Start@{\+\_\+kheap\+Start}}
 \index{\+\_\+kheap\+Start@{\+\_\+kheap\+Start}!kheap.\+c@{kheap.\+c}}
 \subsubsection{\texorpdfstring{\+\_\+kheap\+Start}{\_kheapStart}}
 {\footnotesize\ttfamily uint32\+\_\+t$\ast$ \+\_\+kheap\+Start}
+
+
+
+Virtual address of where the heap starts. 
 

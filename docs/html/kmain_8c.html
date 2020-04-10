@@ -116,7 +116,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This is the starting point of the OS. Starts everything. </p>
+<p>Main function of the kernel. This initialize every part of the os.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pd</td><td>The physical address of the first Page Directory. </td></tr>
+    <tr><td class="paramname">mbd</td><td>The pyhsical address of GRUB's multiboot structure. </td></tr>
+    <tr><td class="paramname">n</td><td>GRUB's number to verify that everything works correctly. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

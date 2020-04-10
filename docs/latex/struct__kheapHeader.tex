@@ -1,0 +1,56 @@
+\hypertarget{struct__kheapHeader}{}\section{\+\_\+kheap\+Header Struct Reference}
+\label{struct__kheapHeader}\index{\+\_\+kheap\+Header@{\+\_\+kheap\+Header}}
+
+
+{\ttfamily \#include $<$kheap.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__kheapHeader}{\+\_\+kheap\+Header} $\ast$ \hyperlink{struct__kheapHeader_a6755f9f330cfee6083f4f330af129608}{prev}
+\begin{DoxyCompactList}\small\item\em Previous block in the chunk. \end{DoxyCompactList}\item 
+struct \hyperlink{struct__kheapHeader}{\+\_\+kheap\+Header} $\ast$ \hyperlink{struct__kheapHeader_a6b7d743ff0a2e92dca939094312f9419}{next}
+\begin{DoxyCompactList}\small\item\em Next block of the chunk. \end{DoxyCompactList}\item 
+uint32\+\_\+t \hyperlink{struct__kheapHeader_aee2f50280223d62d19e3941897d08d23}{size}
+\begin{DoxyCompactList}\small\item\em Size of the chunk minus the size of this header. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This structure represent a block inside the linked list of the heap. (It really is only a contiguous block of memory) It is based in the header of the chunk. Thus, when returned, it is important to remember to add sizeof(kheap\+Header); and when a pointer is received, subtract it. 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{struct__kheapHeader_a6b7d743ff0a2e92dca939094312f9419}\label{struct__kheapHeader_a6b7d743ff0a2e92dca939094312f9419}} 
+\index{\+\_\+kheap\+Header@{\+\_\+kheap\+Header}!next@{next}}
+\index{next@{next}!\+\_\+kheap\+Header@{\+\_\+kheap\+Header}}
+\subsubsection{\texorpdfstring{next}{next}}
+{\footnotesize\ttfamily struct \hyperlink{struct__kheapHeader}{\+\_\+kheap\+Header}$\ast$ \+\_\+kheap\+Header\+::next}
+
+
+
+Next block of the chunk. 
+
+\mbox{\Hypertarget{struct__kheapHeader_a6755f9f330cfee6083f4f330af129608}\label{struct__kheapHeader_a6755f9f330cfee6083f4f330af129608}} 
+\index{\+\_\+kheap\+Header@{\+\_\+kheap\+Header}!prev@{prev}}
+\index{prev@{prev}!\+\_\+kheap\+Header@{\+\_\+kheap\+Header}}
+\subsubsection{\texorpdfstring{prev}{prev}}
+{\footnotesize\ttfamily struct \hyperlink{struct__kheapHeader}{\+\_\+kheap\+Header}$\ast$ \+\_\+kheap\+Header\+::prev}
+
+
+
+Previous block in the chunk. 
+
+\mbox{\Hypertarget{struct__kheapHeader_aee2f50280223d62d19e3941897d08d23}\label{struct__kheapHeader_aee2f50280223d62d19e3941897d08d23}} 
+\index{\+\_\+kheap\+Header@{\+\_\+kheap\+Header}!size@{size}}
+\index{size@{size}!\+\_\+kheap\+Header@{\+\_\+kheap\+Header}}
+\subsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily uint32\+\_\+t \+\_\+kheap\+Header\+::size}
+
+
+
+Size of the chunk minus the size of this header. 
+
+It could have been calculated, but with this is more practical 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/include/mm/\hyperlink{kheap_8h}{kheap.\+h}\end{DoxyCompactItemize}

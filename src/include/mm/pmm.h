@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include <system.h>
 
-#define PAGE_SIZE 4096
+#define PAGE_SIZE 0x1000
 
 /* First address then nContiguousPages */
 typedef struct free_mem {
@@ -21,7 +21,7 @@ extern char end;    // Start of the stack | Symbols
 uint32_t _start_addr_phys;
 uint32_t _end_addr_phys;
 
-uint32_t _RAM_size;
+uint32_t _RAMSize;
 
 uint32_t _halfMaxStack;
 

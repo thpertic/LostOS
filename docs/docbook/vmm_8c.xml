@@ -11,6 +11,22 @@
             <para>
                 <itemizedlist>
                     <listitem>
+                        <para>void * <link linkend="vmm_8c_1aa1de63853ee6b993531d48958c6c3e1f">vAllocPage</link> (
+void * virt, uint32_t flags, bool man)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void * <link linkend="vmm_8c_1a7a305ff942b89d446b7b72c665340349">vAllocPages</link> (
+void * virt, uint32_t flags, uint32_t n, bool man)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
                         <para>bool <link linkend="vmm_8c_1acb06b7c4006a14240ac29a3ede114daf">vMapPage</link> (
 void * phys, void * virt, uint32_t flags)</para>
                     </listitem>
@@ -19,7 +35,7 @@ void * phys, void * virt, uint32_t flags)</para>
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>void <link linkend="vmm_8c_1a409b57cb773a4d7a57f99db96b204788">vUnmapPage</link> (
+                        <para>bool <link linkend="vmm_8c_1aa774181128af1b6c9cfd859525edf105">vUnmapPage</link> (
 void * virt)</para>
                     </listitem>
                 </itemizedlist>
@@ -28,7 +44,8 @@ void * virt)</para>
                 <itemizedlist>
                     <listitem>
                         <para>void <link linkend="vmm_8c_1acd34cb4c1016f8b955c09153679bc1ec">init_vmm</link> (
-)</para>
+)<para><emphasis>The Virtual Memory Manager is going to start and handle paging in the system.</emphasis></para>
+</para>
                     </listitem>
                 </itemizedlist>
             </para>

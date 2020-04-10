@@ -44,7 +44,6 @@ char *exception_messages[32] = {
  * Interrupt handlers are initiated by hardware interrupts, software interrupt instructions, or software exceptions,
  * and are used for implementing device drivers or transitions between protected modes of operation, such as system calls.
  */
-
 void isrs_init() {
     idt_setGate(0, (uint32_t)isr0, 0x08, 0x8E);
     idt_setGate(1, (uint32_t)isr1, 0x08, 0x8E);

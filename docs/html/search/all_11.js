@@ -18,7 +18,7 @@ var searchData=
   ['set_5fcolor',['set_color',['../vga_8h.html#ad0040ec0fb32ac4b886bdb38a22d7045',1,'set_color(uint8_t foreColor, uint8_t backColor):&#160;vga.c'],['../vga_8c.html#ad0040ec0fb32ac4b886bdb38a22d7045',1,'set_color(uint8_t foreColor, uint8_t backColor):&#160;vga.c']]],
   ['set_5fcr3',['set_cr3',['../vmm_8h.html#a2cff7f27869ced78fdc69df1e0e84cfd',1,'vmm.h']]],
   ['shndx',['shndx',['../structelf__section__header__table.html#a449a7a6aaebf6946c4580649451cf463',1,'elf_section_header_table']]],
-  ['size',['size',['../structelf__section__header__table.html#a2b95483fa97636019b8080792c6968b7',1,'elf_section_header_table::size()'],['../structmemory__map.html#a7cc9c671b3fce55df7da566cee83c788',1,'memory_map::size()'],['../structgdt__descriptor.html#ac1d1f417f0dea5075fda70333b4e609e',1,'gdt_descriptor::size()'],['../gdt_8h.html#aaba88b24a21a6c70c895c0d55f4a69a0',1,'size():&#160;gdt.h']]],
+  ['size',['size',['../struct__kheapHeader.html#aee2f50280223d62d19e3941897d08d23',1,'_kheapHeader::size()'],['../structelf__section__header__table.html#a2b95483fa97636019b8080792c6968b7',1,'elf_section_header_table::size()'],['../structmemory__map.html#a7cc9c671b3fce55df7da566cee83c788',1,'memory_map::size()'],['../structgdt__descriptor.html#ac1d1f417f0dea5075fda70333b4e609e',1,'gdt_descriptor::size()'],['../gdt_8h.html#aaba88b24a21a6c70c895c0d55f4a69a0',1,'size():&#160;gdt.h']]],
   ['sortedinsertpmm',['sortedInsertPMM',['../pmm_8c.html#a880478e8fea14ae37c246594be3de679',1,'pmm.c']]],
   ['sortpmm',['sortPMM',['../pmm_8c.html#a137be8a22aa0ceb14ec8175f132df6c7',1,'pmm.c']]],
   ['ss',['ss',['../structregs.html#ae24c40e9efb433989445bfd318564c90',1,'regs::ss()'],['../system_8h.html#a0ed2c935d809c29ae771d1a8350a272f',1,'ss():&#160;system.h']]],

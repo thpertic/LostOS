@@ -11,7 +11,7 @@ struct \hyperlink{structfree__mem}{free\+\_\+mem}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{pmm_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}{P\+A\+G\+E\+\_\+\+S\+I\+ZE}~4096
+\#define \hyperlink{pmm_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}{P\+A\+G\+E\+\_\+\+S\+I\+ZE}~0x1000
 \end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
@@ -22,7 +22,7 @@ typedef struct \hyperlink{structfree__mem}{free\+\_\+mem} \hyperlink{pmm_8h_a56f
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{pmm_8h_a864c0a7e14f8e4bd05d55cc893accda8}{init\+\_\+pmm} (\hyperlink{multiboot_8h_abc47d72689f915831784b5bd3f4c2401}{multiboot\+\_\+info\+\_\+t} $\ast$mbt, uint32\+\_\+t $\ast$pd)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a stack (run-\/length encoded) of free pages. \end{DoxyCompactList}\item 
 uint32\+\_\+t \hyperlink{pmm_8h_ab38d3119cf7271bddb0e001d53e2129b}{p\+Alloc\+Page} ()
 \item 
 bool \hyperlink{pmm_8h_a1339a5075397c7100f01c9b0ecf3d886}{p\+Free\+Page} (void $\ast$addr)
@@ -46,7 +46,7 @@ uint32\+\_\+t \hyperlink{pmm_8h_a89d47a94a95030cbf6e04f3253daab85}{\+\_\+start\+
 \item 
 uint32\+\_\+t \hyperlink{pmm_8h_a11ad00e7b113249743d3a677325f707a}{\+\_\+end\+\_\+addr\+\_\+phys}
 \item 
-uint32\+\_\+t \hyperlink{pmm_8h_aa749bf4110b5f65aa0fee32fe3c0cf2c}{\+\_\+\+R\+A\+M\+\_\+size}
+uint32\+\_\+t \hyperlink{pmm_8h_aa01a58cfb5bb9aa5f97f6ef1f6c1bce5}{\+\_\+\+R\+A\+M\+Size}
 \item 
 uint32\+\_\+t \hyperlink{pmm_8h_a5bb7ef536de4b277224aa268478319e4}{\+\_\+half\+Max\+Stack}
 \end{DoxyCompactItemize}
@@ -57,7 +57,7 @@ uint32\+\_\+t \hyperlink{pmm_8h_a5bb7ef536de4b277224aa268478319e4}{\+\_\+half\+M
 \index{pmm.\+h@{pmm.\+h}!P\+A\+G\+E\+\_\+\+S\+I\+ZE@{P\+A\+G\+E\+\_\+\+S\+I\+ZE}}
 \index{P\+A\+G\+E\+\_\+\+S\+I\+ZE@{P\+A\+G\+E\+\_\+\+S\+I\+ZE}!pmm.\+h@{pmm.\+h}}
 \subsubsection{\texorpdfstring{P\+A\+G\+E\+\_\+\+S\+I\+ZE}{PAGE\_SIZE}}
-{\footnotesize\ttfamily \#define P\+A\+G\+E\+\_\+\+S\+I\+ZE~4096}
+{\footnotesize\ttfamily \#define P\+A\+G\+E\+\_\+\+S\+I\+ZE~0x1000}
 
 
 
@@ -77,6 +77,10 @@ uint32\+\_\+t \hyperlink{pmm_8h_a5bb7ef536de4b277224aa268478319e4}{\+\_\+half\+M
 \subsubsection{\texorpdfstring{init\+\_\+pmm()}{init\_pmm()}}
 {\footnotesize\ttfamily void init\+\_\+pmm (\begin{DoxyParamCaption}\item[{\hyperlink{multiboot_8h_abc47d72689f915831784b5bd3f4c2401}{multiboot\+\_\+info\+\_\+t} $\ast$}]{mbt,  }\item[{uint32\+\_\+t $\ast$}]{pd }\end{DoxyParamCaption})}
 
+
+
+Creates a stack (run-\/length encoded) of free pages. 
+
 To implement the physical memory manager something to hold all the free addressed is needed. I\textquotesingle{}m using a run-\/length encoded \+\_\+stack\+: this technique constists in pushing the address and the number of pages all at once. This has several advantages\+:
 \begin{DoxyEnumerate}
 \item it requires considerably less memory
@@ -84,7 +88,16 @@ To implement the physical memory manager something to hold all the free addresse
 \item you can search for entries with more pages if you really want to allocate contiguous physical pages
 \end{DoxyEnumerate}
 
-At this moment the real page size is 4\+MB still, but in the initialization of the Virtual Memory Manager it\textquotesingle{}s gonna switch to 4\+KB. If the memory sector is not reserved or the address is below 1\+MB, exclude it. G\+R\+UB\textquotesingle{}s mmap doesn\textquotesingle{}t include some stuff that\textquotesingle{}s mapped to memory below 1\+MB.\mbox{\Hypertarget{pmm_8h_ab38d3119cf7271bddb0e001d53e2129b}\label{pmm_8h_ab38d3119cf7271bddb0e001d53e2129b}} 
+At this moment the real page size is 4\+MB still, but in the initialization of the Virtual Memory Manager it\textquotesingle{}s gonna switch to 4\+KB.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mbt} & The physical address of G\+R\+UB\textquotesingle{}s multiboot structure. \\
+\hline
+{\em pd} & The physical address of the first Page Directory. \\
+\hline
+\end{DoxyParams}
+If the memory sector is not reserved or the address is below 1\+MB, exclude it. G\+R\+UB\textquotesingle{}s mmap doesn\textquotesingle{}t include some stuff that\textquotesingle{}s mapped to memory below 1\+MB.\mbox{\Hypertarget{pmm_8h_ab38d3119cf7271bddb0e001d53e2129b}\label{pmm_8h_ab38d3119cf7271bddb0e001d53e2129b}} 
 \index{pmm.\+h@{pmm.\+h}!p\+Alloc\+Page@{p\+Alloc\+Page}}
 \index{p\+Alloc\+Page@{p\+Alloc\+Page}!pmm.\+h@{pmm.\+h}}
 \subsubsection{\texorpdfstring{p\+Alloc\+Page()}{pAllocPage()}}
@@ -92,7 +105,17 @@ At this moment the real page size is 4\+MB still, but in the initialization of t
 
 Interface Function.
 
-This function allocates a page (W\+I\+LL BE 4K A\+L\+I\+G\+N\+ED) and returns the address. \mbox{\Hypertarget{pmm_8h_a0fc059dc84d1d73d5388c0ffe3a3527b}\label{pmm_8h_a0fc059dc84d1d73d5388c0ffe3a3527b}} 
+This function allocates a page (W\+I\+LL BE 4K A\+L\+I\+G\+N\+ED) and returns the address.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{pmm_8c_a3765ad9c647b697e75cd7fdd35ab8911}{pop\+All\+P\+M\+M()} 
+
+\hyperlink{pmm_8c_a64c4a1b74b0bf32ba34832c054eb31f1}{push\+All\+P\+M\+M()}
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+Address of the now allocated 4\+K\+B-\/aligned page. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{pmm_8h_a0fc059dc84d1d73d5388c0ffe3a3527b}\label{pmm_8h_a0fc059dc84d1d73d5388c0ffe3a3527b}} 
 \index{pmm.\+h@{pmm.\+h}!p\+Alloc\+Pages@{p\+Alloc\+Pages}}
 \index{p\+Alloc\+Pages@{p\+Alloc\+Pages}!pmm.\+h@{pmm.\+h}}
 \subsubsection{\texorpdfstring{p\+Alloc\+Pages()}{pAllocPages()}}
@@ -100,7 +123,24 @@ This function allocates a page (W\+I\+LL BE 4K A\+L\+I\+G\+N\+ED) and returns th
 
 Interface Function.
 
-This function allocates a wanted size (N\+OT N\+U\+M\+B\+ER OF P\+A\+G\+ES -\/ B\+Y\+T\+ES). It uses the technique called \char`\"{}\+First-\/\+Fit\char`\"{}. It\textquotesingle{}s faster but causes fragmentation. While pushing in the \+\_\+stack there are various controls to merge and an \char`\"{}emergency\char`\"{} function when the \+\_\+stack is too big, so we\textquotesingle{}re safe. \mbox{\Hypertarget{pmm_8h_a1339a5075397c7100f01c9b0ecf3d886}\label{pmm_8h_a1339a5075397c7100f01c9b0ecf3d886}} 
+This function allocates a wanted size (N\+OT N\+U\+M\+B\+ER OF P\+A\+G\+ES -\/ B\+Y\+T\+ES). It uses the technique called \char`\"{}\+First-\/\+Fit\char`\"{}. It\textquotesingle{}s faster but causes fragmentation. While pushing in the \+\_\+stack there are various controls to merge and an \char`\"{}emergency\char`\"{} function when the \+\_\+stack is too big, so we\textquotesingle{}re safe.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{pmm_8c_a1339a5075397c7100f01c9b0ecf3d886}{p\+Free\+Page()} 
+
+\hyperlink{pmm_8c_a9dbd902fc2b911df2deb1bf7d1683619}{p\+Free\+Pages()} 
+
+\hyperlink{pmm_8c_ab38d3119cf7271bddb0e001d53e2129b}{p\+Alloc\+Page()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Wanted bytes to allocate contiguously. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the buffer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{pmm_8h_a1339a5075397c7100f01c9b0ecf3d886}\label{pmm_8h_a1339a5075397c7100f01c9b0ecf3d886}} 
 \index{pmm.\+h@{pmm.\+h}!p\+Free\+Page@{p\+Free\+Page}}
 \index{p\+Free\+Page@{p\+Free\+Page}!pmm.\+h@{pmm.\+h}}
 \subsubsection{\texorpdfstring{p\+Free\+Page()}{pFreePage()}}
@@ -108,7 +148,20 @@ This function allocates a wanted size (N\+OT N\+U\+M\+B\+ER OF P\+A\+G\+ES -\/ B
 
 Interface Function.
 
-This function frees a page, returning true or false if it finished well. \mbox{\Hypertarget{pmm_8h_a9dbd902fc2b911df2deb1bf7d1683619}\label{pmm_8h_a9dbd902fc2b911df2deb1bf7d1683619}} 
+This function frees a page, returning true or false if it finished well.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{pmm_8c_a64c4a1b74b0bf32ba34832c054eb31f1}{push\+All\+P\+M\+M()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & Address of the page to be freed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If everything is OK. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{pmm_8h_a9dbd902fc2b911df2deb1bf7d1683619}\label{pmm_8h_a9dbd902fc2b911df2deb1bf7d1683619}} 
 \index{pmm.\+h@{pmm.\+h}!p\+Free\+Pages@{p\+Free\+Pages}}
 \index{p\+Free\+Pages@{p\+Free\+Pages}!pmm.\+h@{pmm.\+h}}
 \subsubsection{\texorpdfstring{p\+Free\+Pages()}{pFreePages()}}
@@ -116,7 +169,26 @@ This function frees a page, returning true or false if it finished well. \mbox{\
 
 Interface Function.
 
-This function frees memory from the address addr for size. \mbox{\Hypertarget{pmm_8h_ad3bc0be58c79c7407b56bf050276c5fd}\label{pmm_8h_ad3bc0be58c79c7407b56bf050276c5fd}} 
+This function frees memory from the address addr for size.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{pmm_8c_a1339a5075397c7100f01c9b0ecf3d886}{p\+Free\+Page()} 
+
+\hyperlink{pmm_8c_ab38d3119cf7271bddb0e001d53e2129b}{p\+Alloc\+Page()} 
+
+palloc\+Pages()
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & Pointer to the buffer. \\
+\hline
+{\em size} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If everything\textquotesingle{}s OK 
+\end{DoxyReturn}
+\mbox{\Hypertarget{pmm_8h_ad3bc0be58c79c7407b56bf050276c5fd}\label{pmm_8h_ad3bc0be58c79c7407b56bf050276c5fd}} 
 \index{pmm.\+h@{pmm.\+h}!round\+Page\+Aligned@{round\+Page\+Aligned}}
 \index{round\+Page\+Aligned@{round\+Page\+Aligned}!pmm.\+h@{pmm.\+h}}
 \subsubsection{\texorpdfstring{round\+Page\+Aligned()}{roundPageAligned()}}
@@ -139,11 +211,11 @@ This function returns the bigger 4\+KB aligned size.
 \subsubsection{\texorpdfstring{\+\_\+half\+Max\+Stack}{\_halfMaxStack}}
 {\footnotesize\ttfamily uint32\+\_\+t \+\_\+half\+Max\+Stack}
 
-\mbox{\Hypertarget{pmm_8h_aa749bf4110b5f65aa0fee32fe3c0cf2c}\label{pmm_8h_aa749bf4110b5f65aa0fee32fe3c0cf2c}} 
-\index{pmm.\+h@{pmm.\+h}!\+\_\+\+R\+A\+M\+\_\+size@{\+\_\+\+R\+A\+M\+\_\+size}}
-\index{\+\_\+\+R\+A\+M\+\_\+size@{\+\_\+\+R\+A\+M\+\_\+size}!pmm.\+h@{pmm.\+h}}
-\subsubsection{\texorpdfstring{\+\_\+\+R\+A\+M\+\_\+size}{\_RAM\_size}}
-{\footnotesize\ttfamily uint32\+\_\+t \+\_\+\+R\+A\+M\+\_\+size}
+\mbox{\Hypertarget{pmm_8h_aa01a58cfb5bb9aa5f97f6ef1f6c1bce5}\label{pmm_8h_aa01a58cfb5bb9aa5f97f6ef1f6c1bce5}} 
+\index{pmm.\+h@{pmm.\+h}!\+\_\+\+R\+A\+M\+Size@{\+\_\+\+R\+A\+M\+Size}}
+\index{\+\_\+\+R\+A\+M\+Size@{\+\_\+\+R\+A\+M\+Size}!pmm.\+h@{pmm.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+R\+A\+M\+Size}{\_RAMSize}}
+{\footnotesize\ttfamily uint32\+\_\+t \+\_\+\+R\+A\+M\+Size}
 
 \mbox{\Hypertarget{pmm_8h_a427feb8c8cbda0b56681cc4bd73f13dc}\label{pmm_8h_a427feb8c8cbda0b56681cc4bd73f13dc}} 
 \index{pmm.\+h@{pmm.\+h}!\+\_\+stack@{\+\_\+stack}}

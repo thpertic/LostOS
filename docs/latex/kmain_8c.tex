@@ -24,4 +24,14 @@ void \hyperlink{kmain_8c_a5548ddb7f502db3db927cae45151537a}{kmain} (uint32\+\_\+
 \subsubsection{\texorpdfstring{kmain()}{kmain()}}
 {\footnotesize\ttfamily void kmain (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$}]{pd,  }\item[{\hyperlink{multiboot_8h_abc47d72689f915831784b5bd3f4c2401}{multiboot\+\_\+info\+\_\+t} $\ast$}]{mbd,  }\item[{int}]{n }\end{DoxyParamCaption})}
 
-This is the starting point of the OS. Starts everything. 
+Main function of the kernel. This initialize every part of the os.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pd} & The physical address of the first Page Directory. \\
+\hline
+{\em mbd} & The pyhsical address of G\+R\+UB\textquotesingle{}s multiboot structure. \\
+\hline
+{\em n} & G\+R\+UB\textquotesingle{}s number to verify that everything works correctly. \\
+\hline
+\end{DoxyParams}

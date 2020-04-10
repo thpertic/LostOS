@@ -6,6 +6,7 @@
         <xi:include href="mainpage.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <chapter>
         <title>Data Structure Documentation</title>
+        <xi:include href="struct__kheapHeader.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
         <xi:include href="structaout__symbol__table.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
         <xi:include href="structelf__section__header__table.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
         <xi:include href="structfree__mem.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>

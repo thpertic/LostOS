@@ -111,7 +111,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Copy 'n' bytes of data from 'src' to 'dest', finally return 'dest'. </p>
+<p>Copy 'n' bytes of data from 'src' to 'dest'.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dest</td><td>Pointer to the destination buffer. </td></tr>
+    <tr><td class="paramname">src</td><td>Pointer to the source buffer. </td></tr>
+    <tr><td class="paramname">n</td><td>Times to copy c. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The destination buffer </dd></dl>
 
 </div>
 </div>
@@ -147,7 +156,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Assembly instructions used: cld - clears direction flag; rep stosb - Store AL at address ES:(E)DI + rep CX times</p>
-<p>The direction flag is used to influence the direction in which string instructions offset pointer registers. Set 'n' bytes in 'dest' from 'c'. Return 'dest' </p>
+<p>The direction flag is used to influence the direction in which string instructions offset pointer registers. Set 'n' bytes in 'dest' as 'c'.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dest</td><td>Pointer to the destination buffer. </td></tr>
+    <tr><td class="paramname">c</td><td>Char to copy. </td></tr>
+    <tr><td class="paramname">n</td><td>Times to copy c.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The destination buffer. </dd></dl>
 
 </div>
 </div>
@@ -182,7 +200,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set 'n' bytes in 'dest' from 'c'. Return 'dest'. Takes a word as c. </p>
+<p>Set 'n' bytes in 'dest' as 'c'.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dest</td><td>Pointer to the destination buffer. </td></tr>
+    <tr><td class="paramname">c</td><td>Char (as a word) to copy. </td></tr>
+    <tr><td class="paramname">n</td><td>Times to copy.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The destination buffer. </dd></dl>
 
 </div>
 </div>

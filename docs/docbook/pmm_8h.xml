@@ -19,7 +19,7 @@
             <para>
                 <itemizedlist>
                     <listitem>
-                            <para>#define <link linkend="pmm_8h_1a7d467c1d283fdfa1f2081ba1e0d01b6e">PAGE_SIZE</link> 4096</para>
+                            <para>#define <link linkend="pmm_8h_1a7d467c1d283fdfa1f2081ba1e0d01b6e">PAGE_SIZE</link> 0x1000</para>
                     </listitem>
                 </itemizedlist>
             </para>
@@ -74,7 +74,7 @@
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>uint32_t <link linkend="pmm_8h_1aa749bf4110b5f65aa0fee32fe3c0cf2c">_RAM_size</link></para>
+                        <para>uint32_t <link linkend="pmm_8h_1aa01a58cfb5bb9aa5f97f6ef1f6c1bce5">_RAMSize</link></para>
                     </listitem>
                 </itemizedlist>
             </para>
@@ -92,7 +92,8 @@
                 <itemizedlist>
                     <listitem>
                         <para>void <link linkend="pmm_8h_1a864c0a7e14f8e4bd05d55cc893accda8">init_pmm</link> (
-<link linkend="multiboot_8h_1abc47d72689f915831784b5bd3f4c2401">multiboot_info_t</link> * mbt, uint32_t * pd)</para>
+<link linkend="multiboot_8h_1abc47d72689f915831784b5bd3f4c2401">multiboot_info_t</link> * mbt, uint32_t * pd)<para><emphasis>Creates a stack (run-length encoded) of free pages.</emphasis></para>
+</para>
                     </listitem>
                 </itemizedlist>
             </para>

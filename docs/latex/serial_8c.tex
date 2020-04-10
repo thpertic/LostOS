@@ -41,6 +41,23 @@ Initialize the serial port C\+O\+M1. \mbox{\Hypertarget{serial_8c_a3c667fb8cb71a
 \subsubsection{\texorpdfstring{printf\+Serial()}{printfSerial()}}
 {\footnotesize\ttfamily int printf\+Serial (\begin{DoxyParamCaption}\item[{const char $\ast$}]{format,  }\item[{}]{... }\end{DoxyParamCaption})}
 
+Prints to the serial port.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{serial_8c_a76cf9b35dda50826b55b6cc1b079b5c8}{serial\+Write\+String()} 
+
+\hyperlink{serial_8c_aa1d0c8f870edae14a5ca85154b24a1e1}{serial\+Write()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em format} & String to format. \\
+\hline
+{\em ...} & List of arguments.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If everything went OK. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{serial_8c_a5e8a3b213d7467654fdcd7d2fda68b68}\label{serial_8c_a5e8a3b213d7467654fdcd7d2fda68b68}} 
 \index{serial.\+c@{serial.\+c}!serial\+Read@{serial\+Read}}
 \index{serial\+Read@{serial\+Read}!serial.\+c@{serial.\+c}}
@@ -59,10 +76,33 @@ Read from the serial port C\+O\+M1. \mbox{\Hypertarget{serial_8c_a022821f2e1284e
 \subsubsection{\texorpdfstring{serial\+Write()}{serialWrite()}}
 {\footnotesize\ttfamily void serial\+Write (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
 
-Write to the serial port C\+O\+M1. \mbox{\Hypertarget{serial_8c_a76cf9b35dda50826b55b6cc1b079b5c8}\label{serial_8c_a76cf9b35dda50826b55b6cc1b079b5c8}} 
+Write to the serial port C\+O\+M1.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{serial_8c_a76cf9b35dda50826b55b6cc1b079b5c8}{serial\+Write\+String()} 
+
+\hyperlink{serial_8c_a3c667fb8cb71a36f04e338fc600d7b8f}{printf\+Serial()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Char to write. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{serial_8c_a76cf9b35dda50826b55b6cc1b079b5c8}\label{serial_8c_a76cf9b35dda50826b55b6cc1b079b5c8}} 
 \index{serial.\+c@{serial.\+c}!serial\+Write\+String@{serial\+Write\+String}}
 \index{serial\+Write\+String@{serial\+Write\+String}!serial.\+c@{serial.\+c}}
 \subsubsection{\texorpdfstring{serial\+Write\+String()}{serialWriteString()}}
 {\footnotesize\ttfamily int serial\+Write\+String (\begin{DoxyParamCaption}\item[{const char $\ast$}]{string }\end{DoxyParamCaption})}
 
-Write a string to the serial port. 
+Write a string to the serial port.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{serial_8c_aa1d0c8f870edae14a5ca85154b24a1e1}{serial\+Write()} 
+
+\hyperlink{serial_8c_a3c667fb8cb71a36f04e338fc600d7b8f}{printf\+Serial()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em string} & String to print. \\
+\hline
+\end{DoxyParams}

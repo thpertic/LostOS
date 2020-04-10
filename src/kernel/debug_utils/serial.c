@@ -36,6 +36,11 @@ int canTransmit() {
 
 /**
  * Write to the serial port COM1.
+ * 
+ * \see serialWriteString()
+ * \see printfSerial()
+ * 
+ * @param c Char to write.
  */
 void serialWrite(char c) {
     // Wait until the port is ready to be written
@@ -46,6 +51,11 @@ void serialWrite(char c) {
 
 /**
  * Write a string to the serial port.
+ * 
+ * \see serialWrite()
+ * \see printfSerial()
+ * 
+ * @param string String to print.
  */
 int serialWriteString(const char *string) {
     while (*string != '\0') {
@@ -55,6 +65,17 @@ int serialWriteString(const char *string) {
     return *string;
 }
 
+/**
+ * Prints to the serial port.
+ * 
+ * \see serialWriteString()
+ * \see serialWrite()
+ * 
+ * @param format String to format.
+ * @param ... List of arguments.
+ * 
+ * @return If everything went OK.
+ */
 int printfSerial(const char *format, ...) {
     // Using the eyeball rule: 3 bytes of output for each byte of input. 
     // It is almost never a problem to allocate a little too much memory.
