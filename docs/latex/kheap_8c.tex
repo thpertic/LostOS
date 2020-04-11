@@ -3,6 +3,7 @@
 {\ttfamily \#include $<$mm/kheap.\+h$>$}\newline
 {\ttfamily \#include $<$mm/pmm.\+h$>$}\newline
 {\ttfamily \#include $<$mm/vmm.\+h$>$}\newline
+{\ttfamily \#include $<$common/utility.\+h$>$}\newline
 {\ttfamily \#include $<$debug\+\_\+utils/printf.\+h$>$}\newline
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -10,12 +11,20 @@
 void \hyperlink{kheap_8c_a755a69ff831b6e23a808dcf4b9944854}{init\+\_\+kheap} ()
 \item 
 void $\ast$ \hyperlink{kheap_8c_afec98775e8113dc6d98f75a582c3646f}{kmalloc} (uint32\+\_\+t \hyperlink{gdt_8h_aaba88b24a21a6c70c895c0d55f4a69a0}{size})
-\begin{DoxyCompactList}\small\item\em Function to allocate the heap for the kernel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Function to allocate the heap for the kernel. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{kheap_8c_a8ff196f7bd88124197de662bde0eb639}{kfree} (void $\ast$addr)
+\item 
+void $\ast$ \hyperlink{kheap_8c_abcad5693e10bd77d4275c1f8c9cb5cd7}{kcalloc} (uint32\+\_\+t n, uint32\+\_\+t \hyperlink{gdt_8h_aaba88b24a21a6c70c895c0d55f4a69a0}{size})
+\item 
+void $\ast$ \hyperlink{kheap_8c_a3142cd9d94e09705bb137b527805004a}{krealloc} (void $\ast$ptr, uint32\+\_\+t new\+Size)
+\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 uint32\+\_\+t $\ast$ \hyperlink{kheap_8c_a5591fb6d1147de72cd95d7da15079fbe}{\+\_\+kheap\+Start}
 \begin{DoxyCompactList}\small\item\em Virtual address of where the heap starts. \end{DoxyCompactList}\item 
+uint32\+\_\+t $\ast$ \hyperlink{kheap_8c_a5869ab92c690189f00926ab47028feca}{\+\_\+kheap\+End}
+\begin{DoxyCompactList}\small\item\em Virtual address of where the heap ends (next available address) \end{DoxyCompactList}\item 
 \hyperlink{kheap_8h_aecdf894eef66106f9a4ff67c70d1d3c6}{kheap\+Header} $\ast$ \hyperlink{kheap_8c_a8bfbfbf3c5486cfda8bd93e9ef0d9a45}{\+\_\+kheap\+First}
 \begin{DoxyCompactList}\small\item\em The first block of the heap linked list. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -29,7 +38,41 @@ uint32\+\_\+t $\ast$ \hyperlink{kheap_8c_a5591fb6d1147de72cd95d7da15079fbe}{\+\_
 
 Initialize kernel heap.
 
-This is done with a linked list. The starting address will be after the P\+MM stack. \mbox{\Hypertarget{kheap_8c_afec98775e8113dc6d98f75a582c3646f}\label{kheap_8c_afec98775e8113dc6d98f75a582c3646f}} 
+This is done with a linked list. The starting address will be after the P\+MM stack. \mbox{\Hypertarget{kheap_8c_abcad5693e10bd77d4275c1f8c9cb5cd7}\label{kheap_8c_abcad5693e10bd77d4275c1f8c9cb5cd7}} 
+\index{kheap.\+c@{kheap.\+c}!kcalloc@{kcalloc}}
+\index{kcalloc@{kcalloc}!kheap.\+c@{kheap.\+c}}
+\subsubsection{\texorpdfstring{kcalloc()}{kcalloc()}}
+{\footnotesize\ttfamily void$\ast$ kcalloc (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{n,  }\item[{uint32\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+This is used to dynamically allocate the specified number of blocks of memory of the specified type. It initializes each block with a default value ‘0’.
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Number of elements \\
+\hline
+{\em size} & Size of the element\textquotesingle{}s type (sizeof())\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Allocated pointer or N\+U\+LL 
+\end{DoxyReturn}
+\mbox{\Hypertarget{kheap_8c_a8ff196f7bd88124197de662bde0eb639}\label{kheap_8c_a8ff196f7bd88124197de662bde0eb639}} 
+\index{kheap.\+c@{kheap.\+c}!kfree@{kfree}}
+\index{kfree@{kfree}!kheap.\+c@{kheap.\+c}}
+\subsubsection{\texorpdfstring{kfree()}{kfree()}}
+{\footnotesize\ttfamily void$\ast$ kfree (\begin{DoxyParamCaption}\item[{void $\ast$}]{addr }\end{DoxyParamCaption})}
+
+This is used to dynamically de-\/allocate the memory. The memory allocated using functions malloc() and calloc() is not de-\/allocated on their own. Hence the free() method is used, whenever the dynamic memory allocation takes place. It helps to reduce wastage of memory by freeing it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & Address to free.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The freed address or N\+U\+LL. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{kheap_8c_afec98775e8113dc6d98f75a582c3646f}\label{kheap_8c_afec98775e8113dc6d98f75a582c3646f}} 
 \index{kheap.\+c@{kheap.\+c}!kmalloc@{kmalloc}}
 \index{kmalloc@{kmalloc}!kheap.\+c@{kheap.\+c}}
 \subsubsection{\texorpdfstring{kmalloc()}{kmalloc()}}
@@ -51,9 +94,37 @@ This is used to dynamically allocate a single large block of memory with the spe
 \begin{DoxyReturn}{Returns}
 Allocated pointer 
 \end{DoxyReturn}
+\mbox{\Hypertarget{kheap_8c_a3142cd9d94e09705bb137b527805004a}\label{kheap_8c_a3142cd9d94e09705bb137b527805004a}} 
+\index{kheap.\+c@{kheap.\+c}!krealloc@{krealloc}}
+\index{krealloc@{krealloc}!kheap.\+c@{kheap.\+c}}
+\subsubsection{\texorpdfstring{krealloc()}{krealloc()}}
+{\footnotesize\ttfamily void$\ast$ krealloc (\begin{DoxyParamCaption}\item[{void $\ast$}]{ptr,  }\item[{uint32\+\_\+t}]{new\+Size }\end{DoxyParamCaption})}
+
+This is used to dynamically change the memory allocation of a previously allocated memory. In other words, if the memory previously allocated with the help of malloc or calloc is insufficient, realloc can be used to dynamically re-\/allocate memory.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr} & Pointer to reallocate \\
+\hline
+{\em new\+Size} & New size\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New pointer or N\+U\+LL 
+\end{DoxyReturn}
 
 
 \subsection{Variable Documentation}
+\mbox{\Hypertarget{kheap_8c_a5869ab92c690189f00926ab47028feca}\label{kheap_8c_a5869ab92c690189f00926ab47028feca}} 
+\index{kheap.\+c@{kheap.\+c}!\+\_\+kheap\+End@{\+\_\+kheap\+End}}
+\index{\+\_\+kheap\+End@{\+\_\+kheap\+End}!kheap.\+c@{kheap.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+kheap\+End}{\_kheapEnd}}
+{\footnotesize\ttfamily uint32\+\_\+t$\ast$ \+\_\+kheap\+End}
+
+
+
+Virtual address of where the heap ends (next available address) 
+
 \mbox{\Hypertarget{kheap_8c_a8bfbfbf3c5486cfda8bd93e9ef0d9a45}\label{kheap_8c_a8bfbfbf3c5486cfda8bd93e9ef0d9a45}} 
 \index{kheap.\+c@{kheap.\+c}!\+\_\+kheap\+First@{\+\_\+kheap\+First}}
 \index{\+\_\+kheap\+First@{\+\_\+kheap\+First}!kheap.\+c@{kheap.\+c}}

@@ -21,6 +21,14 @@
                 </itemizedlist>
             </para>
         </section>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para>First address then nContiguousPages </para>
+                <para>Definition at line 11 of file pmm.h</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>pmm.h</para></listitem></itemizedlist></para>
+        </simplesect>
         <section>
             <title>Field Documentation</title>
         </section>

@@ -39,9 +39,9 @@ uint32\+\_\+t \hyperlink{pmm_8h_ad3bc0be58c79c7407b56bf050276c5fd}{round\+Page\+
 \hyperlink{pmm_8h_a56fc0f2bfc4430cfd99522588a0c6878}{free\+\_\+mem\+\_\+t} $\ast$ \hyperlink{pmm_8h_a427feb8c8cbda0b56681cc4bd73f13dc}{\+\_\+stack}
 \item 
 char \hyperlink{pmm_8h_ad56f39f054765ea9dd480006512069cf}{start}
-\item 
+\begin{DoxyCompactList}\small\item\em Of the kernel $\vert$ Linker. \end{DoxyCompactList}\item 
 char \hyperlink{pmm_8h_a9e4682258f8f23dadc2b3d013395b49b}{end}
-\item 
+\begin{DoxyCompactList}\small\item\em Start of the stack $\vert$ Symbols. \end{DoxyCompactList}\item 
 uint32\+\_\+t \hyperlink{pmm_8h_a89d47a94a95030cbf6e04f3253daab85}{\+\_\+start\+\_\+addr\+\_\+phys}
 \item 
 uint32\+\_\+t \hyperlink{pmm_8h_a11ad00e7b113249743d3a677325f707a}{\+\_\+end\+\_\+addr\+\_\+phys}
@@ -68,7 +68,7 @@ uint32\+\_\+t \hyperlink{pmm_8h_a5bb7ef536de4b277224aa268478319e4}{\+\_\+half\+M
 \subsubsection{\texorpdfstring{free\+\_\+mem\+\_\+t}{free\_mem\_t}}
 {\footnotesize\ttfamily typedef struct \hyperlink{structfree__mem}{free\+\_\+mem}  \hyperlink{pmm_8h_a56fc0f2bfc4430cfd99522588a0c6878}{free\+\_\+mem\+\_\+t}}
 
-
+First address then n\+Contiguous\+Pages 
 
 \subsection{Function Documentation}
 \mbox{\Hypertarget{pmm_8h_a864c0a7e14f8e4bd05d55cc893accda8}\label{pmm_8h_a864c0a7e14f8e4bd05d55cc893accda8}} 
@@ -235,9 +235,17 @@ This function returns the bigger 4\+KB aligned size.
 \subsubsection{\texorpdfstring{end}{end}}
 {\footnotesize\ttfamily char end}
 
+
+
+Start of the stack $\vert$ Symbols. 
+
 \mbox{\Hypertarget{pmm_8h_ad56f39f054765ea9dd480006512069cf}\label{pmm_8h_ad56f39f054765ea9dd480006512069cf}} 
 \index{pmm.\+h@{pmm.\+h}!start@{start}}
 \index{start@{start}!pmm.\+h@{pmm.\+h}}
 \subsubsection{\texorpdfstring{start}{start}}
 {\footnotesize\ttfamily char start}
+
+
+
+Of the kernel $\vert$ Linker. 
 

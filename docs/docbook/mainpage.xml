@@ -47,6 +47,8 @@
 
 <para><itemizedlist>
 <listitem>
+<para>Basic documentation</para>
+</listitem><listitem>
 <para>Little documentation</para>
 </listitem><listitem>
 <para>GRUB</para>
@@ -66,6 +68,8 @@
 <para>Physical Memory Manager</para>
 </listitem><listitem>
 <para>Virtual Memory Manager</para>
+</listitem><listitem>
+<para>Kernel Heap Manager</para>
 </listitem></itemizedlist>
 </para>
 </section>
@@ -74,7 +78,7 @@
 
 <para><itemizedlist>
 <listitem>
-<para>Kernel Heap</para>
+<para>Multithreading</para>
 </listitem><listitem>
 <para>Merge <link linkend="printf_8h_1a98631211a4a8aee62f572375d5b637be">printf()</link>: Print to a generic output that can be redirected</para>
 </listitem></itemizedlist>
@@ -90,15 +94,13 @@
 <listitem>
 <para>Good project organization (an <emphasis>arch</emphasis> directory, for example)</para>
 </listitem><listitem>
+<para>Semantic versioning (as soon I get to the alpha release)</para>
+</listitem><listitem>
 <para>ERRNO integration</para>
 </listitem><listitem>
 <para>panic function integration</para>
 </listitem><listitem>
-<para>Semantic versioning (as soon I get to the alpha release)</para>
-</listitem><listitem>
 <para>Keyboard driver</para>
-</listitem><listitem>
-<para>Multithreading</para>
 </listitem><listitem>
 <para>Filesystem</para>
 </listitem><listitem>

@@ -83,6 +83,7 @@
  * \endcode
  * 
  * \section Features
+ * - Basic documentation
  * - Little documentation
  * - GRUB
  * - Video support (printf-like function)
@@ -93,22 +94,20 @@
  * - PIT (Channel 0)
  * - Physical Memory Manager
  * - Virtual Memory Manager
+ * - Kernel Heap Manager
  * 
  * \section Todos
- * 
- * - Kernel Heap
+ * - Multithreading
  * - Merge printf(): Print to a generic output that can be redirected
  * 
  * \section Problems
  * 
  * \section Dreams
- * 
  * - Good project organization (an *arch* directory, for example)
+ * - Semantic versioning (as soon I get to the alpha release)
  * - ERRNO integration
  * - panic function integration
- * - Semantic versioning (as soon I get to the alpha release)
  * - Keyboard driver
- * - Multithreading
  * - Filesystem
  * - Graphical interface
  * - Network
@@ -157,6 +156,8 @@ void kmain(uint32_t *pd, multiboot_info_t* mbd, int n) {
 
     init_kheap();
     printf("Kernel heap initialized\n\n");
+
+
 
 //  int num = 5 / 0;
 //  asm("int $4");

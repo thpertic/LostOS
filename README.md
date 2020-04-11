@@ -51,8 +51,7 @@ doxygen doxyfile
 ```
 
 # Features
-
- - Little documentation
+ - Basic documentation
  - GRUB
  - Video support (printf-like function)
  - Serial port (COM1) support
@@ -62,10 +61,10 @@ doxygen doxyfile
  - PIT (Channel 0)
  - Physical Memory Manager
  - Virtual Memory Manager
+ - Kernel Heap Manager
 
 ## Todos
- 
- - Kernel Heap
+ - Multithreading
  - Merge printf(): Print to a generic output that can be redirected
 
 ### Problems
@@ -73,11 +72,10 @@ doxygen doxyfile
 
 ## Dreams
  - Good project organization (an */arch* directory, for example)
+ - Semantic versioning (as soon I get to the alpha release)
  - ERRNO integration
  - panic function integration
- - Semantic versioning (as soon I get to the alpha release)
  - Keyboard driver
- - Multithreading
  - Filesystem
  - Graphical interface
  - Network

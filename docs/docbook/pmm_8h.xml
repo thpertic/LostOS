@@ -46,14 +46,16 @@
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>char <link linkend="pmm_8h_1ad56f39f054765ea9dd480006512069cf">start</link></para>
+                        <para>char <link linkend="pmm_8h_1ad56f39f054765ea9dd480006512069cf">start</link><para><emphasis>Of the kernel      | Linker.</emphasis></para>
+</para>
                     </listitem>
                 </itemizedlist>
             </para>
             <para>
                 <itemizedlist>
                     <listitem>
-                        <para>char <link linkend="pmm_8h_1a9e4682258f8f23dadc2b3d013395b49b">end</link></para>
+                        <para>char <link linkend="pmm_8h_1a9e4682258f8f23dadc2b3d013395b49b">end</link><para><emphasis>Start of the stack | Symbols.</emphasis></para>
+</para>
                     </listitem>
                 </itemizedlist>
             </para>

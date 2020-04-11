@@ -82,9 +82,9 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:adcac6cf27d536ffab0f05f77872e7c69"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kheap_8h.html#adcac6cf27d536ffab0f05f77872e7c69">HEAP_LENGTH</a>&#160;&#160;&#160;0x10000000</td></tr>
-<tr class="memdesc:adcac6cf27d536ffab0f05f77872e7c69"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum length of the heap - 256MB.  <a href="#adcac6cf27d536ffab0f05f77872e7c69">More...</a><br /></td></tr>
-<tr class="separator:adcac6cf27d536ffab0f05f77872e7c69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6d18df3767507402fc452d66e28c027"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kheap_8h.html#ae6d18df3767507402fc452d66e28c027">KHEAP_LENGTH</a>&#160;&#160;&#160;0x10000000</td></tr>
+<tr class="memdesc:ae6d18df3767507402fc452d66e28c027"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum length of the heap - 256MB.  <a href="#ae6d18df3767507402fc452d66e28c027">More...</a><br /></td></tr>
+<tr class="separator:ae6d18df3767507402fc452d66e28c027"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -106,14 +106,14 @@ Functions</h2></td></tr>
 <tr class="separator:a8ff196f7bd88124197de662bde0eb639"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="adcac6cf27d536ffab0f05f77872e7c69"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adcac6cf27d536ffab0f05f77872e7c69">&#9670;&nbsp;</a></span>HEAP_LENGTH</h2>
+<a id="ae6d18df3767507402fc452d66e28c027"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6d18df3767507402fc452d66e28c027">&#9670;&nbsp;</a></span>KHEAP_LENGTH</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define HEAP_LENGTH&#160;&#160;&#160;0x10000000</td>
+          <td class="memname">#define KHEAP_LENGTH&#160;&#160;&#160;0x10000000</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -183,6 +183,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>This is used to dynamically allocate the specified number of blocks of memory of the specified type. It initializes each block with a default value ‘0’.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Number of elements </td></tr>
+    <tr><td class="paramname">size</td><td>Size of the element's type (sizeof())</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Allocated pointer or NULL </dd></dl>
 
 </div>
 </div>
@@ -201,6 +210,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>This is used to dynamically de-allocate the memory. The memory allocated using functions malloc() and calloc() is not de-allocated on their own. Hence the free() method is used, whenever the dynamic memory allocation takes place. It helps to reduce wastage of memory by freeing it.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td>Address to free.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The freed address or NULL. </dd></dl>
 
 </div>
 </div>
@@ -258,6 +275,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>This is used to dynamically change the memory allocation of a previously allocated memory. In other words, if the memory previously allocated with the help of malloc or calloc is insufficient, realloc can be used to dynamically re-allocate memory.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>Pointer to reallocate </td></tr>
+    <tr><td class="paramname">newSize</td><td>New size</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New pointer or NULL </dd></dl>
 
 </div>
 </div>

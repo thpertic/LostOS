@@ -17,7 +17,7 @@
             <para>
                 <itemizedlist>
                     <listitem>
-                            <para>#define <link linkend="kheap_8h_1adcac6cf27d536ffab0f05f77872e7c69">HEAP_LENGTH</link> 0x10000000<para><emphasis>The maximum length of the heap - 256MB.</emphasis></para>
+                            <para>#define <link linkend="kheap_8h_1ae6d18df3767507402fc452d66e28c027">KHEAP_LENGTH</link> 0x10000000<para><emphasis>The maximum length of the heap - 256MB.</emphasis></para>
 </para>
                     </listitem>
                 </itemizedlist>

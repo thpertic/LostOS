@@ -72,6 +72,7 @@ $(function() {
 <div class="textblock"><code>#include &lt;<a class="el" href="kheap_8h_source.html">mm/kheap.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="pmm_8h_source.html">mm/pmm.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="vmm_8h_source.html">mm/vmm.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="utility_8h_source.html">common/utility.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="printf_8h_source.html">debug_utils/printf.h</a>&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -81,12 +82,21 @@ Functions</h2></td></tr>
 <tr class="memitem:afec98775e8113dc6d98f75a582c3646f"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kheap_8c.html#afec98775e8113dc6d98f75a582c3646f">kmalloc</a> (uint32_t <a class="el" href="gdt_8h.html#aaba88b24a21a6c70c895c0d55f4a69a0">size</a>)</td></tr>
 <tr class="memdesc:afec98775e8113dc6d98f75a582c3646f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to allocate the heap for the kernel.  <a href="#afec98775e8113dc6d98f75a582c3646f">More...</a><br /></td></tr>
 <tr class="separator:afec98775e8113dc6d98f75a582c3646f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ff196f7bd88124197de662bde0eb639"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kheap_8c.html#a8ff196f7bd88124197de662bde0eb639">kfree</a> (void *addr)</td></tr>
+<tr class="separator:a8ff196f7bd88124197de662bde0eb639"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcad5693e10bd77d4275c1f8c9cb5cd7"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kheap_8c.html#abcad5693e10bd77d4275c1f8c9cb5cd7">kcalloc</a> (uint32_t n, uint32_t <a class="el" href="gdt_8h.html#aaba88b24a21a6c70c895c0d55f4a69a0">size</a>)</td></tr>
+<tr class="separator:abcad5693e10bd77d4275c1f8c9cb5cd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3142cd9d94e09705bb137b527805004a"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kheap_8c.html#a3142cd9d94e09705bb137b527805004a">krealloc</a> (void *ptr, uint32_t newSize)</td></tr>
+<tr class="separator:a3142cd9d94e09705bb137b527805004a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a5591fb6d1147de72cd95d7da15079fbe"><td class="memItemLeft" align="right" valign="top">uint32_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kheap_8c.html#a5591fb6d1147de72cd95d7da15079fbe">_kheapStart</a></td></tr>
 <tr class="memdesc:a5591fb6d1147de72cd95d7da15079fbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual address of where the heap starts.  <a href="#a5591fb6d1147de72cd95d7da15079fbe">More...</a><br /></td></tr>
 <tr class="separator:a5591fb6d1147de72cd95d7da15079fbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5869ab92c690189f00926ab47028feca"><td class="memItemLeft" align="right" valign="top">uint32_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kheap_8c.html#a5869ab92c690189f00926ab47028feca">_kheapEnd</a></td></tr>
+<tr class="memdesc:a5869ab92c690189f00926ab47028feca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual address of where the heap ends (next available address)  <a href="#a5869ab92c690189f00926ab47028feca">More...</a><br /></td></tr>
+<tr class="separator:a5869ab92c690189f00926ab47028feca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bfbfbf3c5486cfda8bd93e9ef0d9a45"><td class="memItemLeft" align="right" valign="top"><a class="el" href="kheap_8h.html#aecdf894eef66106f9a4ff67c70d1d3c6">kheapHeader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kheap_8c.html#a8bfbfbf3c5486cfda8bd93e9ef0d9a45">_kheapFirst</a></td></tr>
 <tr class="memdesc:a8bfbfbf3c5486cfda8bd93e9ef0d9a45"><td class="mdescLeft">&#160;</td><td class="mdescRight">The first block of the heap linked list.  <a href="#a8bfbfbf3c5486cfda8bd93e9ef0d9a45">More...</a><br /></td></tr>
 <tr class="separator:a8bfbfbf3c5486cfda8bd93e9ef0d9a45"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,6 +118,69 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Initialize kernel heap.</p>
 <p>This is done with a linked list. The starting address will be after the PMM stack. </p>
+
+</div>
+</div>
+<a id="abcad5693e10bd77d4275c1f8c9cb5cd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcad5693e10bd77d4275c1f8c9cb5cd7">&#9670;&nbsp;</a></span>kcalloc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* kcalloc </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This is used to dynamically allocate the specified number of blocks of memory of the specified type. It initializes each block with a default value ‘0’.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Number of elements </td></tr>
+    <tr><td class="paramname">size</td><td>Size of the element's type (sizeof())</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Allocated pointer or NULL </dd></dl>
+
+</div>
+</div>
+<a id="a8ff196f7bd88124197de662bde0eb639"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ff196f7bd88124197de662bde0eb639">&#9670;&nbsp;</a></span>kfree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* kfree </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This is used to dynamically de-allocate the memory. The memory allocated using functions malloc() and calloc() is not de-allocated on their own. Hence the free() method is used, whenever the dynamic memory allocation takes place. It helps to reduce wastage of memory by freeing it.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td>Address to free.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The freed address or NULL. </dd></dl>
 
 </div>
 </div>
@@ -140,7 +213,60 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a3142cd9d94e09705bb137b527805004a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3142cd9d94e09705bb137b527805004a">&#9670;&nbsp;</a></span>krealloc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* krealloc </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>newSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This is used to dynamically change the memory allocation of a previously allocated memory. In other words, if the memory previously allocated with the help of malloc or calloc is insufficient, realloc can be used to dynamically re-allocate memory.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>Pointer to reallocate </td></tr>
+    <tr><td class="paramname">newSize</td><td>New size</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New pointer or NULL </dd></dl>
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a5869ab92c690189f00926ab47028feca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5869ab92c690189f00926ab47028feca">&#9670;&nbsp;</a></span>_kheapEnd</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t* _kheapEnd</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Virtual address of where the heap ends (next available address) </p>
+
+</div>
+</div>
 <a id="a8bfbfbf3c5486cfda8bd93e9ef0d9a45"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8bfbfbf3c5486cfda8bd93e9ef0d9a45">&#9670;&nbsp;</a></span>_kheapFirst</h2>
 

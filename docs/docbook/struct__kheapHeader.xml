@@ -38,13 +38,5 @@
         </simplesect>
         <section>
             <title>Field Documentation</title>
-            <simplesect>
-                <title>uint32_t _kheapHeader::size</title>                
-<para>It could have been calculated, but with this is more practical </para>
-
-                <para>Definition at line 20 of file kheap.h</para>
-                <para>The Documentation for this struct was generated from the following file: </para>
-                <para><itemizedlist><listitem><para>kheap.h</para></listitem></itemizedlist></para>
-            </simplesect>
         </section>
 </section>

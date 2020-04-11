@@ -7,7 +7,7 @@
 
 #define PAGE_SIZE 0x1000
 
-/* First address then nContiguousPages */
+/** First address then nContiguousPages */
 typedef struct free_mem {
     uint32_t *addr;
     uint32_t nContiguousPages;
@@ -15,8 +15,8 @@ typedef struct free_mem {
 
 free_mem_t *_stack;
 
-extern char start;  // Of the kernel      | Linker
-extern char end;    // Start of the stack | Symbols
+extern char start;  ///< Of the kernel      | Linker
+extern char end;    ///< Start of the stack | Symbols
 
 uint32_t _start_addr_phys;
 uint32_t _end_addr_phys;

@@ -2,9 +2,12 @@
 #include <mm/pmm.h>
 #include <mm/vmm.h>
 
+#include <common/utility.h>
+
 #include <debug_utils/printf.h>
 
 uint32_t *_kheapStart;       ///< Virtual address of where the heap starts
+uint32_t *_kheapEnd;         ///< Virtual address of where the heap ends (next available address)
 kheapHeader *_kheapFirst;    ///< The first block of the heap linked list
 
 /**
@@ -15,6 +18,7 @@ kheapHeader *_kheapFirst;    ///< The first block of the heap linked list
  */
 void init_kheap() {
     _kheapStart = roundPageAligned((free_mem_t *)&end) + _halfMaxStack;
+    _kheapEnd = _kheapStart;
 }
 
 /**
@@ -36,10 +40,9 @@ void *kmalloc(uint32_t size) {
     if (_kheapFirst == NULL) {
         //If the first block isn't allocated, allocate it.
         _kheapFirst = vAllocPages(_kheapStart, BIT_PD_PT_PRESENT | BIT_PD_PT_RW, n, true);
-        printf("_kheapFirst = 0x%x\n", _kheapFirst);
-        printf("sizeof(kheapHeader) = 0x%x\n", sizeof(kheapHeader));
         if(!_kheapFirst)
-            return (void *)0;
+            return NULL;
+        _kheapEnd += n * PAGE_SIZE;
         _kheapFirst->size = n * PAGE_SIZE;
         _kheapFirst->prev = NULL;
     }
@@ -63,7 +66,6 @@ void *kmalloc(uint32_t size) {
             ret_block->next = block->next;
 
             // Then return the calculated free address
-            printf("ret_block = 0x%x\n", ret_block);
             return (void *)((uint32_t)ret_block + sizeof(kheapHeader));
         }
         block = block->next;
@@ -86,17 +88,21 @@ void *kmalloc(uint32_t size) {
         ret_block->next = block->next;
 
         // Then return the calculated free address
-        printf("2ret_block = 0x%x\n", ret_block);
         return (void *)((uint32_t)ret_block + sizeof(kheapHeader));
     }
+    
+    if ((uint32_t)_kheapEnd + n * PAGE_SIZE > (uint32_t)_kheapStart + KHEAP_LENGTH) {
+        // Run out of memory
+        return NULL;
+    }
 
-    // No memory
+    // No memory, but available request some
     kheapHeader *new_block;
-        
-    new_block = vAllocPages(block + sizeof(kheapHeader) + block->size, BIT_PD_PT_PRESENT | BIT_PD_PT_RW, n, true);
-    printf("new_block = 0x%x\n", new_block);
+    new_block = vAllocPages(_kheapEnd, BIT_PD_PT_PRESENT | BIT_PD_PT_RW, n, true);
     if (!new_block)
-        return (void *)0;
+        return NULL;
+    _kheapEnd += (n * PAGE_SIZE); 
+
     new_block->size = n * PAGE_SIZE - size - sizeof(kheapHeader);
     new_block->prev = block;
     new_block->next = NULL;
@@ -108,7 +114,6 @@ void *kmalloc(uint32_t size) {
     ret_block->size = size;
     ret_block->prev = new_block;
     ret_block->next = NULL;
-    printf("4ret_block = 0x%x\n", ret_block);
     return ret_block + sizeof(kheapHeader);
 }
 
@@ -118,32 +123,88 @@ void *kmalloc(uint32_t size) {
  * Hence the free() method is used, whenever the dynamic memory allocation takes place. 
  * It helps to reduce wastage of memory by freeing it.
  * 
- * @param addr address to free
- 
+ * @param addr Address to free.
+ * 
+ * @return The freed address or NULL.
+ */
 void *kfree(void *addr) {
-    kheapHeader *block = (uint32_t)addr - sizeof(kheapHeader);
+    kheapHeader *free_block = (uint32_t)addr - sizeof(kheapHeader);
     kheapHeader *tmp = _kheapFirst;
     
-    //TODO: REMEMBER, WE HAVE NEXT AND PREV BLOCKS -- BUT VERIFY IT
-    
-    do {
+    while (tmp->next != NULL) {
+        if ((free_block + free_block->size) == tmp) {
+            // They're contiguous (free_block is behind), merge the blocks
+            tmp->size += free_block->size;
+            tmp = free_block;   // TODO: VERIFY THIS
+            return tmp;
+        
+        } else if (free_block->next == tmp) {
+            // Just add the block
+            free_block->prev = tmp->prev;
+            tmp->prev = free_block;
+            return free_block;
 
-    } while (tmp->next == NULL);
+        } else if ((tmp + tmp->size) == free_block) {
+            // They're contiguous (free_block is in the front), merge the blocks
+            tmp->size += free_block->size;
+            return tmp;
+        
+        } else if (free_block->prev <= tmp) {
+            // Just add the block
+            free_block->next = tmp->prev;
+            tmp->next = free_block;
+            return free_block;
+
+        }
+        tmp = tmp->next;
+    }
+    // For the last block
+    if ((free_block + free_block->size) == tmp) {
+        // They're contiguous (free_block is behind), merge the blocks
+        tmp->size += free_block->size;
+        tmp = free_block;   // TODO: VERIFY THIS
+        return tmp;
+    
+    } else if (free_block->next == tmp) {
+        // Just add the block
+        free_block->prev = tmp->prev;
+        tmp->prev = free_block;
+        return free_block;
+
+    } else if ((tmp + tmp->size) == free_block) {
+        // They're contiguous (free_block is in the front), merge the blocks
+        tmp->size += free_block->size;
+        return tmp;
+    
+    } else if (free_block->prev <= tmp) {
+        // Just add the block
+        free_block->next = tmp->prev;
+        tmp->next = free_block;
+        return free_block;
+
+    }
     return NULL;
-}*/
+}
 
 /**
  * This is used to dynamically allocate the specified number of blocks of memory of the specified type. 
  * It initializes each block with a default value ‘0’.
  *
- * @param n Elements
- * @param size Size of the element's type 
+ * @param n Number of elements
+ * @param size Size of the element's type (sizeof())
  * 
- * @return allocated pointer or NULL
- 
+ * @return Allocated pointer or NULL
+ */
 void *kcalloc(uint32_t n, uint32_t size) {
-    return NULL;
-}*/
+    uint32_t *ptr = kmalloc(n * size);
+    if (!ptr)
+        return NULL;
+
+    memsetw(ptr, 0, n);
+    if (!ptr)
+        return NULL;
+    return ptr;
+}
 
 /**
  * This is used to dynamically change the memory allocation of a previously allocated memory. 
@@ -154,7 +215,51 @@ void *kcalloc(uint32_t n, uint32_t size) {
  * @param newSize New size
  * 
  * @return New pointer or NULL
- 
+ */
 void *krealloc(void *ptr, uint32_t newSize) {
-    return NULL;
-}*/
+    kheapHeader *block = ptr - sizeof(kheapHeader);
+    kheapHeader *tmp = _kheapFirst;
+
+    if (newSize <= block->size)
+        return NULL;
+
+    while(tmp->next != NULL) {
+        if (block + block->size == tmp) {
+            // This is a contiguous chunk of memory
+            block->size += (newSize - block->size);
+
+            // Set up the new shifted block 
+            kheapHeader *new_block = tmp + (newSize - block->size);
+            new_block->prev = tmp->prev;
+            new_block->next = tmp->next;
+
+            tmp->prev->next = new_block;
+            tmp->next->prev = new_block;            
+            return block;
+        }
+        tmp = tmp->next;
+    }
+    // Last block
+    if (block + block->size == tmp) {
+        // This is a contiguous chunk of memory
+        block->size += (newSize - block->size);
+
+        // Set up the new shifted block 
+        kheapHeader *new_block = tmp + (newSize - block->size);
+        new_block->prev = tmp->prev;
+        new_block->next = tmp->next;
+
+        tmp->prev->next = new_block;
+        tmp->next->prev = new_block;            
+        return block;
+    }
+
+    // Otherwise find an entire new block and copy everything
+    uint32_t new_ptr = kmalloc(newSize);
+    if (!new_ptr)
+        return NULL;
+
+    memcpy(new_ptr, ptr, block->size);
+    kfree(block);
+    return new_ptr;
+}
