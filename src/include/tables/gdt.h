@@ -30,7 +30,7 @@ typedef struct gdt_descriptor {
     uint32_t offset;
 } __attribute__((packed)) gdt_descriptor_t;
 
-void gdt_init();
+void init_gdt();
 void gdt_setEntry(int index, uint32_t base, uint64_t limit, uint8_t access, uint8_t flags);
 
 // Defined in gdt_load.asm

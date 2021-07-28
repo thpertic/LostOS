@@ -100,6 +100,8 @@ void irq_faultHandler(regs_t *r) {
 
 /**
  * This installs a custom IRQ handler for the given IRQ 
+ * 
+ * \see irq_uninstallHandler()
  */
 void irq_installHandler(int irq, void (*handler)(regs_t *r)) {
     irq_routines[irq - 32] = handler;
@@ -107,6 +109,8 @@ void irq_installHandler(int irq, void (*handler)(regs_t *r)) {
 
 /**
  * This clears the handler for a given IRQ
+ * 
+ * \see irq_installHandler()
  */
 void irq_uninstallHandler(int irq) {
     irq_routines[irq - 32] = 0;

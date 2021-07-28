@@ -8,8 +8,11 @@ bool defrag = false;
 
 /**
  * Get and anylize the GRUB memory map to count the RAM size.
+ * 
+ * @param mbt The physical address of GRUB's multiboot structure
+ * @return RAM Size in KiB.
  */
-unsigned int findRAMSize(multiboot_info_t* mbt) {
+uint32_t findRAMSize(multiboot_info_t* mbt) {
     uint32_t size = 0;
 
     /**
@@ -31,9 +34,14 @@ unsigned int findRAMSize(multiboot_info_t* mbt) {
         }
     }
 
-    // Finds the worst case scenario for the _stack (for a 4GB RAM == 8MB)
-    if (size > 0)    
-        _half_maxStack = ((size * 1024) / PAGE_SIZE) * (sizeof(free_mem_t));
+    /**
+     * Finds the worst case scenario for the _stack (for a 4GB RAM == 8MB).
+     * 
+     * I need to find the number (so the dimension) of the possible entries on the stack.
+     * Then I divide it in half to preserve some memory. When it is reached, defrag is going to be used.
+     */
+    if (size > 0)
+        _halfMaxStack = roundPageAligned(((size * 1024) / PAGE_SIZE) * (sizeof(free_mem_t)) / 2);   
 
     return size;
 }
@@ -72,7 +80,7 @@ bool mergePMM(free_mem_t toMerge) {
 }
 
 /**
- * This function is going to check for every struct, if it is possible to merge with other.
+ * \brief This function is going to check for every struct, if it is possible to merge with other.
  *
  * This algorithm has O(n^2) (I think?) so be careful when to call it.
  * For now it is called when the _stack is half the dimension of the worst case scenario.
@@ -80,6 +88,8 @@ bool mergePMM(free_mem_t toMerge) {
  *      1. when you call free() (when you push to the free _stack)
  *      2. when the _stack size reaches its limit (4Mb sounds reasonable on a 4G machine)
  *      3. whenever you schedule the idle task
+ * 
+ * @param original Being a recursive function, it needs to know if it is the first call (true) or not.
  */
 void defragmentPMM(bool original) {
     printf("defrag\n");
@@ -139,6 +149,8 @@ void defragmentPMM(bool original) {
 
 /**
  * Insert in sorted order.
+ * 
+ * @param m Struct to push.
  */
 void sortedInsertPMM(free_mem_t m) {
     // If empty or m is greater than the top address
@@ -170,6 +182,11 @@ void sortPMM() {
 /**
  * This function pushes a struct of address + nContiguousPages onto the _stack.
  * The _stack must be ordered from the bigger address (on top) to the smaller.
+ * 
+ * @param m Struct to push.
+ * @param merge If it needs to be merged.
+ * 
+ * @return True if it's all OK.
  */
 bool pushAllPMM(free_mem_t m, bool merge) {
     bool merged = false;
@@ -188,7 +205,7 @@ bool pushAllPMM(free_mem_t m, bool merge) {
             sortPMM();
     }
 
-    if (_stack == (free_mem_t *)(&end + _half_maxStack))
+    if (_stack == (free_mem_t *)(&end + _halfMaxStack))
         defragmentPMM(true);
 
     return true;
@@ -196,6 +213,8 @@ bool pushAllPMM(free_mem_t m, bool merge) {
 
 /**
  * This function pops the first struct of address + nContiguousPages off the _stack.
+ * 
+ * @return The popped stack.
  */
 free_mem_t popAllPMM() {
     _stack -= sizeof(free_mem_t);
@@ -217,6 +236,11 @@ free_mem_t popAllPMM() {
  * Interface Function.
  * 
  * This function allocates a page (WILL BE 4K ALIGNED) and returns the address.
+ * 
+ * @see popAllPMM()
+ * @see pushAllPMM()
+ * 
+ * @return Address of the now allocated 4KB-aligned page.
  */
 uint32_t pAllocPage() {
     free_mem_t m = popAllPMM();
@@ -241,6 +265,12 @@ uint32_t pAllocPage() {
  * Interface Function.
  * 
  * This function frees a page, returning true or false if it finished well.
+ * 
+ * @see pushAllPMM()
+ * 
+ * @param addr Address of the page to be freed.
+ * 
+ * @return If everything is OK.
  */
 bool pFreePage(void *addr) {
     free_mem_t m;
@@ -252,7 +282,7 @@ bool pFreePage(void *addr) {
 }
 
 /**
- * Uses a First-Fit recursive technique.
+ * Uses a kind-of First-Fit recursive technique.
  */
 free_mem_t firstFit(uint32_t size) {
     free_mem_t m = popAllPMM();
@@ -295,6 +325,13 @@ uint32_t roundPageAligned(uint32_t n) {
  * This function allocates a wanted size (NOT NUMBER OF PAGES - BYTES).
  * It uses the technique called "First-Fit". It's faster but causes fragmentation. 
  * While pushing in the _stack there are various controls to merge and an "emergency" function when the _stack is too big, so we're safe.
+ * 
+ * @see pFreePage()
+ * @see pFreePages()
+ * @see pAllocPage()
+ * 
+ * @param size Wanted bytes to allocate contiguously.
+ * @return Pointer to the buffer.
  */
 uint32_t pAllocPages(uint32_t size) {
     if (size <= 0)
@@ -319,6 +356,15 @@ uint32_t pAllocPages(uint32_t size) {
  * Interface Function.
  * 
  * This function frees memory from the address addr for size.
+ * 
+ * @see pFreePage()
+ * @see pAllocPage()
+ * @see pallocPages()
+ * 
+ * @param addr Pointer to the buffer.
+ * @param size 
+ * 
+ * @return If everything's OK
  */
 bool pFreePages(void *addr, uint32_t size) {
     free_mem_t m;
@@ -334,6 +380,12 @@ bool pFreePages(void *addr, uint32_t size) {
 
 /**
  * Little boundary check for the BootPageDirectory. It is just 4KB but I need to make sure.
+ * 
+ * @param pd_start Starting address of the page directory.
+ * @param pd_end Ending address of the page directory (pd_start + 1024).
+ * @param m Struct to push.
+ * 
+ * @return If it has been pushed to the stack.
  */
 bool checkPD (uint32_t pd_start, uint32_t pd_end, free_mem_t m) {
     if ((uint32_t)m.addr < pd_start && (((uint32_t)m.addr + m.nContiguousPages * PAGE_SIZE) > pd_start && ((uint32_t)m.addr + m.nContiguousPages * PAGE_SIZE) < pd_end)) {
@@ -364,7 +416,7 @@ bool checkPD (uint32_t pd_start, uint32_t pd_end, free_mem_t m) {
 }
 
 /**
- * Checks the memory map with some overlap controls. (+ = free memory; - = [used memory])
+ * \brief Checks the memory map with some overlap controls. (+ = free memory; - = [used memory])
  *
  * 1) [GRUB] +++++++       
  *    [PHYS] +++++++----
@@ -379,7 +431,12 @@ bool checkPD (uint32_t pd_start, uint32_t pd_end, free_mem_t m) {
  *    [PHYS] ----+++++
  * 
  * 5) [GRUB] +++++++++++
- *    [PHYS] +++++----++.
+ *    [PHYS] +++++----++
+ * 
+ * @param pd_start Starting address of the page directory.
+ * @param pd_end Ending address of the page directory (pd_start + 1024).
+ * @param base_addr Starting address of the free sector.
+ * @param length Length of the free sector.
  */
 void checkBoundaries(uint32_t pd_start, uint32_t pd_end,  uint32_t length, uint32_t base_addr) {
     free_mem_t m;
@@ -420,6 +477,8 @@ void checkBoundaries(uint32_t pd_start, uint32_t pd_end,  uint32_t length, uint3
 }
 
 /**
+ * \brief Creates a stack (run-length encoded) of free pages.
+ * 
  * To implement the physical memory manager something to hold all the free addressed is needed.
  * I'm using a run-length encoded _stack: this technique constists in pushing the address and the number of pages all at once.
  * This has several advantages:
@@ -429,21 +488,24 @@ void checkBoundaries(uint32_t pd_start, uint32_t pd_end,  uint32_t length, uint3
  * 
  * At this moment the real page size is 4MB still, 
  * but in the initialization of the Virtual Memory Manager it's gonna switch to 4KB.
+ * 
+ * @param mbt The physical address of GRUB's multiboot structure. 
+ * @param pd The physical address of the first Page Directory.
  */
-void pmm_init(multiboot_info_t* mbt, uint32_t *pd) {
+void init_pmm(multiboot_info_t* mbt, uint32_t *pd) {
     if ((mbt->flags & 0x20) == 0) {
         printf("No memory map from GRUB.\n");
         return;
     }
 
-    _half_maxStack = 0;
-    _RAM_size = findRAMSize(mbt);
-    printf("Total RAM size: %d KiB\n", _RAM_size);
+    _halfMaxStack = 0;
+    _RAMSize = findRAMSize(mbt);
+    printf("Total RAM size: %d KiB\n", _RAMSize);
 
     // Set the start of the _stack
-    _stack = (free_mem_t *)&end;
+    _stack = roundPageAligned((free_mem_t *)&end);
     _start_addr_phys = (uint32_t)((&start) - KERNEL_VIRTUAL_BASE) & 0xFFFFF000;
-    _end_addr_phys = roundPageAligned((uint32_t)&end + _half_maxStack - KERNEL_VIRTUAL_BASE);
+    _end_addr_phys = roundPageAligned((uint32_t)&end + _halfMaxStack - KERNEL_VIRTUAL_BASE);
 
     // Find out what addresses are free
     memory_map_t *mmap = mbt->mmap_addr;

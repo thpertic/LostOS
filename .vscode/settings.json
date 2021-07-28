@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "pmm.h": "c",
+        "utility.h": "c",
+        "stdint.h": "c",
+        "cstdint": "c"
+    }
+}

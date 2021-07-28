@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="struct__kheapHeader">
+<title>_kheapHeader struct Reference</title>
+<para>
+    <programlisting>#include <link linkend="kheap_8h">&lt;kheap.h&gt;</link></programlisting>
+</para>
+        <section>
+            <title>Data Fields</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct _kheapHeader * prev<para><emphasis>Previous block in the chunk.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct _kheapHeader * next<para><emphasis>Next block of the chunk.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint32_t size<para><emphasis>Size of the chunk minus the size of this header.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para>This structure represent a block inside the linked list of the heap. (It really is only a contiguous block of memory) It is based in the header of the chunk. Thus, when returned, it is important to remember to add sizeof(kheapHeader); and when a pointer is received, subtract it. </para>
+                <para>Definition at line 15 of file kheap.h</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>kheap.h</para></listitem></itemizedlist></para>
+        </simplesect>
+        <section>
+            <title>Field Documentation</title>
+        </section>
+</section>

@@ -3,7 +3,7 @@
 
 #include <system.h>
 
-void clock_init(uint32_t frequency);
+void init_clock(uint32_t frequency);
 void tickHandler(regs_t *r);
 
 #endif

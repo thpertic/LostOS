@@ -9,7 +9,7 @@
 idt_gate_t idt_gates[INTERRUPTS];
 idt_descriptor_t idt_ptr;
 
-void idt_init() {
+void init_idt() {
     // Set the idt pointer
     idt_ptr.limit = sizeof(idt_gates) - 1;
     idt_ptr.base = (uint32_t)&idt_gates;

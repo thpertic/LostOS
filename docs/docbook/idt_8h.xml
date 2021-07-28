@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="idt_8h">
+    <title>idt.h File Reference</title>
+    <programlisting>#include &lt;system.h&gt;</programlisting>
+        <section>
+            <title> Data Structures </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structidt__descriptor">idt_descriptor</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structidt__gate">idt_gate</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Macros</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="idt_8h_1a405a0e9445853a015677768c751c9d6b">INTERRUPTS</link> 256</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint16_t <link linkend="idt_8h_1ab28e82ae69032cb4ad3ec3a0be3d7129">limit</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint32_t <link linkend="idt_8h_1a0523cedff47e2441fc198b7770ec5d3f">base</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint16_t <link linkend="idt_8h_1a11b1c6ed61493da558a28e77fa1efee6">offset_low</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint16_t <link linkend="idt_8h_1a1c44289c163c1460544d6ee0900d02ba">selector</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t <link linkend="idt_8h_1a09777e6a5ad91ffd82a9975efe33de2e">zero</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t <link linkend="idt_8h_1a5e7eb925db6957f19edc1e5d7d74c8f6">type_attr</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint16_t <link linkend="idt_8h_1a864a047b12c9faf25a520351049b91f1">offset_high</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structidt__descriptor">idt_descriptor</link> <link linkend="idt_8h_1acc0b0889d51b9fe3a2888e3ea9a3b918">__attribute__</link> (
+(packed) )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="idt_8h_1a35fe413107af682030ab7a4b6dff19b8">init_idt</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="idt_8h_1a3d2ec33ba4fcdfdad0e7ad71aae71bc1">idt_setGate</link> (
+uint8_t index, uint32_t offset, uint16_t selector, uint8_t type_addr)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="idt_8h_1a11b56659c16789baa1b2f6b1e9033754">idt_load</link> (
+uint32_t idt_ptr)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/include/tables/idt.h</para>
+    </simplesect>
+</section>

@@ -23,12 +23,111 @@
  *  1  0  1 - User process tried to read a page and caused a protection fault
  *  1  1  0 - User process tried to write to a non-present page entry
  *  1  1  1 - User process tried to write a page and caused a protection fault
- **/
+ */
+
+/**
+ * Allocate a virtual page and sets it to zero.
+ * 
+ * @see vMapPage()
+ * @see vAllocPages()
+ * 
+ * @param virt Address to map
+ * @param man If that address is mandatory or could be anyone else
+ * 
+ * @return returns the virtual mapped address
+ */
+void *vAllocPage(void *virt, uint32_t flags, bool man) {
+	uint32_t paddr = pAllocPage();
+	if (vMapPage(paddr, virt, flags))
+		return virt;
+	else if (man) {
+		// If that address was needed, unmap the physical address and return a null pointer
+		pFreePage(paddr);
+		return (void *)0;
+	} else {
+		// Try to map from 1MB to the end of the memory
+		uint32_t vaddr;
+		for (vaddr = 0x100000; vaddr < (_RAMSize * 1024); vaddr += PAGE_SIZE) {
+			if (vMapPage(paddr, vaddr, flags))
+				return vaddr;
+		}
+	}
+	pFreePage(paddr);
+	return (void *)0;
+}
+
+/**
+ * Allocate n virtual page and sets them to zero.
+ * 
+ * @see vMapPage()
+ * @see vAllocPage()
+ * 
+ * @param virt Start address to map
+ * @param n Number of contiguous pages to map
+ * @param man If that address is mandatory or could be anyone else
+ * 
+ * @return returns the starting virtual mapped address
+ */
+void *vAllocPages(void *virt, uint32_t flags, uint32_t n, bool man) {
+	uint32_t paddr[n];
+	uint32_t vaddr = (uint32_t)virt;
+
+	paddr[0] =  pAllocPage();
+	
+	if (vMapPage(paddr[0], vaddr, flags)) {
+		// Continue to map for the remaining n
+		int32_t i;
+		for (i = 1, vaddr += PAGE_SIZE; i < (int32_t)n; i++, vaddr += PAGE_SIZE) {
+			paddr[i] = pAllocPage();
+			if (!vMapPage(paddr[i], vaddr, flags)) {
+				// Unmap all the mapping
+				for (vaddr -= PAGE_SIZE; i >= 0; i--, vaddr -= PAGE_SIZE) {
+					if (i != 0)
+						vUnmapPage(vaddr);
+					pFreePage(paddr[i]);
+				}
+				return (void *)0;
+			}
+		}
+		return virt;
+	} else if (man) 
+		return (void *)0;
+	else {
+		// Find the frist free page and then starts mapping
+		uint32_t new_vaddr = vAllocPage(virt, flags, false);
+
+		int32_t i;
+		for (i = 1, new_vaddr += PAGE_SIZE; i < (int32_t)n; i++, new_vaddr += PAGE_SIZE) {
+			paddr[i] = pAllocPage();
+			if (!vMapPage(paddr[i], new_vaddr, flags)) {
+				// Unmap all the mapping
+				for (new_vaddr -= PAGE_SIZE; i >= 0; i--, new_vaddr -= PAGE_SIZE) {
+					if (i != 0)
+						vUnmapPage(new_vaddr);
+					pFreePage(paddr[i]);
+				}
+				return (void *)0;
+			}
+		}
+		return new_vaddr;
+	}
+
+}
 
 /**
  * Mapping a virtual address to a physical one.
+ * 
+ * @param phys Physical address to map.
+ * @param virt Virtual address to map phys to.
+ * @param flags Flags.
+ * 
+ * @return If everything went well.
  */
 bool vMapPage(void *phys, void *virt, uint32_t flags) {
+	// Verify that the address is page-aligned
+	if (((uint32_t)virt & 0xFFFFF000) != (uint32_t)virt)
+		return false;
+
 	uint32_t *pd = PD_VADDR;
 	if (!(pd[PAGE_DIRECTORY_INDEX((uint32_t)virt)] & 1)) {
 		// The page table doesn't exists
@@ -51,8 +150,14 @@ bool vMapPage(void *phys, void *virt, uint32_t flags) {
 
 /**
  * Unmapping the virtual address from the current page directory.
+ * 
+ * @param virt Virtual address to unmap.
  */
-void vUnmapPage(void *virt) {
+bool vUnmapPage(void *virt) {
+	// Verify that the address is page-aligned
+	if (((uint32_t)virt & 0xFFFFF000) != (uint32_t)virt)
+		return false;
+
 	uint32_t *pd = PD_VADDR;
 	
 	if (pd[PAGE_DIRECTORY_INDEX((uint32_t)virt)] & 1) {
@@ -73,12 +178,14 @@ void vUnmapPage(void *virt) {
 			// The page table is empty, free the memory
 			pFreePage(pd[PAGE_DIRECTORY_INDEX((uint32_t)virt)] & 0xFFFFF000);
 			
-		printf("0x%x unmapped\n", virt);
+		printf("virtual 0x%x unmapped\n", virt);
+		return true;
 	}
+	return false;
 }
 
 /**
- * The Virtual Memory Manager is going to start and handle paging in the system.
+ * \brief The Virtual Memory Manager is going to start and handle paging in the system.
  * 
  * Paging is a system which allows each process to see a full virtual address space, without actually requiring the full amount of physical memory to be available or present.
  * Maximum address space for 32 bit systems like this is 4GB. 
@@ -113,7 +220,7 @@ void vUnmapPage(void *virt) {
  *      AAAAAAAAAA         BBBBBBBBBB        CCCCCCCCCCCC
  *      directory index    page table index  offset into page
  */
-void vmm_init() {
+void init_vmm() {
     uint32_t eflags = interrupt_save_disable();	
 
 	uint32_t *pd_p __attribute__((aligned(4096))) = pAllocPage();

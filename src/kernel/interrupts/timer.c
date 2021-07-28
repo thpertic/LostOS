@@ -4,6 +4,16 @@
 #include <debug_utils/printf.h>
 #include <debug_utils/serial.h>
 
+uint32_t tick = 0;
+
+void tickHandler(regs_t *r) {
+    if (r->int_no == 0)
+        printfSerial("%d\n", r->int_no);
+    
+    tick++;
+    outportb(0x20, 0x20); // End of interrupt
+}
+
 /**
  * The Programmable Interval Timer is a chip connected to IRQ0. 
  * It can interrupt the CPU at a user-defined rate (between 18.2Hz and 1.1931 MHz). 
@@ -16,18 +26,7 @@
  *     - Channel 1 is very un-useful and on modern hardware is no longer implemented. It used to control refresh rates for DRAM.
  *     - Channel 2 controls the PC speaker.
  */
-
-uint32_t tick = 0;
-
-void tickHandler(regs_t *r) {
-    if (r->int_no == 0)
-        printfSerial("%d\n", r->int_no);
-    
-    tick++;
-    outportb(0x20, 0x20); // End of interrupt
-}
-
-void clock_init(uint32_t frequency) {
+void init_clock(uint32_t frequency) {
     // Set the timer as the first IRQ
     irq_installHandler(IRQ0, &tickHandler);
 

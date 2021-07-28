@@ -22,10 +22,13 @@
 #define PAGE_TABLE_INDEX(x) (((x) >> PAGE_TABLE_ADDR_OFFSET) & 0x3ff)
 #define PAGE_GET_PHYSICAL_ADDRESS(x) (*x & ~0xfff)
 
-void vmm_init();
+void init_vmm();
 
 bool vMapPage(void *phys, void *virt, uint32_t flags);
-void vUnmapPage(void *virt);
+bool vUnmapPage(void *virt);
+
+void *vAllocPage(void *virt, uint32_t flags, bool man);
+void *vAllocPages(void *virt, uint32_t flags, uint32_t n, bool man);
 
 extern void set_cr3(uint32_t *pd_phys_addr);
 

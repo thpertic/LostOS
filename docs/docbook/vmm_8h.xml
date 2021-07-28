@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="vmm_8h">
+    <title>vmm.h File Reference</title>
+    <programlisting>#include &lt;system.h&gt;</programlisting>
+        <section>
+            <title>Macros</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vmm_8h_1ae03d2c13c32e258037749223daece4a6">BIT_PD_PT_PRESENT</link> 0x00000001</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vmm_8h_1ad41f9b118d96455fbb27da665cd3dd37">BIT_PD_PT_RW</link> 0x00000002</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vmm_8h_1a60ebcb496814df5cc99c4a20e49d04a9">BIT_PD_PT_USER</link> 0x00000004</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vmm_8h_1a515f60a56f365e3c24bd3970a88a9f4a">BIT_PD_PT_PWT</link> 0x00000008</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vmm_8h_1a2ab3ba38ce507d85d42c34bde2d6e13d">BIT_PD_PT_PCD</link> 0x00000010</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vmm_8h_1a78a2e7ef3358301de3176116c80469bf">BIT_PD_PT_ACCESSED</link> 0x00000020</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vmm_8h_1a4f5d3841f166819c0246cbb2133466dc">BIT_PD_PT_DIRTY</link> 0x00000040</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vmm_8h_1abc48f34ed9dce9982033ad378bf36167">BIT_PD_PAGE_SIZE</link> 0x00000080</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vmm_8h_1ac47fbf9bab578f320dca174406c7ef73">PD_VADDR</link> 0xFFFFF000</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vmm_8h_1a765e49bb44f4a375c759e32858e0550e">PT_BASE_VADDR</link> 0xFFC00000</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vmm_8h_1a85667266356c19d0afdcf9a0cf4e1c75">PAGE_DIRECTORY_ADDR_OFFSET</link> 22</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vmm_8h_1a372f607fae734427231339549f7b3856">PAGE_TABLE_ADDR_OFFSET</link> 12</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vmm_8h_1a877752f604817d711c82889f7ded52b8">PAGE_DIRECTORY_INDEX</link> (((<link linkend="vga_8c_1a6150e0515f7202e2fb518f7206ed97dc">x</link>) &gt;&gt; <link linkend="vmm_8h_1a85667266356c19d0afdcf9a0cf4e1c75">PAGE_DIRECTORY_ADDR_OFFSET</link>) &amp; 0x3ff)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vmm_8h_1a9a736011ad6043805b1e3db9e889b149">PAGE_TABLE_INDEX</link> (((<link linkend="vga_8c_1a6150e0515f7202e2fb518f7206ed97dc">x</link>) &gt;&gt; <link linkend="vmm_8h_1a372f607fae734427231339549f7b3856">PAGE_TABLE_ADDR_OFFSET</link>) &amp; 0x3ff)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="vmm_8h_1a580ade9f59adcb10c12550e6b38295fd">PAGE_GET_PHYSICAL_ADDRESS</link> (*<link linkend="vga_8c_1a6150e0515f7202e2fb518f7206ed97dc">x</link> &amp; ~0xfff)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="vmm_8h_1acd34cb4c1016f8b955c09153679bc1ec">init_vmm</link> (
+)<para><emphasis>The Virtual Memory Manager is going to start and handle paging in the system.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="vmm_8h_1acb06b7c4006a14240ac29a3ede114daf">vMapPage</link> (
+void * phys, void * virt, uint32_t flags)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="vmm_8h_1aa774181128af1b6c9cfd859525edf105">vUnmapPage</link> (
+void * virt)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void * <link linkend="vmm_8h_1aa1de63853ee6b993531d48958c6c3e1f">vAllocPage</link> (
+void * virt, uint32_t flags, bool man)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void * <link linkend="vmm_8h_1a7a305ff942b89d446b7b72c665340349">vAllocPages</link> (
+void * virt, uint32_t flags, uint32_t n, bool man)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="vmm_8h_1a2cff7f27869ced78fdc69df1e0e84cfd">set_cr3</link> (
+uint32_t * pd_phys_addr)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/include/mm/vmm.h</para>
+    </simplesect>
+</section>

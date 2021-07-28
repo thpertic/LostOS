@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="kheap_8h">
+    <title>kheap.h File Reference</title>
+    <programlisting>#include &lt;system.h&gt;</programlisting>
+        <section>
+            <title> Data Structures </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="struct__kheapHeader">_kheapHeader</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Macros</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="kheap_8h_1ae6d18df3767507402fc452d66e28c027">KHEAP_LENGTH</link> 0x10000000<para><emphasis>The maximum length of the heap - 256MB.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Typedefs</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef struct <link linkend="struct__kheapHeader">_kheapHeader</link>  <link linkend="kheap_8h_1aecdf894eef66106f9a4ff67c70d1d3c6">kheapHeader</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="kheap_8h_1a755a69ff831b6e23a808dcf4b9944854">init_kheap</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void * <link linkend="kheap_8h_1afec98775e8113dc6d98f75a582c3646f">kmalloc</link> (
+uint32_t size)<para><emphasis>Function to allocate the heap for the kernel.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void * <link linkend="kheap_8h_1abcad5693e10bd77d4275c1f8c9cb5cd7">kcalloc</link> (
+uint32_t n, uint32_t size)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void * <link linkend="kheap_8h_1a3142cd9d94e09705bb137b527805004a">krealloc</link> (
+void * ptr, uint32_t newSize)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void * <link linkend="kheap_8h_1a8ff196f7bd88124197de662bde0eb639">kfree</link> (
+void * addr)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/include/mm/kheap.h</para>
+    </simplesect>
+</section>

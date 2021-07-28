@@ -31,7 +31,7 @@ typedef struct idt_gate {
     uint16_t offset_high;
 } __attribute__((packed)) idt_gate_t;
 
-void idt_init();
+void init_idt();
 void idt_setGate(uint8_t index, uint32_t offset, uint16_t selector, uint8_t type_addr);
 
 // defined in idt_load.asm

@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="gdt_8h">
+    <title>gdt.h File Reference</title>
+    <programlisting>#include &lt;system.h&gt;</programlisting>
+        <section>
+            <title> Data Structures </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structgdt__entry">gdt_entry</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structgdt__descriptor">gdt_descriptor</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Macros</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="gdt_8h_1a671a8a7334ea602460efad38570c5e6a">DESCRIPTORS</link> 5</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint16_t <link linkend="gdt_8h_1aa7ae5b5a918e00776ff07fb1c58a348d">limit_low</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint16_t <link linkend="gdt_8h_1a71e21ea67de59991e9a27666a1752a8f">base_low</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t <link linkend="gdt_8h_1a6b67e86f6de9204d76adab79069aec29">base_middle</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t <link linkend="gdt_8h_1a8b0d6200bc639dd37ff68847a0adde5f">access</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t <link linkend="gdt_8h_1acfea365f69e71368a2db03333d4afd6f">granularity</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t <link linkend="gdt_8h_1a1a173457c7aa39c59c008fcc3332d2b3">base_high</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint16_t <link linkend="gdt_8h_1aaba88b24a21a6c70c895c0d55f4a69a0">size</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint32_t <link linkend="gdt_8h_1a894bdfa2d603d8343f8ef01dda6fcd23">offset</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structgdt__entry">gdt_entry</link> <link linkend="gdt_8h_1a9c3b87fc42c79f8321b9949eafd55ca5">__attribute__</link> (
+(packed) )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="gdt_8h_1a86bb50044169930202cc403376ef40c3">init_gdt</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="gdt_8h_1a7fb93ca359948180801b0da7ab3c13c3">gdt_setEntry</link> (
+int index, uint32_t base, uint64_t limit, uint8_t access, uint8_t flags)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="gdt_8h_1a7416cddd08555a9fdbccc577378b40a8">gdt_load</link> (
+uint32_t gdt_ptr)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/include/tables/gdt.h</para>
+    </simplesect>
+</section>

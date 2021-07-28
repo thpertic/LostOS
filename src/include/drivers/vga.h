@@ -34,7 +34,7 @@
 // Print in the video memory
 #define PRINT(character, attribs) (((attribs & 0x0F) << 8) | (character & 0xFF))
 
-void video_init();
+void init_video();
 
 int puts(char* string);
 int putc(const char c);

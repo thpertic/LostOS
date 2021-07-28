@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<book xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info>
+    <title>LostOS</title>
+    </info>
+        <xi:include href="mainpage.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <chapter>
+        <title>Data Structure Documentation</title>
+        <xi:include href="struct__kheapHeader.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structaout__symbol__table.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structelf__section__header__table.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structfree__mem.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structgdt__descriptor.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structgdt__entry.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structidt__descriptor.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structidt__gate.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structmemory__map.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structmodule.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structmultiboot__header.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structmultiboot__info.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structregs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+    <chapter>
+        <title>File Documentation</title>
+        <xi:include href="string_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="utility_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="printf_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="serial_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="vga_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="interrupt_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="irqs_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="isrs_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="timer_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="kheap_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="pmm_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="vmm_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="multiboot_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="system_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="gdt_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="idt_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="port__io_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="string_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="utility_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="printf_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="serial_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="vga_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="irqs_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="isrs_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="timer_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="kmain_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="kheap_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="pmm_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="vmm_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="gdt_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="idt_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+</book>

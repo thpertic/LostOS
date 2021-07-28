@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="kheap_8c">
+    <title>kheap.c File Reference</title>
+    <programlisting>#include &lt;mm/kheap.h&gt;</programlisting>
+    <programlisting>#include &lt;mm/pmm.h&gt;</programlisting>
+    <programlisting>#include &lt;mm/vmm.h&gt;</programlisting>
+    <programlisting>#include &lt;common/utility.h&gt;</programlisting>
+    <programlisting>#include &lt;debug_utils/printf.h&gt;</programlisting>
+        <section>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint32_t * <link linkend="kheap_8c_1a5591fb6d1147de72cd95d7da15079fbe">_kheapStart</link><para><emphasis>Virtual address of where the heap starts.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint32_t * <link linkend="kheap_8c_1a5869ab92c690189f00926ab47028feca">_kheapEnd</link><para><emphasis>Virtual address of where the heap ends (next available address)</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="kheap_8h_1aecdf894eef66106f9a4ff67c70d1d3c6">kheapHeader</link> * <link linkend="kheap_8c_1a8bfbfbf3c5486cfda8bd93e9ef0d9a45">_kheapFirst</link><para><emphasis>The first block of the heap linked list.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="kheap_8c_1a755a69ff831b6e23a808dcf4b9944854">init_kheap</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void * <link linkend="kheap_8c_1afec98775e8113dc6d98f75a582c3646f">kmalloc</link> (
+uint32_t size)<para><emphasis>Function to allocate the heap for the kernel.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void * <link linkend="kheap_8c_1a8ff196f7bd88124197de662bde0eb639">kfree</link> (
+void * addr)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void * <link linkend="kheap_8c_1abcad5693e10bd77d4275c1f8c9cb5cd7">kcalloc</link> (
+uint32_t n, uint32_t size)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void * <link linkend="kheap_8c_1a3142cd9d94e09705bb137b527805004a">krealloc</link> (
+void * ptr, uint32_t newSize)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/kernel/mm/kheap.c</para>
+    </simplesect>
+</section>

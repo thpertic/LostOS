@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="system_8h">
+    <title>system.h File Reference</title>
+    <programlisting>#include &lt;stdbool.h&gt;</programlisting>
+    <programlisting>#include &lt;stdint.h&gt;</programlisting>
+    <programlisting>#include &lt;stddef.h&gt;</programlisting>
+        <section>
+            <title> Data Structures </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structregs">regs</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Macros</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="system_8h_1a59adc4c82490d23754cd39c2fb99b0da">EOF</link> -1</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="system_8h_1aa189e0352b19fd734e99b42c4ecfe26a">KERNEL_VIRTUAL_BASE</link> 0xC0000000</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="system_8h_1a97d832ae23af4f215e801e37e4f94254">K</link> 1024</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="system_8h_1a52037c938e3c1b126c6277da5ca689d0">M</link> (<link linkend="system_8h_1a97d832ae23af4f215e801e37e4f94254">K</link> * 1024)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="system_8h_1aed9ea78689ecce0b7264c02c7f8a9a54">G</link> (<link linkend="system_8h_1a52037c938e3c1b126c6277da5ca689d0">M</link> * 1024)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="system_8h_1a8fbe564b6eaa9affe24c8fbed1a4c7ea">gs</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="system_8h_1a88d3d1b872b301364b825176981daf14">fs</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="system_8h_1a4305a24abee1f4912083d877c499fcad">es</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="system_8h_1a41d22b14f5b54c8488f5969c012000d7">ds</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="system_8h_1a21967b2580b9725a17075b898ff3abc3">edi</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="system_8h_1ae508f942b3572ab3ab749fdc35a763da">esi</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="system_8h_1a680481bf6e093a04d619216bef02a2b2">ebp</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="system_8h_1af1425d6c20cbfa78828ab126434a1921">esp</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="system_8h_1a8996da18df84dface49e6d219a6fbde0">ebx</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="system_8h_1a033ca834eb49bc602eb0e0b358a9a4f1">edx</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="system_8h_1a0ea7fea7f82c9647381548939843feaf">ecx</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="system_8h_1aa35a8540d25648fda11e3cccd6e4e10c">eax</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="system_8h_1ac38ccce5c52c2ed5882fe54495b53b56">int_no</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="system_8h_1aa49bd5fbbbf89d957dd3ac1ce217f738">err_code</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="system_8h_1a39deae339e1220f3a094c493fbf468e7">eip</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="system_8h_1a62ed1336fc8e1441c0b7604555ef2a6b">cs</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="system_8h_1a3a999c5a8c36bfad83716f3cb5560912">eflags</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="system_8h_1aa577c00dec0db22f08d7a9b8a3dfc679">useresp</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned int <link linkend="system_8h_1a0ed2c935d809c29ae771d1a8350a272f">ss</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structregs">regs</link> <link linkend="system_8h_1ad448f168c72c34120bb276481c92af99">__attribute__</link> (
+(packed) )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t <link linkend="system_8h_1abf33a0709688bca34adc8eed977b4bfa">inportb</link> (
+uint16_t _port)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="system_8h_1a4dfe9a9c7ca49a3c20e69be114f36636">outportb</link> (
+uint16_t _port, uint8_t _data)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/include/system.h</para>
+    </simplesect>
+</section>

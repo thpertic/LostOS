@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="idt_8c">
+    <title>idt.c File Reference</title>
+    <programlisting>#include &lt;common/string.h&gt;</programlisting>
+    <programlisting>#include &lt;tables/idt.h&gt;</programlisting>
+    <programlisting>#include &lt;interrupts/isrs.h&gt;</programlisting>
+    <programlisting>#include &lt;interrupts/irqs.h&gt;</programlisting>
+    <programlisting>#include &lt;common/utility.h&gt;</programlisting>
+    <programlisting>#include &lt;debug_utils/printf.h&gt;</programlisting>
+        <section>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>idt_gate_t <link linkend="idt_8c_1adbba425a54c771105929b127cc4fc62a">idt_gates</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>idt_descriptor_t <link linkend="idt_8c_1a7f5a78ac068fbe63a48fc50a69f1cd6c">idt_ptr</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="idt_8c_1a35fe413107af682030ab7a4b6dff19b8">init_idt</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="idt_8c_1a3d2ec33ba4fcdfdad0e7ad71aae71bc1">idt_setGate</link> (
+uint8_t index, uint32_t offset, uint16_t selector, uint8_t type_addr)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/kernel/tables/idt.c</para>
+    </simplesect>
+</section>

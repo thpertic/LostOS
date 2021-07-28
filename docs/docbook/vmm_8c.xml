@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="vmm_8c">
+    <title>vmm.c File Reference</title>
+    <programlisting>#include &lt;mm/vmm.h&gt;</programlisting>
+    <programlisting>#include &lt;mm/pmm.h&gt;</programlisting>
+    <programlisting>#include &lt;common/utility.h&gt;</programlisting>
+    <programlisting>#include &lt;interrupts/interrupt.h&gt;</programlisting>
+    <programlisting>#include &lt;debug_utils/printf.h&gt;</programlisting>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void * <link linkend="vmm_8c_1aa1de63853ee6b993531d48958c6c3e1f">vAllocPage</link> (
+void * virt, uint32_t flags, bool man)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void * <link linkend="vmm_8c_1a7a305ff942b89d446b7b72c665340349">vAllocPages</link> (
+void * virt, uint32_t flags, uint32_t n, bool man)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="vmm_8c_1acb06b7c4006a14240ac29a3ede114daf">vMapPage</link> (
+void * phys, void * virt, uint32_t flags)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="vmm_8c_1aa774181128af1b6c9cfd859525edf105">vUnmapPage</link> (
+void * virt)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="vmm_8c_1acd34cb4c1016f8b955c09153679bc1ec">init_vmm</link> (
+)<para><emphasis>The Virtual Memory Manager is going to start and handle paging in the system.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/kernel/mm/vmm.c</para>
+    </simplesect>
+</section>

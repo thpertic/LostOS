@@ -7,7 +7,7 @@ int x = 0, y = 0;
 // Background and foreground color
 uint8_t attribs;
 
-void video_init() {
+void init_video() {
     set_color(LIGHT_GREY, BLACK);
     clear();
 }
@@ -55,7 +55,7 @@ void update_cursor() {
 /**
  * Prints a char.
  * Arrived at WIDTH of width goes newline, arrived at HEIGHT of height scrolls up.
- * Can handle \n, \t, \b.
+ * Can handle '\n', '\t', '\b'.
  */
 int putc(const char c) {
     try_scroll();

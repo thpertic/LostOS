@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="vga_8c">
+    <title>vga.c File Reference</title>
+    <programlisting>#include &lt;drivers/vga.h&gt;</programlisting>
+    <programlisting>#include &lt;common/utility.h&gt;</programlisting>
+        <section>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="vga_8c_1a6150e0515f7202e2fb518f7206ed97dc">x</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="vga_8c_1a0a2f84ed7838f07779ae24c5a9086d33">y</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t <link linkend="vga_8c_1ae25ff5b7b6b91540d61c57220cdf720b">attribs</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="vga_8c_1a759f71f304c11873e67bf7cc3f2d08a8">init_video</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="vga_8c_1ac8bb3912a3ce86b15842e79d0b421204">clear</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="vga_8c_1ab3ea24f215149bc549e5d959a3ae84ca">try_scroll</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="vga_8c_1adcaf3dad272a0c5e8d9ffa89823ede2a">update_cursor</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="vga_8c_1ad82b6e9f7fa8230d3873939069acc5f2">putc</link> (
+const char c)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="vga_8c_1ac4bb7070d519c1fe12628cfe4397082f">puts</link> (
+char * string)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="vga_8c_1ad0040ec0fb32ac4b886bdb38a22d7045">set_color</link> (
+uint8_t foreColor, uint8_t backColor)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t <link linkend="vga_8c_1a920a79e4ea4e06327e2f2f8957c4d0b3">get_color</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file /home/t/Documents/GitHub/LostOS/src/kernel/drivers/vga.c</para>
+    </simplesect>
+</section>
