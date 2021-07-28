@@ -1,0 +1,87 @@
+\hypertarget{irqs_8c}{}\section{src/kernel/interrupts/irqs.c File Reference}
+\label{irqs_8c}\index{src/kernel/interrupts/irqs.\+c@{src/kernel/interrupts/irqs.\+c}}
+{\ttfamily \#include $<$interrupts/irqs.\+h$>$}\newline
+{\ttfamily \#include $<$tables/idt.\+h$>$}\newline
+{\ttfamily \#include $<$debug\+\_\+utils/printf.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{irqs_8c_aadf5ae2109fe28b014720deb24f677de}{irqs\+\_\+init} ()
+\item 
+void \hyperlink{irqs_8c_ab5ebdc1b31b3357377b0257473641ced}{pic\+\_\+init} ()
+\item 
+void \hyperlink{irqs_8c_ad02536ed6e929d20694fa72d3f393461}{irq\+\_\+fault\+Handler} (regs\+\_\+t $\ast$r)
+\item 
+void \hyperlink{irqs_8c_af62fec9ecb95472ec14315a9e161103a}{irq\+\_\+install\+Handler} (int irq, void($\ast$handler)(regs\+\_\+t $\ast$r))
+\item 
+void \hyperlink{irqs_8c_a99a28bd3e9237b07826af4106d69929e}{irq\+\_\+uninstall\+Handler} (int irq)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{irqs_8c_a45ca926ab6a2861be80e892495b57bf1}{irq\+\_\+routines} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{irqs_8c_ad02536ed6e929d20694fa72d3f393461}\label{irqs_8c_ad02536ed6e929d20694fa72d3f393461}} 
+\index{irqs.\+c@{irqs.\+c}!irq\+\_\+fault\+Handler@{irq\+\_\+fault\+Handler}}
+\index{irq\+\_\+fault\+Handler@{irq\+\_\+fault\+Handler}!irqs.\+c@{irqs.\+c}}
+\subsubsection{\texorpdfstring{irq\+\_\+fault\+Handler()}{irq\_faultHandler()}}
+{\footnotesize\ttfamily void irq\+\_\+fault\+Handler (\begin{DoxyParamCaption}\item[{regs\+\_\+t $\ast$}]{r }\end{DoxyParamCaption})}
+
+Each of the I\+RQ I\+S\+Rs point to this function, rather than the \textquotesingle{}isr\+\_\+fault\+Handler\textquotesingle{} in \textquotesingle{}\hyperlink{isrs_8c}{isrs.\+c}\textquotesingle{}. The I\+RQ Controllers need to be told when you are done servicing them, so you need to send them an \char`\"{}\+End of Interrupt\char`\"{} command (0x20). There are two 8259 chips\+:
+\begin{DoxyItemize}
+\item The first exists at 0x20,
+\item the second exists at 0x\+A0. If the second controller (an I\+RQ from 8 to 15) gets an interrupt, you need to acknowledge the interrupt at B\+O\+TH controllers, otherwise, you only send an E\+OI command to the first controller. If you don\textquotesingle{}t send an E\+OI, you won\textquotesingle{}t raise any more I\+R\+Qs. 
+\end{DoxyItemize}If the I\+DT entry that was invoked was greater than 40 (meaning I\+R\+Q8 -\/ 15), then we need to send an E\+OI to the slave controller\mbox{\Hypertarget{irqs_8c_af62fec9ecb95472ec14315a9e161103a}\label{irqs_8c_af62fec9ecb95472ec14315a9e161103a}} 
+\index{irqs.\+c@{irqs.\+c}!irq\+\_\+install\+Handler@{irq\+\_\+install\+Handler}}
+\index{irq\+\_\+install\+Handler@{irq\+\_\+install\+Handler}!irqs.\+c@{irqs.\+c}}
+\subsubsection{\texorpdfstring{irq\+\_\+install\+Handler()}{irq\_installHandler()}}
+{\footnotesize\ttfamily void irq\+\_\+install\+Handler (\begin{DoxyParamCaption}\item[{int}]{irq,  }\item[{void($\ast$)(regs\+\_\+t $\ast$r)}]{handler }\end{DoxyParamCaption})}
+
+This installs a custom I\+RQ handler for the given I\+RQ
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{irqs_8c_a99a28bd3e9237b07826af4106d69929e}{irq\+\_\+uninstall\+Handler()} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{irqs_8c_a99a28bd3e9237b07826af4106d69929e}\label{irqs_8c_a99a28bd3e9237b07826af4106d69929e}} 
+\index{irqs.\+c@{irqs.\+c}!irq\+\_\+uninstall\+Handler@{irq\+\_\+uninstall\+Handler}}
+\index{irq\+\_\+uninstall\+Handler@{irq\+\_\+uninstall\+Handler}!irqs.\+c@{irqs.\+c}}
+\subsubsection{\texorpdfstring{irq\+\_\+uninstall\+Handler()}{irq\_uninstallHandler()}}
+{\footnotesize\ttfamily void irq\+\_\+uninstall\+Handler (\begin{DoxyParamCaption}\item[{int}]{irq }\end{DoxyParamCaption})}
+
+This clears the handler for a given I\+RQ
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{irqs_8c_af62fec9ecb95472ec14315a9e161103a}{irq\+\_\+install\+Handler()} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{irqs_8c_aadf5ae2109fe28b014720deb24f677de}\label{irqs_8c_aadf5ae2109fe28b014720deb24f677de}} 
+\index{irqs.\+c@{irqs.\+c}!irqs\+\_\+init@{irqs\+\_\+init}}
+\index{irqs\+\_\+init@{irqs\+\_\+init}!irqs.\+c@{irqs.\+c}}
+\subsubsection{\texorpdfstring{irqs\+\_\+init()}{irqs\_init()}}
+{\footnotesize\ttfamily void irqs\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{irqs_8c_ab5ebdc1b31b3357377b0257473641ced}\label{irqs_8c_ab5ebdc1b31b3357377b0257473641ced}} 
+\index{irqs.\+c@{irqs.\+c}!pic\+\_\+init@{pic\+\_\+init}}
+\index{pic\+\_\+init@{pic\+\_\+init}!irqs.\+c@{irqs.\+c}}
+\subsubsection{\texorpdfstring{pic\+\_\+init()}{pic\_init()}}
+{\footnotesize\ttfamily void pic\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Normally, I\+R\+Qs 0 to 7 are mapped to entries 8 to 15. This is a problem in protected mode, because I\+DT entry 8 is a Double Fault! Without remapping, every time I\+R\+Q0 fires, you get a Double Fault Exception, which is N\+OT actually what\textquotesingle{}s happening. We send commands to the Programmable Interrupt Controller (P\+I\+Cs -\/ also called the 8259\textquotesingle{}s) in order to make I\+R\+Q0 to 15 be remapped to I\+DT entries 32 to 47 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{irqs_8c_a45ca926ab6a2861be80e892495b57bf1}\label{irqs_8c_a45ca926ab6a2861be80e892495b57bf1}} 
+\index{irqs.\+c@{irqs.\+c}!irq\+\_\+routines@{irq\+\_\+routines}}
+\index{irq\+\_\+routines@{irq\+\_\+routines}!irqs.\+c@{irqs.\+c}}
+\subsubsection{\texorpdfstring{irq\+\_\+routines}{irq\_routines}}
+{\footnotesize\ttfamily void$\ast$ irq\+\_\+routines\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0
+\}
+\end{DoxyCode}
+Array of function pointers\+: these are the actual irq routines. 

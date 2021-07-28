@@ -1,0 +1,58 @@
+\hypertarget{string_8c}{}\section{src/kernel/common/string.c File Reference}
+\label{string_8c}\index{src/kernel/common/string.\+c@{src/kernel/common/string.\+c}}
+{\ttfamily \#include $<$common/string.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \hyperlink{string_8c_aa383452fe445bfae989358c9d7d96f4f}{strlen} (const char $\ast$s)
+\item 
+int32\+\_\+t \hyperlink{string_8c_a90626f44fb128936392b79bc8c06d03f}{strcmp} (const char $\ast$s1, const char $\ast$s2)
+\item 
+void \hyperlink{string_8c_adadbdae6f3d0deb54bfb7da3c3a1635e}{swap} (char $\ast$a, char $\ast$b)
+\item 
+void \hyperlink{string_8c_af2c0f95bdedc4d81b85aefdbf5dfce19}{reverse} (char str\mbox{[}$\,$\mbox{]}, int length)
+\item 
+char $\ast$ \hyperlink{string_8c_a3037449d060c1f946ac5e8a84469f6bd}{itoa} (long int num, char $\ast$str, int \hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base})
+\item 
+char $\ast$ \hyperlink{string_8c_ab0f4f1cb989170877f5c613d81785628}{utoa} (uint32\+\_\+t num, char $\ast$str, int \hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{string_8c_a3037449d060c1f946ac5e8a84469f6bd}\label{string_8c_a3037449d060c1f946ac5e8a84469f6bd}} 
+\index{string.\+c@{string.\+c}!itoa@{itoa}}
+\index{itoa@{itoa}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{itoa()}{itoa()}}
+{\footnotesize\ttfamily char$\ast$ itoa (\begin{DoxyParamCaption}\item[{long int}]{num,  }\item[{char $\ast$}]{str,  }\item[{int}]{base }\end{DoxyParamCaption})}
+
+An implementation of the famous \hyperlink{string_8c_a3037449d060c1f946ac5e8a84469f6bd}{itoa()} function. \mbox{\Hypertarget{string_8c_af2c0f95bdedc4d81b85aefdbf5dfce19}\label{string_8c_af2c0f95bdedc4d81b85aefdbf5dfce19}} 
+\index{string.\+c@{string.\+c}!reverse@{reverse}}
+\index{reverse@{reverse}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{reverse()}{reverse()}}
+{\footnotesize\ttfamily void reverse (\begin{DoxyParamCaption}\item[{char}]{str\mbox{[}$\,$\mbox{]},  }\item[{int}]{length }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a90626f44fb128936392b79bc8c06d03f}\label{string_8c_a90626f44fb128936392b79bc8c06d03f}} 
+\index{string.\+c@{string.\+c}!strcmp@{strcmp}}
+\index{strcmp@{strcmp}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strcmp()}{strcmp()}}
+{\footnotesize\ttfamily int32\+\_\+t strcmp (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s1,  }\item[{const char $\ast$}]{s2 }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_aa383452fe445bfae989358c9d7d96f4f}\label{string_8c_aa383452fe445bfae989358c9d7d96f4f}} 
+\index{string.\+c@{string.\+c}!strlen@{strlen}}
+\index{strlen@{strlen}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strlen()}{strlen()}}
+{\footnotesize\ttfamily size\+\_\+t strlen (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s }\end{DoxyParamCaption})}
+
+This loops through character array \textquotesingle{}str\textquotesingle{}, returning how many characters it needs to check before it finds a 0. In simple words, it returns the length in bytes of a string \mbox{\Hypertarget{string_8c_adadbdae6f3d0deb54bfb7da3c3a1635e}\label{string_8c_adadbdae6f3d0deb54bfb7da3c3a1635e}} 
+\index{string.\+c@{string.\+c}!swap@{swap}}
+\index{swap@{swap}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{swap()}{swap()}}
+{\footnotesize\ttfamily void swap (\begin{DoxyParamCaption}\item[{char $\ast$}]{a,  }\item[{char $\ast$}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_ab0f4f1cb989170877f5c613d81785628}\label{string_8c_ab0f4f1cb989170877f5c613d81785628}} 
+\index{string.\+c@{string.\+c}!utoa@{utoa}}
+\index{utoa@{utoa}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{utoa()}{utoa()}}
+{\footnotesize\ttfamily char$\ast$ utoa (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{num,  }\item[{char $\ast$}]{str,  }\item[{int}]{base }\end{DoxyParamCaption})}
+
+Variant of \hyperlink{string_8c_a3037449d060c1f946ac5e8a84469f6bd}{itoa()}\+: translate unsigned numbers 

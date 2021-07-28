@@ -1,0 +1,75 @@
+This is a 32-\/bit operating system written from scratch to help me better understand what\textquotesingle{}s \char`\"{}under the hood\char`\"{}.\hypertarget{index_Getting}{}\section{Started}\label{index_Getting}
+\hypertarget{index_Prerequisites}{}\subsection{Prerequisites}\label{index_Prerequisites}
+You will need a cross-\/compiler and Bochs/\+Qemu. I advice to stay on Linux.
+
+I\textquotesingle{}m using the G\+CC cross-\/compiler built from source following the guide on \href{https://wiki.osdev.org/GCC_Cross-Compiler}{\tt https\+://wiki.\+osdev.\+org/\+G\+C\+C\+\_\+\+Cross-\/\+Compiler}. Then install {\ttfamily nasm}, {\ttfamily xorriso} and {\ttfamily bochs} with this command (if you are on a Debian-\/like distro like me)\+: 
+\begin{DoxyCode}
+apt-\textcolor{keyword}{get} install nasm xorriso bochs
+\end{DoxyCode}
+\hypertarget{index_Executing}{}\subsection{Executing}\label{index_Executing}
+Once you download the project, execute 
+\begin{DoxyCode}
+./\hyperlink{pmm_8h_ad56f39f054765ea9dd480006512069cf}{start}.sh
+\end{DoxyCode}
+ It should be enough if everything is right.
+
+I recommend execute the scripts singularly, though, as you can see if one of them crashes. The order is\+: 
+\begin{DoxyCode}
+./compile.sh
+./build.sh
+./bochs.sh  or ./qemu.sh
+\end{DoxyCode}
+
+
+The emulator should start, print some initialization messages to the screen and write \char`\"{}\+I\+N\+I\+T C\+O\+M1\char`\"{} in the com1.\+out file.\hypertarget{index_Clear}{}\section{Clear}\label{index_Clear}
+If you want to rebuild everything you can just execute 
+\begin{DoxyCode}
+./clean.sh
+\end{DoxyCode}
+
+
+which will remove every .o file and the .iso image. You can then follow the {\bfseries Executing} part to re-\/build the OS.\hypertarget{index_Documentation}{}\section{Documentation}\label{index_Documentation}
+To document the code I\textquotesingle{}m using Doxygen. Install it with\+: 
+\begin{DoxyCode}
+apt-\textcolor{keyword}{get} install doxygen 
+\end{DoxyCode}
+ And then to generate code run\+: 
+\begin{DoxyCode}
+doxygen doxyfile
+\end{DoxyCode}
+\hypertarget{index_Features}{}\section{Features}\label{index_Features}
+
+\begin{DoxyItemize}
+\item Basic documentation
+\item Little documentation
+\item G\+R\+UB
+\item Video support (printf-\/like function)
+\item Serial port (C\+O\+M1) support
+\item Custom G\+DT and I\+DT installed
+\item P\+IC remapped
+\item I\+R\+Qs and I\+S\+Rs set
+\item P\+IT (Channel 0)
+\item Physical Memory Manager
+\item Virtual Memory Manager
+\item Kernel Heap Manager
+\end{DoxyItemize}\hypertarget{index_Todos}{}\section{Todos}\label{index_Todos}
+
+\begin{DoxyItemize}
+\item Multithreading
+\item Merge \hyperlink{printf_8h_a98631211a4a8aee62f572375d5b637be}{printf()}\+: Print to a generic output that can be redirected
+\end{DoxyItemize}\hypertarget{index_Problems}{}\section{Problems}\label{index_Problems}
+\hypertarget{index_Dreams}{}\section{Dreams}\label{index_Dreams}
+
+\begin{DoxyItemize}
+\item Good project organization (an {\itshape arch} directory, for example)
+\item Semantic versioning (as soon I get to the alpha release)
+\item E\+R\+R\+NO integration
+\item panic function integration
+\item Keyboard driver
+\item Filesystem
+\item Graphical interface
+\item Network
+\item System calls
+\end{DoxyItemize}\hypertarget{index_Author}{}\section{Author}\label{index_Author}
+Thomas Perticaroli -\/ \href{https://github.com/thpertic}{\tt thpertic}\hypertarget{index_License}{}\section{License}\label{index_License}
+This project is licensed under the M\+IT License -\/ see the L\+I\+C\+E\+N\+SE.md file for details 

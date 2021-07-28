@@ -1,0 +1,321 @@
+\hypertarget{irqs_8h}{}\section{src/include/interrupts/irqs.h File Reference}
+\label{irqs_8h}\index{src/include/interrupts/irqs.\+h@{src/include/interrupts/irqs.\+h}}
+{\ttfamily \#include $<$system.\+h$>$}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{irqs_8h_a8885a13da4dafeb2cb209ce1b7ec3107}{I\+R\+Q0}~32
+\item 
+\#define \hyperlink{irqs_8h_a37360776bcc1dd3b5da93b025177551f}{I\+R\+Q1}~33
+\item 
+\#define \hyperlink{irqs_8h_a5388784cb69a0b869c4e5f60c839ca24}{I\+R\+Q2}~34
+\item 
+\#define \hyperlink{irqs_8h_a81b769ff26428bc3b6f20cb46096f4a2}{I\+R\+Q3}~35
+\item 
+\#define \hyperlink{irqs_8h_a3e56e05fa9adf8ddaaf6f44d999017db}{I\+R\+Q4}~36
+\item 
+\#define \hyperlink{irqs_8h_af1bd5ba58767b60d0639bd1a096dfdd6}{I\+R\+Q5}~37
+\item 
+\#define \hyperlink{irqs_8h_a1282e4c3484ca4c0689e180c5a42a7a9}{I\+R\+Q6}~38
+\item 
+\#define \hyperlink{irqs_8h_ac56b9fd6a60941e7594f299521575ca2}{I\+R\+Q7}~39
+\item 
+\#define \hyperlink{irqs_8h_ad299f4a78ead6e9f10cfa55376be25ac}{I\+R\+Q8}~40
+\item 
+\#define \hyperlink{irqs_8h_af59ffb9e0de6a5a1f9078a110460a2f4}{I\+R\+Q9}~41
+\item 
+\#define \hyperlink{irqs_8h_a4937470287000533f2dc2d0c29b88245}{I\+R\+Q10}~42
+\item 
+\#define \hyperlink{irqs_8h_afb33d89dcebc322429644b7ce8d3d629}{I\+R\+Q11}~43
+\item 
+\#define \hyperlink{irqs_8h_a57276d1481230d81d2bba849f935ce5a}{I\+R\+Q12}~44
+\item 
+\#define \hyperlink{irqs_8h_a13f5cba42d2e033d546107a80aa341ea}{I\+R\+Q13}~45
+\item 
+\#define \hyperlink{irqs_8h_a9577b9424e1d50ffb437da2a7052f391}{I\+R\+Q14}~46
+\item 
+\#define \hyperlink{irqs_8h_a587f058bf281246693f934ab414f7d52}{I\+R\+Q15}~47
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{irqs_8h_adbe0f253d11eeb032b3612c8732fb76e}{irq0} ()
+\item 
+void \hyperlink{irqs_8h_ab67ffa95ff39e0b264f4534d43025c30}{irq1} ()
+\item 
+void \hyperlink{irqs_8h_a118ba521aa61c5f0785580408a5b95cc}{irq2} ()
+\item 
+void \hyperlink{irqs_8h_a672afd3d2d2c7a896068f1ee94b6ac4b}{irq3} ()
+\item 
+void \hyperlink{irqs_8h_a6ece1319726003baeb064fa32a5e27b6}{irq4} ()
+\item 
+void \hyperlink{irqs_8h_a0c86295415896333de5803b5255cc3fd}{irq5} ()
+\item 
+void \hyperlink{irqs_8h_a4dd0a509c8829cd9d3606da7ba7cde7a}{irq6} ()
+\item 
+void \hyperlink{irqs_8h_aa3079d2a2ea8fdd0d36f26fb2f61e316}{irq7} ()
+\item 
+void \hyperlink{irqs_8h_a763933e69e7a6f5ac0d2802a56b6401b}{irq8} ()
+\item 
+void \hyperlink{irqs_8h_a59dbef11d3615eb79b6a13c82b5bf476}{irq9} ()
+\item 
+void \hyperlink{irqs_8h_a93037dcfb63ee486f11dd927f37b57af}{irq10} ()
+\item 
+void \hyperlink{irqs_8h_a16bf2a49a4c9a48e65c1379d91b79235}{irq11} ()
+\item 
+void \hyperlink{irqs_8h_a47e842053a77f6409bbd6a50cec87b5e}{irq12} ()
+\item 
+void \hyperlink{irqs_8h_aaf8a8dc035d379d8173b06a2ebd881a1}{irq13} ()
+\item 
+void \hyperlink{irqs_8h_aa63550aa0e55da846a219a2828007529}{irq14} ()
+\item 
+void \hyperlink{irqs_8h_a516b16b006f8c0555c15a793220e28a2}{irq15} ()
+\item 
+void \hyperlink{irqs_8h_aadf5ae2109fe28b014720deb24f677de}{irqs\+\_\+init} ()
+\item 
+void \hyperlink{irqs_8h_ab5ebdc1b31b3357377b0257473641ced}{pic\+\_\+init} ()
+\item 
+void \hyperlink{irqs_8h_ad02536ed6e929d20694fa72d3f393461}{irq\+\_\+fault\+Handler} (regs\+\_\+t $\ast$r)
+\item 
+void \hyperlink{irqs_8h_af62fec9ecb95472ec14315a9e161103a}{irq\+\_\+install\+Handler} (int irq, void($\ast$handler)(regs\+\_\+t $\ast$r))
+\item 
+void \hyperlink{irqs_8h_a810e7ee0d717680d787974487d08cd1a}{irq\+\_\+disinstall\+Handler} (int irq)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{irqs_8h_a8885a13da4dafeb2cb209ce1b7ec3107}\label{irqs_8h_a8885a13da4dafeb2cb209ce1b7ec3107}} 
+\index{irqs.\+h@{irqs.\+h}!I\+R\+Q0@{I\+R\+Q0}}
+\index{I\+R\+Q0@{I\+R\+Q0}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{I\+R\+Q0}{IRQ0}}
+{\footnotesize\ttfamily \#define I\+R\+Q0~32}
+
+\mbox{\Hypertarget{irqs_8h_a37360776bcc1dd3b5da93b025177551f}\label{irqs_8h_a37360776bcc1dd3b5da93b025177551f}} 
+\index{irqs.\+h@{irqs.\+h}!I\+R\+Q1@{I\+R\+Q1}}
+\index{I\+R\+Q1@{I\+R\+Q1}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{I\+R\+Q1}{IRQ1}}
+{\footnotesize\ttfamily \#define I\+R\+Q1~33}
+
+\mbox{\Hypertarget{irqs_8h_a4937470287000533f2dc2d0c29b88245}\label{irqs_8h_a4937470287000533f2dc2d0c29b88245}} 
+\index{irqs.\+h@{irqs.\+h}!I\+R\+Q10@{I\+R\+Q10}}
+\index{I\+R\+Q10@{I\+R\+Q10}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{I\+R\+Q10}{IRQ10}}
+{\footnotesize\ttfamily \#define I\+R\+Q10~42}
+
+\mbox{\Hypertarget{irqs_8h_afb33d89dcebc322429644b7ce8d3d629}\label{irqs_8h_afb33d89dcebc322429644b7ce8d3d629}} 
+\index{irqs.\+h@{irqs.\+h}!I\+R\+Q11@{I\+R\+Q11}}
+\index{I\+R\+Q11@{I\+R\+Q11}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{I\+R\+Q11}{IRQ11}}
+{\footnotesize\ttfamily \#define I\+R\+Q11~43}
+
+\mbox{\Hypertarget{irqs_8h_a57276d1481230d81d2bba849f935ce5a}\label{irqs_8h_a57276d1481230d81d2bba849f935ce5a}} 
+\index{irqs.\+h@{irqs.\+h}!I\+R\+Q12@{I\+R\+Q12}}
+\index{I\+R\+Q12@{I\+R\+Q12}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{I\+R\+Q12}{IRQ12}}
+{\footnotesize\ttfamily \#define I\+R\+Q12~44}
+
+\mbox{\Hypertarget{irqs_8h_a13f5cba42d2e033d546107a80aa341ea}\label{irqs_8h_a13f5cba42d2e033d546107a80aa341ea}} 
+\index{irqs.\+h@{irqs.\+h}!I\+R\+Q13@{I\+R\+Q13}}
+\index{I\+R\+Q13@{I\+R\+Q13}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{I\+R\+Q13}{IRQ13}}
+{\footnotesize\ttfamily \#define I\+R\+Q13~45}
+
+\mbox{\Hypertarget{irqs_8h_a9577b9424e1d50ffb437da2a7052f391}\label{irqs_8h_a9577b9424e1d50ffb437da2a7052f391}} 
+\index{irqs.\+h@{irqs.\+h}!I\+R\+Q14@{I\+R\+Q14}}
+\index{I\+R\+Q14@{I\+R\+Q14}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{I\+R\+Q14}{IRQ14}}
+{\footnotesize\ttfamily \#define I\+R\+Q14~46}
+
+\mbox{\Hypertarget{irqs_8h_a587f058bf281246693f934ab414f7d52}\label{irqs_8h_a587f058bf281246693f934ab414f7d52}} 
+\index{irqs.\+h@{irqs.\+h}!I\+R\+Q15@{I\+R\+Q15}}
+\index{I\+R\+Q15@{I\+R\+Q15}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{I\+R\+Q15}{IRQ15}}
+{\footnotesize\ttfamily \#define I\+R\+Q15~47}
+
+\mbox{\Hypertarget{irqs_8h_a5388784cb69a0b869c4e5f60c839ca24}\label{irqs_8h_a5388784cb69a0b869c4e5f60c839ca24}} 
+\index{irqs.\+h@{irqs.\+h}!I\+R\+Q2@{I\+R\+Q2}}
+\index{I\+R\+Q2@{I\+R\+Q2}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{I\+R\+Q2}{IRQ2}}
+{\footnotesize\ttfamily \#define I\+R\+Q2~34}
+
+\mbox{\Hypertarget{irqs_8h_a81b769ff26428bc3b6f20cb46096f4a2}\label{irqs_8h_a81b769ff26428bc3b6f20cb46096f4a2}} 
+\index{irqs.\+h@{irqs.\+h}!I\+R\+Q3@{I\+R\+Q3}}
+\index{I\+R\+Q3@{I\+R\+Q3}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{I\+R\+Q3}{IRQ3}}
+{\footnotesize\ttfamily \#define I\+R\+Q3~35}
+
+\mbox{\Hypertarget{irqs_8h_a3e56e05fa9adf8ddaaf6f44d999017db}\label{irqs_8h_a3e56e05fa9adf8ddaaf6f44d999017db}} 
+\index{irqs.\+h@{irqs.\+h}!I\+R\+Q4@{I\+R\+Q4}}
+\index{I\+R\+Q4@{I\+R\+Q4}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{I\+R\+Q4}{IRQ4}}
+{\footnotesize\ttfamily \#define I\+R\+Q4~36}
+
+\mbox{\Hypertarget{irqs_8h_af1bd5ba58767b60d0639bd1a096dfdd6}\label{irqs_8h_af1bd5ba58767b60d0639bd1a096dfdd6}} 
+\index{irqs.\+h@{irqs.\+h}!I\+R\+Q5@{I\+R\+Q5}}
+\index{I\+R\+Q5@{I\+R\+Q5}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{I\+R\+Q5}{IRQ5}}
+{\footnotesize\ttfamily \#define I\+R\+Q5~37}
+
+\mbox{\Hypertarget{irqs_8h_a1282e4c3484ca4c0689e180c5a42a7a9}\label{irqs_8h_a1282e4c3484ca4c0689e180c5a42a7a9}} 
+\index{irqs.\+h@{irqs.\+h}!I\+R\+Q6@{I\+R\+Q6}}
+\index{I\+R\+Q6@{I\+R\+Q6}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{I\+R\+Q6}{IRQ6}}
+{\footnotesize\ttfamily \#define I\+R\+Q6~38}
+
+\mbox{\Hypertarget{irqs_8h_ac56b9fd6a60941e7594f299521575ca2}\label{irqs_8h_ac56b9fd6a60941e7594f299521575ca2}} 
+\index{irqs.\+h@{irqs.\+h}!I\+R\+Q7@{I\+R\+Q7}}
+\index{I\+R\+Q7@{I\+R\+Q7}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{I\+R\+Q7}{IRQ7}}
+{\footnotesize\ttfamily \#define I\+R\+Q7~39}
+
+\mbox{\Hypertarget{irqs_8h_ad299f4a78ead6e9f10cfa55376be25ac}\label{irqs_8h_ad299f4a78ead6e9f10cfa55376be25ac}} 
+\index{irqs.\+h@{irqs.\+h}!I\+R\+Q8@{I\+R\+Q8}}
+\index{I\+R\+Q8@{I\+R\+Q8}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{I\+R\+Q8}{IRQ8}}
+{\footnotesize\ttfamily \#define I\+R\+Q8~40}
+
+\mbox{\Hypertarget{irqs_8h_af59ffb9e0de6a5a1f9078a110460a2f4}\label{irqs_8h_af59ffb9e0de6a5a1f9078a110460a2f4}} 
+\index{irqs.\+h@{irqs.\+h}!I\+R\+Q9@{I\+R\+Q9}}
+\index{I\+R\+Q9@{I\+R\+Q9}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{I\+R\+Q9}{IRQ9}}
+{\footnotesize\ttfamily \#define I\+R\+Q9~41}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{irqs_8h_adbe0f253d11eeb032b3612c8732fb76e}\label{irqs_8h_adbe0f253d11eeb032b3612c8732fb76e}} 
+\index{irqs.\+h@{irqs.\+h}!irq0@{irq0}}
+\index{irq0@{irq0}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{irq0()}{irq0()}}
+{\footnotesize\ttfamily void irq0 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{irqs_8h_ab67ffa95ff39e0b264f4534d43025c30}\label{irqs_8h_ab67ffa95ff39e0b264f4534d43025c30}} 
+\index{irqs.\+h@{irqs.\+h}!irq1@{irq1}}
+\index{irq1@{irq1}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{irq1()}{irq1()}}
+{\footnotesize\ttfamily void irq1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{irqs_8h_a93037dcfb63ee486f11dd927f37b57af}\label{irqs_8h_a93037dcfb63ee486f11dd927f37b57af}} 
+\index{irqs.\+h@{irqs.\+h}!irq10@{irq10}}
+\index{irq10@{irq10}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{irq10()}{irq10()}}
+{\footnotesize\ttfamily void irq10 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{irqs_8h_a16bf2a49a4c9a48e65c1379d91b79235}\label{irqs_8h_a16bf2a49a4c9a48e65c1379d91b79235}} 
+\index{irqs.\+h@{irqs.\+h}!irq11@{irq11}}
+\index{irq11@{irq11}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{irq11()}{irq11()}}
+{\footnotesize\ttfamily void irq11 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{irqs_8h_a47e842053a77f6409bbd6a50cec87b5e}\label{irqs_8h_a47e842053a77f6409bbd6a50cec87b5e}} 
+\index{irqs.\+h@{irqs.\+h}!irq12@{irq12}}
+\index{irq12@{irq12}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{irq12()}{irq12()}}
+{\footnotesize\ttfamily void irq12 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{irqs_8h_aaf8a8dc035d379d8173b06a2ebd881a1}\label{irqs_8h_aaf8a8dc035d379d8173b06a2ebd881a1}} 
+\index{irqs.\+h@{irqs.\+h}!irq13@{irq13}}
+\index{irq13@{irq13}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{irq13()}{irq13()}}
+{\footnotesize\ttfamily void irq13 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{irqs_8h_aa63550aa0e55da846a219a2828007529}\label{irqs_8h_aa63550aa0e55da846a219a2828007529}} 
+\index{irqs.\+h@{irqs.\+h}!irq14@{irq14}}
+\index{irq14@{irq14}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{irq14()}{irq14()}}
+{\footnotesize\ttfamily void irq14 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{irqs_8h_a516b16b006f8c0555c15a793220e28a2}\label{irqs_8h_a516b16b006f8c0555c15a793220e28a2}} 
+\index{irqs.\+h@{irqs.\+h}!irq15@{irq15}}
+\index{irq15@{irq15}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{irq15()}{irq15()}}
+{\footnotesize\ttfamily void irq15 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{irqs_8h_a118ba521aa61c5f0785580408a5b95cc}\label{irqs_8h_a118ba521aa61c5f0785580408a5b95cc}} 
+\index{irqs.\+h@{irqs.\+h}!irq2@{irq2}}
+\index{irq2@{irq2}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{irq2()}{irq2()}}
+{\footnotesize\ttfamily void irq2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{irqs_8h_a672afd3d2d2c7a896068f1ee94b6ac4b}\label{irqs_8h_a672afd3d2d2c7a896068f1ee94b6ac4b}} 
+\index{irqs.\+h@{irqs.\+h}!irq3@{irq3}}
+\index{irq3@{irq3}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{irq3()}{irq3()}}
+{\footnotesize\ttfamily void irq3 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{irqs_8h_a6ece1319726003baeb064fa32a5e27b6}\label{irqs_8h_a6ece1319726003baeb064fa32a5e27b6}} 
+\index{irqs.\+h@{irqs.\+h}!irq4@{irq4}}
+\index{irq4@{irq4}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{irq4()}{irq4()}}
+{\footnotesize\ttfamily void irq4 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{irqs_8h_a0c86295415896333de5803b5255cc3fd}\label{irqs_8h_a0c86295415896333de5803b5255cc3fd}} 
+\index{irqs.\+h@{irqs.\+h}!irq5@{irq5}}
+\index{irq5@{irq5}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{irq5()}{irq5()}}
+{\footnotesize\ttfamily void irq5 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{irqs_8h_a4dd0a509c8829cd9d3606da7ba7cde7a}\label{irqs_8h_a4dd0a509c8829cd9d3606da7ba7cde7a}} 
+\index{irqs.\+h@{irqs.\+h}!irq6@{irq6}}
+\index{irq6@{irq6}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{irq6()}{irq6()}}
+{\footnotesize\ttfamily void irq6 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{irqs_8h_aa3079d2a2ea8fdd0d36f26fb2f61e316}\label{irqs_8h_aa3079d2a2ea8fdd0d36f26fb2f61e316}} 
+\index{irqs.\+h@{irqs.\+h}!irq7@{irq7}}
+\index{irq7@{irq7}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{irq7()}{irq7()}}
+{\footnotesize\ttfamily void irq7 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{irqs_8h_a763933e69e7a6f5ac0d2802a56b6401b}\label{irqs_8h_a763933e69e7a6f5ac0d2802a56b6401b}} 
+\index{irqs.\+h@{irqs.\+h}!irq8@{irq8}}
+\index{irq8@{irq8}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{irq8()}{irq8()}}
+{\footnotesize\ttfamily void irq8 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{irqs_8h_a59dbef11d3615eb79b6a13c82b5bf476}\label{irqs_8h_a59dbef11d3615eb79b6a13c82b5bf476}} 
+\index{irqs.\+h@{irqs.\+h}!irq9@{irq9}}
+\index{irq9@{irq9}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{irq9()}{irq9()}}
+{\footnotesize\ttfamily void irq9 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{irqs_8h_a810e7ee0d717680d787974487d08cd1a}\label{irqs_8h_a810e7ee0d717680d787974487d08cd1a}} 
+\index{irqs.\+h@{irqs.\+h}!irq\+\_\+disinstall\+Handler@{irq\+\_\+disinstall\+Handler}}
+\index{irq\+\_\+disinstall\+Handler@{irq\+\_\+disinstall\+Handler}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{irq\+\_\+disinstall\+Handler()}{irq\_disinstallHandler()}}
+{\footnotesize\ttfamily void irq\+\_\+disinstall\+Handler (\begin{DoxyParamCaption}\item[{int}]{irq }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{irqs_8h_ad02536ed6e929d20694fa72d3f393461}\label{irqs_8h_ad02536ed6e929d20694fa72d3f393461}} 
+\index{irqs.\+h@{irqs.\+h}!irq\+\_\+fault\+Handler@{irq\+\_\+fault\+Handler}}
+\index{irq\+\_\+fault\+Handler@{irq\+\_\+fault\+Handler}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{irq\+\_\+fault\+Handler()}{irq\_faultHandler()}}
+{\footnotesize\ttfamily void irq\+\_\+fault\+Handler (\begin{DoxyParamCaption}\item[{regs\+\_\+t $\ast$}]{r }\end{DoxyParamCaption})}
+
+Each of the I\+RQ I\+S\+Rs point to this function, rather than the \textquotesingle{}isr\+\_\+fault\+Handler\textquotesingle{} in \textquotesingle{}\hyperlink{isrs_8c}{isrs.\+c}\textquotesingle{}. The I\+RQ Controllers need to be told when you are done servicing them, so you need to send them an \char`\"{}\+End of Interrupt\char`\"{} command (0x20). There are two 8259 chips\+:
+\begin{DoxyItemize}
+\item The first exists at 0x20,
+\item the second exists at 0x\+A0. If the second controller (an I\+RQ from 8 to 15) gets an interrupt, you need to acknowledge the interrupt at B\+O\+TH controllers, otherwise, you only send an E\+OI command to the first controller. If you don\textquotesingle{}t send an E\+OI, you won\textquotesingle{}t raise any more I\+R\+Qs. 
+\end{DoxyItemize}If the I\+DT entry that was invoked was greater than 40 (meaning I\+R\+Q8 -\/ 15), then we need to send an E\+OI to the slave controller\mbox{\Hypertarget{irqs_8h_af62fec9ecb95472ec14315a9e161103a}\label{irqs_8h_af62fec9ecb95472ec14315a9e161103a}} 
+\index{irqs.\+h@{irqs.\+h}!irq\+\_\+install\+Handler@{irq\+\_\+install\+Handler}}
+\index{irq\+\_\+install\+Handler@{irq\+\_\+install\+Handler}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{irq\+\_\+install\+Handler()}{irq\_installHandler()}}
+{\footnotesize\ttfamily void irq\+\_\+install\+Handler (\begin{DoxyParamCaption}\item[{int}]{irq,  }\item[{void($\ast$)(regs\+\_\+t $\ast$r)}]{handler }\end{DoxyParamCaption})}
+
+This installs a custom I\+RQ handler for the given I\+RQ
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{irqs_8c_a99a28bd3e9237b07826af4106d69929e}{irq\+\_\+uninstall\+Handler()} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{irqs_8h_aadf5ae2109fe28b014720deb24f677de}\label{irqs_8h_aadf5ae2109fe28b014720deb24f677de}} 
+\index{irqs.\+h@{irqs.\+h}!irqs\+\_\+init@{irqs\+\_\+init}}
+\index{irqs\+\_\+init@{irqs\+\_\+init}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{irqs\+\_\+init()}{irqs\_init()}}
+{\footnotesize\ttfamily void irqs\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{irqs_8h_ab5ebdc1b31b3357377b0257473641ced}\label{irqs_8h_ab5ebdc1b31b3357377b0257473641ced}} 
+\index{irqs.\+h@{irqs.\+h}!pic\+\_\+init@{pic\+\_\+init}}
+\index{pic\+\_\+init@{pic\+\_\+init}!irqs.\+h@{irqs.\+h}}
+\subsubsection{\texorpdfstring{pic\+\_\+init()}{pic\_init()}}
+{\footnotesize\ttfamily void pic\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Normally, I\+R\+Qs 0 to 7 are mapped to entries 8 to 15. This is a problem in protected mode, because I\+DT entry 8 is a Double Fault! Without remapping, every time I\+R\+Q0 fires, you get a Double Fault Exception, which is N\+OT actually what\textquotesingle{}s happening. We send commands to the Programmable Interrupt Controller (P\+I\+Cs -\/ also called the 8259\textquotesingle{}s) in order to make I\+R\+Q0 to 15 be remapped to I\+DT entries 32 to 47 

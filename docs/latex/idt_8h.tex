@@ -1,0 +1,126 @@
+\hypertarget{idt_8h}{}\section{src/include/tables/idt.h File Reference}
+\label{idt_8h}\index{src/include/tables/idt.\+h@{src/include/tables/idt.\+h}}
+{\ttfamily \#include $<$system.\+h$>$}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structidt__descriptor}{idt\+\_\+descriptor}
+\item 
+struct \hyperlink{structidt__gate}{idt\+\_\+gate}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{idt_8h_a405a0e9445853a015677768c751c9d6b}{I\+N\+T\+E\+R\+R\+U\+P\+TS}~256
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structidt__descriptor}{idt\+\_\+descriptor} \hyperlink{idt_8h_acc0b0889d51b9fe3a2888e3ea9a3b918}{\+\_\+\+\_\+attribute\+\_\+\+\_\+} ((packed)) idt\+\_\+descriptor\+\_\+t
+\item 
+void \hyperlink{idt_8h_a35fe413107af682030ab7a4b6dff19b8}{init\+\_\+idt} ()
+\item 
+void \hyperlink{idt_8h_a3d2ec33ba4fcdfdad0e7ad71aae71bc1}{idt\+\_\+set\+Gate} (uint8\+\_\+t index, uint32\+\_\+t \hyperlink{gdt_8h_a894bdfa2d603d8343f8ef01dda6fcd23}{offset}, uint16\+\_\+t \hyperlink{idt_8h_a1c44289c163c1460544d6ee0900d02ba}{selector}, uint8\+\_\+t type\+\_\+addr)
+\item 
+void \hyperlink{idt_8h_a11b56659c16789baa1b2f6b1e9033754}{idt\+\_\+load} (uint32\+\_\+t \hyperlink{idt_8c_a7f5a78ac068fbe63a48fc50a69f1cd6c}{idt\+\_\+ptr})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \hyperlink{idt_8h_ab28e82ae69032cb4ad3ec3a0be3d7129}{limit}
+\item 
+uint32\+\_\+t \hyperlink{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}{base}
+\item 
+uint16\+\_\+t \hyperlink{idt_8h_a11b1c6ed61493da558a28e77fa1efee6}{offset\+\_\+low}
+\item 
+uint16\+\_\+t \hyperlink{idt_8h_a1c44289c163c1460544d6ee0900d02ba}{selector}
+\item 
+uint8\+\_\+t \hyperlink{idt_8h_a09777e6a5ad91ffd82a9975efe33de2e}{zero}
+\item 
+uint8\+\_\+t \hyperlink{idt_8h_a5e7eb925db6957f19edc1e5d7d74c8f6}{type\+\_\+attr}
+\item 
+uint16\+\_\+t \hyperlink{idt_8h_a864a047b12c9faf25a520351049b91f1}{offset\+\_\+high}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{idt_8h_a405a0e9445853a015677768c751c9d6b}\label{idt_8h_a405a0e9445853a015677768c751c9d6b}} 
+\index{idt.\+h@{idt.\+h}!I\+N\+T\+E\+R\+R\+U\+P\+TS@{I\+N\+T\+E\+R\+R\+U\+P\+TS}}
+\index{I\+N\+T\+E\+R\+R\+U\+P\+TS@{I\+N\+T\+E\+R\+R\+U\+P\+TS}!idt.\+h@{idt.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+T\+E\+R\+R\+U\+P\+TS}{INTERRUPTS}}
+{\footnotesize\ttfamily \#define I\+N\+T\+E\+R\+R\+U\+P\+TS~256}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{idt_8h_acc0b0889d51b9fe3a2888e3ea9a3b918}\label{idt_8h_acc0b0889d51b9fe3a2888e3ea9a3b918}} 
+\index{idt.\+h@{idt.\+h}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!idt.\+h@{idt.\+h}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}{\_\_attribute\_\_()}}
+{\footnotesize\ttfamily struct \hyperlink{structidt__descriptor}{idt\+\_\+descriptor} \+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(packed)}]{ }\end{DoxyParamCaption})}
+
+Limit\+: Defines the length of the I\+DT in bytes -\/ 1 (minimum value is 100h, a value of 1000h means 200h interrupts). Base\+: This 32 bits are the linear address where the I\+DT starts (I\+NT 0).
+
+The offset is a 32 bit value, split in two parts. It represents the address of the entry point of the I\+SR. The selector is a 16 bit value and must point to a valid CS descriptor in your G\+DT. The type\+\_\+attr is specified here\+: 7 0 +---+---+---+---+---+---+---+---+ $\vert$ P $\vert$ D\+PL $\vert$ S $\vert$ Gate\+Type $\vert$ +---+---+---+---+---+---+---+---+ \mbox{\Hypertarget{idt_8h_a11b56659c16789baa1b2f6b1e9033754}\label{idt_8h_a11b56659c16789baa1b2f6b1e9033754}} 
+\index{idt.\+h@{idt.\+h}!idt\+\_\+load@{idt\+\_\+load}}
+\index{idt\+\_\+load@{idt\+\_\+load}!idt.\+h@{idt.\+h}}
+\subsubsection{\texorpdfstring{idt\+\_\+load()}{idt\_load()}}
+{\footnotesize\ttfamily void idt\+\_\+load (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{idt\+\_\+ptr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{idt_8h_a3d2ec33ba4fcdfdad0e7ad71aae71bc1}\label{idt_8h_a3d2ec33ba4fcdfdad0e7ad71aae71bc1}} 
+\index{idt.\+h@{idt.\+h}!idt\+\_\+set\+Gate@{idt\+\_\+set\+Gate}}
+\index{idt\+\_\+set\+Gate@{idt\+\_\+set\+Gate}!idt.\+h@{idt.\+h}}
+\subsubsection{\texorpdfstring{idt\+\_\+set\+Gate()}{idt\_setGate()}}
+{\footnotesize\ttfamily void idt\+\_\+set\+Gate (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{index,  }\item[{uint32\+\_\+t}]{offset,  }\item[{uint16\+\_\+t}]{selector,  }\item[{uint8\+\_\+t}]{type\+\_\+addr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{idt_8h_a35fe413107af682030ab7a4b6dff19b8}\label{idt_8h_a35fe413107af682030ab7a4b6dff19b8}} 
+\index{idt.\+h@{idt.\+h}!init\+\_\+idt@{init\+\_\+idt}}
+\index{init\+\_\+idt@{init\+\_\+idt}!idt.\+h@{idt.\+h}}
+\subsubsection{\texorpdfstring{init\+\_\+idt()}{init\_idt()}}
+{\footnotesize\ttfamily void init\+\_\+idt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}\label{idt_8h_a0523cedff47e2441fc198b7770ec5d3f}} 
+\index{idt.\+h@{idt.\+h}!base@{base}}
+\index{base@{base}!idt.\+h@{idt.\+h}}
+\subsubsection{\texorpdfstring{base}{base}}
+{\footnotesize\ttfamily uint32\+\_\+t base}
+
+\mbox{\Hypertarget{idt_8h_ab28e82ae69032cb4ad3ec3a0be3d7129}\label{idt_8h_ab28e82ae69032cb4ad3ec3a0be3d7129}} 
+\index{idt.\+h@{idt.\+h}!limit@{limit}}
+\index{limit@{limit}!idt.\+h@{idt.\+h}}
+\subsubsection{\texorpdfstring{limit}{limit}}
+{\footnotesize\ttfamily uint16\+\_\+t limit}
+
+\mbox{\Hypertarget{idt_8h_a864a047b12c9faf25a520351049b91f1}\label{idt_8h_a864a047b12c9faf25a520351049b91f1}} 
+\index{idt.\+h@{idt.\+h}!offset\+\_\+high@{offset\+\_\+high}}
+\index{offset\+\_\+high@{offset\+\_\+high}!idt.\+h@{idt.\+h}}
+\subsubsection{\texorpdfstring{offset\+\_\+high}{offset\_high}}
+{\footnotesize\ttfamily uint16\+\_\+t offset\+\_\+high}
+
+\mbox{\Hypertarget{idt_8h_a11b1c6ed61493da558a28e77fa1efee6}\label{idt_8h_a11b1c6ed61493da558a28e77fa1efee6}} 
+\index{idt.\+h@{idt.\+h}!offset\+\_\+low@{offset\+\_\+low}}
+\index{offset\+\_\+low@{offset\+\_\+low}!idt.\+h@{idt.\+h}}
+\subsubsection{\texorpdfstring{offset\+\_\+low}{offset\_low}}
+{\footnotesize\ttfamily uint16\+\_\+t offset\+\_\+low}
+
+\mbox{\Hypertarget{idt_8h_a1c44289c163c1460544d6ee0900d02ba}\label{idt_8h_a1c44289c163c1460544d6ee0900d02ba}} 
+\index{idt.\+h@{idt.\+h}!selector@{selector}}
+\index{selector@{selector}!idt.\+h@{idt.\+h}}
+\subsubsection{\texorpdfstring{selector}{selector}}
+{\footnotesize\ttfamily uint16\+\_\+t selector}
+
+\mbox{\Hypertarget{idt_8h_a5e7eb925db6957f19edc1e5d7d74c8f6}\label{idt_8h_a5e7eb925db6957f19edc1e5d7d74c8f6}} 
+\index{idt.\+h@{idt.\+h}!type\+\_\+attr@{type\+\_\+attr}}
+\index{type\+\_\+attr@{type\+\_\+attr}!idt.\+h@{idt.\+h}}
+\subsubsection{\texorpdfstring{type\+\_\+attr}{type\_attr}}
+{\footnotesize\ttfamily uint8\+\_\+t type\+\_\+attr}
+
+\mbox{\Hypertarget{idt_8h_a09777e6a5ad91ffd82a9975efe33de2e}\label{idt_8h_a09777e6a5ad91ffd82a9975efe33de2e}} 
+\index{idt.\+h@{idt.\+h}!zero@{zero}}
+\index{zero@{zero}!idt.\+h@{idt.\+h}}
+\subsubsection{\texorpdfstring{zero}{zero}}
+{\footnotesize\ttfamily uint8\+\_\+t zero}
+

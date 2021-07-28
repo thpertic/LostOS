@@ -1,0 +1,77 @@
+\hypertarget{utility_8c}{}\section{src/kernel/common/utility.c File Reference}
+\label{utility_8c}\index{src/kernel/common/utility.\+c@{src/kernel/common/utility.\+c}}
+{\ttfamily \#include $<$common/utility.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{utility_8c_add4593ffbcb862509a10d8360d6c6101}{memset} (void $\ast$dest, int32\+\_\+t c, size\+\_\+t n)
+\item 
+void $\ast$ \hyperlink{utility_8c_aa5ba1c320341584f15e4a4823e5edb79}{memsetw} (void $\ast$dest, int32\+\_\+t c, size\+\_\+t n)
+\item 
+void $\ast$ \hyperlink{utility_8c_a14938524dcbeb59d7117ba5e151ad1b1}{memcpy} (void $\ast$dest, const void $\ast$src, size\+\_\+t n)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{utility_8c_a14938524dcbeb59d7117ba5e151ad1b1}\label{utility_8c_a14938524dcbeb59d7117ba5e151ad1b1}} 
+\index{utility.\+c@{utility.\+c}!memcpy@{memcpy}}
+\index{memcpy@{memcpy}!utility.\+c@{utility.\+c}}
+\subsubsection{\texorpdfstring{memcpy()}{memcpy()}}
+{\footnotesize\ttfamily void$\ast$ memcpy (\begin{DoxyParamCaption}\item[{void $\ast$}]{dest,  }\item[{const void $\ast$}]{src,  }\item[{size\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+Copy \textquotesingle{}n\textquotesingle{} bytes of data from \textquotesingle{}src\textquotesingle{} to \textquotesingle{}dest\textquotesingle{}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & Pointer to the destination buffer. \\
+\hline
+{\em src} & Pointer to the source buffer. \\
+\hline
+{\em n} & Times to copy c. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The destination buffer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utility_8c_add4593ffbcb862509a10d8360d6c6101}\label{utility_8c_add4593ffbcb862509a10d8360d6c6101}} 
+\index{utility.\+c@{utility.\+c}!memset@{memset}}
+\index{memset@{memset}!utility.\+c@{utility.\+c}}
+\subsubsection{\texorpdfstring{memset()}{memset()}}
+{\footnotesize\ttfamily void$\ast$ memset (\begin{DoxyParamCaption}\item[{void $\ast$}]{dest,  }\item[{int32\+\_\+t}]{c,  }\item[{size\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+Assembly instructions used\+: cld -\/ clears direction flag; rep stosb -\/ Store AL at address E\+S\+:(\+E)DI + rep CX times
+
+The direction flag is used to influence the direction in which string instructions offset pointer registers. Set \textquotesingle{}n\textquotesingle{} bytes in \textquotesingle{}dest\textquotesingle{} as \textquotesingle{}c\textquotesingle{}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & Pointer to the destination buffer. \\
+\hline
+{\em c} & Char to copy. \\
+\hline
+{\em n} & Times to copy c.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The destination buffer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utility_8c_aa5ba1c320341584f15e4a4823e5edb79}\label{utility_8c_aa5ba1c320341584f15e4a4823e5edb79}} 
+\index{utility.\+c@{utility.\+c}!memsetw@{memsetw}}
+\index{memsetw@{memsetw}!utility.\+c@{utility.\+c}}
+\subsubsection{\texorpdfstring{memsetw()}{memsetw()}}
+{\footnotesize\ttfamily void$\ast$ memsetw (\begin{DoxyParamCaption}\item[{void $\ast$}]{dest,  }\item[{int32\+\_\+t}]{c,  }\item[{size\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+Set \textquotesingle{}n\textquotesingle{} bytes in \textquotesingle{}dest\textquotesingle{} as \textquotesingle{}c\textquotesingle{}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & Pointer to the destination buffer. \\
+\hline
+{\em c} & Char (as a word) to copy. \\
+\hline
+{\em n} & Times to copy.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The destination buffer. 
+\end{DoxyReturn}

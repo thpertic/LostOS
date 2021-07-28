@@ -1,0 +1,41 @@
+\hypertarget{interrupt_8h}{}\section{src/include/interrupts/interrupt.h File Reference}
+\label{interrupt_8h}\index{src/include/interrupts/interrupt.\+h@{src/include/interrupts/interrupt.\+h}}
+{\ttfamily \#include $<$system.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{interrupt_8h_a154b837080a092ecbab0735a0254c4b4}{enable\+\_\+interrupts} ()
+\item 
+void \hyperlink{interrupt_8h_a52651bf1923b2c97e8b4da0ac6b99fdb}{disable\+\_\+interrupts} ()
+\item 
+uint32\+\_\+t \hyperlink{interrupt_8h_ae55a9a5f0056e3a716e92fd5b8e2347b}{interrupt\+\_\+save\+\_\+disable} ()
+\item 
+void \hyperlink{interrupt_8h_a053785f85e40c1878e0c909e3ed6aa0f}{interrupt\+\_\+restore} (uint32\+\_\+t \hyperlink{system_8h_a3a999c5a8c36bfad83716f3cb5560912}{eflags})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{interrupt_8h_a52651bf1923b2c97e8b4da0ac6b99fdb}\label{interrupt_8h_a52651bf1923b2c97e8b4da0ac6b99fdb}} 
+\index{interrupt.\+h@{interrupt.\+h}!disable\+\_\+interrupts@{disable\+\_\+interrupts}}
+\index{disable\+\_\+interrupts@{disable\+\_\+interrupts}!interrupt.\+h@{interrupt.\+h}}
+\subsubsection{\texorpdfstring{disable\+\_\+interrupts()}{disable\_interrupts()}}
+{\footnotesize\ttfamily void disable\+\_\+interrupts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{interrupt_8h_a154b837080a092ecbab0735a0254c4b4}\label{interrupt_8h_a154b837080a092ecbab0735a0254c4b4}} 
+\index{interrupt.\+h@{interrupt.\+h}!enable\+\_\+interrupts@{enable\+\_\+interrupts}}
+\index{enable\+\_\+interrupts@{enable\+\_\+interrupts}!interrupt.\+h@{interrupt.\+h}}
+\subsubsection{\texorpdfstring{enable\+\_\+interrupts()}{enable\_interrupts()}}
+{\footnotesize\ttfamily void enable\+\_\+interrupts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{interrupt_8h_a053785f85e40c1878e0c909e3ed6aa0f}\label{interrupt_8h_a053785f85e40c1878e0c909e3ed6aa0f}} 
+\index{interrupt.\+h@{interrupt.\+h}!interrupt\+\_\+restore@{interrupt\+\_\+restore}}
+\index{interrupt\+\_\+restore@{interrupt\+\_\+restore}!interrupt.\+h@{interrupt.\+h}}
+\subsubsection{\texorpdfstring{interrupt\+\_\+restore()}{interrupt\_restore()}}
+{\footnotesize\ttfamily void interrupt\+\_\+restore (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{eflags }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{interrupt_8h_ae55a9a5f0056e3a716e92fd5b8e2347b}\label{interrupt_8h_ae55a9a5f0056e3a716e92fd5b8e2347b}} 
+\index{interrupt.\+h@{interrupt.\+h}!interrupt\+\_\+save\+\_\+disable@{interrupt\+\_\+save\+\_\+disable}}
+\index{interrupt\+\_\+save\+\_\+disable@{interrupt\+\_\+save\+\_\+disable}!interrupt.\+h@{interrupt.\+h}}
+\subsubsection{\texorpdfstring{interrupt\+\_\+save\+\_\+disable()}{interrupt\_save\_disable()}}
+{\footnotesize\ttfamily uint32\+\_\+t interrupt\+\_\+save\+\_\+disable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+

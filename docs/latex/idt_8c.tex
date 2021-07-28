@@ -1,0 +1,52 @@
+\hypertarget{idt_8c}{}\section{src/kernel/tables/idt.c File Reference}
+\label{idt_8c}\index{src/kernel/tables/idt.\+c@{src/kernel/tables/idt.\+c}}
+{\ttfamily \#include $<$common/string.\+h$>$}\newline
+{\ttfamily \#include $<$tables/idt.\+h$>$}\newline
+{\ttfamily \#include $<$interrupts/isrs.\+h$>$}\newline
+{\ttfamily \#include $<$interrupts/irqs.\+h$>$}\newline
+{\ttfamily \#include $<$common/utility.\+h$>$}\newline
+{\ttfamily \#include $<$debug\+\_\+utils/printf.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{idt_8c_a35fe413107af682030ab7a4b6dff19b8}{init\+\_\+idt} ()
+\item 
+void \hyperlink{idt_8c_a3d2ec33ba4fcdfdad0e7ad71aae71bc1}{idt\+\_\+set\+Gate} (uint8\+\_\+t index, uint32\+\_\+t \hyperlink{gdt_8h_a894bdfa2d603d8343f8ef01dda6fcd23}{offset}, uint16\+\_\+t \hyperlink{idt_8h_a1c44289c163c1460544d6ee0900d02ba}{selector}, uint8\+\_\+t type\+\_\+addr)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+idt\+\_\+gate\+\_\+t \hyperlink{idt_8c_adbba425a54c771105929b127cc4fc62a}{idt\+\_\+gates} \mbox{[}\hyperlink{idt_8h_a405a0e9445853a015677768c751c9d6b}{I\+N\+T\+E\+R\+R\+U\+P\+TS}\mbox{]}
+\item 
+idt\+\_\+descriptor\+\_\+t \hyperlink{idt_8c_a7f5a78ac068fbe63a48fc50a69f1cd6c}{idt\+\_\+ptr}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{idt_8c_a3d2ec33ba4fcdfdad0e7ad71aae71bc1}\label{idt_8c_a3d2ec33ba4fcdfdad0e7ad71aae71bc1}} 
+\index{idt.\+c@{idt.\+c}!idt\+\_\+set\+Gate@{idt\+\_\+set\+Gate}}
+\index{idt\+\_\+set\+Gate@{idt\+\_\+set\+Gate}!idt.\+c@{idt.\+c}}
+\subsubsection{\texorpdfstring{idt\+\_\+set\+Gate()}{idt\_setGate()}}
+{\footnotesize\ttfamily void idt\+\_\+set\+Gate (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{index,  }\item[{uint32\+\_\+t}]{offset,  }\item[{uint16\+\_\+t}]{selector,  }\item[{uint8\+\_\+t}]{type\+\_\+addr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{idt_8c_a35fe413107af682030ab7a4b6dff19b8}\label{idt_8c_a35fe413107af682030ab7a4b6dff19b8}} 
+\index{idt.\+c@{idt.\+c}!init\+\_\+idt@{init\+\_\+idt}}
+\index{init\+\_\+idt@{init\+\_\+idt}!idt.\+c@{idt.\+c}}
+\subsubsection{\texorpdfstring{init\+\_\+idt()}{init\_idt()}}
+{\footnotesize\ttfamily void init\+\_\+idt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{idt_8c_adbba425a54c771105929b127cc4fc62a}\label{idt_8c_adbba425a54c771105929b127cc4fc62a}} 
+\index{idt.\+c@{idt.\+c}!idt\+\_\+gates@{idt\+\_\+gates}}
+\index{idt\+\_\+gates@{idt\+\_\+gates}!idt.\+c@{idt.\+c}}
+\subsubsection{\texorpdfstring{idt\+\_\+gates}{idt\_gates}}
+{\footnotesize\ttfamily idt\+\_\+gate\+\_\+t idt\+\_\+gates\mbox{[}\hyperlink{idt_8h_a405a0e9445853a015677768c751c9d6b}{I\+N\+T\+E\+R\+R\+U\+P\+TS}\mbox{]}}
+
+\mbox{\Hypertarget{idt_8c_a7f5a78ac068fbe63a48fc50a69f1cd6c}\label{idt_8c_a7f5a78ac068fbe63a48fc50a69f1cd6c}} 
+\index{idt.\+c@{idt.\+c}!idt\+\_\+ptr@{idt\+\_\+ptr}}
+\index{idt\+\_\+ptr@{idt\+\_\+ptr}!idt.\+c@{idt.\+c}}
+\subsubsection{\texorpdfstring{idt\+\_\+ptr}{idt\_ptr}}
+{\footnotesize\ttfamily idt\+\_\+descriptor\+\_\+t idt\+\_\+ptr}
+

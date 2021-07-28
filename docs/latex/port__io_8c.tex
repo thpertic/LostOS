@@ -1,0 +1,26 @@
+\hypertarget{port__io_8c}{}\section{src/kernel/common/port\+\_\+io.c File Reference}
+\label{port__io_8c}\index{src/kernel/common/port\+\_\+io.\+c@{src/kernel/common/port\+\_\+io.\+c}}
+{\ttfamily \#include $<$system.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \hyperlink{port__io_8c_abf33a0709688bca34adc8eed977b4bfa}{inportb} (uint16\+\_\+t \+\_\+port)
+\item 
+void \hyperlink{port__io_8c_a4dfe9a9c7ca49a3c20e69be114f36636}{outportb} (uint16\+\_\+t \+\_\+port, uint8\+\_\+t \+\_\+data)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{port__io_8c_abf33a0709688bca34adc8eed977b4bfa}\label{port__io_8c_abf33a0709688bca34adc8eed977b4bfa}} 
+\index{port\+\_\+io.\+c@{port\+\_\+io.\+c}!inportb@{inportb}}
+\index{inportb@{inportb}!port\+\_\+io.\+c@{port\+\_\+io.\+c}}
+\subsubsection{\texorpdfstring{inportb()}{inportb()}}
+{\footnotesize\ttfamily uint8\+\_\+t inportb (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{\+\_\+port }\end{DoxyParamCaption})}
+
+We will use this later on for reading from the I/O ports to get data from devices such as the keyboard. We are using what is called \textquotesingle{}inline assembly\textquotesingle{} in these routines to actually do the work \mbox{\Hypertarget{port__io_8c_a4dfe9a9c7ca49a3c20e69be114f36636}\label{port__io_8c_a4dfe9a9c7ca49a3c20e69be114f36636}} 
+\index{port\+\_\+io.\+c@{port\+\_\+io.\+c}!outportb@{outportb}}
+\index{outportb@{outportb}!port\+\_\+io.\+c@{port\+\_\+io.\+c}}
+\subsubsection{\texorpdfstring{outportb()}{outportb()}}
+{\footnotesize\ttfamily void outportb (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{\+\_\+port,  }\item[{uint8\+\_\+t}]{\+\_\+data }\end{DoxyParamCaption})}
+
+We will use this to write to I/O ports to send bytes to devices. This will be used for changing the textmode cursor position. Again, we use some inline assembly for the stuff that simply cannot be done in C 

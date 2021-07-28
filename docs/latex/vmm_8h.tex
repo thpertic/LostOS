@@ -1,0 +1,286 @@
+\hypertarget{vmm_8h}{}\section{src/include/mm/vmm.h File Reference}
+\label{vmm_8h}\index{src/include/mm/vmm.\+h@{src/include/mm/vmm.\+h}}
+{\ttfamily \#include $<$system.\+h$>$}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{vmm_8h_ae03d2c13c32e258037749223daece4a6}{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+R\+E\+S\+E\+NT}~0x00000001
+\item 
+\#define \hyperlink{vmm_8h_ad41f9b118d96455fbb27da665cd3dd37}{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+RW}~0x00000002
+\item 
+\#define \hyperlink{vmm_8h_a60ebcb496814df5cc99c4a20e49d04a9}{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+U\+S\+ER}~0x00000004
+\item 
+\#define \hyperlink{vmm_8h_a515f60a56f365e3c24bd3970a88a9f4a}{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+WT}~0x00000008
+\item 
+\#define \hyperlink{vmm_8h_a2ab3ba38ce507d85d42c34bde2d6e13d}{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+CD}~0x00000010
+\item 
+\#define \hyperlink{vmm_8h_a78a2e7ef3358301de3176116c80469bf}{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+A\+C\+C\+E\+S\+S\+ED}~0x00000020
+\item 
+\#define \hyperlink{vmm_8h_a4f5d3841f166819c0246cbb2133466dc}{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+D\+I\+R\+TY}~0x00000040
+\item 
+\#define \hyperlink{vmm_8h_abc48f34ed9dce9982033ad378bf36167}{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+A\+G\+E\+\_\+\+S\+I\+ZE}~0x00000080
+\item 
+\#define \hyperlink{vmm_8h_ac47fbf9bab578f320dca174406c7ef73}{P\+D\+\_\+\+V\+A\+D\+DR}~0x\+F\+F\+F\+F\+F000
+\item 
+\#define \hyperlink{vmm_8h_a765e49bb44f4a375c759e32858e0550e}{P\+T\+\_\+\+B\+A\+S\+E\+\_\+\+V\+A\+D\+DR}~0x\+F\+F\+C00000
+\item 
+\#define \hyperlink{vmm_8h_a85667266356c19d0afdcf9a0cf4e1c75}{P\+A\+G\+E\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y\+\_\+\+A\+D\+D\+R\+\_\+\+O\+F\+F\+S\+ET}~22
+\item 
+\#define \hyperlink{vmm_8h_a372f607fae734427231339549f7b3856}{P\+A\+G\+E\+\_\+\+T\+A\+B\+L\+E\+\_\+\+A\+D\+D\+R\+\_\+\+O\+F\+F\+S\+ET}~12
+\item 
+\#define \hyperlink{vmm_8h_a877752f604817d711c82889f7ded52b8}{P\+A\+G\+E\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y\+\_\+\+I\+N\+D\+EX}(\hyperlink{vga_8c_a6150e0515f7202e2fb518f7206ed97dc}{x})~(((\hyperlink{vga_8c_a6150e0515f7202e2fb518f7206ed97dc}{x}) $>$$>$ \hyperlink{vmm_8h_a85667266356c19d0afdcf9a0cf4e1c75}{P\+A\+G\+E\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y\+\_\+\+A\+D\+D\+R\+\_\+\+O\+F\+F\+S\+ET}) \& 0x3ff)
+\item 
+\#define \hyperlink{vmm_8h_a9a736011ad6043805b1e3db9e889b149}{P\+A\+G\+E\+\_\+\+T\+A\+B\+L\+E\+\_\+\+I\+N\+D\+EX}(\hyperlink{vga_8c_a6150e0515f7202e2fb518f7206ed97dc}{x})~(((\hyperlink{vga_8c_a6150e0515f7202e2fb518f7206ed97dc}{x}) $>$$>$ \hyperlink{vmm_8h_a372f607fae734427231339549f7b3856}{P\+A\+G\+E\+\_\+\+T\+A\+B\+L\+E\+\_\+\+A\+D\+D\+R\+\_\+\+O\+F\+F\+S\+ET}) \& 0x3ff)
+\item 
+\#define \hyperlink{vmm_8h_a580ade9f59adcb10c12550e6b38295fd}{P\+A\+G\+E\+\_\+\+G\+E\+T\+\_\+\+P\+H\+Y\+S\+I\+C\+A\+L\+\_\+\+A\+D\+D\+R\+E\+SS}(\hyperlink{vga_8c_a6150e0515f7202e2fb518f7206ed97dc}{x})~($\ast$\hyperlink{vga_8c_a6150e0515f7202e2fb518f7206ed97dc}{x} \& $\sim$0xfff)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{vmm_8h_acd34cb4c1016f8b955c09153679bc1ec}{init\+\_\+vmm} ()
+\begin{DoxyCompactList}\small\item\em The Virtual Memory Manager is going to start and handle paging in the system. \end{DoxyCompactList}\item 
+bool \hyperlink{vmm_8h_acb06b7c4006a14240ac29a3ede114daf}{v\+Map\+Page} (void $\ast$phys, void $\ast$virt, uint32\+\_\+t flags)
+\item 
+bool \hyperlink{vmm_8h_aa774181128af1b6c9cfd859525edf105}{v\+Unmap\+Page} (void $\ast$virt)
+\item 
+void $\ast$ \hyperlink{vmm_8h_aa1de63853ee6b993531d48958c6c3e1f}{v\+Alloc\+Page} (void $\ast$virt, uint32\+\_\+t flags, bool man)
+\item 
+void $\ast$ \hyperlink{vmm_8h_a7a305ff942b89d446b7b72c665340349}{v\+Alloc\+Pages} (void $\ast$virt, uint32\+\_\+t flags, uint32\+\_\+t n, bool man)
+\item 
+void \hyperlink{vmm_8h_a2cff7f27869ced78fdc69df1e0e84cfd}{set\+\_\+cr3} (uint32\+\_\+t $\ast$pd\+\_\+phys\+\_\+addr)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{vmm_8h_abc48f34ed9dce9982033ad378bf36167}\label{vmm_8h_abc48f34ed9dce9982033ad378bf36167}} 
+\index{vmm.\+h@{vmm.\+h}!B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+A\+G\+E\+\_\+\+S\+I\+ZE@{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+A\+G\+E\+\_\+\+S\+I\+ZE}}
+\index{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+A\+G\+E\+\_\+\+S\+I\+ZE@{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+A\+G\+E\+\_\+\+S\+I\+ZE}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+A\+G\+E\+\_\+\+S\+I\+ZE}{BIT\_PD\_PAGE\_SIZE}}
+{\footnotesize\ttfamily \#define B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+A\+G\+E\+\_\+\+S\+I\+ZE~0x00000080}
+
+\mbox{\Hypertarget{vmm_8h_a78a2e7ef3358301de3176116c80469bf}\label{vmm_8h_a78a2e7ef3358301de3176116c80469bf}} 
+\index{vmm.\+h@{vmm.\+h}!B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+A\+C\+C\+E\+S\+S\+ED@{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+A\+C\+C\+E\+S\+S\+ED}}
+\index{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+A\+C\+C\+E\+S\+S\+ED@{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+A\+C\+C\+E\+S\+S\+ED}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+A\+C\+C\+E\+S\+S\+ED}{BIT\_PD\_PT\_ACCESSED}}
+{\footnotesize\ttfamily \#define B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+A\+C\+C\+E\+S\+S\+ED~0x00000020}
+
+\mbox{\Hypertarget{vmm_8h_a4f5d3841f166819c0246cbb2133466dc}\label{vmm_8h_a4f5d3841f166819c0246cbb2133466dc}} 
+\index{vmm.\+h@{vmm.\+h}!B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+D\+I\+R\+TY@{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+D\+I\+R\+TY}}
+\index{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+D\+I\+R\+TY@{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+D\+I\+R\+TY}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+D\+I\+R\+TY}{BIT\_PD\_PT\_DIRTY}}
+{\footnotesize\ttfamily \#define B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+D\+I\+R\+TY~0x00000040}
+
+\mbox{\Hypertarget{vmm_8h_a2ab3ba38ce507d85d42c34bde2d6e13d}\label{vmm_8h_a2ab3ba38ce507d85d42c34bde2d6e13d}} 
+\index{vmm.\+h@{vmm.\+h}!B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+CD@{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+CD}}
+\index{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+CD@{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+CD}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+CD}{BIT\_PD\_PT\_PCD}}
+{\footnotesize\ttfamily \#define B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+CD~0x00000010}
+
+\mbox{\Hypertarget{vmm_8h_ae03d2c13c32e258037749223daece4a6}\label{vmm_8h_ae03d2c13c32e258037749223daece4a6}} 
+\index{vmm.\+h@{vmm.\+h}!B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+R\+E\+S\+E\+NT@{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+R\+E\+S\+E\+NT}}
+\index{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+R\+E\+S\+E\+NT@{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+R\+E\+S\+E\+NT}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+R\+E\+S\+E\+NT}{BIT\_PD\_PT\_PRESENT}}
+{\footnotesize\ttfamily \#define B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+R\+E\+S\+E\+NT~0x00000001}
+
+\mbox{\Hypertarget{vmm_8h_a515f60a56f365e3c24bd3970a88a9f4a}\label{vmm_8h_a515f60a56f365e3c24bd3970a88a9f4a}} 
+\index{vmm.\+h@{vmm.\+h}!B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+WT@{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+WT}}
+\index{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+WT@{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+WT}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+WT}{BIT\_PD\_PT\_PWT}}
+{\footnotesize\ttfamily \#define B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+P\+WT~0x00000008}
+
+\mbox{\Hypertarget{vmm_8h_ad41f9b118d96455fbb27da665cd3dd37}\label{vmm_8h_ad41f9b118d96455fbb27da665cd3dd37}} 
+\index{vmm.\+h@{vmm.\+h}!B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+RW@{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+RW}}
+\index{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+RW@{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+RW}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+RW}{BIT\_PD\_PT\_RW}}
+{\footnotesize\ttfamily \#define B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+RW~0x00000002}
+
+\mbox{\Hypertarget{vmm_8h_a60ebcb496814df5cc99c4a20e49d04a9}\label{vmm_8h_a60ebcb496814df5cc99c4a20e49d04a9}} 
+\index{vmm.\+h@{vmm.\+h}!B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+U\+S\+ER@{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+U\+S\+ER}}
+\index{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+U\+S\+ER@{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+U\+S\+ER}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+U\+S\+ER}{BIT\_PD\_PT\_USER}}
+{\footnotesize\ttfamily \#define B\+I\+T\+\_\+\+P\+D\+\_\+\+P\+T\+\_\+\+U\+S\+ER~0x00000004}
+
+\mbox{\Hypertarget{vmm_8h_a85667266356c19d0afdcf9a0cf4e1c75}\label{vmm_8h_a85667266356c19d0afdcf9a0cf4e1c75}} 
+\index{vmm.\+h@{vmm.\+h}!P\+A\+G\+E\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y\+\_\+\+A\+D\+D\+R\+\_\+\+O\+F\+F\+S\+ET@{P\+A\+G\+E\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y\+\_\+\+A\+D\+D\+R\+\_\+\+O\+F\+F\+S\+ET}}
+\index{P\+A\+G\+E\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y\+\_\+\+A\+D\+D\+R\+\_\+\+O\+F\+F\+S\+ET@{P\+A\+G\+E\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y\+\_\+\+A\+D\+D\+R\+\_\+\+O\+F\+F\+S\+ET}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{P\+A\+G\+E\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y\+\_\+\+A\+D\+D\+R\+\_\+\+O\+F\+F\+S\+ET}{PAGE\_DIRECTORY\_ADDR\_OFFSET}}
+{\footnotesize\ttfamily \#define P\+A\+G\+E\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y\+\_\+\+A\+D\+D\+R\+\_\+\+O\+F\+F\+S\+ET~22}
+
+\mbox{\Hypertarget{vmm_8h_a877752f604817d711c82889f7ded52b8}\label{vmm_8h_a877752f604817d711c82889f7ded52b8}} 
+\index{vmm.\+h@{vmm.\+h}!P\+A\+G\+E\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y\+\_\+\+I\+N\+D\+EX@{P\+A\+G\+E\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y\+\_\+\+I\+N\+D\+EX}}
+\index{P\+A\+G\+E\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y\+\_\+\+I\+N\+D\+EX@{P\+A\+G\+E\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y\+\_\+\+I\+N\+D\+EX}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{P\+A\+G\+E\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y\+\_\+\+I\+N\+D\+EX}{PAGE\_DIRECTORY\_INDEX}}
+{\footnotesize\ttfamily \#define P\+A\+G\+E\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y\+\_\+\+I\+N\+D\+EX(\begin{DoxyParamCaption}\item[{}]{\hyperlink{vga_8c_a6150e0515f7202e2fb518f7206ed97dc}{x} }\end{DoxyParamCaption})~(((\hyperlink{vga_8c_a6150e0515f7202e2fb518f7206ed97dc}{x}) $>$$>$ \hyperlink{vmm_8h_a85667266356c19d0afdcf9a0cf4e1c75}{P\+A\+G\+E\+\_\+\+D\+I\+R\+E\+C\+T\+O\+R\+Y\+\_\+\+A\+D\+D\+R\+\_\+\+O\+F\+F\+S\+ET}) \& 0x3ff)}
+
+\mbox{\Hypertarget{vmm_8h_a580ade9f59adcb10c12550e6b38295fd}\label{vmm_8h_a580ade9f59adcb10c12550e6b38295fd}} 
+\index{vmm.\+h@{vmm.\+h}!P\+A\+G\+E\+\_\+\+G\+E\+T\+\_\+\+P\+H\+Y\+S\+I\+C\+A\+L\+\_\+\+A\+D\+D\+R\+E\+SS@{P\+A\+G\+E\+\_\+\+G\+E\+T\+\_\+\+P\+H\+Y\+S\+I\+C\+A\+L\+\_\+\+A\+D\+D\+R\+E\+SS}}
+\index{P\+A\+G\+E\+\_\+\+G\+E\+T\+\_\+\+P\+H\+Y\+S\+I\+C\+A\+L\+\_\+\+A\+D\+D\+R\+E\+SS@{P\+A\+G\+E\+\_\+\+G\+E\+T\+\_\+\+P\+H\+Y\+S\+I\+C\+A\+L\+\_\+\+A\+D\+D\+R\+E\+SS}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{P\+A\+G\+E\+\_\+\+G\+E\+T\+\_\+\+P\+H\+Y\+S\+I\+C\+A\+L\+\_\+\+A\+D\+D\+R\+E\+SS}{PAGE\_GET\_PHYSICAL\_ADDRESS}}
+{\footnotesize\ttfamily \#define P\+A\+G\+E\+\_\+\+G\+E\+T\+\_\+\+P\+H\+Y\+S\+I\+C\+A\+L\+\_\+\+A\+D\+D\+R\+E\+SS(\begin{DoxyParamCaption}\item[{}]{\hyperlink{vga_8c_a6150e0515f7202e2fb518f7206ed97dc}{x} }\end{DoxyParamCaption})~($\ast$\hyperlink{vga_8c_a6150e0515f7202e2fb518f7206ed97dc}{x} \& $\sim$0xfff)}
+
+\mbox{\Hypertarget{vmm_8h_a372f607fae734427231339549f7b3856}\label{vmm_8h_a372f607fae734427231339549f7b3856}} 
+\index{vmm.\+h@{vmm.\+h}!P\+A\+G\+E\+\_\+\+T\+A\+B\+L\+E\+\_\+\+A\+D\+D\+R\+\_\+\+O\+F\+F\+S\+ET@{P\+A\+G\+E\+\_\+\+T\+A\+B\+L\+E\+\_\+\+A\+D\+D\+R\+\_\+\+O\+F\+F\+S\+ET}}
+\index{P\+A\+G\+E\+\_\+\+T\+A\+B\+L\+E\+\_\+\+A\+D\+D\+R\+\_\+\+O\+F\+F\+S\+ET@{P\+A\+G\+E\+\_\+\+T\+A\+B\+L\+E\+\_\+\+A\+D\+D\+R\+\_\+\+O\+F\+F\+S\+ET}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{P\+A\+G\+E\+\_\+\+T\+A\+B\+L\+E\+\_\+\+A\+D\+D\+R\+\_\+\+O\+F\+F\+S\+ET}{PAGE\_TABLE\_ADDR\_OFFSET}}
+{\footnotesize\ttfamily \#define P\+A\+G\+E\+\_\+\+T\+A\+B\+L\+E\+\_\+\+A\+D\+D\+R\+\_\+\+O\+F\+F\+S\+ET~12}
+
+\mbox{\Hypertarget{vmm_8h_a9a736011ad6043805b1e3db9e889b149}\label{vmm_8h_a9a736011ad6043805b1e3db9e889b149}} 
+\index{vmm.\+h@{vmm.\+h}!P\+A\+G\+E\+\_\+\+T\+A\+B\+L\+E\+\_\+\+I\+N\+D\+EX@{P\+A\+G\+E\+\_\+\+T\+A\+B\+L\+E\+\_\+\+I\+N\+D\+EX}}
+\index{P\+A\+G\+E\+\_\+\+T\+A\+B\+L\+E\+\_\+\+I\+N\+D\+EX@{P\+A\+G\+E\+\_\+\+T\+A\+B\+L\+E\+\_\+\+I\+N\+D\+EX}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{P\+A\+G\+E\+\_\+\+T\+A\+B\+L\+E\+\_\+\+I\+N\+D\+EX}{PAGE\_TABLE\_INDEX}}
+{\footnotesize\ttfamily \#define P\+A\+G\+E\+\_\+\+T\+A\+B\+L\+E\+\_\+\+I\+N\+D\+EX(\begin{DoxyParamCaption}\item[{}]{\hyperlink{vga_8c_a6150e0515f7202e2fb518f7206ed97dc}{x} }\end{DoxyParamCaption})~(((\hyperlink{vga_8c_a6150e0515f7202e2fb518f7206ed97dc}{x}) $>$$>$ \hyperlink{vmm_8h_a372f607fae734427231339549f7b3856}{P\+A\+G\+E\+\_\+\+T\+A\+B\+L\+E\+\_\+\+A\+D\+D\+R\+\_\+\+O\+F\+F\+S\+ET}) \& 0x3ff)}
+
+\mbox{\Hypertarget{vmm_8h_ac47fbf9bab578f320dca174406c7ef73}\label{vmm_8h_ac47fbf9bab578f320dca174406c7ef73}} 
+\index{vmm.\+h@{vmm.\+h}!P\+D\+\_\+\+V\+A\+D\+DR@{P\+D\+\_\+\+V\+A\+D\+DR}}
+\index{P\+D\+\_\+\+V\+A\+D\+DR@{P\+D\+\_\+\+V\+A\+D\+DR}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{P\+D\+\_\+\+V\+A\+D\+DR}{PD\_VADDR}}
+{\footnotesize\ttfamily \#define P\+D\+\_\+\+V\+A\+D\+DR~0x\+F\+F\+F\+F\+F000}
+
+\mbox{\Hypertarget{vmm_8h_a765e49bb44f4a375c759e32858e0550e}\label{vmm_8h_a765e49bb44f4a375c759e32858e0550e}} 
+\index{vmm.\+h@{vmm.\+h}!P\+T\+\_\+\+B\+A\+S\+E\+\_\+\+V\+A\+D\+DR@{P\+T\+\_\+\+B\+A\+S\+E\+\_\+\+V\+A\+D\+DR}}
+\index{P\+T\+\_\+\+B\+A\+S\+E\+\_\+\+V\+A\+D\+DR@{P\+T\+\_\+\+B\+A\+S\+E\+\_\+\+V\+A\+D\+DR}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{P\+T\+\_\+\+B\+A\+S\+E\+\_\+\+V\+A\+D\+DR}{PT\_BASE\_VADDR}}
+{\footnotesize\ttfamily \#define P\+T\+\_\+\+B\+A\+S\+E\+\_\+\+V\+A\+D\+DR~0x\+F\+F\+C00000}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{vmm_8h_acd34cb4c1016f8b955c09153679bc1ec}\label{vmm_8h_acd34cb4c1016f8b955c09153679bc1ec}} 
+\index{vmm.\+h@{vmm.\+h}!init\+\_\+vmm@{init\+\_\+vmm}}
+\index{init\+\_\+vmm@{init\+\_\+vmm}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{init\+\_\+vmm()}{init\_vmm()}}
+{\footnotesize\ttfamily void init\+\_\+vmm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The Virtual Memory Manager is going to start and handle paging in the system. 
+
+Paging is a system which allows each process to see a full virtual address space, without actually requiring the full amount of physical memory to be available or present. Maximum address space for 32 bit systems like this is 4\+GB.
+
+The topmost paging structure is the P\+A\+GE D\+I\+R\+E\+C\+T\+O\+RY. It is essentially an array of page directory entries that take the following form\+:
+\begin{DoxyItemize}
+\item 31\+\_\+12 Page Table 4\+KB aligned address
+\item 11\+\_\+8 Available
+\item 7\+\_\+0 Flags
+\begin{DoxyItemize}
+\item 7 G\+\_\+\+Ignored
+\item 6 S\+\_\+\+Page\+\_\+\+Size
+\item 5 A\+\_\+\+Accessed
+\item 4 D\+\_\+\+Cache\+\_\+\+Disable
+\item 3 W\+\_\+\+Write\+\_\+\+Through
+\item 2 U\+\_\+\+User
+\item 1 R\+\_\+\+Read
+\item 0 P\+\_\+\+Present
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+In each P\+A\+GE T\+A\+B\+LE, as it is, there are also 1024 entries. These are called page table entries, and are very similar to page directory entries\+:
+\begin{DoxyItemize}
+\item 31\+\_\+12 Physical Page 4\+KB aligned address
+\item 11\+\_\+9 Available
+\item 7\+\_\+0 Flags
+\begin{DoxyItemize}
+\item 7 G\+\_\+\+Global
+\item 6 D\+\_\+\+Dirty
+\item 5 A\+\_\+\+Accessed
+\item 4 D\+\_\+\+Cache\+\_\+\+Disable
+\item 3 W\+\_\+\+Write\+\_\+\+Through
+\item 2 U\+\_\+\+User
+\item 1 R\+\_\+\+Read
+\item 0 P\+\_\+\+Present
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+This is the format of a 32 bit x86 virtual address\+: A\+A\+A\+A\+A\+A\+A\+A\+AA B\+B\+B\+B\+B\+B\+B\+B\+BB C\+C\+C\+C\+C\+C\+C\+C\+C\+C\+CC directory index page table index offset into page Using the \textquotesingle{}recursive mapping\textquotesingle{} technique. It consists in mapping the last entry in the page directory to the page directory iteself. The physical address of the page directory is in the registry \textquotesingle{}cr3\textquotesingle{} and it\textquotesingle{}s more helpful having it at the virtual address 0x\+F\+F\+F\+F\+F000.
+
+This becomes more important when each process gets its own page directory, which can be anywhere in memory.\mbox{\Hypertarget{vmm_8h_a2cff7f27869ced78fdc69df1e0e84cfd}\label{vmm_8h_a2cff7f27869ced78fdc69df1e0e84cfd}} 
+\index{vmm.\+h@{vmm.\+h}!set\+\_\+cr3@{set\+\_\+cr3}}
+\index{set\+\_\+cr3@{set\+\_\+cr3}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{set\+\_\+cr3()}{set\_cr3()}}
+{\footnotesize\ttfamily void set\+\_\+cr3 (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$}]{pd\+\_\+phys\+\_\+addr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{vmm_8h_aa1de63853ee6b993531d48958c6c3e1f}\label{vmm_8h_aa1de63853ee6b993531d48958c6c3e1f}} 
+\index{vmm.\+h@{vmm.\+h}!v\+Alloc\+Page@{v\+Alloc\+Page}}
+\index{v\+Alloc\+Page@{v\+Alloc\+Page}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{v\+Alloc\+Page()}{vAllocPage()}}
+{\footnotesize\ttfamily void$\ast$ v\+Alloc\+Page (\begin{DoxyParamCaption}\item[{void $\ast$}]{virt,  }\item[{uint32\+\_\+t}]{flags,  }\item[{bool}]{man }\end{DoxyParamCaption})}
+
+The C\+PU pushes an error code on the stack before firing a page fault exception. The error code must be analyzed by the exception handler to determine how to handle the exception. The bottom 3 bits of the exception code are the only ones used, bits 3-\/31 are reserved.
+
+The combination of these flags specify the details of the Page Fault and indicate what action to take\+:
+
+US RW P -\/ Description 0 0 0 -\/ Supervisory process tried to read a non-\/present page entry 0 0 1 -\/ Supervisory process tried to read a page and caused a protection fault 0 1 0 -\/ Supervisory process tried to write to a non-\/present page entry 0 1 1 -\/ Supervisory process tried to write a page and caused a protection fault 1 0 0 -\/ User process tried to read a non-\/present page entry 1 0 1 -\/ User process tried to read a page and caused a protection fault 1 1 0 -\/ User process tried to write to a non-\/present page entry 1 1 1 -\/ User process tried to write a page and caused a protection fault Allocate a virtual page and sets it to zero.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{vmm_8c_acb06b7c4006a14240ac29a3ede114daf}{v\+Map\+Page()} 
+
+\hyperlink{vmm_8c_a7a305ff942b89d446b7b72c665340349}{v\+Alloc\+Pages()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em virt} & Address to map \\
+\hline
+{\em man} & If that address is mandatory or could be anyone else\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns the virtual mapped address 
+\end{DoxyReturn}
+\mbox{\Hypertarget{vmm_8h_a7a305ff942b89d446b7b72c665340349}\label{vmm_8h_a7a305ff942b89d446b7b72c665340349}} 
+\index{vmm.\+h@{vmm.\+h}!v\+Alloc\+Pages@{v\+Alloc\+Pages}}
+\index{v\+Alloc\+Pages@{v\+Alloc\+Pages}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{v\+Alloc\+Pages()}{vAllocPages()}}
+{\footnotesize\ttfamily void$\ast$ v\+Alloc\+Pages (\begin{DoxyParamCaption}\item[{void $\ast$}]{virt,  }\item[{uint32\+\_\+t}]{flags,  }\item[{uint32\+\_\+t}]{n,  }\item[{bool}]{man }\end{DoxyParamCaption})}
+
+Allocate n virtual page and sets them to zero.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{vmm_8c_acb06b7c4006a14240ac29a3ede114daf}{v\+Map\+Page()} 
+
+\hyperlink{vmm_8c_aa1de63853ee6b993531d48958c6c3e1f}{v\+Alloc\+Page()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em virt} & Start address to map \\
+\hline
+{\em n} & Number of contiguous pages to map \\
+\hline
+{\em man} & If that address is mandatory or could be anyone else\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns the starting virtual mapped address 
+\end{DoxyReturn}
+\mbox{\Hypertarget{vmm_8h_acb06b7c4006a14240ac29a3ede114daf}\label{vmm_8h_acb06b7c4006a14240ac29a3ede114daf}} 
+\index{vmm.\+h@{vmm.\+h}!v\+Map\+Page@{v\+Map\+Page}}
+\index{v\+Map\+Page@{v\+Map\+Page}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{v\+Map\+Page()}{vMapPage()}}
+{\footnotesize\ttfamily bool v\+Map\+Page (\begin{DoxyParamCaption}\item[{void $\ast$}]{phys,  }\item[{void $\ast$}]{virt,  }\item[{uint32\+\_\+t}]{flags }\end{DoxyParamCaption})}
+
+Mapping a virtual address to a physical one.
+
+
+\begin{DoxyParams}{Parameters}
+{\em phys} & Physical address to map. \\
+\hline
+{\em virt} & Virtual address to map phys to. \\
+\hline
+{\em flags} & Flags.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If everything went well. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{vmm_8h_aa774181128af1b6c9cfd859525edf105}\label{vmm_8h_aa774181128af1b6c9cfd859525edf105}} 
+\index{vmm.\+h@{vmm.\+h}!v\+Unmap\+Page@{v\+Unmap\+Page}}
+\index{v\+Unmap\+Page@{v\+Unmap\+Page}!vmm.\+h@{vmm.\+h}}
+\subsubsection{\texorpdfstring{v\+Unmap\+Page()}{vUnmapPage()}}
+{\footnotesize\ttfamily bool v\+Unmap\+Page (\begin{DoxyParamCaption}\item[{void $\ast$}]{virt }\end{DoxyParamCaption})}
+
+Unmapping the virtual address from the current page directory.
+
+
+\begin{DoxyParams}{Parameters}
+{\em virt} & Virtual address to unmap. \\
+\hline
+\end{DoxyParams}
